@@ -1,0 +1,564 @@
+/* Iconfont made with icomoon.com */
+
+/* reset  list style */
+#nav-primary,
+#nav-primary ul {
+	list-style: none;
+}
+
+
+.no-touch #nav-primary > li > a:hover,
+.no-touch #nav-primary > li > a:active {
+	color: #fff;
+}
+
+/* sumbenu with transitions */
+#nav-primary .sub-menu{
+	position: absolute;
+	display: block;
+	visibility: hidden;
+	opacity: 0;
+	padding: 0;
+	text-align: left;
+	pointer-events: none;
+	-webkit-transition: visibility 0s, opacity 0s;
+	-moz-transition: visibility 0s, opacity 0s;
+	transition: visibility 0s, opacity 0s;
+}
+
+#nav-primary .cbp-tm-show .sub-menu {
+	width: 16em;
+	left: 50%;
+	margin: 0 0 0 -8em;
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+	-webkit-transition: visibility 0s, opacity 0.3s;
+	-moz-transition: visibility 0s, opacity 0.3s;
+	transition: visibility 0s, opacity 0.3s;
+}
+
+#nav-primary .cbp-tm-show-above .sub-menu {
+	bottom: 100%;
+	padding-bottom: 10px;
+}
+
+#nav-primary .cbp-tm-show-below .sub-menu {
+	top: 100%;
+	padding-top: 10px;
+}
+
+/* extreme cases: not enough space on the sides */
+#nav-primary .cbp-tm-nospace-right .sub-menu {
+	right: 0;
+	left: auto;
+}
+
+#nav-primary .cbp-tm-nospace-left .sub-menu {
+	left: 0;
+}
+
+/* last menu item has to fit on the screen */
+#nav-primary > li:last-child .sub-menu {
+	right: 0;
+}
+
+/* 	
+arrow: depending on where the menu will be shown, we set 
+the right position for the arrow
+*/
+
+#nav-primary .sub-menu:after {
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+#nav-primary .cbp-tm-show-above .sub-menu:after {
+	top: 100%;
+	margin-top: -10px;
+}
+
+#nav-primary .cbp-tm-show-below .sub-menu:after {
+	bottom: 100%;
+	margin-bottom: -10px;
+}
+
+#nav-primary .sub-menu:after {
+	border-color: transparent;
+	border-width: 16px;
+	margin-left: -16px;
+	left: 50%;
+}
+
+#nav-primary .cbp-tm-show-above .sub-menu:after {
+	border-top-color: @secondary_color-d;;
+}
+
+#nav-primary .cbp-tm-show-below .sub-menu:after {
+	border-bottom-color: @secondary_color-d;;
+}
+
+#nav-primary .sub-menu > li {
+	display: block;
+	background: @secondary_color-d;
+}
+
+#nav-primary .sub-menu > li > a {
+	padding: 5px 2.3em 5px 0.6em; /* top/bottom paddings in 'em' cause a tiny "jump" in Chrome on Win */
+	display: block;
+	font-size: 1.2em;
+	position: relative;
+	color: #fff;
+	border: 4px solid @secondary_color-d;
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	transition: all 0.2s;
+
+	&:active, &:hover, &:focus{
+		color: #fff!important;
+		background-color: @secondary_color!important;
+	}
+}
+
+#nav-primary .no-touch .sub-menu > li > a:hover,
+#nav-primary .no-touch .sub-menu > li > a:active {
+	color: #fff!important;
+	background-color: @secondary_color!important;
+}
+
+/* the icons (main level menu icon and sublevel icons) */
+#nav-primary .sub-menu li a:before,
+#nav-primary > li > a:before {
+	display: inline-block;
+  	font: normal normal normal 14px/1 FontAwesome;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	vertical-align: midtogglee;
+	margin-right: 0.6em;
+	-webkit-font-smoothing: antialiased;
+}
+
+#nav-primary .sub-menu li a:before {
+	position: absolute;
+	top: 50%;
+	margin-top: -0.5em;
+	right: 0.5em;
+}
+
+#nav-primary > li > a:not(:only-child):before {
+	content: "\f0c9";
+	font-size: 80%;
+	color: @secondary_color;
+}
+
+
+/* Media Queries */
+@media screen and (max-width: 55.6875em) {
+	#nav-primary {
+		font-size: 80%;
+	}
+}
+
+@media screen and (max-height: 25.25em), screen and (max-width: 44.3125em) {
+
+	#nav-primary {
+		font-size: 100%;
+		position: relative;
+		text-align: center;
+		padding: 0;
+		top: auto;
+	}
+
+	#nav-primary > li {
+		display: block;
+		margin: 0;
+		border-bottom: 4px solid #3793ca;
+	}
+
+	#nav-primary > li:first-child {
+		border-top: 4px solid #3793ca;
+	}
+
+	#nav-primary li.cbp-tm-show > a,
+	.no-touch #nav-primary > li > a:hover,
+	.no-touch #nav-primary > li > a:active {
+		color: #fff;
+		background: @secondary_color;
+	}
+
+	#nav-primary .sub-menu {
+		position: relative;
+		display: none;
+		width: 100%;
+	}
+
+	#nav-primary .sub-menu > li {
+		padding: 0;
+	}
+
+	#nav-primary .sub-menu > li > a {
+		padding: 0.6em 2.3em 0.6em 0.6em;
+		border: none;
+		border-bottom: 2px solid #6fbbe9;
+	}
+
+	#nav-primary .sub-menu:after {
+		display: none;
+	}
+
+	#nav-primary .cbp-tm-show .sub-menu {
+		display: block;
+		width: 100%;
+		left: 0;
+		margin: 0;
+		padding: 0;
+	}
+
+}
+
+
+/*--------Responsive Menu------*/
+/* Common styles of menus */
+
+.toggle-menuwrapper {
+	display: none;
+	position: fixed;
+    right: 10px;
+    margin-right: 0;
+	width: 100%;
+	max-width: 300px;
+	float: left;
+	-webkit-perspective: 1000px;
+	perspective: 1000px;
+	-webkit-perspective-origin: 50% 200%;
+	perspective-origin: 50% 200%;
+	z-index: 999;
+}
+
+.toggle-menuwrapper button {
+	float: right;
+	background: @base_color-l;
+	border: none;
+	width: 48px;
+	height: 45px;
+	text-indent: -900em;
+	overflow: hidden;
+	position: relative;
+	cursor: pointer;
+	outline: none;
+}
+
+.toggle-menuwrapper button:hover,
+.toggle-menuwrapper button.toggle-active,
+.toggle-menuwrapper ul {
+	background: @base_color;
+}
+
+.toggle-menuwrapper button:after {
+	content: '';
+	position: absolute;
+	width: 68%;
+	height: 5px;
+	background: #fff;
+	top: 10px;
+	left: 16%;
+	box-shadow: 
+		0 10px 0 #fff, 
+		0 20px 0 #fff;
+}
+
+.toggle-menuwrapper ul {
+	padding: 0;
+	list-style: none;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.toggle-menuwrapper li {
+	position: relative;
+}
+
+.toggle-menuwrapper li a {
+	display: block;
+	position: relative;
+	padding: 15px 20px;
+	font-size: 15px;
+	line-height: 20px;
+	font-weight: 300;
+	color: #fff;
+	.text-shadow-sm;
+	font-weight: bold;
+	text-transform: uppercase;
+	outline: none;
+	text-decoration: none;
+}
+
+.no-touch .toggle-menuwrapper li a:hover {
+	background: rgba(255,248,213,0.1);
+}
+
+.toggle-menuwrapper li.toggle-back > a {
+	padding-left: 30px;
+	background: rgba(0,0,0,0.1);
+}
+
+.toggle-menuwrapper li.toggle-back:after,
+.toggle-menuwrapper li > a:not(:only-child):after {
+	position: absolute;
+	top: 16px;
+	line-height: 50px;
+	.fa;
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	content: "\f105";
+}
+
+.toggle-menuwrapper li.toggle-back:after {
+	left: 10px;
+	color: rgba(0,0,0,0.7);
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+.toggle-menuwrapper li > a:after {
+	right: 10px;
+	color: rgba(0,0,0,0.7);
+}
+
+.toggle-menuwrapper .toggle-menu {
+	margin: 45px 0 0 0;
+	position: absolute;
+	width: 100%;
+	opacity: 0;
+	pointer-events: none;
+	-webkit-transform: translateY(10px);
+	transform: translateY(10px);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.toggle-menuwrapper .toggle-menu.toggle-menu-toggle {
+	transition: all 0.3s ease;
+}
+
+.toggle-menuwrapper .toggle-menu.toggle-menuopen {
+	opacity: 1;
+	pointer-events: auto;
+	-webkit-transform: translateY(0px);
+	transform: translateY(0px);
+}
+
+/* Hide the inner submenus */
+.toggle-menuwrapper li .sub-menu {
+	display: none;
+}
+
+/* 
+When a submenu is openend, we will hide all li siblings.
+For that we give a class to the parent menu called "toggle-subview".
+We also hide the submenu link. 
+The opened submenu will get the class "toggle-subviewopen".
+All this is done for any sub-level being entered.
+*/
+.toggle-menu.toggle-subview li,
+.toggle-menu.toggle-subview li.toggle-subviewopen > a,
+.toggle-menu.toggle-subview li.toggle-subview > a {
+	display: none;
+}
+
+.toggle-menu.toggle-subview li.toggle-subview,
+.toggle-menu.toggle-subview li.toggle-subview .sub-menu,
+.toggle-menu.toggle-subview li.toggle-subviewopen,
+.toggle-menu.toggle-subview li.toggle-subviewopen > .sub-menu,
+.toggle-menu.toggle-subview li.toggle-subviewopen > .sub-menu > li {
+	display: block;
+}
+
+/* Dynamically added submenu outside of the menu context */
+.toggle-menuwrapper > .sub-menu {
+	position: absolute;
+	width: 100%;
+	top: 50px;
+	left: 0;
+	margin: 0;
+}
+
+/* Animation classes for moving out and in */
+
+.toggle-menu.toggle-animate-out-1 {
+	-webkit-animation: MenuAnimOut1 0.4s;
+	animation: MenuAnimOut1 0.4s;
+}
+
+
+@-webkit-keyframes MenuAnimOut1 {
+	0% { }
+	50% {
+		-webkit-transform: translateZ(-250px) rotateY(30deg);
+	}
+	75% {
+		-webkit-transform: translateZ(-372.5px) rotateY(15deg);
+		opacity: .5;
+	}
+	100% {
+		-webkit-transform: translateZ(-500px) rotateY(0deg);
+		opacity: 0;
+	}
+}
+
+
+@keyframes MenuAnimOut1 {
+	0% { }
+	50% {
+		-webkit-transform: translateZ(-250px) rotateY(30deg);
+		transform: translateZ(-250px) rotateY(30deg);
+	}
+	75% {
+		-webkit-transform: translateZ(-372.5px) rotateY(15deg);
+		transform: translateZ(-372.5px) rotateY(15deg);
+		opacity: .5;
+	}
+	100% {
+		-webkit-transform: translateZ(-500px) rotateY(0deg);
+		transform: translateZ(-500px) rotateY(0deg);
+		opacity: 0;
+	}
+}
+
+
+.toggle-menu.toggle-animate-in-1 {
+	-webkit-animation: MenuAnimIn1 0.3s;
+	animation: MenuAnimIn1 0.3s;
+}
+
+
+@-webkit-keyframes MenuAnimIn1 {
+	0% {
+		-webkit-transform: translateZ(-500px) rotateY(0deg);
+		opacity: 0;
+	}
+	20% {
+		-webkit-transform: translateZ(-250px) rotateY(30deg);
+		opacity: 0.5;
+	}
+	100% {
+		-webkit-transform: translateZ(0px) rotateY(0deg);
+		opacity: 1;
+	}
+}
+
+
+@keyframes MenuAnimIn1 {
+	0% {
+		-webkit-transform: translateZ(-500px) rotateY(0deg);
+		transform: translateZ(-500px) rotateY(0deg);
+		opacity: 0;
+	}
+	20% {
+		-webkit-transform: translateZ(-250px) rotateY(30deg);
+		transform: translateZ(-250px) rotateY(30deg);
+		opacity: 0.5;
+	}
+	100% {
+		-webkit-transform: translateZ(0px) rotateY(0deg);
+		transform: translateZ(0px) rotateY(0deg);
+		opacity: 1;
+	}
+}
+
+
+.toggle-menuwrapper > .sub-menu.toggle-animate-in-1 {
+	-webkit-animation: SubMenuAnimIn1 0.4s ease;
+	animation: SubMenuAnimIn1 0.4s ease;
+}
+
+@-webkit-keyframes SubMenuAnimIn1 {
+	0% {
+		-webkit-transform: translateX(50%);
+		opacity: 0;
+	}
+	100% {
+		-webkit-transform: translateX(0px);
+		opacity: 1;
+	}
+}
+
+
+@keyframes SubMenuAnimIn1 {
+	0% {
+		-webkit-transform: translateX(50%);
+		transform: translateX(50%);
+		opacity: 0;
+	}
+	100% {
+		-webkit-transform: translateX(0px);
+		transform: translateX(0px);
+		opacity: 1;
+	}
+}
+
+
+.toggle-menuwrapper > .sub-menu.toggle-animate-out-1 {
+	-webkit-animation: SubMenuAnimOut1 0.4s ease;
+	animation: SubMenuAnimOut1 0.4s ease;
+}
+
+
+@-webkit-keyframes SubMenuAnimOut1 {
+	0% {
+		-webkit-transform: translateX(0%);
+		opacity: 1;
+	}
+	100% {
+		-webkit-transform: translateX(50%);
+		opacity: 0;
+	}
+}
+
+
+@keyframes SubMenuAnimOut1 {
+	0% {
+		-webkit-transform: translateX(0%);
+		transform: translateX(0%);
+		opacity: 1;
+	}
+	100% {
+		-webkit-transform: translateX(50%);
+		transform: translateX(50%);
+		opacity: 0;
+	}
+}
+
+
+
+/* No JS Fallback */
+.no-js .toggle-menuwrapper .toggle-menu {
+	position: relative;
+	opacity: 1;
+	-webkit-transform: none;
+	transform: none;
+}
+
+.no-js .toggle-menuwrapper li .sub-menu {
+	display: block;
+}
+
+.no-js .toggle-menuwrapper li.toggle-back {
+	display: none;
+}
+
+.no-js .toggle-menuwrapper li > a:not(:only-child) {
+	background: rgba(0,0,0,0.1);
+}
+
+.no-js .toggle-menuwrapper li > a:not(:only-child):after {
+	content: '';
+}

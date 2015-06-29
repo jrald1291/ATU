@@ -1,0 +1,32 @@
+.rotate3d(@a1;@a2;@a3;@a4) {
+	-webkit-transform: rotate3d(@a1,@a2,@a3,@a4);
+	-moz-transform: rotate3d(@a1,@a2,@a3,@a4);
+	-o-transform: rotate3d(@a1,@a2,@a3,@a4);
+	transform: rotate3d(@a1,@a2,@a3,@a4);
+}
+
+.text-shadow{
+	text-shadow: rgba(0,0,0,0.5) 0 2px 0;
+}
+.text-shadow-sm{
+  text-shadow: rgba(0,0,0,0.2) 0 2px 0;
+}
+.text-shadow-md{
+	text-shadow: rgba(0, 0, 0, 0.90) 0px 1px 10px;
+}
+.borderbox{
+	.box-sizing(border-box);
+}
+.absolute-center {
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.is-transform { 
+  margin: auto;
+  position: absolute;
+  top: 50%; left: 50%;
+  .translate(-50%,-50%);
+}

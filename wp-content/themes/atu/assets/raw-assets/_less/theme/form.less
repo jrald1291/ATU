@@ -1,0 +1,45 @@
+.form-control{
+	.border-radius(5px);
+	border: 1px solid @base_border_color;
+	.box-shadow(none);
+	.transition(all linear .2s);
+	background-color: #fff;
+	min-height: 41px;
+	.borderbox;
+	&:focus {
+		border: 1px solid @base_color-l;
+		outline: 0;
+		.box-shadow(none);
+	}
+}
+.input-group-addon{
+	background-color: #fff;
+	text-transform: uppercase;
+}
+
+.form__actions {
+	.ajax-loader {
+		display: none !important;
+	}
+}
+
+.wpcf7-validation-errors {
+	border: 2px solid #B60F22 !important;
+	padding: 10px !important;
+	margin: 0 !important;
+	color: #fff!important;
+	background: #DB152B;
+}
+
+.wpcf7-not-valid-tip {
+	margin-top: 8px !important;
+}
+
+
+textarea{
+	resize: none;
+}
+
+.input-bordered{
+	border: 1px solid @base_border_color;
+}

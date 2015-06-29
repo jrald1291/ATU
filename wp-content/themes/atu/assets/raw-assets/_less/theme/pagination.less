@@ -1,0 +1,76 @@
+.wp-pagenavi{
+	margin-top: 20px;
+	span,a{
+		padding: 5px 10px;
+		color: #fff;
+	}
+	.pages{
+		 & ~ span, & ~ a{
+		 	margin-left: 5px;
+		 }
+	}
+}
+
+.pagination-single{
+	position: relative;
+	background-color: rgba(255,255,255,.9);
+	.clearfix;
+	li{
+		width: 33.3%;
+		display: block;
+		float: left;
+		.clearfix;
+		
+		&.back{
+			border-right: 1px solid @base_border_color;
+			border-left: 1px solid @base_border_color;
+			text-align: center;
+			a{
+				text-decoration: underline;
+				padding: 42px 30px;
+			}
+		}
+		&.next{
+			text-align: right;
+
+			.label{
+				text-align: right;
+			}
+		}
+		&.prev{
+			text-align: left;
+
+			.label{
+				text-align: left;
+			}
+		}
+		a{
+			display: block;
+			width: 100%;
+			padding: 30px 40px;
+			.borderbox;
+			.t-upper;
+			text-decoration: none;
+			color: @base_font_color;
+
+			&:active, &:hover, &:focus{
+				background-color: @base_color;
+				color: #fff;
+			}
+		}
+		.label{
+			text-transform: none;
+			display: block;
+			width: 100%;
+			font-size: 15px;
+			color: @base_font_color;
+			font-weight: normal;
+
+			& ~ span{
+				display: block;
+				width: 100%;
+			}
+		}
+
+	}
+}

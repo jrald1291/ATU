@@ -1,0 +1,1 @@
+!function(){var o=document.querySelectorAll(".parallax"),n=.5;window.onscroll=function(){[].slice.call(o).forEach(function(o,l){var c=window.pageYOffset,a="0 "+c*n+"px";o.style.backgroundPosition=a})}}();

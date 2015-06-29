@@ -1,0 +1,4 @@
+[19-Mar-2015 05:11:10 UTC] PHP Fatal error:  Out of memory (allocated 28573696) (tried to allocate 491520 bytes) in /home/cebudrea/public_html/wp-content/plugins/ewww-image-optimizer/common.php on line 2551
+[19-Mar-2015 05:11:10 UTC] PHP Fatal error:  Out of memory (allocated 28311552) (tried to allocate 122880 bytes) in /home/cebudrea/public_html/wp-content/plugins/ewww-image-optimizer/common.php on line 1963
+[19-Mar-2015 05:11:10 UTC] PHP Fatal error:  Out of memory (allocated 38010880) (tried to allocate 79 bytes) in /home/cebudrea/public_html/wp-content/plugins/w3-total-cache/lib/W3/ObjectCache.php on line 211
+[19-Mar-2015 05:11:10 UTC] PHP Fatal error:  Out of memory (allocated 28573696) (tried to allocate 491520 bytes) in /home/cebudrea/public_html/wp-content/plugins/ewww-image-optimizer/common.php on line 2551

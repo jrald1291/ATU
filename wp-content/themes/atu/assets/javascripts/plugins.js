@@ -1,0 +1,9 @@
+//@prepros-append vendor/classie.js
+//@prepros-append  vendor/bootstrap.js
+//@prepros-append  vendor/jquery.flexslider-min.js
+//@prepros-append  vendor/cbpTooltipMenu.min.js
+//@prepros-append vendor/parallax.js
+//@prepros-append vendor/cbpGridGallery.js
+//@prepros-append vendor/imagesloaded.pkgd.min.js
+//@prepros-append vendor/jquery.dlmenu.js
+//@prepros-append main.js

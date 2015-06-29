@@ -1,0 +1,22 @@
+.post {
+	clear: both;
+}
+
+.post-inline{
+	.post-img{
+		float: left;
+		margin-right: 10px;
+	}
+	.post-title{
+		margin-bottom: 7px;
+	}
+	.post-item{
+		clear: both;
+		.clearfix;
+
+		& ~ .post-item{
+			margin-top: 7px;
+		}
+	}
+}
+

@@ -1,0 +1,106 @@
+.section{
+	.clearfix;
+	position: relative;
+}
+.section-l0{
+	padding: 10px 0;
+}
+.section-l1{
+	padding: 35px 0;
+}
+.section-l2{
+	padding: 45px 0;
+}
+.section-l3{
+	padding: 60px 0;
+}
+.section-l4{
+	padding: 80px 0;
+}
+.section-dark{
+	color: #fff;
+}
+.section-fl{
+	position: relative;
+	background: url("@{image-url}/flowerbg.png") center -300px no-repeat;
+	background-color: #c85a8f;
+	background-attachment: fixed;
+	background-size: cover;
+}
+.section-rsvp{
+	background-color: #39273e;
+}
+.section-banner{
+	position: relative;
+	background: url("@{image-url}/banner.jpg") no-repeat;
+	background-attachment: fixed;
+	min-height: 400px;
+	background-size: cover;
+
+	.scroll-down{
+		.animation(scroll  1s infinite linear);
+		.transition(linear .3s all);
+		position: absolute;
+		bottom: 20px;
+		left: 50%;
+		color: #fff!important;
+		z-index: 1;
+		font-weight: bold;
+
+		&:after{
+			.fa;
+			position: relative;
+			display: block;
+			bottom: -10px;
+			content: '\f078';
+			text-align: center;
+			font-size: 18px;
+			.opacity(.6);
+		}
+	}
+
+	&:after{
+		content: '';
+		display: block;
+		position: absolute;
+		height: 50%;
+		width: 100%;
+		#gradient > .vertical(rgba(255,255,255,0), rgba(0,0,0,.8));  
+		bottom: 0px;
+		z-index: 0;
+	}
+}
+
+.section-tabbed{
+	border: 1px solid @base_border_color;
+	.tab-content{
+		padding: 20px 15px;
+		background-color: #fff;
+	}
+	.nav-tabs{
+		li{
+			border-right: 1px solid @base_border_color;
+			&.active{
+				a{
+					background-color: #fff;
+					.border-radius(0 0);
+					border: none;
+				}
+			}
+		}
+		a{
+			color: @base_font_color;
+			margin-right: 0!important;
+			font-weight: bold;
+			.border-radius(0 0);
+			border: none;
+
+			&:active, &:hover, &:focus{
+				.border-radius(0 0);
+				border: none;
+				background-color: #fff;
+				margin-right: 0;
+			}
+		}
+	}
+}

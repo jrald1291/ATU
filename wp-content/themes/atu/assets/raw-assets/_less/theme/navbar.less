@@ -1,0 +1,65 @@
+.navbar-header{
+	position: relative;
+	float: none;
+}
+.navbar-brand{
+	position: absolute;
+	left: 0;
+	top: 0;
+	.clearfix;
+	.border-radius(0 0 5px 5px); 
+	border: 2px solid @secondary_color;
+	border-top: 0;
+	.borderbox;
+	height: auto;
+	background-color: #fff;
+	padding: 15px 15px 35px 15px;
+	.transition(linear .2s all);
+
+	&:hover, &:focus{
+		padding: 30px 15px 35px 15px;
+		background-color: #fff!important;
+	}
+}
+.navbar-default{
+	position: relative;
+	background: transparent;
+	border: none;
+	border-radius: 0 0;
+	text-transform: uppercase;
+	.clearfix;
+    z-index: 15;
+    margin-bottom: 10px;
+
+	.navbar-nav{
+		position: relative;
+		margin-top: 10px!important;
+
+		& > li{
+			position: relative;
+			& > a{
+				display: block;
+				color: @base_font_color;
+				font-size: 16px;
+
+				&:hover,&focus{
+					color: @secondary_color!important;
+				}
+			}
+			&.current-menu-item{
+				a{
+					color: @base_color-d;
+				}
+			}
+		}
+	 }
+   .sub-menu{
+      z-index: 100;
+
+      a{
+      	text-decoration: none;
+      }
+   }
+}
+
+

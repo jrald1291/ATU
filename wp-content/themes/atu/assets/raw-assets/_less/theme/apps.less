@@ -1,0 +1,45 @@
+.l-header{
+}
+.l-content{
+
+}
+.l-content-bg{
+	position: relative;
+	background: url("@{image-url}/banner.jpg") no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+
+	.container{
+		padding-bottom: 60px;
+	}
+
+	&.content-single .container{
+		padding-bottom: 100px;
+	}
+
+	&:before{
+		display: block;
+		content:'';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: url("@{image-url}/overlay-bg.png")repeat;
+	}
+}
+.l-content-container{
+	margin-top: 70px;
+	background: #fff;
+	background-color: rgba(255,255,255,.95);
+	.border-radius(5px);
+	overflow: hidden;
+}
+.l-footer{
+	background: url("@{image-url}/patternbg.jpg") top repeat;
+}
+.footnotes{
+	background-color: @base_color-l;
+	color: #fff;
+	padding: 15px;
+	text-align: center;
+	line-height: 25px;
+}

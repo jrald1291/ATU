@@ -1,0 +1,133 @@
+.form-labeled{
+.req {
+  margin:2px;
+  color:@base_color;
+}
+.label-drop{
+  border: 1px solid @base_border_color;
+  padding: 5px 10px;
+  font-size: 15px;
+  font-weight: normal;
+  display: block;
+  margin-bottom: -3px;
+  background-color: #fff;
+  position: relative;
+}
+.field-wrap{
+  label {
+    position:absolute;
+    transform:translateY(12px);
+    left:13px;
+    color: #996aa6;
+    transition:all 0.25s ease;
+    -webkit-backface-visibility: hidden;
+    pointer-events: none;
+    font-size:16px;
+    
+  }
+
+
+  label.active {
+    transform: translateY(35px);
+    left: 0px;
+    font-size:13px;
+    padding: 4px 8px;
+    width: 100%;
+    background: #5dd2c9;
+    color: #fff!important;
+    .req {
+      opacity:0;
+    }
+  }
+
+  label.highlight {
+  	color: #c986db;
+  }
+}
+
+  input, textarea {
+    display:block;
+    background-image:none;
+    transition:border-color .25s ease, box-shadow .25s ease;
+    &:focus {
+  		outline:0;
+  		border-color:@base_color;
+    }
+  }
+
+  textarea {
+    border:2px solid @base_border_color;
+    resize: vertical;
+  }
+
+  .field-wrap {
+    position:relative;
+    margin-bottom:20px;
+  }
+
+  .top-row {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    > div {
+      float:left;
+      width:48%;
+      margin-right:4%;
+      &:last-child { 
+        margin:0;
+      }
+    }
+  }
+
+  select{
+    height: 40px;
+    -webkit-appearance: none;
+    background: url("@{image-url}/select.png") #fff no-repeat center right 7px;
+    min-width: 200px;
+  }
+
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+
+  .wpcf7-form-control-wrap{
+
+    &.focus {
+
+      & + label{
+        top: 0px;
+        left: 0px;
+        background: rgba(255, 255, 255, 0.38);
+        font-size: 10px;
+        width: 100%;
+        .opacity(1);
+        padding: 5px;
+      }
+    }
+
+  }
+
+  .form-group{
+    position: relative;
+  }
+
+  .form-control{
+    max-width: 100%;
+    font-weight: 100;
+    .box-shadow(none);
+
+    &:focus {
+      outline: 0;
+      .box-shadow(none);
+    }
+  }
+
+  
+
+
+}
