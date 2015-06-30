@@ -64,13 +64,7 @@
 										<a href=""><span class="fa fa-phone"></span> : 1234-0000-34-00</a>
 									</li>
 								</ul>
-								<form action="" class="form form-labeled">
-									<div class="form-group field-wrap">
-										<label for="">Email Address</label>
-										<input type="text" class="form-control">
-									</div>
-									<button class="btn btn-primary btn-block"><span class="fa fa-user icon-l"></span>Become a member</button>
-								</form>
+                                <?php do_action( 'atu_membership_form' ); ?>
 							</div>
 
 						</div>
