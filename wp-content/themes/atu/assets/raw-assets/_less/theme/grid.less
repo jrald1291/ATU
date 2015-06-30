@@ -1,6 +1,46 @@
-.grid{
+.grid-filter{
+	margin-bottom: 30px;
 
+	.btn{
+		.border-radius(0 0);
+		background-color: #fff;
+		border: 1px solid @base_border_color;
+		font-weight: normal;
+
+		&:active, &:hover, &:focus, &.is-checked{
+			background-color: @base_color;
+			border: 1px solid @base_color-d;
+			color: #fff;
+		}
+	}
 }
-.grid-item{
-	width: 33.3%;
+.grid-isotope{
+
+	.grid-item{
+		width: 32%;
+		float: left;
+		margin: 5px;
+		background-color: #fff;
+		border: 1px solid @base_border_color;
+	}
+	.grid-wrap{
+		position: relative;
+		padding: 10px;
+	}
+	.grid-img{
+		position: relative;
+	}
+	.grid-title{
+		display: block;
+		background-color: rgba(0,0,0,.5);
+		color: #fff;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		padding: 15px 10px;
+		width: 100%;
+		font-size: 16px;
+	}
 }
+
+

@@ -60,10 +60,10 @@ var util = {
         // init Isotope
         var $grid = $('.grid').isotope({
           itemSelector: '.grid-item',
-          layoutMode: 'fitRows'
+          layoutMode: 'masonry',
         });
         // filter items on button click
-        $('.filter-button-group').on( 'click', 'button', function() {
+        $('.grid-filter').on( 'click', 'button', function() {
           var filterValue = $(this).attr('data-filter');
           $grid.isotope({ filter: filterValue });
         });
