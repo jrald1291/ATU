@@ -15,6 +15,13 @@
 	}
 }
 
+.list-inline{
+	li{
+		display: inline-block;
+		margin-bottom: 15px;
+	}
+}
+
 .list-labeled-inline{
 	.clearfix;
 	.borderbox;
@@ -30,5 +37,16 @@
 	li{
 		display: inline-block;
 		float: left;
+	}
+}
+
+.list-contact{
+	a{
+		color: #996aa6;
+
+		&:active, &:hover, &:focus{
+			color: @base_color;
+			text-decoration: none;
+		}
 	}
 }

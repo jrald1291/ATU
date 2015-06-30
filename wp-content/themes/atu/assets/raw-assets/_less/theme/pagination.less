@@ -1,13 +1,46 @@
 .wp-pagenavi{
-	margin-top: 20px;
 	span,a{
-		padding: 5px 10px;
+		padding: 10px 15px;
+		border-left: 1px solid @base_border_color;
+		color: @base_font_color;
+	}
+	a{
+		.transition(linear all .1s);
+		&:hover{
+			color: #fff;
+			background-color: @base_color;
+			text-decoration: none;
+		}
+	}
+	.current{
 		color: #fff;
+		background-color: @base_color;
 	}
 	.pages{
 		 & ~ span, & ~ a{
-		 	margin-left: 5px;
+
 		 }
+	}
+}
+.pagination{
+	width: 100%;
+	display: block;
+	.clearfix;
+	.borderbox;
+	border: 1px solid @base_border_color;
+	.border-radius(0 0);
+	background-color: #fff;
+	label{
+		font-weight: normal;
+		float: left;	
+		padding: 10px;
+	}
+	.wp-pagenavi{
+		float: right;
+	}
+	a,span{
+		display: inline-block;
+		float: left;
 	}
 }
 

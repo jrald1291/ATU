@@ -150,6 +150,35 @@
 	.section-l4{
 		padding: 45px 0;
 	}
+	.section-contact{
+		padding: 20px 10px;
+		text-align: center;
+		.contact-avatar{
+			margin-right: 0;
+			margin-bottom: 20px;
+			display: block;
+			width: 100%;
+
+			img{
+				margin: 0 auto;
+			}
+		}
+	}
+	.nav-tabs{
+		li{
+			display: block;
+			width: 100%;
+			border-right: none!important;
+			border-left: none!important;
+			a{
+				border: none!important;
+			}
+
+			& ~ li{
+				border-top: 1px solid @base_border_color;
+			}
+		}
+	}
 }
 
 @media (max-width: 580px){

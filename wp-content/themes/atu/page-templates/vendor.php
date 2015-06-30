@@ -65,14 +65,14 @@ get_header(); ?>
 							    <li role="presentation"><a href="#offers" aria-controls="offers" role="tab" data-toggle="tab">Special Offer</a></li>
 							  </ul>
 							  <div class="tab-content">
-							    <div role="tabpanel" class="tab-pane active" id="description">
-									<p>Hi, I’m Nes.
-									I started crashing weddings at nine years of age and am now a full time creator of happiness through my wedding floristry and styling business.
+							    <div role="tabpanel" class="tab-pane active copy" id="description">
+									<p>Hi, I’m Nes.</p>
+									<p>I started crashing weddings at nine years of age and am now a full time creator of happiness through my wedding floristry and styling business.
 									My approach ranges from beautifully rustic and vintage to boho chic and contemporary eleg
-									I particularly like to craft original, romantic and sentimental arrangements, pieces and installations using a couple’s memorabilia and any heirloom pieces within my work. 
-									I hand pick all flowers fresh and love to work with the natural environment of each venue to enhance their unique character and accentuate standout features.
-									With my flair for décor and sharp eye for detail, I am able to create your ceremony and reception vision ensuring all those persona and intimate touches you want are remembered.
-									I look forward to helping you with your wedding flower and styling needs.
+									I particularly like to craft original, romantic and sentimental arrangements, pieces and installations using a couple’s memorabilia and any heirloom pieces within my work. </p>
+									<p>I hand pick all flowers fresh and love to work with the natural environment of each venue to enhance their unique character and accentuate standout features.
+									With my flair for décor and sharp eye for detail, I am able to create your ceremony and reception vision ensuring all those persona and intimate touches you want are remembered.</p>
+									<p>I look forward to helping you with your wedding flower and styling needs.
 									</p>
 							    </div>
 							    <div role="tabpanel" class="tab-pane" id="gallery">
@@ -185,19 +185,19 @@ get_header(); ?>
 							    	<ul class="post-inline post-member mb-20">
 										<li class="post-item">
 											<div class="post-img well-img">
-												<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/vendor_thumb1.jpg" alt="">
+												<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/pdf.jpg" alt="">
 											</div>
 											<div class="post-core">
-												<a href="#" class="link"><div class="post-title t-normal">John Doe Lorem <span class="post-cat t-highlight">Download PDF</span></div></a>
+												<a href="#" class="link"><div class="post-title t-normal">Kale Biodiesel stumptown Godard Tumblr <span class="post-cat t-highlight">Download PDF</span></div></a>
 												<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse consequat, vel illum dolore eu feugiat nulla facilisis at..</p>
 											</div>
 										</li>
 										<li class="post-item">
 											<div class="post-img well-img">
-												<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/vendor_thumb2.jpg" alt="">
+												<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/pdf.jpg" alt="">
 											</div>
 											<div class="post-core">
-												<a href="#" class="link"><div class="post-title t-normal">John Doe Lorem <span class="post-cat t-highlight">Hair & Makeup</span></div></a>
+												<a href="#" class="link"><div class="post-title t-normal">Duis autem vel eum <span class="post-cat t-highlight">Download PDF</span></div></a>
 												<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse consequat, vel illum dolore eu feugiat nulla facilisis at..</p>
 											</div>
 										</li>
@@ -221,11 +221,7 @@ get_header(); ?>
 				</div>
 			</div>
 			<div class="col-md-3">
-				<aside class="l-sidebar">
-					<div class="widget widget-sidebar">
-						
-					</div>
-				</aside>
+				<?php get_sidebar(); ?>
 			</div>
 		</div>
 	</div>

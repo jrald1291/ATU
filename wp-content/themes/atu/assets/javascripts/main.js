@@ -13,6 +13,7 @@ var util = {
         this.Global();
         this.Slider();
         this.Forms();
+        this.Isotope();
         this.SmoothScroll();
       },
 
@@ -55,6 +56,18 @@ var util = {
           
       },
 
+      Isotope: function(){
+        // init Isotope
+        var $grid = $('.grid').isotope({
+          itemSelector: '.grid-item',
+          layoutMode: 'fitRows'
+        });
+        // filter items on button click
+        $('.filter-button-group').on( 'click', 'button', function() {
+          var filterValue = $(this).attr('data-filter');
+          $grid.isotope({ filter: filterValue });
+        });
+      },
       Forms: function(){
     
         $('.form-labeled').find('input, textarea').on('keyup blur focus', function (e) {

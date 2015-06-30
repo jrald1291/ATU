@@ -76,31 +76,31 @@
 	.tab-content{
 		padding: 20px 15px;
 		background-color: #fff;
+		.transition(linear 1s all);
 	}
-	.nav-tabs{
-		li{
-			border-right: 1px solid @base_border_color;
-			&.active{
-				a{
-					background-color: #fff;
-					.border-radius(0 0);
-					border: none;
-				}
-			}
-		}
-		a{
-			color: @base_font_color;
-			margin-right: 0!important;
-			font-weight: bold;
-			.border-radius(0 0);
-			border: none;
+	
+}
 
-			&:active, &:hover, &:focus{
-				.border-radius(0 0);
-				border: none;
-				background-color: #fff;
-				margin-right: 0;
-			}
+.section-contact{
+	background-color: #fff;
+	.border-radius(5px);
+	border: 1px solid @base_border_color;
+	padding: 30px 40px;
+	.contact-avatar{
+		float: left;
+		margin-right: 20px;
+
+		img{
+			.border-radius(50%);
 		}
+	}
+	.contact-name{
+		.typo-lora;
+		font-weight: bold;
+		font-size: 25px;
+		margin-bottom: 15px;
+	}
+	.contact-content{
+		margin-bottom: 15px;
 	}
 }

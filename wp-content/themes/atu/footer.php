@@ -118,6 +118,32 @@
 	   </div>
 	  </div>
 	</div>
+	<div class="modal fade in form-vendor" tabindex="-1" role="dialog" aria-labelledby="VendorSearch">
+	  <div class="modal-dialog modal-lg">
+	  <div class="modal-content">
+			  <div class="modal-header t-normal">Search for Vendor</div>
+			  <div class="modal-body">
+		      	<form action="" class="form form-labeled">
+					<div class="form-group field-wrap">
+						<label for="">Keyword<span class="req">*</span></label>
+						<input type="text" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="" class="label-drop">Vendor Category<span class="req">*</label>
+						<select class="form-control" name="" id="">
+							<option value="">test</option>
+						</select>
+					</div>
+					<button class="btn btn-secondary btn-block" >Search Vendor</button>
+				</form>
+			  </div>
+	   
+   			<div class="modal-footer">
+	   			<button class="btn btn-primary btn-block" class="btn btn-default" data-dismiss="modal">Close</button>
+	   		</div>
+	   </div>
+	  </div>
+	</div>
 
 
 	<!-- -----------------------------MODAL------------------------ -->

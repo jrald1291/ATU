@@ -1,0 +1,26 @@
+.nav-tabs{
+	li{
+		border-right: 1px solid @base_border_color;
+		&.active{
+			a{
+				background-color: #fff;
+				.border-radius(0 0);
+				border: none;
+			}
+		}
+	}
+	a{
+		color: @base_font_color;
+		margin-right: 0!important;
+		font-weight: bold;
+		.border-radius(0 0);
+		border: none!important;
+
+		&:active, &:hover, &:focus{
+			.border-radius(0 0);
+			border: none!important;
+			background-color: #fff;
+			margin-right: 0;
+		}
+	}
+}

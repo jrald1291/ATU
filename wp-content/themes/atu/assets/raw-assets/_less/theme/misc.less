@@ -14,3 +14,39 @@
 .modal-footer{
 	margin-top: 0px!important;
 }
+
+.call-to-action{
+	text-align: center;
+	padding: 20px;
+	color: #fff;
+	text-transform: uppercase;
+	background: url("@{image-url}/contactbg.png") no-repeat;
+	background-size: cover;
+	background-color: @base_color;
+}
+
+.ven-avatar{
+	position: relative;
+	border: 2px solid @base_color;
+	.border-radius(5px);
+
+	img{
+		width: 100%;
+	}
+
+	.ven-name{
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		font-size: 20px;
+		text-align: center;
+		font-weight: bold;
+		color: #fff;
+		display: block;
+		width: 100%;
+		.text-shadow-sm;
+		padding: 10px;
+		text-transform: uppercase;
+		background-color: rgba(255,115,178,.5);
+	}
+}

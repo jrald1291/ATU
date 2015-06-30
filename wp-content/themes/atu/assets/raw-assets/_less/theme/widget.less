@@ -46,3 +46,50 @@
 		padding-bottom: 15px;
 	}
 }
+
+.widget-aside{
+	.border-radius(5px);
+	overflow: hidden;
+	margin-bottom: 20px;
+	background-color: rgba(255,255,255,.95);
+
+	.widget-header{
+		padding: 15px 10px;
+		background-color: @fade;
+		text-align: center;
+		color: #000;
+		font-size: 18px;
+		font-weight: bold;
+	}
+
+	&.widget-list{
+
+		a{
+			font-size: 13px;
+			color: @base_font_color;
+
+			&:active, &:hover, &:focus{
+				color: @base_color;
+			}
+		}
+		.widget-list_logo{
+			text-align: center;
+			padding: 10px;
+			border-bottom: 1px solid @base_border_color;
+
+			img{
+				margin: auto;
+			}
+		}
+		li{
+			letter-spacing: 1px;
+			padding-bottom: 0;
+			border-top: 1px solid @base_border_color;
+			a{
+				display: block;
+				padding: 15px 10px;
+			}
+		}
+	}
+
+}

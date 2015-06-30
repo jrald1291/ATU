@@ -1,5 +1,6 @@
 //@prepros-append vendor/classie.js
 //@prepros-append  vendor/bootstrap.js
+//@prepros-append  vendor/isotope.js
 //@prepros-append  vendor/jquery.flexslider-min.js
 //@prepros-append  vendor/cbpTooltipMenu.min.js
 //@prepros-append vendor/parallax.js
