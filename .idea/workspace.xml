@@ -58,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="atu-admin-settings.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="atu-admin-settings.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/assets/js/atu-admin-settings.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
-              <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.6310044" vertical-offset="0" max-vertical-offset="816">
+              <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -94,18 +94,18 @@
       <file leaf-file-name="class-atu-admin.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.0" vertical-offset="464" max-vertical-offset="1343">
-              <caret line="37" column="79" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="79" />
+            <state vertical-scroll-proportion="-4.3636365" vertical-offset="695" max-vertical-offset="1394">
+              <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="class-atu-admin-menu.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="class-atu-admin-menu.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-menu.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7476852" vertical-offset="0" max-vertical-offset="680">
-              <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+            <state vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="680">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -167,12 +167,12 @@
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/settings/class-atu-settings-page.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/assets/css/atu-admin-settings.css" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-settings.php" />
-        <option value="$PROJECT_DIR$/wp-content/plugins/atu/assets/js/atu-admin-settings.js" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/settings/class-atu-settings-account.php" />
-        <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-validator.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-menu.php" />
+        <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin.php" />
+        <option value="$PROJECT_DIR$/wp-content/plugins/atu/assets/js/atu-admin-settings.js" />
       </list>
     </option>
   </component>
@@ -493,6 +493,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\atu\wp-content\plugins" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\atu\wp-content\plugins\atu\assets\js" />
+      <recent name="C:\xampp\htdocs\atu\wp-content\plugins\atu\assets\css" />
     </key>
   </component>
   <component name="RunManager" selected="PHP Web Application.ATU">
@@ -894,14 +898,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/assets/js/atu-admin-settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
-          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-post.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="1088">
@@ -922,14 +918,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.576923" vertical-offset="1791" max-vertical-offset="2550">
           <caret line="128" column="38" selection-start-line="128" selection-start-column="24" selection-end-line="128" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.0" vertical-offset="464" max-vertical-offset="1343">
-          <caret line="37" column="79" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="79" />
           <folding />
         </state>
       </provider>
@@ -984,8 +972,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-menu.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7476852" vertical-offset="0" max-vertical-offset="680">
-          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+        <state vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="680">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.3636365" vertical-offset="695" max-vertical-offset="1394">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/assets/js/atu-admin-settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6310044" vertical-offset="0" max-vertical-offset="816">
+          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
           <folding />
         </state>
       </provider>

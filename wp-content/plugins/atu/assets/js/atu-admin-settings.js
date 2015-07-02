@@ -33,7 +33,9 @@
                 }
                 console.log(results);
             });
-        })
+        });
+
+        $('select').select2();
 
     });
 

@@ -61,7 +61,10 @@ if ( ! class_exists('ATU_Admin') ) {
 
             if ( $_GET['page'] == 'atu-settings' ) {
                 wp_enqueue_style( 'atu-admin', ATU_ASSETS_URL . 'css/atu-admin-settings.css' );
-                wp_enqueue_script( 'atu-admin-settings', ATU_ASSETS_URL . 'js/atu-admin-settings.js' );
+                wp_enqueue_style( 'select2', ATU_ASSETS_URL . 'css/select2.min.css' );
+
+                wp_enqueue_script( 'select2', ATU_ASSETS_URL . 'js/select2.min.js', array( 'jquery' ) );
+                wp_enqueue_script( 'atu-admin-settings', ATU_ASSETS_URL . 'js/atu-admin-settings.js', array( 'jquery' ) );
                 wp_localize_script( 'atu-admin-settings', 'ATU', array(
                     'ajaxUrl' => admin_url( 'admin-ajax.php' )
                 ) );
