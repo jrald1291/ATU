@@ -14,8 +14,8 @@ get_header(); ?>
 		<div class="banner-actions">
 			<h1 class="t-md t-title">Find a Wedding Vendor or Venue for your Special Day!</h1>
 			<div class="actions">
-				<button class="btn btn-wooden btn-lg" data-toggle="modal" data-target=".form-vendor"><span class="fa fa-users icon-l"></span>Search for Vendor</button>
-				<button class="btn btn-wooden btn-lg" data-toggle="modal" data-target=".form-venue"><span class="fa fa-map-marker icon-l"></span>Search for Venue</button>
+				<button class="btn btn-wooden btn-lg" data-toggle="modal" data-target=".form-vendor">Search for Vendor</button>
+				<button class="btn btn-wooden btn-lg" data-toggle="modal" data-target=".form-venue">Search for Venue</button>
 			</div>
 		</div>
 		<div class="banner-intro">

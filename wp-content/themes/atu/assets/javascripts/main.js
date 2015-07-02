@@ -58,14 +58,35 @@ var util = {
 
       Isotope: function(){
         // init Isotope
-        var $grid = $('.grid').isotope({
+        var winwidth = $(window).outerWidth();
+        var grid = $('.grid');
+        grid.isotope({
           itemSelector: '.grid-item',
           layoutMode: 'masonry',
+          resizable: true, 
+          masonry: { columnWidth: grid.width() / 3 }
         });
         // filter items on button click
         $('.grid-filter').on( 'click', 'button', function() {
           var filterValue = $(this).attr('data-filter');
-          $grid.isotope({ filter: filterValue });
+          grid.isotope({ filter: filterValue });
+        });       
+
+        $( window ).resize(function() {
+          $winwidth = $(window).outerWidth();
+          console.log($winwidth);
+          if (  winwidth<=820 ) {
+            grid.isotope({
+              masonry: { columnWidth: grid.width() / 2 }
+            });
+          }
+          else if( winwidth<=580 ){
+              grid.isotope({
+                masonry: { columnWidth: grid.width() / 1 }
+              });
+          }
+    
+          
         });
       },
       Forms: function(){
@@ -161,7 +182,7 @@ var util = {
 (function($){
 
 jQuery(document).ready(function() {
-  	util.Global.init();
+    util.Global.init();
     util.Front.init();
 });
 
