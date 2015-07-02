@@ -7,7 +7,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 class ATU_Validator {
-    var $wp_errors = null;
     var $input = null;
     var $fails = false;
 
@@ -33,22 +32,61 @@ class ATU_Validator {
     private function required( $key ) {
         $val = $this->input[$key];
 
-        if ( !isset( $val ) || strlen( trim( $val ) ) == 0  ) $this->wp_errors->add( $key, ' is required.');
-
+        if ( !isset( $val ) || strlen( trim( $val ) ) == 0  ) ATU_Notify::add( ucfirst( $key ) . ' is required.', 'error');
 
     }
 
     private function email( $key ) {
         $val = $this->input[$key];
 
-        if ( !filter_var( $val, FILTER_VALIDATE_EMAIL ) ) $this->wp_errors->add($key, ' is invalid.');
+        if ( !filter_var( $val, FILTER_VALIDATE_EMAIL ) ) ATU_Notify::add( ucfirst( $key ) . ' is invalid.', 'error');
+    }
+
+
+    private function same( $key, $key2 ) {
+        $val = $this->input[$key];
+        $val2 = $this->input[$key2];
+
+        if( $val != $val2 ) {
+            ATU_Notify::add( ucfirst( $key2 ) . ' must be the same.', 'error');
+        }
     }
 
     private function url( $key ) {
         $val = $this->input[$key];
 
-        if ( !filter_var( $val, FILTER_VALIDATE_URL ) ) $this->wp_errors->add($key, ' is invalid.');
+        if ( !filter_var( $val, FILTER_VALIDATE_URL ) ) ATU_Notify::add( ucfirst( $key ) . ' is invalid.', 'error');
     }
+
+    private function exists($key, $args) {
+        global $wpdb;
+
+        if ( empty( $this->input[$key] ) ) return;
+
+        $val = $this->input[$key];
+
+
+
+        $arr_args = explode(',', $args);
+
+        $sql = "SELECT count(*) FROM {$arr_args[0]} WHERE {$arr_args[1]} = '{$val}'";
+
+        if ( count($arr_args) > 2 ) {
+
+            for ( $i = 2; $i < count($arr_args); $i++ ) {
+                $field = $arr_args[$i];
+                $value = $arr_args[++$i];
+
+                $sql .= " AND $field != $value ";
+            }
+
+        }
+
+
+        if ( ! $wpdb->get_var( $sql ) )  ATU_Notify::add( ucfirst( $key ) . ' is not exists.', 'error');
+
+    }
+
 
     private function unique($key, $args) {
         global $wpdb;
@@ -70,7 +108,7 @@ class ATU_Validator {
 
         }
 
-        if ( $wpdb->get_var( $sql ) ) $this->wp_errors->add( $key, ' already exists.' );
+        if ( $wpdb->get_var( $sql ) )  ATU_Notify::add( ucfirst( $key ) . ' already exists.', 'error');
 
     }
 
@@ -78,20 +116,16 @@ class ATU_Validator {
 
         $val = $this->input[$key];
 
-        if ( strlen( $val ) < $min) $this->wp_errors->add( $key, ' minimum length is '. $min);
+        if ( strlen( $val ) < $min) ATU_Notify::add( ucfirst( $key ) . ' minimum length is '. $min, 'error');
     }
 
     public function fails() {
 
-        return count($this->errors()) != 0 ? true : false;
+        return ATU_Notify::has_errors();
     }
     
     public function success() {
-        return count($this->errors()) != 0 ? true : false;
-    }
-
-    public function errors() {
-        return $this->wp_errors->errors;
+        return ATU_Notify::has_errors() ? false : true;
     }
 
 

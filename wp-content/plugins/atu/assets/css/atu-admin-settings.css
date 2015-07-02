@@ -1,6 +1,10 @@
+.hidden {
+    display:none;
+}
+
 span.reg-code {
     background-color: #DDD;
     padding: 5px 10px;
-    display: inline-block;
     font-weight: bold;
 }
+

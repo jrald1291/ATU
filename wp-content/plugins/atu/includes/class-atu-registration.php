@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
-
+session_start();
 if ( !class_exists('ATU_Registration') ) {
     class ATU_Registration {
         var $errors = null;
@@ -86,22 +86,6 @@ if ( !class_exists('ATU_Registration') ) {
             <?php
         }
 
-        public static function generate_registration_code() {
-            global $wpdb;
-
-            $characters = "abcdefghijklmnopqrstuvwxyz";
-            $rand_string = '';
-            $i = 0;
-            do {
-                $i++;
-                $index = rand(0, strlen($characters));
-
-                $rand_string .= $characters[$index];
-            } while ( $i <= 10 );
-            $code = $rand_string . time();
-           // $reg_code_tbl_name = $wpdb->prefix . ATU_TBL_PREFIX . 'registration_code';
-            return $code;
-        }
 
         public function validate() {
             if ( ! isset( $_POST['atu_registration_nonce_field'] )
@@ -116,11 +100,13 @@ if ( !class_exists('ATU_Registration') ) {
             $rules = array(
                 'username' => 'required|unique:'. $wpdb->prefix .'users,user_login|min:4',//,ID,1
                 'password' => 'required|min:5',
+                'password_confirmation' => 'same:password',
                 'email' => 'required|email',
                 'phone' => 'required',
                 'website' => 'url',
                 'first_name' => 'required',
-                'last_name' => 'required'
+                'last_name' => 'required',
+                'reg_code' => 'exists:'. $wpdb->prefix . ATU_TBL_PREFIX . 'registration_code,code'
             );
 
             $validator = new ATU_Validator();
@@ -128,11 +114,7 @@ if ( !class_exists('ATU_Registration') ) {
 
 
 
-            if ( $validator->fails() ) {
-                $this->errors = $validator->errors();
-            } else {
-
-
+            if ( $validator->success() ) {
 
                 $this->add_new_user( $input );
             }
@@ -155,15 +137,38 @@ if ( !class_exists('ATU_Registration') ) {
             );
 
 
-            if ( !is_wp_error($new_user_id) ) {
+            if ( ! is_wp_error( $new_user_id ) ) {
+                $page_id = get_option( 'atu_registration_success_page' );
+
+                exit( wp_redirect( get_page_link( $page_id ) ) );
+
                 // add_user_meta( $new_user_id, $meta_key, $meta_value, true );
+            } else {
+
+                ATU_Notify::add( $new_user_id->errors, 'error' );
             }
+        }
+
+        private static function add_current_code( $code ) {
+
+
+            $_SESSION['atu_registration']['code'] = $code;
+        }
+
+        private static function get_current_code() {
+            return  isset( $_SESSION['atu_registration']['code'] ) ? $_SESSION['atu_registration']['code'] : '';
         }
 
         public function render() {
             global $wpdb;
+
+            ob_start();
+
+
             //Check if user is already loggedin
-            if ( is_user_logged_in() ) return;
+            if ( is_user_logged_in() ) {
+                return __('You are already logged in.', ATU_TEXT_DOMAIN);
+            }
 
             // check to make sure user registration is enabled
             $registration_enabled = get_option('users_can_register');
@@ -173,24 +178,26 @@ if ( !class_exists('ATU_Registration') ) {
             }
 
             //Check if registration code confirmation is enabled
-            $registration_code_enabled = get_option('atu_confirm_registration_code');
+            $validate_registration_code = get_option('atu_validate_registration_code', 'no');
 
-            if ( $registration_code_enabled ) {
+            if ( $validate_registration_code == 'yes' ) {
                 if ( ! isset( $_REQUEST['reg_code'] ) ) return __('Registration code is required', ATU_TEXT_DOMAIN);
-                $code = $_REQUEST['reg_code'];
+                $code =  self::get_current_code() == '' ? $_REQUEST['reg_code'] : self::get_current_code();
                 //  check registration code is exists and active
-                if ( !$wpdb->get_var("SELECT count(*) FROM {$wpdb->prefix}{ATU_TBL_PREFIX}registration_code WHERE code = '$code' AND is_active = 1") ) {
-                    return __('Registration code does not exists', ATU_TEXT_DOMAIN);
+                if ( ! $wpdb->get_var("SELECT count(*) FROM ". $wpdb->prefix . ATU_TBL_PREFIX . "registration_code WHERE code = '$code' AND is_active = 1") ) {
+                    return __( 'Registration code does not exists', ATU_TEXT_DOMAIN);
+                } else {
+                    self::add_current_code( $code );
                 }
 
             }
 
-            ob_start();
             $post = $_POST;
 
-            if ( ! is_null( $this->errors ) ) {
-                $errors = $this->errors;
-            }
+
+
+
+            ATU_Notify::display();
 
 
             ?>
@@ -198,43 +205,46 @@ if ( !class_exists('ATU_Registration') ) {
             <form action="#" method="post">
                 <div class="form-group">
                     <label for="username">Username <strong>*</strong></label>
-                    <input type="text" name="username" min="4" value="<?php _isset($post['username']); ?>"/>
-                    <?php atu_render_errors($errors, 'username'); ?>
+                    <input type="text" name="username" min="4" class="form-control" value="<?php _isset($post['username']); ?>"/>
                 </div>
                 <div class="form-group">
                     <label for="password">Password <strong>*</strong></label>
-                    <input type="text" name="password" min="6" value="<?php _isset($post['password']); ?>"/>
-                    <?php atu_render_errors($errors, 'password'); ?>
+                    <input type="password" name="password" min="6" class="form-control" value="<?php _isset($post['password']); ?>"/>
                 </div>
+
+                <div class="form-group">
+                    <label for="password">Confirm Password<strong>*</strong></label>
+                    <input type="password" name="password_confirmation" min="6" class="form-control" value="<?php _isset($post['password_confirmation']); ?>"/>
+                </div>
+
                 <div class="form-group">
                     <label for="email">Email <strong>*</strong></label>
-                    <input type="email" name="email" value="<?php _isset($post['email']); ?>"/>
-                    <?php atu_render_errors($errors, 'email'); ?>
+                    <input type="email" name="email" class="form-control" value="<?php _isset($post['email']); ?>"/>
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone <strong>*</strong></label>
-                    <input type="text" name="phone" value="<?php _isset($post['phone']); ?>"/>
-                    <?php atu_render_errors($errors, 'phone'); ?>
+                    <input type="text" name="phone" class="form-control" value="<?php _isset($post['phone']); ?>"/>
                 </div>
+
                 <div class="form-group">
                     <label for="website">Website <strong>*</strong></label>
-                    <input type="text" name="website" value="<?php _isset($post['website']); ?>"/>
-                    <?php atu_render_errors($errors, 'website'); ?>
+                    <input type="text" name="website" class="form-control" value="<?php _isset($post['website']); ?>"/>
                 </div>
 
                 <div class="form-group">
                     <label for="first_name">First Name <strong>*</strong></label>
-                    <input type="text" name="first_name" value="<?php _isset($post['first_name']); ?>"/>
-                    <?php atu_render_errors($errors, 'first_name'); ?>
+                    <input type="text" name="first_name" class="form-control" value="<?php _isset($post['first_name']); ?>"/>
                 </div>
 
                 <div class="form-group">
                     <label for="last_name">Last Name <strong>*</strong></label>
-                    <input type="text" name="last_name" value="<?php _isset($post['last_name']); ?>"/>
-                    <?php atu_render_errors($errors, 'last_name'); ?>
+                    <input type="text" name="last_name" class="form-control" value="<?php _isset($post['last_name']); ?>"/>
                 </div>
 
-                <button type="submit">Register</button>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <?php if ( $validate_registration_code == 'yes' ): ?>
+                    <input type="hidden" name="reg_code" value="<?php echo self::get_current_code(); ?>" />
+                <?php endif; ?>
                 <?php wp_nonce_field( 'atu_registration', 'atu_registration_nonce_field' ); ?>
             </form>
             <?php

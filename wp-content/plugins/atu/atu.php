@@ -144,8 +144,8 @@ class ATU {
 
     private function includes() {
 
-        include_once( ATU_PLUGIN_DIR . 'helper.php' );
-        include_once( ATU_INCLUDES_DIR.'/class-atu-install.php' );
+        include_once( 'helper.php' );
+        include_once( 'includes/class-atu-install.php' );
     }
 }
 

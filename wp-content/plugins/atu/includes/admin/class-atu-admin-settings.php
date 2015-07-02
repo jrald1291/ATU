@@ -75,6 +75,9 @@ if ( !class_exists('ATU_Admin_Settings') ) {
                     case 'checkbox':
                         $option_value = is_null( $option_value ) ? 'no' : 'yes';
                         break;
+                    case 'checkbox2':
+                        $option_value = is_null( $option_value ) ? 0 : 1;
+                        break;
                 }
 
 
@@ -106,6 +109,10 @@ if ( !class_exists('ATU_Admin_Settings') ) {
 
                 if ( ! isset( $value['default'] ) ) {
                     $value['default'] = '';
+                }
+
+                if ( ! isset( $value['options'] ) ) {
+                    $value['options'] = array();
                 }
 
                 if ( ! isset( $value['desc'] ) ) {
@@ -152,6 +159,7 @@ if ( !class_exists('ATU_Admin_Settings') ) {
                             <td>
                                 <input type="<?php echo $value['type']; ?>"
                                        name="<?php echo $value['id']; ?>"
+                                       id="<?php echo $value['id']; ?>"
                                        value="<?php echo $option_value; ?>"
                                     <?php echo $attributes; ?>
                                     />
@@ -167,6 +175,7 @@ if ( !class_exists('ATU_Admin_Settings') ) {
                             <td>
                                 <input type="checkbox"
                                        name="<?php echo $value['id']; ?>"
+                                       id="<?php echo $value['id']; ?>"
                                        value="1"
                                        <?php echo checked( $option_value, 'yes' ); ?>
                                     <?php echo $attributes; ?>
@@ -175,30 +184,67 @@ if ( !class_exists('ATU_Admin_Settings') ) {
                         </tr>
                         <?php
                         break;
-                    case 'user_role':
+                    case 'checkbox2':
                         ?>
                         <tr>
                             <th><label for="<?php echo $value['id']; ?>"><?php echo $value['title']; ?></label></th>
                             <td>
-                                <select name="<?php echo $value['id']; ?>" <?php echo $attributes; ?>>
-                                    <?php wp_dropdown_roles( $option_value ); ?>
+                                <input type="checkbox"
+                                       name="<?php echo $value['id']; ?>"
+                                       id="<?php echo $value['id']; ?>"
+                                       value="1"
+                                    <?php echo checked( $option_value, 1 ); ?>
+                                    <?php echo $attributes; ?>
+                                    />
+                            </td>
+                        </tr>
+                        <?php
+                        break;
+                    case 'select':
+                        ?>
+                        <tr>
+                            <th><label for="<?php echo $value['id']; ?>"><?php echo $value['title']; ?></label></th>
+                            <td>
+                                <select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" <?php echo $attributes; ?>>
+                                    <?php foreach( $value['options'] as $k => $option ): ?>
+
+                                        <option value="<?php echo esc_html( $k ) ?>" <?php selected( $option_value, $k ); ?>>
+                                            <?php echo esc_html( $option ) ?>
+                                        </option>
+
+                                    <?php endforeach; ?>
                                 </select>
-                                <span class="description"><?php echo $value['desc']; ?></span>
+                                <p class="description"><?php echo $value['desc']; ?></p>
                             </td>
                         </tr>
 
                         <?php
                         break;
 
-                    case 'generate_reg_code':
-                        $code = '343s33df##@';
+
+                    case 'user_role':
                         ?>
                         <tr>
                             <th><label for="<?php echo $value['id']; ?>"><?php echo $value['title']; ?></label></th>
                             <td>
-                                <span class="reg-code"><?php echo $code; ?></span>
-                                <button class="button-secondary button" type="button" <?php echo $attributes; ?>>Generate</button>
-                                <span class="description"><?php echo $value['desc']; ?></span>
+                                <select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" <?php echo $attributes; ?>>
+                                    <?php wp_dropdown_roles( $option_value ); ?>
+                                </select>
+                                <p class="description"><?php echo $value['desc']; ?></p>
+                            </td>
+                        </tr>
+
+                        <?php
+                        break;
+
+                    case 'atu_reg_link_w_code':
+                        ?>
+                        <tr>
+                            <th><label for="<?php echo $value['id']; ?>"><?php echo $value['title']; ?></label></th>
+                            <td>
+                                <span class="reg-code hidden"></span>
+                                <button id="generate-reg-link" class="button-secondary button" type="button" <?php echo $attributes; ?>>Generate</button>
+                                <p class="description"><?php echo $value['desc']; ?></p>
                             </td>
                         </tr>
 
