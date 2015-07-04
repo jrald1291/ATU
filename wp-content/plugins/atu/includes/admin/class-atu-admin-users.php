@@ -36,8 +36,8 @@ if ( !class_exists('ATU_Admin_Users') ) {
             $tax = get_taxonomy( 'profession' );
 
             /* Make sure the current user can edit the user and assign terms before proceeding. */
-            if ( !current_user_can( 'edit_user', $user_id ) && current_user_can( $tax->cap->assign_terms ) )
-                return false;
+//            if ( !current_user_can( 'edit_user', $user_id ) && current_user_can( $tax->cap->assign_terms ) )
+//                return false;
 
             $term = esc_attr( $_POST['profession'] );
 
@@ -57,11 +57,11 @@ if ( !class_exists('ATU_Admin_Users') ) {
          */
         public function my_edit_user_profession_section( $user ) {
 
-            $tax = get_taxonomy( 'profession' );
+//            $tax = get_taxonomy( 'profession' );
 
             /* Make sure the user can assign terms of the profession taxonomy before proceeding. */
-            if ( !current_user_can( $tax->cap->assign_terms ) )
-                return;
+//            if ( !current_user_can( $tax->cap->assign_terms ) )
+//                return;
 
             /* Get the terms of the 'profession' taxonomy. */
             $terms = get_terms( 'profession', array( 'hide_empty' => false ) ); ?>
@@ -180,12 +180,12 @@ if ( !class_exists('ATU_Admin_Users') ) {
                         'with_front' => true,
                         'slug' => 'profession' // Use 'author' (default WP user slug).
                     ),
-                    'capabilities' => array(
-                        'manage_terms' => 'edit_users', // Using 'edit_users' cap to keep this simple.
-                        'edit_terms'   => 'edit_users',
-                        'delete_terms' => 'edit_users',
-                        'assign_terms' => 'read',
-                    ),
+//                    'capabilities' => array(
+//                        'manage_terms' => 'edit_users', // Using 'edit_users' cap to keep this simple.
+//                        'edit_terms'   => 'edit_users',
+//                        'delete_terms' => 'edit_users',
+//                        'assign_terms' => 'read',
+//                    ),
                     'update_count_callback' => array( $this, 'my_update_profession_count' ) // Use a custom function to update the count.
                 )
             );

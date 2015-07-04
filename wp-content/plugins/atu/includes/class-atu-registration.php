@@ -159,6 +159,214 @@ if ( !class_exists('ATU_Registration') ) {
             return  isset( $_SESSION['atu_registration']['code'] ) ? $_SESSION['atu_registration']['code'] : '';
         }
 
+
+        private function get_post_value( $key, $default = '' ) {
+            if ( ! $_POST ) return $default;
+            return ! isset( $_POST[$key] ) ? $default : $_POST[$key];
+        }
+
+        private function get_fields() {
+
+            $professions = array();
+            $terms = get_terms( 'profession', array( 'hide_empty' => false ) );
+
+            foreach ( $terms as $term ) {
+                $professions[$term->slug] = $term->name;
+            }
+
+
+
+
+            $fields = array(
+                array(
+                    'type'      => 'form',
+                    'action'    => '#',
+                    'id'        => 'registrationForm'
+                ),
+
+                array(
+                    'title'     => __( 'Username', 'atu' ),
+                    'type'      => 'text',
+                    'id'        => 'username',
+                    'placeholder'   => '',
+                    'attributes'    => array(
+                        'class' => 'form-control'
+                    ),
+                    'required'  => true,
+                    'value'     => $this->get_post_value( 'username' ),
+                    'default'   => '',
+                ),
+
+                array(
+                    'title'     => __( 'Password', 'atu' ),
+                    'type'      => 'password',
+                    'id'        => 'password',
+                    'attributes'    => array(
+                        'class' => 'form-control'
+                    ),
+                    'placeholder'   => '',
+                    'required'  => true,
+                    'value'     => $this->get_post_value( 'password' ),
+                    'default'   => '',
+                ),
+
+                array(
+                    'title'     => __( 'Confirm Password' ),
+                    'type'      => 'password',
+                    'id'        => 'password_confirmation',
+                    'placeholder'   => '',
+                    'required'  => true,
+                    'value'     => $this->get_post_value( 'password_confirmation' ),
+                    'default'   => '',
+                ),
+
+                array(
+                    'title'     => __( 'Email', 'atu' ),
+                    'type'      => 'email',
+                    'id'        => 'email',
+                    'attributes'    => array(
+                        'class' => 'form-control'
+                    ),
+                    'placeholder'   => '',
+                    'required'  => true,
+                    'value'     => $this->get_post_value( 'email' ),
+                    'default'   => '',
+                ),
+
+                array(
+                    'title'     => __( 'Phone', 'atu' ),
+                    'type'      => 'text',
+                    'id'        => 'phone',
+                    'attributes'    => array(
+                        'class' => 'form-control'
+                    ),
+                    'placeholder'   => '',
+                    'value'     => $this->get_post_value( 'phone' ),
+                    'default'   => '',
+                ),
+
+
+                array(
+                    'title'     => __( 'Mobile', 'atu' ),
+                    'type'      => 'text',
+                    'id'        => 'mobile',
+                    'attributes'    => array(
+                        'class' => 'form-control'
+                    ),
+                    'placeholder'   => '',
+                    'value'     => $this->get_post_value( 'mobile' ),
+                    'default'   => '',
+                ),
+
+                array(
+                    'title'     => __( 'Website', 'atu' ),
+                    'type'      => 'url',
+                    'id'        => 'website',
+                    'attributes'    => array(
+                        'class' => 'form-control'
+                    ),
+                    'placeholder'   => '',
+                    'value'     => $this->get_post_value( 'website' ),
+                    'default'   => '',
+                ),
+
+
+                array(
+                    'title'     => __( 'Youtube Link', 'atu' ),
+                    'type'      => 'text',
+                    'id'        => 'youtube_link',
+                    'attributes'    => array(
+                        'class' => 'form-control'
+                    ),
+                    'placeholder'   => '',
+                    'required'  => true,
+                    'value'     => $this->get_post_value( 'youtube_link' ),
+                    'default'   => '',
+                ),
+
+
+                array(
+                    'title'     => __( 'Company Name', 'atu' ),
+                    'type'      => 'text',
+                    'id'        => 'company_name',
+                    'attributes'    => array(
+                        'class' => 'form-control'
+                    ),
+                    'placeholder'   => '',
+                    'required'  => true,
+                    'value'     => $this->get_post_value( 'company_name' ),
+                    'default'   => '',
+                ),
+
+                array(
+                    'title'     => __( 'First Name', 'atu' ),
+                    'type'      => 'text',
+                    'id'        => 'first_name',
+                    'attributes'    => array(
+                        'class' => 'form-control'
+                    ),
+                    'placeholder'   => '',
+                    'required'  => true,
+                    'value'     => $this->get_post_value( 'first_name' ),
+                    'default'   => '',
+                ),
+
+                array(
+                    'title'     => __( 'Last Name', 'atu' ),
+                    'type'      => 'text',
+                    'id'        => 'last_name',
+                    'attributes'    => array(
+                        'class' => 'form-control'
+                    ),
+                    'placeholder'   => '',
+                    'required'  => true,
+                    'value'     => $this->get_post_value( 'last_name' ),
+                    'default'   => '',
+                ),
+
+
+                array(
+                    'title'     => __( 'Profession', 'atu' ),
+                    'type'      => 'select',
+                    'id'        => 'profession',
+                    'attributes'    => array(
+                        'class' => 'form-control'
+                    ),
+                    'required'  => true,
+                    'value'     => $this->get_post_value( 'profession' ),
+                    'default'   => '0',
+                    'options'   => $professions
+                ),
+
+
+                array(
+                    'title'     => __( 'Register', 'atu' ),
+                    'type'      => 'button',
+                    'id'        => 'register',
+                    'attributes'    => array(
+                        'class' => 'btn btn-success'
+                    ),
+                    'button_type'   => 'submit',
+                    'value'     => 'register'
+                ),
+
+                array(
+                    'type'  => 'nonce_field',
+                    'id'    => 'atu_registration_nonce_field',
+                    'action'    => 'atu_registration'
+                ),
+
+
+                array(
+                    'type'      => 'form-end',
+                    'id'        => 'registrationForm'
+                ),
+
+            );
+
+            return $fields;
+        }
+
         public function render() {
             global $wpdb;
 
@@ -199,10 +407,12 @@ if ( !class_exists('ATU_Registration') ) {
 
             ATU_Notify::display();
 
+            ATU_Form_Builder::create( $this->get_fields() );
+
 
             ?>
 
-            <form action="#" method="post">
+            <!--<form action="#" method="post">
                 <div class="form-group">
                     <label for="username">Username <strong>*</strong></label>
                     <input type="text" name="username" min="4" class="form-control" value="<?php _isset($post['username']); ?>"/>
@@ -246,7 +456,7 @@ if ( !class_exists('ATU_Registration') ) {
                     <input type="hidden" name="reg_code" value="<?php echo self::get_current_code(); ?>" />
                 <?php endif; ?>
                 <?php wp_nonce_field( 'atu_registration', 'atu_registration_nonce_field' ); ?>
-            </form>
+            </form>-->
             <?php
 
             return ob_get_clean();
