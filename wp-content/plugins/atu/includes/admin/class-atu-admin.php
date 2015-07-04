@@ -14,11 +14,15 @@ if ( ! class_exists('ATU_Admin') ) {
 
         public function includes() {
 
-            if ( ! is_admin() ) return;
+
             include_once( 'class-atu-admin-taxonomy.php' );
-            include_once( 'class-atu-admin-settings.php' );
             include_once( 'class-atu-admin-post.php' );
             include_once( 'class-atu-admin-users.php' );
+
+            if ( ! is_admin() ) return;
+
+
+            include_once( 'class-atu-admin-settings.php' );
             include_once( 'class-atu-admin-menu.php' );
 
 
@@ -45,7 +49,7 @@ if ( ! class_exists('ATU_Admin') ) {
 
             if ( $wpdb->insert_id ) {
 
-                $link = get_page_link( get_option( 'atu_registration_page' ) ) . '?reg_code=' . $code;
+                $link = '<a target="_blank" href="' . get_page_link( get_option( 'atu_registration_page' ) ) . '?reg_code=' . $code .'">' . get_page_link( get_option( 'atu_registration_page' ) ) . '?reg_code=' . $code .'</a>';
 
                 exit( json_encode( array( 'status' => 'success', 'message' => $link ) ) );
 

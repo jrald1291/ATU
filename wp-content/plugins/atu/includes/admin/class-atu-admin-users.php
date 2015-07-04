@@ -176,16 +176,15 @@ if ( !class_exists('ATU_Admin_Users') ) {
                         'add_or_remove_items' => __( 'Add or remove professions' ),
                         'choose_from_most_used' => __( 'Choose from the most popular professions' ),
                     ),
+                    'hierarchical'          => false,
+                    'show_ui'               => true,
+                    'show_admin_column'     => true,
+                    'query_var'             => true,
+
                     'rewrite' => array(
                         'with_front' => true,
                         'slug' => 'profession' // Use 'author' (default WP user slug).
                     ),
-//                    'capabilities' => array(
-//                        'manage_terms' => 'edit_users', // Using 'edit_users' cap to keep this simple.
-//                        'edit_terms'   => 'edit_users',
-//                        'delete_terms' => 'edit_users',
-//                        'assign_terms' => 'read',
-//                    ),
                     'update_count_callback' => array( $this, 'my_update_profession_count' ) // Use a custom function to update the count.
                 )
             );

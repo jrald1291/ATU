@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a654bd7-c18b-4635-b54e-0bf35eb37078" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-form-builder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/plugins/atu/assets/js/atu-admin-settings.js" afterPath="$PROJECT_DIR$/wp-content/plugins/atu/assets/js/atu-admin-settings.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-settings.php" afterPath="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-settings.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-users.php" afterPath="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-users.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin.php" afterPath="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-form-builder.php" afterPath="$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-form-builder.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-install.php" afterPath="$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-install.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php" afterPath="$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/atu/footer.php" afterPath="$PROJECT_DIR$/wp-content/themes/atu/footer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/atu/page-templates/vendor.php" afterPath="$PROJECT_DIR$/wp-content/themes/atu/page-templates/vendor.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="atu.iws" />
@@ -37,15 +42,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="class-atu-registration.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="class-atu-registration.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.25" vertical-offset="1122" max-vertical-offset="8092">
-              <caret line="174" column="13" selection-start-line="174" selection-start-column="13" selection-end-line="174" selection-end-column="13" />
+            <state vertical-scroll-proportion="-10.538462" vertical-offset="1290" max-vertical-offset="6970">
+              <caret line="92" column="28" selection-start-line="92" selection-start-column="28" selection-end-line="92" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="class-atu-validator.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-validator.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.0384617" vertical-offset="328" max-vertical-offset="2363">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding>
-                <marker date="1435997282238" expanded="true" signature="14347:14367" placeholder="SELECT count..." />
-                <marker date="1435997282238" expanded="true" signature="14347:14368" placeholder="SELECT count..." />
-                <marker date="1435997282238" expanded="true" signature="14347:14461" placeholder="SELECT count..." />
+                <marker date="1435848656797" expanded="true" signature="1667:1734" placeholder="SELECT count..." />
+                <marker date="1435848656797" expanded="true" signature="2269:2336" placeholder="SELECT count..." />
               </folding>
             </state>
           </provider>
@@ -54,8 +68,8 @@
       <file leaf-file-name="class-atu-form-builder.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-form-builder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="2108">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state vertical-scroll-proportion="-14.923077" vertical-offset="2111" max-vertical-offset="2788">
+              <caret line="147" column="57" selection-start-line="147" selection-start-column="57" selection-end-line="147" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -64,7 +78,7 @@
       <file leaf-file-name="class-atu-install.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-install.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="510">
+            <state vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="561">
               <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
@@ -74,10 +88,61 @@
       <file leaf-file-name="class-atu-admin-users.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-users.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.307693" vertical-offset="2774" max-vertical-offset="3451">
-              <caret line="182" column="27" selection-start-line="182" selection-start-column="27" selection-end-line="182" selection-end-column="27" />
+            <state vertical-scroll-proportion="-6.769231" vertical-offset="3054" max-vertical-offset="3434">
+              <caret line="190" column="0" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
               <folding>
-                <marker date="1435996723490" expanded="true" signature="5709:5783" placeholder="SELECT COUNT..." />
+                <marker date="1435998723384" expanded="true" signature="5709:5783" placeholder="SELECT COUNT..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="class-atu-admin.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-33.576923" vertical-offset="28" max-vertical-offset="1496">
+              <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vendor.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/page-templates/vendor.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3595679" vertical-offset="1807" max-vertical-offset="4335">
+              <caret line="126" column="69" selection-start-line="126" selection-start-column="69" selection-end-line="126" selection-end-column="69" />
+              <folding>
+                <marker date="1436019879578" expanded="true" signature="5859:6327" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="5881:6309" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="5908:6171" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="6344:6798" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="6366:6780" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="6393:6642" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="6815:7316" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="6837:7298" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="6864:7160" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="7350:7513" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="7746:7900" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="7962:9204" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="8017:9186" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="8050:8604" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="8093:8213" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="8248:8588" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="8637:9171" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="8680:8800" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="8835:9155" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="9291:9866" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="9354:9853" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="9925:9963" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="10012:10430" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="10018:10423" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="10038:10183" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="10053:10175" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="10203:10254" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="10274:10416" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="10289:10408" placeholder="..." />
+                <marker date="1436019879578" expanded="true" signature="10469:10517" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -96,18 +161,8 @@
       <file leaf-file-name="wp-settings.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-settings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.961538" vertical-offset="5617" max-vertical-offset="6307">
-              <caret line="373" column="0" selection-start-line="373" selection-start-column="0" selection-end-line="373" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wp-blog-header.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-blog-header.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="340">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state vertical-scroll-proportion="-5.0384617" vertical-offset="5700" max-vertical-offset="6307">
+              <caret line="352" column="0" selection-start-line="352" selection-start-column="0" selection-end-line="352" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -116,8 +171,8 @@
       <file leaf-file-name="wp-db.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-includes/wp-db.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.730769" vertical-offset="10908" max-vertical-offset="52751">
-              <caret line="663" column="19" selection-start-line="663" selection-start-column="19" selection-end-line="663" selection-end-column="19" />
+            <state vertical-scroll-proportion="-10.423077" vertical-offset="10898" max-vertical-offset="52751">
+              <caret line="665" column="43" selection-start-line="665" selection-start-column="43" selection-end-line="665" selection-end-column="43" />
               <folding>
                 <marker date="1435668591061" expanded="true" signature="22406:22699" placeholder="..." />
                 <marker date="1435668591061" expanded="true" signature="31170:31287" placeholder="..." />
@@ -126,26 +181,6 @@
                 <marker date="1435668591061" expanded="true" signature="39501:39653" placeholder="..." />
                 <marker date="1435668591061" expanded="true" signature="51853:51880" placeholder="DELETE FROM ..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cache.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-includes/cache.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.230769" vertical-offset="11728" max-vertical-offset="12121">
-              <caret line="711" column="0" selection-start-line="711" selection-start-column="0" selection-end-line="711" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="load.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-includes/load.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.8461537" vertical-offset="10227" max-vertical-offset="14076">
-              <caret line="615" column="0" selection-start-line="615" selection-start-column="0" selection-end-line="615" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -160,7 +195,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/wp-config.php" />
-        <option value="$PROJECT_DIR$/wp-content/themes/atu/footer.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/emails/membership.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/settings/class-atu-settings-general.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/emails/admin-membership-email.php" />
@@ -175,18 +209,20 @@
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/assets/js/admin-atu.js" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/settings/class-atu-settings-page.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/assets/css/atu-admin-settings.css" />
-        <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-settings.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/settings/class-atu-settings-account.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-validator.php" />
-        <option value="$PROJECT_DIR$/wp-content/plugins/atu/assets/js/atu-admin-settings.js" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-menu.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-taxonomy.php" />
-        <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-form.php" />
-        <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-install.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-users.php" />
+        <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-install.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-form-builder.php" />
+        <option value="$PROJECT_DIR$/wp-content/plugins/atu/assets/js/atu-admin-settings.js" />
+        <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin.php" />
+        <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-settings.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/atu/footer.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/atu/page-templates/vendor.php" />
       </list>
     </option>
   </component>
@@ -228,7 +264,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -475,6 +510,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="includes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="settings" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="atu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="atu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-content" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="atu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -515,6 +584,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -554,9 +624,6 @@
       <BehatRunner />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
@@ -564,6 +631,9 @@
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="false" name="ATU" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" server_name="Localhost" start_url="/atu/registration/">
@@ -589,16 +659,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="1" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3293011" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293011" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969153" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2570694" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26028278" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39919356" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -606,11 +676,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293011" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293011" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -634,16 +704,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php</url>
-          <line>123</line>
+          <line>55</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php</url>
-          <line>139</line>
+          <line>71</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php</url>
-          <line>89</line>
+          <line>21</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -748,17 +818,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php</url>
-          <line>369</line>
+          <line>354</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php</url>
-          <line>370</line>
+          <line>355</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php</url>
-          <line>167</line>
+          <line>125</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -773,11 +843,21 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php</url>
-          <line>169</line>
+          <line>127</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php</url>
+          <line>57</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php</url>
+          <line>95</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="32" />
+      <option name="time" value="34" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PhpWebAppRunConfigurationType">
@@ -788,77 +868,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2217" max-vertical-offset="4726">
-          <caret line="236" column="29" selection-start-line="236" selection-start-column="29" selection-end-line="236" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-validator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="882" max-vertical-offset="2363">
-          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding>
-            <marker date="1435848656797" expanded="true" signature="-1:-1" placeholder="SELECT count..." />
-            <marker date="1435848656797" expanded="true" signature="-1:-1" placeholder="SELECT count..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/assets/js/atu-admin-settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2805" max-vertical-offset="4522">
-          <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
-          <folding>
-            <marker date="1435997282238" expanded="true" signature="14347:14367" placeholder="SELECT count..." />
-            <marker date="1435997282238" expanded="true" signature="14347:14368" placeholder="SELECT count..." />
-            <marker date="1435997282238" expanded="true" signature="14347:14461" placeholder="SELECT count..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="695" max-vertical-offset="1394">
-          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="680">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-post.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1088">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-install.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="493">
-          <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/atu.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1791" max-vertical-offset="2550">
@@ -887,7 +896,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2346" max-vertical-offset="3944">
           <caret line="187" column="29" selection-start-line="187" selection-start-column="29" selection-end-line="187" selection-end-column="29" />
-          <folding />
+          <folding>
+            <marker date="1436018762395" expanded="true" signature="-1:-1" placeholder="SELECT count..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -902,11 +913,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4352">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1435997282238" expanded="true" signature="14347:14367" placeholder="SELECT count..." />
-            <marker date="1435997282238" expanded="true" signature="14347:14368" placeholder="SELECT count..." />
-            <marker date="1435997282238" expanded="true" signature="14347:14461" placeholder="SELECT count..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -961,13 +968,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/footer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="2788">
-          <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="8.115385" vertical-offset="585" max-vertical-offset="1275">
@@ -980,21 +980,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="935">
           <caret line="24" column="55" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-includes/plugin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.8461537" vertical-offset="996" max-vertical-offset="15215">
-          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-includes/option.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.1923075" vertical-offset="205" max-vertical-offset="24871">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1023,7 +1008,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1031,34 +1015,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1088">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/settings/class-atu-settings-account.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="2312">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-validator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="882" max-vertical-offset="2363">
-          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding>
-            <marker date="1435848656797" expanded="true" signature="-1:-1" placeholder="SELECT count..." />
-            <marker date="1435848656797" expanded="true" signature="-1:-1" placeholder="SELECT count..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/assets/js/atu-admin-settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="77" max-vertical-offset="816">
-          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1066,15 +1022,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.961538" vertical-offset="37" max-vertical-offset="782">
           <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="4726">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="5" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1082,10 +1029,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-20.923077" vertical-offset="0" max-vertical-offset="1071">
           <caret line="32" column="63" selection-start-line="32" selection-start-column="63" selection-end-line="32" selection-end-column="63" />
-          <folding>
-            <marker date="1435990964530" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
-            <marker date="1435990964530" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/assets/js/atu-admin-settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="77" max-vertical-offset="816">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1097,18 +1048,124 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin.php">
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/settings/class-atu-settings-account.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.6153846" vertical-offset="408" max-vertical-offset="1428">
-          <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
+        <state vertical-scroll-proportion="39.23077" vertical-offset="1581" max-vertical-offset="2312">
+          <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="4845">
+          <caret line="6" column="28" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="28" />
+          <folding>
+            <marker date="1436018762395" expanded="true" signature="-1:-1" placeholder="SELECT count..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.038462" vertical-offset="816" max-vertical-offset="2890">
+          <caret line="71" column="155" selection-start-line="71" selection-start-column="155" selection-end-line="71" selection-end-column="155" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-includes/cache.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0384617" vertical-offset="8454" max-vertical-offset="12121">
+          <caret line="512" column="0" selection-start-line="512" selection-start-column="0" selection-end-line="512" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-includes/theme.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.8461537" vertical-offset="5246" max-vertical-offset="34833">
+          <caret line="321" column="0" selection-start-line="321" selection-start-column="0" selection-end-line="321" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/sidebar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.3461537" vertical-offset="65" max-vertical-offset="731">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-includes/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0384617" vertical-offset="7910" max-vertical-offset="8602">
+          <caret line="478" column="0" selection-start-line="478" selection-start-column="0" selection-end-line="478" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-includes/general-template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.1923075" vertical-offset="2687" max-vertical-offset="53720">
+          <caret line="171" column="0" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/page.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.538462" vertical-offset="227" max-vertical-offset="646">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-includes/template-loader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.884615" vertical-offset="924" max-vertical-offset="1343">
+          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-includes/plugin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.8461537" vertical-offset="996" max-vertical-offset="15215">
+          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-includes/option.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.1923075" vertical-offset="205" max-vertical-offset="24871">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-includes/load.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.8461537" vertical-offset="9428" max-vertical-offset="14076">
+          <caret line="568" column="0" selection-start-line="568" selection-start-column="0" selection-end-line="568" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-includes/pluggable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.8461537" vertical-offset="792" max-vertical-offset="39916">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-includes/class-wp.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.1923075" vertical-offset="10184" max-vertical-offset="12240">
-          <caret line="607" column="0" selection-start-line="607" selection-start-column="0" selection-end-line="607" selection-end-column="0" />
+        <state vertical-scroll-proportion="-4.8461537" vertical-offset="10210" max-vertical-offset="12240">
+          <caret line="608" column="0" selection-start-line="608" selection-start-column="0" selection-end-line="608" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1121,37 +1178,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-includes/load.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.8461537" vertical-offset="10227" max-vertical-offset="14076">
-          <caret line="615" column="0" selection-start-line="615" selection-start-column="0" selection-end-line="615" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-includes/cache.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.230769" vertical-offset="11728" max-vertical-offset="12121">
-          <caret line="711" column="0" selection-start-line="711" selection-start-column="0" selection-end-line="711" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-includes/wp-db.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.730769" vertical-offset="10908" max-vertical-offset="52751">
-          <caret line="663" column="19" selection-start-line="663" selection-start-column="19" selection-end-line="663" selection-end-column="19" />
-          <folding>
-            <marker date="1435668591061" expanded="true" signature="22406:22699" placeholder="..." />
-            <marker date="1435668591061" expanded="true" signature="31170:31287" placeholder="..." />
-            <marker date="1435668591061" expanded="true" signature="31195:31277" placeholder="..." />
-            <marker date="1435668591061" expanded="true" signature="36720:36918" placeholder="..." />
-            <marker date="1435668591061" expanded="true" signature="39501:39653" placeholder="..." />
-            <marker date="1435668591061" expanded="true" signature="51853:51880" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-blog-header.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="340">
@@ -1160,28 +1186,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-install.php">
+    <entry file="file://$PROJECT_DIR$/wp-includes/wp-db.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="510">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.961538" vertical-offset="5617" max-vertical-offset="6307">
-          <caret line="373" column="0" selection-start-line="373" selection-start-column="0" selection-end-line="373" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-users.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.307693" vertical-offset="2774" max-vertical-offset="3451">
-          <caret line="182" column="27" selection-start-line="182" selection-start-column="27" selection-end-line="182" selection-end-column="27" />
+        <state vertical-scroll-proportion="-10.423077" vertical-offset="10898" max-vertical-offset="52751">
+          <caret line="665" column="43" selection-start-line="665" selection-start-column="43" selection-end-line="665" selection-end-column="43" />
           <folding>
-            <marker date="1435996723490" expanded="true" signature="5709:5783" placeholder="SELECT COUNT..." />
+            <marker date="1435668591061" expanded="true" signature="22406:22699" placeholder="..." />
+            <marker date="1435668591061" expanded="true" signature="31170:31287" placeholder="..." />
+            <marker date="1435668591061" expanded="true" signature="31195:31277" placeholder="..." />
+            <marker date="1435668591061" expanded="true" signature="36720:36918" placeholder="..." />
+            <marker date="1435668591061" expanded="true" signature="39501:39653" placeholder="..." />
+            <marker date="1435668591061" expanded="true" signature="51853:51880" placeholder="DELETE FROM ..." />
           </folding>
         </state>
       </provider>
@@ -1194,22 +1209,102 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/wp-settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0384617" vertical-offset="5700" max-vertical-offset="6307">
+          <caret line="352" column="0" selection-start-line="352" selection-start-column="0" selection-end-line="352" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.769231" vertical-offset="3054" max-vertical-offset="3434">
+          <caret line="190" column="0" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
+          <folding>
+            <marker date="1435998723384" expanded="true" signature="5709:5783" placeholder="SELECT COUNT..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-33.576923" vertical-offset="28" max-vertical-offset="1496">
+          <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-validator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0384617" vertical-offset="328" max-vertical-offset="2363">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding>
+            <marker date="1435848656797" expanded="true" signature="1667:1734" placeholder="SELECT count..." />
+            <marker date="1435848656797" expanded="true" signature="2269:2336" placeholder="SELECT count..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-form-builder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="2108">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state vertical-scroll-proportion="-14.923077" vertical-offset="2111" max-vertical-offset="2788">
+          <caret line="147" column="57" selection-start-line="147" selection-start-column="57" selection-end-line="147" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-install.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="561">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.25" vertical-offset="1122" max-vertical-offset="8092">
-          <caret line="174" column="13" selection-start-line="174" selection-start-column="13" selection-end-line="174" selection-end-column="13" />
+        <state vertical-scroll-proportion="-10.538462" vertical-offset="1290" max-vertical-offset="6970">
+          <caret line="92" column="28" selection-start-line="92" selection-start-column="28" selection-end-line="92" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/page-templates/vendor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3595679" vertical-offset="1807" max-vertical-offset="4335">
+          <caret line="126" column="69" selection-start-line="126" selection-start-column="69" selection-end-line="126" selection-end-column="69" />
           <folding>
-            <marker date="1435997282238" expanded="true" signature="14347:14367" placeholder="SELECT count..." />
-            <marker date="1435997282238" expanded="true" signature="14347:14368" placeholder="SELECT count..." />
-            <marker date="1435997282238" expanded="true" signature="14347:14461" placeholder="SELECT count..." />
+            <marker date="1436019879578" expanded="true" signature="5859:6327" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="5881:6309" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="5908:6171" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="6344:6798" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="6366:6780" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="6393:6642" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="6815:7316" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="6837:7298" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="6864:7160" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="7350:7513" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="7746:7900" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="7962:9204" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="8017:9186" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="8050:8604" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="8093:8213" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="8248:8588" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="8637:9171" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="8680:8800" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="8835:9155" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="9291:9866" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="9354:9853" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="9925:9963" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="10012:10430" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="10018:10423" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="10038:10183" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="10053:10175" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="10203:10254" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="10274:10416" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="10289:10408" placeholder="..." />
+            <marker date="1436019879578" expanded="true" signature="10469:10517" placeholder="..." />
           </folding>
         </state>
       </provider>
