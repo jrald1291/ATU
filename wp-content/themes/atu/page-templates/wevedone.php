@@ -27,131 +27,57 @@ get_header(); ?>
 					<div class="page-content">
 						<div class="grid-filter">
 						    <button class="button btn" data-filter="*">show all</button>
-						    <button class="button btn" data-filter=".weddings">Weddings</button>
-						    <button class="button btn" data-filter=".ceremonies">Ceremonies</button>
-						    <button class="button btn" data-filter=".reception">Reception</button>
-						    <button class="button btn" data-filter=".other">Other Events</button>
+						    
+						    <?php
+							$tax = 'portfolio-category';
+							$terms = get_terms( $tax, $args = array(
+							  'hide_empty' => false, 
+							));
+
+							foreach( $terms as $term ) {
+							    $term_link = get_term_link( $term );
+
+							    if( $term->count > 0 )?>
+									<button class="button btn" data-filter=".<?php echo $term->slug ?>"><?php echo $term->name ?></button>
+								<?php } ?>
 						</div>
 						<div class="grid grid-isotope">
-							<div class="element-item grid-item weddings">
-								<div class="grid-wrap">
-									<div class="grid-img">
-										<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/iso1.jpg" alt="">
-										<div class="grid-title">
-											Jane quarta decima
+
+							 <?php 
+							    $paged = get_query_var('paged');
+							    $args = array( 'post_type' => 'portfolio', 'posts_per_page' => 30,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
+							    $loop = new WP_Query( $args );
+
+								    while ( $loop->have_posts() ) : $loop->the_post();
+								    	$my_terms = get_the_terms( $post->ID, 'portfolio-category' );
+										
+								    ?>
+
+										<div class="element-item grid-item <?php if( $my_terms && !is_wp_error( $my_terms ) ) {
+										    foreach( $my_terms as $term ) {
+										        echo $term->slug." ";
+										    }
+											} ?>">
+											<div class="grid-wrap">
+												<div class="grid-img">
+													<?php the_post_thumbnail('medium'); ?>
+													<div class="grid-title">
+														<?php the_title(); ?>
+													</div>
+												</div>	
+												<div class="grid-content">
+													<?php the_content(); ?>
+												</div>
+											</div>
 										</div>
-									</div>	
-									<div class="grid-content">
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
-										<p>Ut wisi enim ad minim veniam, quis nostrud exerci tation </p>
-									</div>
-								</div>
-							</div>
-							<div class="element-item grid-item ceremonies">
-								<div class="grid-wrap">
-									<div class="grid-img">
-										<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/iso2.jpg" alt="">
-										<div class="grid-title">
-											Jane quarta decima
-										</div>
-									</div>	
-									<div class="grid-content">
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing ...</p>
-									</div>
-								</div>
-							</div>
-							<div class="element-item grid-item ceremonies">
-								<div class="grid-wrap">
-									<div class="grid-img">
-										<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/iso3.jpg" alt="">
-										<div class="grid-title">
-											Jane quarta decima
-										</div>
-									</div>	
-									<div class="grid-content">
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.....</p>
-									</div>
-								</div>
-							</div>
-							<div class="element-item grid-item ceremonies">
-								<div class="grid-wrap">
-									<div class="grid-img">
-										<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/iso4.jpg" alt="">
-										<div class="grid-title">
-											Jane quarta decima
-										</div>
-									</div>	
-									<div class="grid-content">
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-									</div>
-								</div>
-							</div>
-							<div class="element-item grid-item ceremonies">
-								<div class="grid-wrap">
-									<div class="grid-img">
-										<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/iso5.jpg" alt="">
-										<div class="grid-title">
-											Jane quarta decima
-										</div>
-									</div>	
-									<div class="grid-content">
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-									</div>
-								</div>
-							</div>
-							<div class="element-item grid-item ceremonies">
-								<div class="grid-wrap">
-									<div class="grid-img">
-										<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/iso6.jpg" alt="">
-										<div class="grid-title">
-											Jane quarta decima
-										</div>
-									</div>	
-									<div class="grid-content">
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
-										<p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit.</p>
-									</div>
-								</div>
-							</div>
-							<div class="element-item grid-item ceremonies">
-								<div class="grid-wrap">
-									<div class="grid-img">
-										<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/iso7.jpg" alt="">
-										<div class="grid-title">
-											Jane quarta decima
-										</div>
-									</div>	
-									<div class="grid-content">
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-									</div>
-								</div>
-							</div>
-							<div class="element-item grid-item ceremonies">
-								<div class="grid-wrap">
-									<div class="grid-img">
-										<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/iso8.jpg" alt="">
-										<div class="grid-title">
-											Jane quarta decima
-										</div>
-									</div>	
-									<div class="grid-content">
-										<p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper...</p>
-									</div>
-								</div>
-							</div>
-							<div class="element-item grid-item ceremonies">
-								<div class="grid-wrap">
-									<div class="grid-img">
-										<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/iso9.jpg" alt="">
-										<div class="grid-title">
-											Jane quarta decima
-										</div>
-									</div>	
-									<div class="grid-content">
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim...</p>
-									</div>
-								</div>
-							</div>
+
+								<?php endwhile; ?>   
+								
+								<?php wp_reset_postdata(); ?>
+						</div>
+						<div class="pagination">
+							<label for="">Pagination :</label>
+							<?php wp_pagenavi( array( 'query' => $loop ) ); ?>
 						</div>
 
 					</div>

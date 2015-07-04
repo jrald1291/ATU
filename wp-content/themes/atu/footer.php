@@ -1,9 +1,11 @@
 	</div>
 	<footer class="l-footer">
+		<?php if (of_get_option('rsvp_text', '') and of_get_option('rsvp_link', '')): ?>
 		<div class="section-rsvp section-dark section-l0">
 			<div class="container">
-				<span class="t-sm mr-10">Are you a wedding vendor, couple or venue? We welcome you to come as our guest on our monthly meetings! </span> <a href="" class="btn btn-md btn-secondary">Meeting RSVP</a>
+				<span class="t-sm mr-10"><?php echo of_get_option('rsvp_text', ''); ?></span> <a href="<?php echo of_get_option('rsvp_link', ''); ?>" target="_blank" class="btn btn-md btn-secondary">Meeting RSVP</a>
 			</div>
+		<?php endif ?>
 		</div>
 		<div class="section section-l4">
 			<div class="container">
@@ -44,26 +46,32 @@
 					</div>
 					<div class="col-md-3 col-sm-6">
 						<div class="widget widget-footer">
-							<div class="widget-header">Address</div>
-							<div class="widget-core">
-								<p>Lorem St. dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
-								<p>00288 009</p>
-							</div>
-
+							<?php if (of_get_option('address', '')): ?>
+								<div class="widget-header">Address</div>
+								<div class="widget-core">
+									<p><?php echo of_get_option('address', ''); ?></p> 
+								</div>
+							<?php endif ?>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-12">
 						<div class="widget widget-footer">
 							<div class="widget-header">Contact info</div>
 							<div class="widget-core">
-								<ul class="widget-list">
-									<li>
-										<a href=""><span class="fa fa-envelope"></span> : info.yourweddingalltiedup.com.au</a>
-									</li>
-									<li>
-										<a href=""><span class="fa fa-phone"></span> : 1234-0000-34-00</a>
-									</li>
-								</ul>
+								<?php if (of_get_option('tel', '') or of_get_option('email', '')): ?>
+									<ul class="widget-list">
+										<li>
+											<a href="mailto:<?php echo of_get_option('email', ''); ?>"><span class="fa fa-envelope"></span> : <?php echo of_get_option('email', ''); ?></a>
+										</li>
+										<li>
+											<?php if (!of_get_option('tel', '')): ?> 
+												<a href="tel:<?php echo of_get_option('phone', ''); ?>"><span class="fa fa-mobile"></span> : <?php echo of_get_option('phone', ''); ?></a>
+											<?php else: ?>
+												<a href="tel:<?php echo of_get_option('tel', ''); ?>"><span class="fa fa-phone"></span> : <?php echo of_get_option('tel', ''); ?></a>
+											<?php endif ?>
+										</li>
+									</ul>
+								<?php endif ?>
                                 <?php do_action( 'atu_membership_form' ); ?>
 							</div>
 
@@ -84,7 +92,6 @@
 
 
 	<!-- -----------------------------MODAL------------------------ -->
-
 
 	<div class="modal fade in form-venue" tabindex="-1" role="dialog" aria-labelledby="VenueSearch">
 	  <div class="modal-dialog modal-lg">

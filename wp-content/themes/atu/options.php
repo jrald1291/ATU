@@ -60,39 +60,15 @@ function optionsframework_options() {
 		'type' => 'heading');
 
 	$options[] = array(
-		'name' => __('Profle Image', 'options_framework_theme'),
-		'desc' => __('Upload your profile image( size must be 115 x 115)', 'options_framework_theme'),
-		'id' => 'profile',
-		'type' => 'upload');
-
-	$options[] = array(
-		'name' => __('ATU Name', 'options_framework_theme'),
-		'desc' => __('Enter full name', 'options_framework_theme'),
-		'id' => 'name',
-		'std' => '',
-		'type' => 'text');
-	$options[] = array(
-		'name' => __('Title', 'options_framework_theme'),
-		'desc' => __('Enter Title', 'options_framework_theme'),
-		'id' => 'title',
-		'std' => '',
-		'type' => 'text');
-	$options[] = array(
 		'name' => __('Email', 'options_framework_theme'),
 		'desc' => __('Enter Email address', 'options_framework_theme'),
 		'id' => 'email',
 		'std' => '',
 		'type' => 'text');
 	$options[] = array(
-		'name' => __('Phone No. 1', 'options_framework_theme'),
+		'name' => __('Phone No.', 'options_framework_theme'),
 		'desc' => __('Enter Primary Number(no space you can use "-" instead)', 'options_framework_theme'),
-		'id' => 'phone1',
-		'std' => '',
-		'type' => 'text');
-	$options[] = array(
-		'name' => __('Phone No. 2', 'options_framework_theme'),
-		'desc' => __('Enter Secondary Number(no space you can use "-" instead)', 'options_framework_theme'),
-		'id' => 'phone2',
+		'id' => 'phone',
 		'std' => '',
 		'type' => 'text');
 	$options[] = array(
@@ -102,9 +78,9 @@ function optionsframework_options() {
 		'std' => '',
 		'type' => 'text');
 	$options[] = array(
-		'name' => __('Short Description', 'options_framework_theme'),
-		'desc' => __('Maximum of 15-20 words', 'options_framework_theme'),
-		'id' => 'description',
+		'name' => __('Address', 'options_framework_theme'),
+		'desc' => __('Full Address', 'options_framework_theme'),
+		'id' => 'address',
 		'std' => '',
 		'type' => 'textarea');
 
@@ -141,6 +117,26 @@ function optionsframework_options() {
 		'id' => 'youtube',
 		'std' => '',
 		'type' => 'text');
+
+	$options[] = array(
+		'name' => __('Linkedin', 'options_framework_theme'),
+		'desc' => __('Share your linkedin profile', 'options_framework_theme'),
+		'id' => 'linkedin',
+		'std' => '',
+		'type' => 'text');
+	$options[] = array(
+		'name' => __('Pinterest', 'options_framework_theme'),
+		'desc' => __('Pint it', 'options_framework_theme'),
+		'id' => 'pinterest',
+		'std' => '',
+		'type' => 'text');
+	$options[] = array(
+		'name' => __('Instagram', 'options_framework_theme'),
+		'desc' => __('Share your instagram photos', 'options_framework_theme'),
+		'id' => 'instagram',
+		'std' => '',
+		'type' => 'text');
+	
 	//Banner
 	$options[] = array(
 		'name' => __('Banner', 'options_framework_theme'),
@@ -157,12 +153,6 @@ function optionsframework_options() {
 		'id' => 'intro',
 		'std' => '',
 		'type' => 'text');
-	$options[] = array(
-		'name' => __('Home Slider Welcome Text', 'options_framework_theme'),
-		'desc' => __('Banner welcome text', 'options_framework_theme'),
-		'id' => 'welcome',
-		'std' => '',
-		'type' => 'text');
 	//Footer
 
 	$options[] = array(
@@ -175,6 +165,26 @@ function optionsframework_options() {
 		'id' => 'copyright',
 		'std' => '',
 		'type' => 'text');
+
+	//Footer
+
+	$options[] = array(
+		'name' => __('RSVP', 'options_framework_theme'),
+		'type' => 'heading' );
+
+	$options[] = array(
+		'name' => __('RSVP text', 'options_framework_theme'),
+		'desc' => __('Enter Copyright', 'options_framework_theme'),
+		'id' => 'rsvp_text',
+		'std' => '',
+		'type' => 'text');
+	$options[] = array(
+		'name' => __('RSVP link', 'options_framework_theme'),
+		'desc' => __('Enter Copyright', 'options_framework_theme'),
+		'id' => 'rsvp_link',
+		'std' => '',
+		'type' => 'text');
+
 
 
 	return $options;

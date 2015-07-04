@@ -8,36 +8,53 @@
  */
 
 get_header(); ?>
+<?php 
+	$bg = of_get_option('banner', '');
+	$intro_img = wp_get_attachment_image_src(get_field('page_background'));
 
+?>
 <div class="section section-banner banner">
 	<div class="banner-content">
 		<div class="banner-actions">
-			<h1 class="t-md t-title">Find a Wedding Vendor or Venue for your Special Day!</h1>
+			<h1 class="t-md t-title">
+				<?php if (of_get_option('intro', '')): ?>
+					<?php echo of_get_option('intro', ''); ?>
+				<?php endif ?>
+			</h1>
 			<div class="actions">
 				<button class="btn btn-wooden btn-lg" data-toggle="modal" data-target=".form-vendor">Search for Vendor</button>
 				<button class="btn btn-wooden btn-lg" data-toggle="modal" data-target=".form-venue">Search for Venue</button>
 			</div>
 		</div>
-		<div class="banner-intro">
-			<h2 class="t-title t-huge">You Dream it and we will achieve it!</h2>
-			<h3 class="t-title t-md">A-Z event and wedding planning leaders</h3>
-		</div>
+		<?php if (get_field('banner_slogan') and get_field('slogan_line2')):?>
+			<div class="banner-intro">
+				<h2 class="t-title t-huge"><?php the_field('banner_slogan'); ?></h2>
+				<h3 class="t-title t-md"><?php the_field('slogan_line2'); ?></h3>
+			</div>
+		<?php endif ?>
 	</div>
 	<a href="#scroll-target" class="t-upper scroll-down link scroll_to">Scroll Down</a>
 </div>
-<div id="scroll-target" class="section section-l4">
-	<div class="container">	
-		<div class="col-sm-6 col-sm-push-6">
-			<div class="well-img-bordered mb-30">
-				<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/image_intro.jpg" alt="">
+<?php if (get_field('intro_text') and get_field('intro_image')):?>
+	<div id="scroll-target" class="section section-l4">
+		<div class="container">	
+			<div class="col-sm-6 col-sm-push-6">
+				<div class="well-img-bordered mb-30">
+					<?php $intro_img = wp_get_attachment_image_src(get_field('intro_image'),'img-lscape'); ?>
+					<img src="<?php echo $intro_img[0];?>"/>
+				</div>
+			</div>
+			<div class="col-sm-6 col-sm-pull-6">
+				<div class="t-title t-lg text-right t-reset">
+	              <?php the_field('intro_text'); ?>
+				</div>
 			</div>
 		</div>
-		<div class="col-sm-6 col-sm-pull-6">
-			<p class="t-title t-lg text-right t-reset">We are your one stop wedding and event planning collective of original artisans who areavailable to manifest your wildest dreams.</p>
-		</div>
 	</div>
-</div>
-<div class="section section-dark section-fl section-l3 parallax">
+	<div class="section section-dark section-fl section-l3 parallax">
+<?php else: ?>
+	<div id="scroll-target" class="section section-dark section-fl section-l3 parallax">
+<?php endif ?>
 	<div class="container">
 		<h2 class="t-title t-huge mb-30">What is New Today?</h2>
 		<div class="row">
@@ -139,9 +156,11 @@ get_header(); ?>
 <div class="section section-l4">
 	<div class="container">
 		<div class="t-md typo-lora text-center">
-			Our vendors are primarily small local businesses with an absolute passion for their profession.</br></br>
-			Our services and products are mostly handmade, custom crafted and delivered with love.</br></br>
-			We regularly work together on tailor made events and have a synergy of trust, understanding and creativity.</br>
+			<?php
+			while ( have_posts() ) : the_post();
+			?>
+			<?php the_content(); ?>
+			<?php endwhile; ?>
 		</div>
 	</div>
 </div>
