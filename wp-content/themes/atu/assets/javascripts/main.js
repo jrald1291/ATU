@@ -74,7 +74,6 @@ var util = {
 
         $( window ).resize(function() {
           $winwidth = $(window).outerWidth();
-          console.log($winwidth);
           if (  winwidth<=820 ) {
             grid.isotope({
               masonry: { columnWidth: grid.width() / 2 }

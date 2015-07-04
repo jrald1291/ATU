@@ -5,7 +5,9 @@ function setup() {
 	if(function_exists('add_theme_support')) {
 		add_theme_support( 'post-thumbnails' );
 		
-		add_image_size( 'small', 177, 125, true );
+		add_image_size( 'img-lscape', 455, 230, true );
+		add_image_size( 'img-wide', 860, 320, true );
+		add_image_size( 'img-avatar', 230, 230, true );
 		
 	}
 }

@@ -9,52 +9,48 @@
  * @since Twenty Fifteen 1.0
  */
 ?>
+<?php if (is_single()) {?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php
-		// Post thumbnail.
-		twentyfifteen_post_thumbnail();
-	?>
+	<article id="post-<?php the_ID(); ?>" <?php post_class("post-single"); ?>>
+		<div class="page-title ">
+			<h1 class="t-lg"><?php the_title(); ?></h1>
+			<div class="post-meta"><div class="meta date"><?php the_date(); ?></div> <div class="meta author t-upper"><?php the_author(); ?></div></div>
+		</div>
+		<div class="post-img well-img">
+			<?php the_post_thumbnail('img-wide'); ?>
+		</div>
+		<div class="post-core">
+			<div class="post-content copy">
+				<p><?php the_content(); ?></p>
+			</div>
+		</div>
+	</article>
+	<div class="social-links list-labeled-inline mb-20">
+		<label for="">Follow us in social :</label>
+		<ul>
+			<li><a href=""><span class="fa fa-instagram"></span></a></li>
+			<li><a href=""><span class="fa fa-youtube"></span></a></li>
+			<li><a href=""><span class="fa fa-google-plus"></span></a></li>
+			<li><a href=""><span class="fa fa-pinterest"></span></a></li>
+			<li><a href=""><span class="fa fa-twitter"></span></a></li>
+			<li><a href=""><span class="fa fa-linkedin"></span></a></li>
+			<li><a href=""><span class="fa fa-facebook"></span></a></li>
+		</ul>
+	</div>
+	<div class="fb-comments" data-href="<?php echo current_page_url(); ?>" data-width="100%" data-numposts="10" data-colorscheme="light"></div>
 
-	<header class="entry-header">
-		<?php
-			if ( is_single() ) :
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			else :
-				the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
-			endif;
-		?>
-	</header><!-- .entry-header -->
+<?php }else{?>
+	<article id="post-<?php the_ID(); ?>" <?php post_class("post-item"); ?>>
+		<div class="post-img well-img">
+			<?php the_post_thumbnail('thumbnail'); ?>
+		</div>
+		<div class="post-core">
+			<div class="post-title t-normal"><a href="<?php the_permalink(); ?>" class="link"><?php the_title(); ?></a></div>
+			<div class="post-meta"><div class="meta date"><?php the_date(); ?></div> <div class="meta author t-upper"><?php the_author(); ?></div></div>
+			<div class="post-content">
+				<p><?php echo content(get_the_content(),25) ?> <a href="<?php the_permalink(); ?>">read more</a></p>
+			</div>
+		</div>
+	</article>
+<?php } ?>
 
-	<div class="entry-content">
-		<?php
-			/* translators: %s: Name of current post */
-			the_content( sprintf(
-				__( 'Continue reading %s', 'twentyfifteen' ),
-				the_title( '<span class="screen-reader-text">', '</span>', false )
-			) );
-
-			wp_link_pages( array(
-				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfifteen' ) . '</span>',
-				'after'       => '</div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-				'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>%',
-				'separator'   => '<span class="screen-reader-text">, </span>',
-			) );
-		?>
-	</div><!-- .entry-content -->
-
-	<?php
-		// Author bio.
-		if ( is_single() && get_the_author_meta( 'description' ) ) :
-			get_template_part( 'author-bio' );
-		endif;
-	?>
-
-	<footer class="entry-footer">
-		<?php twentyfifteen_entry_meta(); ?>
-		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
-	</footer><!-- .entry-footer -->
-
-</article><!-- #post-## -->

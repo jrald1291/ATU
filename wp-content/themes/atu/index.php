@@ -27,67 +27,22 @@ get_header(); ?>
 					</div>
 					<div class="page-content">
 						<div class="post-inline post-blog post-member mb-20">
-							<article class="post-item">
-								<div class="post-img well-img">
-									<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/vendor_thumb1.jpg" alt="">
-								</div>
-								<div class="post-core">
-									<div class="post-title t-normal"><a href="#" class="link">Aliquip ex ea commodo </a></div>
-									<div class="post-meta"><div class="meta date">Posted: May 12,2015</div><div class="meta author">By: Anne Lorem ipsum</div></div>
-									<div class="post-content">
-										<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse consequat, vel illum dolore eu feugiat nulla facilisis at. Mirum est notare quam, quam nunc putamus parum . <a href="">read more</a></p>
+							 <?php 
+							    $paged = get_query_var('paged');
+							    $args = array( 'post_type' => 'post', 'posts_per_page' => 10,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
+							    $loop = new WP_Query( $args );
+
+								    while ( $loop->have_posts() ) : $loop->the_post();
+
+										get_template_part( 'content', get_post_format() );
+
+									endwhile; ?>   
+
+									<div class="pagination">
+										<label for="">Pagination :</label>
+										<?php wp_pagenavi( array( 'query' => $loop ) ); ?>
 									</div>
-								</div>
-							</article>
-							<article class="post-item">
-								<div class="post-img well-img">
-									<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/vendor_thumb2.jpg" alt="">
-								</div>
-								<div class="post-core">
-									<div class="post-title t-normal"><a href="#" class="link">Aliquip ex ea commodo </a></div>
-									<div class="post-meta"><div class="meta date">Posted: May 12,2015</div><div class="meta author">By: Anne Lorem ipsum</div></div>
-									<div class="post-content">
-										<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse consequat, vel illum dolore eu feugiat nulla facilisis at. Mirum est notare quam, quam nunc putamus parum . <a href="">read more</a></p>
-									</div>
-								</div>
-							</article>
-							<article class="post-item">
-								<div class="post-img well-img">
-									<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/vendor_thumb3.jpg" alt="">
-								</div>
-								<div class="post-core">
-									<div class="post-title t-normal"><a href="#" class="link">Aliquip ex ea commodo </a></div>
-									<div class="post-meta"><div class="meta date">Posted: May 12,2015</div><div class="meta author">By: Anne Lorem ipsum</div></div>
-									<div class="post-content">
-										<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse consequat, vel illum dolore eu feugiat nulla facilisis at. Mirum est notare quam, quam nunc putamus parum . <a href="">read more</a></p>
-									</div>
-								</div>
-							</article>
-							<article class="post-item">
-								<div class="post-img well-img">
-									<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/vendor_thumb4.jpg" alt="">
-								</div>
-								<div class="post-core">
-									<div class="post-title t-normal"><a href="#" class="link">Aliquip ex ea commodo </a></div>
-									<div class="post-meta"><div class="meta date">Posted: May 12,2015</div><div class="meta author">By: Anne Lorem ipsum</div></div>
-									<div class="post-content">
-										<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse consequat, vel illum dolore eu feugiat nulla facilisis at. Mirum est notare quam, quam nunc putamus parum . <a href="">read more</a></p>
-									</div>
-								</div>
-							</article>
-							<article class="post-item">
-								<div class="post-core">
-									<div class="post-title t-normal"><a href="#" class="link">Aliquip ex ea commodo </a></div>
-									<div class="post-meta"><div class="meta date">Posted: May 12,2015</div><div class="meta author">By: Anne Lorem ipsum</div></div>
-									<div class="post-content">
-										<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse consequat, vel illum dolore eu feugiat nulla facilisis at. Mirum est notare quam, quam nunc putamus parum . <a href="">read more</a></p>
-									</div>
-								</div>
-							</article>
-						</div>
-						<div class="pagination">
-							<label for="">Pagination :</label>
-							<div class="wp-pagenavi"> <span class="pages">Page 1 of 2</span><span class="current">1</span><a class="page larger" href="http://www.cebudreamhomes.com/properties/page/2/">2</a><a class="nextpostslink" rel="next" href="http://www.cebudreamhomes.com/properties/page/2/">Next</a></div>
+								<?php wp_reset_postdata(); ?>
 						</div>
 					</div>
 				</div>
@@ -99,6 +54,3 @@ get_header(); ?>
 	</div>
 </div>
 <?php get_footer(); ?>
-<script>
-	 new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
-</script>
