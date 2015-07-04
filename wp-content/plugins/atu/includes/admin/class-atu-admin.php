@@ -15,11 +15,13 @@ if ( ! class_exists('ATU_Admin') ) {
         public function includes() {
 
             if ( ! is_admin() ) return;
-
-            include_once( 'class-atu-admin-menu.php' );
+            include_once( 'class-atu-admin-taxonomy.php' );
             include_once( 'class-atu-admin-settings.php' );
             include_once( 'class-atu-admin-post.php' );
-            include_once( 'class-atu-admin-taxonomy.php' );
+            include_once( 'class-atu-admin-users.php' );
+            include_once( 'class-atu-admin-menu.php' );
+
+
         }
 
         private function init_hooks() {

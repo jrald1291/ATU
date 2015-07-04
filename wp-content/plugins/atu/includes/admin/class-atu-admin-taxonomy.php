@@ -12,7 +12,11 @@ if ( ! class_exists( 'ATU_Admin_Taxonomy' ) ) {
 
         private function init_hooks() {
             add_action( 'init', array( $this, 'post_type_init' ) );
+
+
         }
+
+
 
         public function post_type_init() {
 
@@ -39,7 +43,7 @@ if ( ! class_exists( 'ATU_Admin_Taxonomy' ) ) {
                         'query_var'         => true,
                         'rewrite'           => array( 'slug' => 'venu-category' ),
                     )
-                ),
+                )
             );
 
             foreach ( $post_types as $type => $args ) {
