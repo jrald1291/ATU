@@ -31,6 +31,10 @@ if ( ! class_exists( 'ATU_Form_Builder' ) ) {
                     $field['option'] = array();
                 }
 
+                if ( ! isset( $field['required'] ) ) {
+                    $field['required'] = false;
+                }
+
 
                 switch( sanitize_title( $field['type'] ) ) {
                     case 'form':

@@ -108,46 +108,51 @@ get_header(); ?>
 				<a href="#" class="btn btn-opposite btn-block btn-md">See all venues</a>
 			</div>
 			<div class="col-md-6 mb-30">
-				<h4 class="title-l1">Latest Vendor List </h4>
-				<ul class="post-inline post-member mb-20">
-					<li class="post-item">
-						<div class="post-img well-img">
-							<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/vendor_thumb1.jpg" alt="">
-						</div>
-						<div class="post-core">
-							<a href="#" class="link"><div class="post-title t-normal">John Doe Lorem <span class="post-cat t-highlight">Hair & Makeup</span></div></a>
-							<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse consequat, vel illum dolore eu feugiat nulla facilisis at..</p>
-						</div>
-					</li>
-					<li class="post-item">
-						<div class="post-img well-img">
-							<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/vendor_thumb2.jpg" alt="">
-						</div>
-						<div class="post-core">
-							<a href="#" class="link"><div class="post-title t-normal">John Doe Lorem <span class="post-cat t-highlight">Hair & Makeup</span></div></a>
-							<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse consequat, vel illum dolore eu feugiat nulla facilisis at..</p>
-						</div>
-					</li>
-					<li class="post-item">
-						<div class="post-img well-img">
-							<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/vendor_thumb3.jpg" alt="">
-						</div>
-						<div class="post-core">
-							<a href="#" class="link"><div class="post-title t-normal">John Doe Lorem <span class="post-cat t-highlight">Hair & Makeup</span></div></a>
-							<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse consequat, vel illum dolore eu feugiat nulla facilisis at..</p>
-						</div>
-					</li>
-					<li class="post-item">
-						<div class="post-img well-img">
-							<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/vendor_thumb4.jpg" alt="">
-						</div>
-						<div class="post-core">
-							<a href="#" class="link"><div class="post-title t-normal">John Doe Lorem <span class="post-cat t-highlight">Hair & Makeup</span></div></a>
-							<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse consequat, vel illum dolore eu feugiat nulla facilisis at..</p>
-						</div>
-					</li>
-				</ul>
-				<a href="#" class="btn btn-opposite btn-block btn-md">See all Vendors</a>
+				<h4 class="title-l1"><?php _e( 'Latest Vendor List', 'atu' ); ?> </h4>
+                <?php
+                /**
+                 * Get all vendor user
+                 * @var  $user_query */
+                $wp_user_query = new WP_User_Query( array( 'role' => get_option( 'atu_default_user_role', 'vendor' ), 'number' => 4 ) );
+
+                // Get the results
+                $vendors = $wp_user_query->get_results();
+
+                if ( ! empty( $vendors ) ): ?>
+                    <ul class="post-inline post-member mb-20">
+                        <?php foreach( $vendors as $vendor ):
+
+                            $vendor_info = get_userdata($vendor->ID);
+
+//                            echo '<pre>';
+//                            print_r($vendor_info);
+//                            echo '</pre>';
+                            $description = wp_trim_words(  get_user_meta( $vendor->ID, 'description', true ), $num_words = 20, $more = '...' );
+                            $profession = '';
+                            $categories = wp_get_object_terms( $vendor->ID, 'profession', false );
+                            if ( !empty( $categories ) ) {
+                                $profession = $categories[0]->name;
+                            }
+
+                            ?>
+                            <li class="post-item">
+                                <div class="post-img well-img">
+                                    <img src="<?php echo get_template_directory_uri() ?>/images/placeholders/vendor_thumb1.jpg" alt="">
+                                </div>
+                                <div class="post-core">
+                                    <a href="#" class="link"><div class="post-title t-normal"><?php echo $vendor_info->first_name .' '. $vendor_info->last_name; ?> <span class="post-cat t-highlight"><?php echo $profession; ?></span></div></a>
+                                    <p><?php echo $description; ?>.</p>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <a href="#" class="btn btn-opposite btn-block btn-md">See all Vendors</a>
+                <?php else: ?>
+                    <h3><?php _e( 'No vendors yet.', 'atu'); ?></h3>
+                <?php endif; ?>
+
+
+
 			</div>
 		</div>
 		

@@ -143,8 +143,6 @@ class ATU {
     }
 
     private function includes() {
-
-        include_once( 'helper.php' );
         include_once( 'includes/class-atu-install.php' );
     }
 }

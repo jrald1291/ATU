@@ -22,7 +22,11 @@ class ATU_Validator {
             foreach ($arr_rules as $r) {
                 $arr = explode(':', $r);
 
-                $this->{trim($arr[0])}( $key, trim($arr[1]) );
+                $args = isset( $arr[1] ) ?  trim($arr[1]) : null;
+
+                if( method_exists($this, trim( $arr[0] ) ) ) {
+                    $this->{trim($arr[0])}($key, $args);
+                }
             }
         }
         return $this;

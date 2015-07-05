@@ -58,7 +58,6 @@
 						<div class="widget widget-footer">
 							<div class="widget-header">Contact info</div>
 							<div class="widget-core">
-<<<<<<< HEAD
 								<ul class="widget-list">
 									<li>
 										<a href=""><span class="fa fa-envelope"></span> : info.yourweddingalltiedup.com.au</a>
@@ -74,23 +73,6 @@
                                     </div>
                                     <button class="btn btn-primary btn-block" type="submit"><span class="fa fa-user icon-l"></span>Become a member</button>
                                 </form>
-=======
-								<?php if (of_get_option('tel', '') or of_get_option('email', '')): ?>
-									<ul class="widget-list">
-										<li>
-											<a href="mailto:<?php echo of_get_option('email', ''); ?>"><span class="fa fa-envelope"></span> : <?php echo of_get_option('email', ''); ?></a>
-										</li>
-										<li>
-											<?php if (!of_get_option('tel', '')): ?> 
-												<a href="tel:<?php echo of_get_option('phone', ''); ?>"><span class="fa fa-mobile"></span> : <?php echo of_get_option('phone', ''); ?></a>
-											<?php else: ?>
-												<a href="tel:<?php echo of_get_option('tel', ''); ?>"><span class="fa fa-phone"></span> : <?php echo of_get_option('tel', ''); ?></a>
-											<?php endif ?>
-										</li>
-									</ul>
-								<?php endif ?>
-                                <?php do_action( 'atu_membership_form' ); ?>
->>>>>>> 6983d3733873f01d5bc99ddb15796927641f1357
 							</div>
 
 						</div>

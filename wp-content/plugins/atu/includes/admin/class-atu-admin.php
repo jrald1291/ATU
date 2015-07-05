@@ -63,7 +63,7 @@ if ( ! class_exists('ATU_Admin') ) {
         }
 
         public function styles_and_scripts() {
-
+            if ( ! isset( $_GET['page'] ) ) return;
 
             if ( $_GET['page'] == 'atu-settings' ) {
                 wp_enqueue_style( 'atu-admin', ATU_ASSETS_URL . 'css/atu-admin-settings.css' );
