@@ -17,8 +17,8 @@ if ( !class_exists('ATU_Admin_Users') ) {
             add_action( 'manage_profession_custom_column', array( $this, 'my_manage_profession_column' ), 10, 3 );
 
             /* Add section to the edit user page in the admin to select profession. */
-            add_action( 'show_user_profile', array( $this, 'my_edit_user_profession_section' ) );
-            add_action( 'edit_user_profile', array( $this, 'my_edit_user_profession_section' ) );
+            add_action( 'show_user_profile', array( $this, 'my_edit_user_profession_section' ), 20 );
+            add_action( 'edit_user_profile', array( $this, 'my_edit_user_profession_section' ), 20 );
             /* Update the profession terms when the edit user page is updated. */
             add_action( 'personal_options_update', array( $this, 'my_save_user_profession_terms' ) );
             add_action( 'edit_user_profile_update', array( $this, 'my_save_user_profession_terms' ) );
@@ -77,10 +77,14 @@ if ( !class_exists('ATU_Admin_Users') ) {
 
                         /* If there are any profession terms, loop through them and display checkboxes. */
                         if ( !empty( $terms ) ) {
-
+                            ?>
+                            <select  name="profession">
+                            <?php
                             foreach ( $terms as $term ) { ?>
-                                <input type="radio" name="profession" id="profession-<?php echo esc_attr( $term->slug ); ?>" value="<?php echo esc_attr( $term->slug ); ?>" <?php checked( true, is_object_in_term( $user->ID, 'profession', $term ) ); ?> /> <label for="profession-<?php echo esc_attr( $term->slug ); ?>"><?php echo $term->name; ?></label> <br />
-                            <?php }
+                                <option value="<?php echo esc_attr( $term->slug ); ?>" <?php selected( true, is_object_in_term( $user->ID, 'profession', $term ) ); ?>><?php echo $term->name; ?></option>
+                            <?php } ?>
+                            </select>
+                                <?php
                         }
 
                         /* If there are no profession terms, display a message. */

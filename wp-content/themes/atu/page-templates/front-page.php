@@ -67,52 +67,46 @@ get_header(); ?>
 		<div class="row">
 			<div class="col-md-6 mb-30">
 				<h4 class="title-l1">Latest Venue</h4>
+                <?php
+                /**
+                 * Get latest venue
+                 */
+                 wp_list_authors();
+                $wp_venue_query = new WP_Query( array( 'post_type' => 'venue', 'orderby' => 'date', 'order' => 'desc', 'post_status' => 'publish', 'posts_per_page' => -1 ) );
+
+
+                ?>
+                <?php if ( $wp_venue_query->have_posts(  ) ): ?>
 				<div class="slider slider-l1 mb-20">
 					<div class="slider-venue slider-capt flexslider mb-0">
-					  <ul class="slides">
-					    <li>
-					    	<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/slide.jpg" alt=""> 
-					    	<div class="slider-caption">
-					    		<a href="#" class="link"><div class="slide-title">Tincidunt ut laoreet dolore</div></a>
-					    		<div class="slide-desc">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse... <a href="">read more</a></div>
-					    	</div>	
-					    </li>
-					     <li>
-					    	<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/slide.jpg" alt=""> 
-					    	<div class="slider-caption">
-					    		<a href="#" class="link"><div class="slide-title">Tincidunt ut laoreet dolore</div></a>
-					    		<div class="slide-desc">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse... <a href="">read more</a></div>
-					    	</div>	
-					    </li>
-					     <li>
-					    	<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/slide.jpg" alt=""> 
-					    	<div class="slider-caption">
-					    		<a href="#" class="link"><div class="slide-title">Tincidunt ut laoreet dolore</div></a>
-					    		<div class="slide-desc">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse... <a href="">read more</a></div>
-					    	</div>	
-					    </li>
-					     <li>
-					    	<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/slide.jpg" alt=""> 
-					    	<div class="slider-caption">
-					    		<a href="#" class="link"><div class="slide-title">Tincidunt ut laoreet dolore</div></a>
-					    		<div class="slide-desc">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse... <a href="">read more</a></div>
-					    	</div>	
-					    </li>
-					  </ul>
+
+                            <ul class="slides">
+                            <?php while( $wp_venue_query->have_posts() ): $wp_venue_query->the_post();?>
+                                <li>
+                                    <?php do_action('aut_post_thumnail', 'venue-medium'); ?>
+                                    <div class="slider-caption">
+                                        <a href="#" class="link"><div class="slide-title"><?php the_title(); ?></div></a>
+                                        <div class="slide-desc"><?php echo wp_trim_words(  get_the_content(), $num_words = 20, $more = '<a href="'. get_permalink() .'">read more</a>' ); ?></div>
+                                    </div>
+                                </li>
+                            <?php endwhile; ?>
+                            </ul>
+
 
 					</div>
 					<div id="carousel-venue" class="flexslider mb-0">
 					 <ul class="slides">
-						<li><img src="<?php echo get_template_directory_uri() ?>/images/placeholders/slide_thumb.jpg" alt=""> </li>
-						<li><img src="<?php echo get_template_directory_uri() ?>/images/placeholders/slide_thumb.jpg" alt=""> </li>
-						<li><img src="<?php echo get_template_directory_uri() ?>/images/placeholders/slide_thumb.jpg" alt=""> </li>
-						<li><img src="<?php echo get_template_directory_uri() ?>/images/placeholders/slide_thumb.jpg" alt=""> </li>
-						<li><img src="<?php echo get_template_directory_uri() ?>/images/placeholders/slide_thumb.jpg" alt=""> </li>
+                         <?php while( $wp_venue_query->have_posts() ): $wp_venue_query->the_post();?>
+                             <li><?php do_action('aut_post_thumnail', 'venue-small-thumb'); ?> </li>
+                         <?php endwhile; ?>
 					 </ul>
 
 					</div>
 				</div>
-				<a href="#" class="btn btn-opposite btn-block btn-md">See all venues</a>
+				<a href="<?php echo get_post_type_archive_link( 'venue' ); ?>" class="btn btn-opposite btn-block btn-md"><?php _e( 'See all venues.', 'atu' ); ?></a>
+                <?php else: ?>
+                    <h3><?php _e( 'No Venue found.', 'atu' ); ?></h3>
+                <?php endif; ?>
 			</div>
 			<div class="col-md-6 mb-30">
 				<h4 class="title-l1"><?php _e( 'Latest Vendor List', 'atu' ); ?> </h4>
@@ -140,11 +134,11 @@ get_header(); ?>
                             if ( !empty( $categories ) ) {
                                 $profession = $categories[0]->name;
                             }
-
+                            $image_id = get_user_meta( $vendor->ID, 'profile_image', true );
                             ?>
                             <li class="post-item">
                                 <div class="post-img well-img">
-                                    <img src="<?php echo get_template_directory_uri() ?>/images/placeholders/vendor_thumb1.jpg" alt="">
+                                    <?php echo wp_get_attachment_image( $image_id, 'vendor-small-thumb' ); ?>
                                 </div>
                                 <div class="post-core">
                                     <a href="#" class="link"><div class="post-title t-normal"><?php echo $vendor_info->first_name .' '. $vendor_info->last_name; ?> <span class="post-cat t-highlight"><?php echo $profession; ?></span></div></a>
@@ -153,9 +147,9 @@ get_header(); ?>
                             </li>
                         <?php endforeach; ?>
                     </ul>
-                    <a href="#" class="btn btn-opposite btn-block btn-md">See all Vendors</a>
+                    <a href="#" class="btn btn-opposite btn-block btn-md"><?php _e( 'See all Vendors', 'atu'); ?></a>
                 <?php else: ?>
-                    <h3><?php _e( 'No vendors yet.', 'atu'); ?></h3>
+                    <h3><?php _e( 'No vendors found.', 'atu'); ?></h3>
                 <?php endif; ?>
 
 

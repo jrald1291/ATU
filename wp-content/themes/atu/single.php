@@ -48,6 +48,8 @@ get_header(); ?>
 						<div class="mb-20">
 							 <?php while ( have_posts() ) : the_post();?>
 							 	<?php get_template_part( 'content', get_post_format() );?>
+                                 <p>Written by:
+                                     <?php the_author_posts_link(); ?></p>
 							 <?php endwhile;?>
 						</div>
 					</div>

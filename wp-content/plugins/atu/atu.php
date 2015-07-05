@@ -24,6 +24,13 @@ class ATU {
     }
 
 
+    function atu_theme_setup() {
+        add_image_size( 'venue-listing', 221, 221, true ); // (cropped)
+        add_image_size( 'venue-medium', 553, 372, true ); // (cropped)
+        add_image_size( 'venue-small-thumb', 110, 75, true ); // (cropped)
+        add_image_size( 'vendor-small-thumb', 110, 105, true ); // (cropped)
+    }
+
 
     function enqueue_scripts() {
         wp_enqueue_style( 'atu-css', ATU_ASSETS_URL . 'css/atu.css' );
@@ -34,21 +41,38 @@ class ATU {
     }
 
     function add_role() {
+
+        //remove_role( 'vendor' );
         add_role(
             'vendor',
             __( 'Vendor' ),
             array(
-                'read' => true, // true allows this capability
-                'edit_posts' => true, // Allows user to edit their own posts
-                'edit_pages' => false, // Allows user to edit pages
-                'edit_others_posts' => false, // Allows user to edit others posts not just their own
-                'create_posts' => true, // Allows user to create new posts
-                'manage_categories' => true, // Allows user to manage post categories
-                'publish_posts' => true, // Allows the user to publish, otherwise posts stays in draft mode
-                'edit_themes' => false, // false denies this capability. User can’t edit your theme
-                'install_plugins' => false, // User cant add new plugins
-                'update_plugin' => false, // User can’t update any plugins
-                'update_core' => false // user cant perform core updates
+                'moderate_comments' => 1,
+                'manage_categories' => 0,
+                'manage_links' => 0,
+                'upload_files' => 1,
+                'unfiltered_html' => 1,
+                'edit_posts' => 1,
+                'edit_others_posts' => 0,
+                'edit_published_posts' => 1,
+                'publish_posts' => 1,
+                'edit_pages' => 0,
+                'read' => 1,
+                'edit_others_pages' => 0,
+                'edit_published_pages' => 0,
+                'publish_pages' => 0,
+                'delete_pages' => 0,
+                'delete_others_pages' => 0,
+                'delete_published_pages' => 0,
+                'delete_posts' => 1,
+                'delete_others_posts' => 0,
+                'delete_published_posts' => 1,
+                'delete_private_posts' => 1,
+                'edit_private_posts' => 1,
+                'read_private_posts' => 1,
+                'delete_private_pages' => 0,
+                'edit_private_pages' => 0,
+                'read_private_pages' => 0,
 
             )
         );
@@ -113,6 +137,28 @@ class ATU {
         // Update database check
         add_action( 'plugins_loaded', array( $this, 'atu_update_db_check' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+
+        add_action( 'after_setup_theme', array( $this, 'atu_theme_setup' ) );
+        add_action( 'aut_post_thumnail', array( $this, 'atu_post_thumbnail' ), 1, 2 );
+        //add_action( 'pre_get_posts', array( $this, 'alter_search_ppp_wpse_107154' ) );
+
+    }
+
+    function alter_search_ppp_wpse_107154($qry) {
+        if ($qry->is_main_query() && $qry->is_search()) {
+            // parse your fields here and alter the query with $qry->set like this :
+            $qry->set('post_per_page',10);
+        }
+    }
+
+
+
+    public function atu_post_thumbnail( $size = 'venue-medium', $attr = array( 'alt' => 'Venue image' ) ) {
+        if ( has_post_thumbnail() ) {
+            the_post_thumbnail( $size, $attr );
+        } else {
+            echo '<img src="'. get_template_directory_uri() .'/images/placeholders/slide-single.jpg" alt="">';
+        }
     }
 
     /**

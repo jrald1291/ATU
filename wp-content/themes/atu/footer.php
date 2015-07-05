@@ -105,9 +105,13 @@
 					</div>
 					<div class="form-group">
 						<label for="" class="label-drop">Venue Category<span class="req">*</label>
-						<select class="form-control" name="" id="">
-							<option value="">test</option>
-						</select>
+                        <?php wp_dropdown_categories( array(
+                            'taxonomy'  => 'venue-category',
+                            'hide_empty'         => 0,
+                            'class'              => 'form-control',
+                            'show_option_none'   => '',
+                            'option_none_value'  => '-1',
+                        ) ); ?>
 					</div>
 					<button class="btn btn-secondary btn-block" >Search Venue</button>
 				</form>
@@ -131,9 +135,7 @@
 					</div>
 					<div class="form-group">
 						<label for="" class="label-drop">Vendor Category<span class="req">*</label>
-						<select class="form-control" name="" id="">
-							<option value="">test</option>
-						</select>
+						<?php ATU_Helper::dropwdown_vendor_category(); ?>
 					</div>
 					<button class="btn btn-secondary btn-block" >Search Vendor</button>
 				</form>

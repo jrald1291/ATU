@@ -21,7 +21,7 @@ if ( ! class_exists( 'ATU_Admin_Taxonomy' ) ) {
         public function post_type_init() {
 
             $post_types = array(
-                'venu-category' => array(
+                'venue-category' => array(
                     'post_type' => array( 'venue' ),
                     'args'      => array(
                         'hierarchical'      => true,
@@ -41,7 +41,7 @@ if ( ! class_exists( 'ATU_Admin_Taxonomy' ) ) {
                         'show_ui'           => true,
                         'show_admin_column' => true,
                         'query_var'         => true,
-                        'rewrite'           => array( 'slug' => 'venu-category' ),
+                        'rewrite'           => array( 'slug' => 'venue-category' ),
                     )
                 )
             );
