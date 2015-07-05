@@ -6,8 +6,20 @@
  * @subpackage Twenty_Fourteen
  * @since Twenty Fourteen 1.0
  */
+if ( ! is_user_logged_in() ) {
+    exit( wp_redirect( wp_login_url() ) );
+}
+get_header();
 
-get_header(); ?>
+
+
+
+$current_user = wp_get_current_user();
+
+$user_info = get_user_meta( $current_user->ID );
+
+
+?>
 
 <?php 
 	while ( have_posts() ) : the_post();
@@ -80,14 +92,7 @@ get_header(); ?>
 							  </ul>
 							  <div class="tab-content">
 							    <div role="tabpanel" class="tab-pane active copy" id="description">
-									<p>Hi, I’m Nes.</p>
-									<p>I started crashing weddings at nine years of age and am now a full time creator of happiness through my wedding floristry and styling business.
-									My approach ranges from beautifully rustic and vintage to boho chic and contemporary eleg
-									I particularly like to craft original, romantic and sentimental arrangements, pieces and installations using a couple’s memorabilia and any heirloom pieces within my work. </p>
-									<p>I hand pick all flowers fresh and love to work with the natural environment of each venue to enhance their unique character and accentuate standout features.
-									With my flair for décor and sharp eye for detail, I am able to create your ceremony and reception vision ensuring all those persona and intimate touches you want are remembered.</p>
-									<p>I look forward to helping you with your wedding flower and styling needs.
-									</p>
+									<?php echo $current_user->description ?>
 							    </div>
 							    <div role="tabpanel" class="tab-pane" id="gallery">
 							    	<div id="grid-gallery" class="grid-gallery">

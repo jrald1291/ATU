@@ -58,6 +58,23 @@
 						<div class="widget widget-footer">
 							<div class="widget-header">Contact info</div>
 							<div class="widget-core">
+<<<<<<< HEAD
+								<ul class="widget-list">
+									<li>
+										<a href=""><span class="fa fa-envelope"></span> : info.yourweddingalltiedup.com.au</a>
+									</li>
+									<li>
+										<a href=""><span class="fa fa-phone"></span> : 1234-0000-34-00</a>
+									</li>
+								</ul>
+                                <form class="form form-labeled atu-membership-form">
+                                    <div class="form-group field-wrap">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" name="email" class="form-control" required>
+                                    </div>
+                                    <button class="btn btn-primary btn-block" type="submit"><span class="fa fa-user icon-l"></span>Become a member</button>
+                                </form>
+=======
 								<?php if (of_get_option('tel', '') or of_get_option('email', '')): ?>
 									<ul class="widget-list">
 										<li>
@@ -73,6 +90,7 @@
 									</ul>
 								<?php endif ?>
                                 <?php do_action( 'atu_membership_form' ); ?>
+>>>>>>> 6983d3733873f01d5bc99ddb15796927641f1357
 							</div>
 
 						</div>

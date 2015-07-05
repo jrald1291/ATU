@@ -27,7 +27,7 @@
                 console.log(results);
 
                 if (results.status == 'success') {
-                    $('.reg-code').text(results.message).removeClass('hidden');
+                    $('.reg-code').html(results.message).removeClass('hidden');
                 } else {
                     $('<div id="message" class="error fade"><p><strong>' + results.message + '</strong></p></div>').insertAfter('h2.nav-tab-wrapper');
                 }
