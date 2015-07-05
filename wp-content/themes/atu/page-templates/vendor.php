@@ -9,8 +9,22 @@
 
 get_header(); ?>
 
+<?php 
+	while ( have_posts() ) : the_post();
+		$bg = of_get_option('banner', '');
+		$page_bg = wp_get_attachment_image_src(get_field('page_background',36),'large');
+		$page_bg = $page_bg[0];
+		if (!$page_bg) {
+			$page_bg = $bg;
+		}
+		if ($page_bg == "" and $bg == "") {
+			$page_bg = get_template_directory_uri()."/assets/images/banner.jpg";
+		}
+	endwhile;
+	wp_reset_postdata();
+?>
 
-<div class="l-content-bg content-single">
+<div class="l-content-bg" style="background: url('<?php echo $page_bg; ?>') no-repeat"> 
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9">

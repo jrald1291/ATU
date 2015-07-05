@@ -10,10 +10,17 @@
 get_header(); ?>
 <?php 
 	$bg = of_get_option('banner', '');
-	$intro_img = wp_get_attachment_image_src(get_field('page_background'));
+	$page_bg = wp_get_attachment_image_src(get_field('page_background'));
+	$page_bg = $page_bg[0];
+	if (!$page_bg) {
+		$page_bg = $bg;
+	}
+	if ($page_bg== "" and $bg == "") {
+		$page_bg = get_template_directory_uri()."/assets/images/banner.jpg";
+	}
 
 ?>
-<div class="section section-banner banner">
+<div class="section section-banner banner" style="background: url('<?php echo $page_bg; ?>') no-repeat">
 	<div class="banner-content">
 		<div class="banner-actions">
 			<h1 class="t-md t-title">
