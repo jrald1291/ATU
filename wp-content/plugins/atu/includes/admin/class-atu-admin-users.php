@@ -22,8 +22,40 @@ if ( !class_exists('ATU_Admin_Users') ) {
             /* Update the profession terms when the edit user page is updated. */
             add_action( 'personal_options_update', array( $this, 'my_save_user_profession_terms' ) );
             add_action( 'edit_user_profile_update', array( $this, 'my_save_user_profession_terms' ) );
+
+            add_action( 'personal_options', array ( $this, 'start' ) );
         }
 
+        /**
+         * Called on 'personal_options'.
+         *
+         * @return void
+         */
+        public function start()
+        {
+            $action = ( IS_PROFILE_PAGE ? 'show' : 'edit' ) . '_user_profile';
+            add_action( $action, array ( $this, 'stop' ) );
+            ob_start();
+        }
+
+        /**
+         * Strips the bio box from the buffered content.
+         *
+         * @return void
+         */
+        public static function stop()
+        {
+            $html = ob_get_contents();
+            ob_end_clean();
+
+            // remove the headline
+            $headline = __( IS_PROFILE_PAGE ? 'About Yourself' : 'About the user' );
+            $html = str_replace( '<h3>' . $headline . '</h3>', '', $html );
+
+            // remove the table row
+            $html = preg_replace( '~<tr class="user-description-wrap">\s*<th><label for="description".*</tr>~imsUu', '', $html );
+            print $html;
+        }
 
         /**
          * Saves the term selected on the edit user/profile page in the admin. This function is triggered when the page
