@@ -28,7 +28,7 @@ asdf
             <div class="col-md-9">
                 <div class="l-content-container">
                     <div class="page-header">
-                        <form action="<?php echo get_post_type_archive_link( 'venue' ); ?>" class="form">
+                        <form action="<?php echo home_url( '/' ); ?>" class="form">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -48,6 +48,7 @@ asdf
                                     </div>
                                 </div>
                                 <div class="col-md-3">
+                                    <input type="hidden" name="post_type" value="venue">
                                     <button class="btn btn-secondary btn-block" ><span class="fa fa-search icon-l"></span>Search Venue</button>
                                 </div>
                             </div>
