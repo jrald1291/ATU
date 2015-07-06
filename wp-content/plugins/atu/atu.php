@@ -13,7 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 //error_reporting(0);
-
+//add_rewrite_rule(
+//    '^'.$user_slug.'/([^/]*)$',
+//    'index.php?page_id='.$user_page_id.'&um_user=$matches[1]',
+//    'top'
+//);
 class ATU {
     var $atu_db_version = '1.0';
 
@@ -25,9 +29,11 @@ class ATU {
 
 
     function atu_theme_setup() {
+        add_image_size( 'gallery-thumb', 186, 186, true ); // (cropped)
         add_image_size( 'venue-listing', 221, 221, true ); // (cropped)
         add_image_size( 'venue-medium', 553, 372, true ); // (cropped)
         add_image_size( 'venue-small-thumb', 110, 75, true ); // (cropped)
+        add_image_size( 'venue-xs-small-thumb', 60, 60, true ); // (cropped)
         add_image_size( 'vendor-small-thumb', 110, 105, true ); // (cropped)
     }
 
@@ -38,6 +44,11 @@ class ATU {
         wp_localize_script( 'atu-js', 'ATU', array(
             'ajaxurl' => admin_url('admin-ajax.php'),
         ) );
+
+        if ( is_single() ) {
+            wp_enqueue_script('acf-map', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false', array(), false, true);
+            wp_enqueue_script('atu-map', ATU_ASSETS_URL . 'js/google-map.js', array('acf-map'), false, true);
+        }
     }
 
     function add_role() {
@@ -140,15 +151,32 @@ class ATU {
 
         add_action( 'after_setup_theme', array( $this, 'atu_theme_setup' ) );
         add_action( 'aut_post_thumnail', array( $this, 'atu_post_thumbnail' ), 1, 2 );
-        //add_action( 'pre_get_posts', array( $this, 'alter_search_ppp_wpse_107154' ) );
+        add_action( 'pre_get_posts', array( $this, 'alter_search_ppp_wpse_107154' ) );
 
     }
 
-    function alter_search_ppp_wpse_107154($qry) {
-        if ($qry->is_main_query() && $qry->is_search()) {
+    public function alter_search_ppp_wpse_107154( $qry ) {
+        if ( is_archive() ) {
+
+            if ( $qry->is_main_query() && $qry->is_search() ) {
+                // parse your fields here and alter the query with $qry->set like this :
+                //$qry->set('post_per_page',10);
+
+                if ( ! isset( $_REQUEST['s'] ) ) {
+                    $_REQUEST['s'] = '';
+                }
+
+                $qry->set( 'post_title', 'like', '%'. $_REQUEST['s'] .'%' );
+
+            }
+
+
+        }
+        /*
+        if ( $qry->is_main_query() && $qry->is_search() ) {
             // parse your fields here and alter the query with $qry->set like this :
             $qry->set('post_per_page',10);
-        }
+        }*/
     }
 
 
