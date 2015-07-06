@@ -28,6 +28,7 @@ class ATU {
         add_image_size( 'venue-listing', 221, 221, true ); // (cropped)
         add_image_size( 'venue-medium', 553, 372, true ); // (cropped)
         add_image_size( 'venue-small-thumb', 110, 75, true ); // (cropped)
+        add_image_size( 'venue-xs-small-thumb', 60, 60, true ); // (cropped)
         add_image_size( 'vendor-small-thumb', 110, 105, true ); // (cropped)
     }
 
