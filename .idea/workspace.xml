@@ -2,314 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a654bd7-c18b-4635-b54e-0bf35eb37078" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/avatar-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/avatar-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/avatar-221x221.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/avatar-265x265.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/banner-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/banner-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/banner-221x221.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/banner-265x147.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/banner-553x372.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/contact-avatar-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/contact-avatar-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/download-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/download-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/download-120x120.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/download.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery1-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery1-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery2-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery2-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery3-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery3-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery4-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery4-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery5-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery5-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery6-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery6-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery7-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery7-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery8-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery8-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/image_intro-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/image_intro-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/image_intro-221x217.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/image_intro-265x127.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso1-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso1-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso1-221x221.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso2-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso2-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso2-221x221.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso3-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso3-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso3-221x221.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso4-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso4-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso4-221x221.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso5-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso5-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso5-221x221.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso6-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso6-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso6-221x221.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso7-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso7-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso7-221x221.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso8-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso8-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso8-196x265.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso8-221x221.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso9-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso9-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso9-221x221.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/pdf-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/pdf-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-221x221.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-553x372.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-221x221.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-553x372.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-221x221.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-553x372.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/plugins/force-regenerate-thumbnails/screenshot-1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/plugins/force-regenerate-thumbnails/screenshot-2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-221x221.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-265x178.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-553x372.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-single-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-single-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-single-221x221.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-single-265x97.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-single-553x313.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide_thumb-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide_thumb-110x79.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team1-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team1-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team2-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team2-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team3-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team3-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team4-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team4-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team5-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team5-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team6-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team6-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/plugins/force-regenerate-thumbnails/jquery-ui/redmond/images/ui-bg_flat_0_aaaaaa_40x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/plugins/force-regenerate-thumbnails/jquery-ui/redmond/images/ui-bg_flat_55_fbec88_40x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/plugins/force-regenerate-thumbnails/jquery-ui/redmond/images/ui-bg_glass_75_d0e5f5_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/plugins/force-regenerate-thumbnails/jquery-ui/redmond/images/ui-bg_glass_85_dfeffc_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/plugins/force-regenerate-thumbnails/jquery-ui/redmond/images/ui-bg_glass_95_fef1ec_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/plugins/force-regenerate-thumbnails/jquery-ui/redmond/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/plugins/force-regenerate-thumbnails/jquery-ui/redmond/images/ui-bg_inset-hard_100_f5f8f9_1x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/plugins/force-regenerate-thumbnails/jquery-ui/redmond/images/ui-bg_inset-hard_100_fcfdfd_1x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor-logo-110x105.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor-logo-110x75.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor-logo-221x180.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor-logo-265x174.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor1-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor1-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor2-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor2-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor3-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor3-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor4-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor4-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor5-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor5-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor6-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor6-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor7-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor7-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor8-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor8-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor9-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor9-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor_thumb1-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor_thumb1-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor_thumb2-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor_thumb2-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor_thumb3-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor_thumb3-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor_thumb4-110x105.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor_thumb4-110x75.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/themes/atu/archive-venue.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/plugins/force-regenerate-thumbnails/force-regenerate-thumbnails.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/plugins/force-regenerate-thumbnails/jquery-ui/redmond/jquery-ui-1.7.2.custom.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/plugins/force-regenerate-thumbnails/jquery-ui/jquery.ui.progressbar.min.1.7.2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/plugins/force-regenerate-thumbnails/jquery-ui/jquery.ui.progressbar.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/plugins/force-regenerate-thumbnails/readme.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wp-content/plugins/force-regenerate-thumbnails/style.css" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\avatar-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\avatar-200x200.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\banner-200x111.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\banner-300x166.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\gallery1-169x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\gallery2-169x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\gallery3-169x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\gallery4-169x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\gallery5-169x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\gallery6-169x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\gallery7-169x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\gallery8-169x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\image_intro-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\image_intro-200x96.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\image_intro-300x143.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso1-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso1-200x173.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso2-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso2-200x173.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso3-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso3-200x173.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso4-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso4-200x173.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso5-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso5-200x173.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso6-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso6-200x173.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso7-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso7-200x173.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso8-148x200.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso8-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso8-222x300.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso9-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\iso9-200x173.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\slide-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\slide-200x135.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\slide-300x202.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\slide-single-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\slide-single-200x73.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\slide-single-300x109.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\team1-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\team2-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\team3-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\team4-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\team5-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\team6-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor-logo-177x125.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor-logo-200x131.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor1-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor1-200x200.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor2-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor2-200x200.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor3-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor3-200x200.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor4-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor4-200x200.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor5-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor5-200x200.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor6-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor6-200x200.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor7-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor7-200x200.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor8-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor8-200x200.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor9-177x125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\atu\wp-content\uploads\2015\07\vendor9-200x200.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/avatar-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/avatar-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/avatar-230x230.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/avatar-230x230.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/avatar-289x230.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/avatar-289x230.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/banner-1024x568.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/banner-1024x568.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/banner-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/banner-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/banner-230x230.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/banner-230x230.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/banner-455x230.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/banner-455x230.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/banner-825x510.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/banner-825x510.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/banner-860x320.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/banner-860x320.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery1-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery1-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery2-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery2-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery3-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery3-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery4-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery4-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery5-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery5-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery6-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery6-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery7-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery7-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery8-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/gallery8-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/image_intro-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/image_intro-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/image_intro-230x217.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/image_intro-230x217.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso1-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso1-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso1-230x226.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso1-230x226.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso2-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso2-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso2-230x226.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso2-230x226.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso3-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso3-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso3-230x226.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso3-230x226.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso4-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso4-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso4-230x226.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso4-230x226.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso5-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso5-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso5-230x226.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso5-230x226.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso6-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso6-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso6-230x226.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso6-230x226.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso7-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso7-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso7-230x226.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso7-230x226.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso8-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso8-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso8-230x230.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso8-230x230.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso8-262x230.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso8-262x230.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso8-262x320.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso8-262x320.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso9-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso9-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso9-230x226.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/iso9-230x226.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-1024x683.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-1024x683.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-230x230.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-230x230.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-265x177.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-265x177.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-455x230.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-455x230.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-825x510.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-825x510.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-860x320.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1424746219973-8fe3bd07d8e31-860x320.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-1024x683.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-1024x683.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-230x230.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-230x230.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-265x177.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-265x177.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-455x230.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-455x230.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-825x510.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-825x510.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-860x320.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429277096327-11ee3b761c93-860x320.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-1024x574.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-1024x574.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-230x230.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-230x230.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-265x149.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-265x149.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-455x230.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-455x230.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-825x510.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-825x510.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-860x320.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/photo-1429966163023-c132bc887fdd-860x320.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-230x230.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-230x230.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-455x230.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-455x230.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-579x320.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-579x320.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-single-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-single-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-single-230x230.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-single-230x230.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-single-455x230.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-single-455x230.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-single-825x313.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/slide-single-825x313.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/team1-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team1-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/team2-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team2-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/team3-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team3-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/team4-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team4-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/team5-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team5-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/team6-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/team6-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor-logo-120x120.png" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor-logo-120x120.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor-logo-230x180.png" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor-logo-230x180.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor1-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor1-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor2-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor2-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor3-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor3-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor4-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor4-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor5-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor5-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor6-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor6-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor7-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor7-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor8-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor8-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor9-120x120.jpg" afterPath="$PROJECT_DIR$/wp-content/uploads/2015/07/vendor9-120x120.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/plugins/atu/atu.php" afterPath="$PROJECT_DIR$/wp-content/plugins/atu/atu.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-post.php" afterPath="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-post.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-taxonomy.php" afterPath="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-taxonomy.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-users.php" afterPath="$PROJECT_DIR$/wp-content/plugins/atu/includes/admin/class-atu-admin-users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-helper.php" afterPath="$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/atu/footer.php" afterPath="$PROJECT_DIR$/wp-content/themes/atu/footer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/atu/page-templates/front-page.php" afterPath="$PROJECT_DIR$/wp-content/themes/atu/page-templates/front-page.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/atu/functions.php" afterPath="$PROJECT_DIR$/wp-content/themes/atu/functions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/atu/single.php" afterPath="$PROJECT_DIR$/wp-content/themes/atu/single.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="atu.iws" />
@@ -340,118 +32,7 @@
     <favorites_list name="atu" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="front-page.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/page-templates/front-page.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7772861" vertical-offset="1836" max-vertical-offset="2975">
-              <caret line="145" column="38" selection-start-line="145" selection-start-column="38" selection-end-line="145" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vendors-list.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/page-templates/vendors-list.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="4318">
-              <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="single.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/page-templates/single.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="2618">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="atu.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/atu.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="3298">
-              <caret line="30" column="43" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="class-atu-registration.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.384615" vertical-offset="5355" max-vertical-offset="6970">
-              <caret line="337" column="22" selection-start-line="337" selection-start-column="22" selection-end-line="337" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="archive-venue.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/archive-venue.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="41.923077" vertical-offset="1651" max-vertical-offset="2941">
-              <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
-              <folding>
-                <element signature="e#6#582#0#PHP" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <marker date="1436112182936" expanded="true" signature="6800:7079" placeholder="..." />
-                <marker date="1436112182936" expanded="true" signature="6842:7079" placeholder="..." />
-                <marker date="1436112182936" expanded="true" signature="6908:7079" placeholder="..." />
-                <marker date="1436112182936" expanded="true" signature="7025:7079" placeholder="..." />
-                <marker date="1436112182936" expanded="true" signature="7257:7803" placeholder="..." />
-                <marker date="1436112182936" expanded="true" signature="7324:7776" placeholder="..." />
-                <marker date="1436112182936" expanded="true" signature="7475:7651" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/search.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="697">
-              <caret line="13" column="37" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="archive.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/archive.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.576923" vertical-offset="176" max-vertical-offset="918">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sidebar.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/sidebar.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.3076925" vertical-offset="40" max-vertical-offset="731">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sidebar-secondary.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/sidebar-secondary.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="1989">
-              <caret line="2" column="54" selection-start-line="2" selection-start-column="54" selection-end-line="2" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
@@ -538,6 +119,12 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Default" />
+        <subPane subId="Problems" />
+        <subPane subId="Tests" />
+        <subPane subId="Project Files" />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -734,12 +321,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Default" />
-        <subPane subId="Problems" />
-        <subPane subId="Tests" />
-        <subPane subId="Project Files" />
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -780,9 +361,6 @@
       <BehatRunner />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
@@ -790,6 +368,9 @@
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="false" name="ATU" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" server_name="Localhost" start_url="/atu/venue/">
@@ -816,27 +397,27 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293011" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969153" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16131106" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3986577" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16323908" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293011" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3986577" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -923,6 +504,72 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/page-templates/single.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2618">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/atu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="3298">
+          <caret line="30" column="43" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5355" max-vertical-offset="6970">
+          <caret line="337" column="22" selection-start-line="337" selection-start-column="22" selection-end-line="337" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/archive-venue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1651" max-vertical-offset="2941">
+          <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
+          <folding>
+            <element signature="e#6#582#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="697">
+          <caret line="13" column="37" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/archive.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="918">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/sidebar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="40" max-vertical-offset="731">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/sidebar-secondary.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="1989">
+          <caret line="2" column="54" selection-start-line="2" selection-start-column="54" selection-end-line="2" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/htaccess.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7098151" vertical-offset="10908" max-vertical-offset="11611">
@@ -1025,7 +672,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.675841" vertical-offset="0" max-vertical-offset="29563">
           <caret line="26" column="2" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1033,7 +679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-16.32" vertical-offset="0" max-vertical-offset="850">
           <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1041,7 +686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="717">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1049,7 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="1275">
           <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1057,7 +700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.653846" vertical-offset="5935" max-vertical-offset="6613">
           <caret line="394" column="12" selection-start-line="394" selection-start-column="12" selection-end-line="394" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1065,7 +707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.8846154" vertical-offset="502" max-vertical-offset="31110">
           <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1073,7 +714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.8846154" vertical-offset="63640" max-vertical-offset="80257">
           <caret line="3761" column="0" selection-start-line="3761" selection-start-column="0" selection-end-line="3761" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1081,7 +721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.923077" vertical-offset="923" max-vertical-offset="1343">
           <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1089,7 +728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-30.692308" vertical-offset="9946" max-vertical-offset="14076">
           <caret line="638" column="2" selection-start-line="638" selection-start-column="2" selection-end-line="638" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1097,7 +735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="663">
           <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1105,7 +742,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.692307" vertical-offset="255" max-vertical-offset="1088">
           <caret line="45" column="50" selection-start-line="45" selection-start-column="50" selection-end-line="45" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1129,7 +765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18813314" vertical-offset="244" max-vertical-offset="935">
           <caret line="37" column="77" selection-start-line="0" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1145,7 +780,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.0384617" vertical-offset="8063" max-vertical-offset="15215">
           <caret line="500" column="0" selection-start-line="500" selection-start-column="0" selection-end-line="500" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1153,9 +787,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-29.346153" vertical-offset="988" max-vertical-offset="2941">
           <caret line="103" column="64" selection-start-line="103" selection-start-column="64" selection-end-line="103" selection-end-column="64" />
-          <folding>
-            <marker date="1436109699091" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1163,9 +794,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.1923075" vertical-offset="673" max-vertical-offset="3502">
           <caret line="46" column="62" selection-start-line="46" selection-start-column="62" selection-end-line="46" selection-end-column="62" />
-          <folding>
-            <marker date="1436107400799" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1179,7 +808,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/includes/class-atu-registration.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.384615" vertical-offset="5355" max-vertical-offset="6970">
+        <state vertical-scroll-proportion="0.54202896" vertical-offset="5355" max-vertical-offset="6970">
           <caret line="337" column="22" selection-start-line="337" selection-start-column="22" selection-end-line="337" selection-end-column="22" />
           <folding />
         </state>
@@ -1187,7 +816,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/search.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="697">
+        <state vertical-scroll-proportion="0.31014493" vertical-offset="7" max-vertical-offset="697">
           <caret line="13" column="37" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
           <folding />
         </state>
@@ -1195,7 +824,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/archive.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.576923" vertical-offset="176" max-vertical-offset="918">
+        <state vertical-scroll-proportion="0.36086956" vertical-offset="176" max-vertical-offset="918">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
@@ -1203,7 +832,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/sidebar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.3076925" vertical-offset="40" max-vertical-offset="731">
+        <state vertical-scroll-proportion="0.23768117" vertical-offset="40" max-vertical-offset="731">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
@@ -1211,7 +840,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/sidebar-secondary.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="1989">
+        <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="1989">
           <caret line="2" column="54" selection-start-line="2" selection-start-column="54" selection-end-line="2" selection-end-column="54" />
           <folding />
         </state>
@@ -1227,7 +856,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/page-templates/vendors-list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="4318">
+        <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="4318">
           <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
           <folding />
         </state>
@@ -1235,39 +864,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/archive-venue.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="41.923077" vertical-offset="1651" max-vertical-offset="2941">
+        <state vertical-scroll-proportion="-1.5797101" vertical-offset="1651" max-vertical-offset="2941">
           <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
           <folding>
             <element signature="e#6#582#0#PHP" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1436112182936" expanded="true" signature="6800:7079" placeholder="..." />
-            <marker date="1436112182936" expanded="true" signature="6842:7079" placeholder="..." />
-            <marker date="1436112182936" expanded="true" signature="6908:7079" placeholder="..." />
-            <marker date="1436112182936" expanded="true" signature="7025:7079" placeholder="..." />
-            <marker date="1436112182936" expanded="true" signature="7257:7803" placeholder="..." />
-            <marker date="1436112182936" expanded="true" signature="7324:7776" placeholder="..." />
-            <marker date="1436112182936" expanded="true" signature="7475:7651" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/atu/atu.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="3298">
+        <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="3298">
           <caret line="30" column="43" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/atu/page-templates/front-page.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7772861" vertical-offset="1836" max-vertical-offset="2975">
-          <caret line="145" column="38" selection-start-line="145" selection-start-column="38" selection-end-line="145" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40177253" vertical-offset="1836" max-vertical-offset="2975">
+          <caret line="130" column="68" selection-start-line="130" selection-start-column="68" selection-end-line="130" selection-end-column="68" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
