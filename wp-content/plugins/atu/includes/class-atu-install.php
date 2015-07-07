@@ -37,10 +37,15 @@ if ( !class_exists('ATU_Install') ) {
         public function atu_flush_rules() {
             $rules = get_option( 'rewrite_rules' );
 
+            global $wp_rewrite;
+
+
+            // || ! isset( $rules['(vendors)/(.+)$'] )
             if ( ! isset( $rules['(vendor)/(.+)$'] ) ) {
-                global $wp_rewrite;
+
                 $wp_rewrite->flush_rules();
             }
+
 
         }
 
@@ -48,6 +53,7 @@ if ( !class_exists('ATU_Install') ) {
         public function my_insert_rewrite_rules( $rules ) {
             $newrules = array();
             $newrules['(vendor)/(.+)$'] = 'index.php?pagename=$matches[1]&username=$matches[2]';
+            //$newrules['(vendors)/(.+)$'] = 'index.php?pagename=$matches[1]&p=$matches[2]';
 
             return $newrules + $rules;
         }
@@ -56,6 +62,7 @@ if ( !class_exists('ATU_Install') ) {
         public function my_insert_query_vars( $vars ) {
 
             array_push($vars, 'username');
+            //array_push($vars, 'p');
 
             return $vars;
         }

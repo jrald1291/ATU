@@ -62,5 +62,35 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
 
             echo $return_string;
         }
+
+        public static function list_vendor_category( $args = array() ) {
+            $options = wp_parse_args( array(
+                'echo' => true,
+            ), $args );
+
+            extract( $options );
+
+            $terms = get_terms( 'profession', array( 'hide_empty' => false ) );
+
+            $return_string = '';
+            if ( ! empty( $terms ) ) {
+
+
+                $return_string .= '<ul class="list">';
+                foreach ( $terms as $term ) {
+
+                    $return_string .= '<li><a href="'. get_term_link( $term->slug, 'profession' ) .'">' . $term->name . '</a></li>';
+
+                    //$return_string .= '<option value="'. $term->slug .'">' . $term->name . '</option>';
+                }
+
+                $return_string .= '</ul>';
+            }
+
+            if ( ! $echo )
+                return $return_string;
+
+            echo $return_string;
+        }
     }
 }

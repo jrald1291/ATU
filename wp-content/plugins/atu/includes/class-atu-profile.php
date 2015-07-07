@@ -26,12 +26,17 @@ if( ! class_exists( 'ATU_Profile' ) ) {
                 if( isset( $username ) && get_user_by( 'login', $username ) ) {
 
                     $page_template = dirname(__FILE__) . '/views/vendor-page-template.php';
-
                 } else {
+
                     $page_template = get_query_template('404');
                 }
 
 
+            }
+
+
+            if ( is_page( 'vendors' ) ) {
+                $page_template = dirname(__FILE__) . '/views/vendor-search-template.php';
             }
 
 
