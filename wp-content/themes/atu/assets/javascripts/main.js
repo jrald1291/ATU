@@ -91,7 +91,7 @@ var util = {
       },
       Forms: function(){
     
-        $('.form-labeled').find('input, textarea').on('keyup blur focus change', function (e) {
+        $('.form-labeled').find('.form-control').on('keyup blur focus change', function (e) {
   
             var $this = $(this),
                 label = $this.parent(".wpcf7-form-control-wrap, .form-control-wrap").prev('label');
