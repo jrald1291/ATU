@@ -17,7 +17,8 @@ if( ! class_exists( 'ATU_Profile' ) ) {
             add_filter( 'page_template', array( $this, 'vendor_page_template' ) );
         }
 
-        public function vendor_page_template() {
+        public function vendor_page_template( $page_template ) {
+
             if ( is_page( 'vendor' ) ) {
                 $page_template = dirname( __FILE__ ) . '/views/vendor-page-template.php';
             }
