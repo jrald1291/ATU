@@ -83,3 +83,48 @@ $user_info = get_user_meta( $current_user->$user_id );
 <?php get_footer(); ?>
 
 
+<!-- <div class="row">
+<div class="col-md-6">
+<div class="form-group field-wrap">
+<label for="">Name<span class="req">*</span></label>
+[text* name class:form-control]
+</div>
+<div class="form-group field-wrap">
+<label for="">Email<span class="req">*</span></label>
+[email* email class:form-control]
+</div>
+<div class="form-group">
+<label for="" class="label-drop">Event Type<span class="req">*</label>
+[select event id:event_type  class:form-control "Wedding" "Debut" "Birthday"]
+</div>
+<div class="form-group">
+<label for="" class="label-drop">Who do you need?</label>
+[select vendor id:vendor_category class:form-control multiple "Planner" "Photographer"]
+</div>
+<div class="form-group">
+<label for="" class="label-drop">Venue type for event</label>
+[select venue id:venue_category class:form-control "Beach" "Barn"]
+</div>
+<div class="form-group">
+<label for="" class="label-drop">Date of Event<span class="req">*</label>
+[date* date id:date_event class:form-control]
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-group field-wrap">
+<label for="">Phone<span class="req">*</span></label>
+[tel* phone class:form-control]
+</div>
+<div class="form-group field-wrap">
+<label for="">Address<span class="req">*</span></label>
+[text* address class:form-control]
+</div>
+<div class="form-group field-wrap">
+<label for="">Message<span class="req">*</span></label>
+[textarea* message x14 class:form-control]
+</div>
+</div>
+</div>
+[hidden user_email id:user_email]
+[hidden company_name id:company_name]
+[submit class:btn class:btn-primary class:btn-block class:btn-lg "Send Message"] -->

@@ -8,19 +8,8 @@
  */
 
 get_header(); ?>
-<?php 
-	$bg = of_get_option('banner', '');
-	$page_bg = wp_get_attachment_image_src(get_field('page_background'));
-	$page_bg = $page_bg[0];
-	if (!$page_bg) {
-		$page_bg = $bg;
-	}
-	if ($page_bg== "" and $bg == "") {
-		$page_bg = get_template_directory_uri()."/assets/images/banner.jpg";
-	}
 
-?>
-<div class="section section-banner banner" style="background: url('<?php echo $page_bg; ?>') no-repeat">
+<div class="section section-banner banner" style="background: url('<?php ATU_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>') no-repeat">
 	<div class="banner-content">
 		<div class="banner-actions">
 			<h1 class="t-md t-title">
@@ -125,9 +114,6 @@ get_header(); ?>
 
                             $vendor_info = get_userdata($vendor->ID);
 
-//                            echo '<pre>';
-//                            print_r($vendor_info);
-//                            echo '</pre>';
                             $description = wp_trim_words(  get_user_meta( $vendor->ID, 'description', true ), $num_words = 20, $more = '...' );
                             $profession = '';
                             $categories = wp_get_object_terms( $vendor->ID, 'profession', false );
@@ -141,7 +127,7 @@ get_header(); ?>
                                     <?php echo wp_get_attachment_image( $image_id, 'vendor-small-thumb' ); ?>
                                 </div>
                                 <div class="post-core">
-                                    <a href="#" class="link"><div class="post-title t-normal"><?php echo $vendor_info->first_name .' '. $vendor_info->last_name; ?> <span class="post-cat t-highlight"><?php echo $profession; ?></span></div></a>
+                                    <a href="/vendor/<?php echo $vendor->user_login; ?>" class="link"><div class="post-title t-normal"><?php echo $vendor_info->first_name .' '. $vendor_info->last_name; ?> <span class="post-cat t-highlight"><?php echo $profession; ?></span></div></a>
                                     <p><?php echo $description; ?>.</p>
                                 </div>
                             </li>

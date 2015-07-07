@@ -16,20 +16,23 @@
 <aside class="l-sidebar">
 	<div class="widget widget-aside">
 		<div class="ven-avatar">
-			<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/avatar.jpg" alt="">
-			<div class="ven-name" data-color="#ff73b2">Nes Naser</div>
+
+			<?php
+            // Get featured image
+            if ( has_post_thumbnail() ) {
+                the_post_thumbnail( 'venue-listing' );
+            }
+             ?>
+			<div class="ven-name" data-color="#ff73b2"><?php the_title(); ?></div>
 		</div>
 	</div>
 	<div class="widget widget-aside widget-list">
 		<div class="widget-list_logo">
-			<img src="<?php echo get_template_directory_uri() ?>/images/placeholders/vendor-logo.png" alt="">
+            <?php echo wp_get_attachment_image( get_field( 'company_logo' ),  'venue-listing' ); ?>
 		</div>
 		<div class="widget-header">Florist and Stylist</div>
 		<ul class="list">
-			<li><a href="">Mobile: <?php echo $current_user->mobile;?></a></li>
-			<li><a href="">Phone: 0405 421 387</a></li>
-			<li><a href="">nes@inspiredbyhappiness.com.au</a></li>
-			<li><a href="">www.inspiredbyhappiness.com.au</a></li>
+
 		</ul>
 
 	</div>
@@ -37,7 +40,7 @@
 		<a href="<?php echo get_permalink( get_page_by_title( 'Contact' ))?>" class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Vendor</a>
 	</div>
 	<div class="widget widget-aside">
-		<a href="" class="btn btn-sm btn-block btn-secondary"><span class="fa icon-l-sm fa-globe"></span>Visit website</a>
+		<a href="<?php the_field( 'website' ); ?>" target="_blank" class="btn btn-sm btn-block btn-secondary"><span class="fa icon-l-sm fa-globe"></span>Visit website</a>
 	</div>
 	<div class="widget widget-aside">
 		<div class="call-to-action">

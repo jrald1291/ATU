@@ -29,6 +29,7 @@ class ATU {
 
 
     function atu_theme_setup() {
+        add_image_size( 'gallery-thumb', 186, 186, true ); // (cropped)
         add_image_size( 'venue-listing', 221, 221, true ); // (cropped)
         add_image_size( 'venue-medium', 553, 372, true ); // (cropped)
         add_image_size( 'venue-small-thumb', 110, 75, true ); // (cropped)
@@ -43,6 +44,11 @@ class ATU {
         wp_localize_script( 'atu-js', 'ATU', array(
             'ajaxurl' => admin_url('admin-ajax.php'),
         ) );
+
+        if ( is_single() ) {
+            wp_enqueue_script('acf-map', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false', array(), false, true);
+            wp_enqueue_script('atu-map', ATU_ASSETS_URL . 'js/google-map.js', array('acf-map'), false, true);
+        }
     }
 
     function add_role() {
@@ -145,16 +151,143 @@ class ATU {
 
         add_action( 'after_setup_theme', array( $this, 'atu_theme_setup' ) );
         add_action( 'aut_post_thumnail', array( $this, 'atu_post_thumbnail' ), 1, 2 );
-        //add_action( 'pre_get_posts', array( $this, 'alter_search_ppp_wpse_107154' ) );
+        add_action( 'pre_get_posts', array( $this, 'atu_advance_search' ) );
+        add_action( 'atu_pagination', array( $this, 'atu_do_pagination' ) );
 
+        add_action( 'atu_venue_search_form', array( $this, 'atu_venue_search_form' ) );
+        add_action( 'atu_vendor_search_form', array( $this, 'atu_vendor_search_form' ) );
     }
 
-    function alter_search_ppp_wpse_107154($qry) {
-        if ($qry->is_main_query() && $qry->is_search()) {
-            // parse your fields here and alter the query with $qry->set like this :
-            $qry->set('post_per_page',10);
+    public function atu_vendor_search_form() {
+        ?>
+        <form action="<?php echo home_url( '/' ); ?>" class="form">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                    <input type="text" name="s" class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <div class="input-group-addon"><?php _e( 'Venue Category', 'atu' ); ?></div>
+                            <?php wp_dropdown_categories( array(
+                            'taxonomy'  => 'venue-category',
+                            'name'               => 'venue-category',
+                            'hide_empty'         => 0,
+                            'class'              => 'form-control',
+                            'show_option_none'   => '',
+                            'option_none_value'  => '-1',
+                            ) ); ?>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <input type="hidden" name="post_type" value="venue">
+                    <button class="btn btn-secondary btn-block" ><span class="fa fa-search icon-l"></span><?php _e( 'Search Venue', 'atu' ); ?></button>
+                </div>
+            </div>
+        </form>
+    <?php
+    }
+
+
+
+    public function atu_venue_search_form() {
+        ?>
+        <form action="<?php echo home_url( '/' ); ?>" class="form">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="s" class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <div class="input-group-addon"><?php _e( 'Venue Category', 'atu' ); ?></div>
+                        <?php wp_dropdown_categories( array(
+                            'taxonomy'  => 'venue-category',
+                            'name'               => 'venue-category',
+                            'hide_empty'         => 0,
+                            'class'              => 'form-control',
+                            'show_option_none'   => '',
+                            'option_none_value'  => '-1',
+                        ) ); ?>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <input type="hidden" name="post_type" value="venue">
+                    <button class="btn btn-secondary btn-block" ><span class="fa fa-search icon-l"></span><?php _e( 'Search Venue', 'atu' ); ?></button>
+                </div>
+            </div>
+        </form>
+    <?php
+    }
+
+
+    public function atu_do_pagination() {
+        global $wp_query, $wp;
+        $current_url = add_query_arg( $wp->query_string, '', home_url( $wp->request ) );
+
+        // Get post type archive link
+        //$post_type_archive_link = get_post_type_archive_link( 'venue' );
+        // Get maximum number of page
+        $total_row = $wp_query->max_num_pages;
+        // Set row per page
+        $per_page = 12;
+        // Get total page
+        $total_page = ceil( $total_row / $per_page );
+        // Get current page
+        $current_page = get_query_var('paged') ? get_query_var('paged') : 1;
+        // Get next page
+        $next_page = $total_page <= $current_page ? $current_page : $current_page + 1;
+
+        echo '<div class="pagination">';
+        echo '<label for="">' . __( 'Pagination', 'atu') . ' :</label>';
+        echo '<div class="wp-pagenavi">';
+        echo '<span class="pages">Page '. $current_page .' of '. $total_page .'</span>';
+
+        for( $i = 1; $i <= $total_page; $i++ ):
+
+            if ( $i == $current_page ):
+
+                echo '<span class="current">'. $i .'</span>';
+
+            else:
+
+                echo '<a class="page larger" href="'. $current_url  .'page/'. $i .'">'. $i .'</a>';
+
+            endif;
+
+        endfor;
+
+        echo '<a class="nextpostslink" rel="next" href="'. $current_url  .'page/'. $next_page .'">Next</a>';
+        echo '</div>';
+        echo '</div>';
+    }
+
+    public function atu_advance_search( $query ) {
+
+        if ( !$query->is_search )
+            return $query;
+
+        if ( isset( $_REQUEST['venue-category'] ) ) {
+
+            $query->set( 'post_type', array( 'venue' ) );
+            $query->set( 'tax_query', array(
+                'relation' => 'OR',
+                array(
+                    'taxonomy' => 'venue-category',
+                    'field' => 'id',
+                    'terms' => array( intval($_REQUEST['venue-category']) ),
+                    'operator' => 'IN'
+                )
+            ) );
+
+
         }
+
+        return $query;
     }
+
 
 
 
