@@ -127,7 +127,7 @@ get_header(); ?>
                                     <?php echo wp_get_attachment_image( $image_id, 'vendor-small-thumb' ); ?>
                                 </div>
                                 <div class="post-core">
-                                    <a href="/vendor/<?php echo $vendor->user_login; ?>" class="link"><div class="post-title t-normal"><?php echo $vendor_info->first_name .' '. $vendor_info->last_name; ?> <span class="post-cat t-highlight"><?php echo $profession; ?></span></div></a>
+                                    <a href="<?php echo get_permalink( get_page_by_path( 'vendor' ) ) . $vendor->user_login; ?>" class="link"><div class="post-title t-normal"><?php echo $vendor_info->first_name .' '. $vendor_info->last_name; ?> <span class="post-cat t-highlight"><?php echo $profession; ?></span></div></a>
                                     <p><?php echo $description; ?>.</p>
                                 </div>
                             </li>

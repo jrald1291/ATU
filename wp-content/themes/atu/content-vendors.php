@@ -115,12 +115,12 @@ if ( ! empty( $vendors ) ) : ?>
                     <div class="post-item well-block" style="border-bottom: 3px solid <?php echo $vendor_info->color; ?>">
                         <div class="well-header"><?php echo $profession; ?></div>
                         <div class="post-img">
-                            <a href="/vendor/<?php echo $vendor->user_login; ?>">
+                            <a href="<?php echo get_permalink( get_page_by_path( 'vendor' ) ) . $vendor->user_login; ?>">
                                 <?php echo wp_get_attachment_image( $image_id, 'vendor-small-thumb' ); ?>
                             </a>
                         </div>
                         <div class="post-content t-sm">
-                            <a href="/vendor/<?php echo $vendor->user_login; ?>" class="post-name">
+                            <a href="<?php echo get_permalink( get_page_by_path( 'vendor' ) ) . $vendor->user_login; ?>" class="post-name">
                                 <?php echo $vendor_info->first_name .' '. $vendor_info->last_name; ?>
                             </a>
                         </div>
