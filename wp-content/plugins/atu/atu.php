@@ -13,11 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 //error_reporting(0);
-//add_rewrite_rule(
-//    '^'.$user_slug.'/([^/]*)$',
-//    'index.php?page_id='.$user_page_id.'&um_user=$matches[1]',
-//    'top'
-//);
+
 class ATU {
     var $atu_db_version = '1.0';
 
