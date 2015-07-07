@@ -6,13 +6,8 @@
  * @subpackage Twenty_Fourteen
  * @since Twenty Fourteen 1.0
  */
-if ( ! is_user_logged_in() ) {
-    exit( wp_redirect( wp_login_url() ) );
-}
+
 get_header();
-
-
-
 
 $current_user = wp_get_current_user();
 

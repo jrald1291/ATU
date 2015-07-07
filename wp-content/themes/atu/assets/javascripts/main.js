@@ -91,7 +91,7 @@ var util = {
       },
       Forms: function(){
     
-        $('.form-labeled').find('input, textarea').on('keyup blur focus', function (e) {
+        $('.form-labeled').find('input, textarea').on('keyup blur focus change', function (e) {
   
             var $this = $(this),
                 label = $this.parent(".wpcf7-form-control-wrap, .form-control-wrap").prev('label');
@@ -106,8 +106,14 @@ var util = {
                 if( $this.val() === '' ) {
                   label.removeClass('active highlight'); 
                 } else {
-                  label.removeClass('highlight');   
+                  label.removeClass('highlight');
                 }   
+              }else if (e.type === 'change') {
+                if( $this.val() === '' ) {
+                  label.removeClass('active highlight'); 
+                } else {
+                  label.addClass('active highlight');
+                } 
               } else if (e.type === 'focus') {
                 
                 if( $this.val() === '' ) {
