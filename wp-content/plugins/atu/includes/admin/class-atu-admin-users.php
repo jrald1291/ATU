@@ -75,6 +75,7 @@ if ( !class_exists('ATU_Admin_Users') ) {
 
             /* Sets the terms (we're just using a single term) for the user. */
             wp_set_object_terms( $user_id, array( $term ), 'profession', false);
+            add_user_meta( $user_id, 'profession', $term ) or update_user_meta( $user_id, 'profession', $term );
 
             clean_object_term_cache( $user_id, 'profession' );
         }

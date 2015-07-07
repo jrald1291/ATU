@@ -55,7 +55,7 @@ get_header(); ?>
                                 $page = get_query_var( 'page' ) ? get_query_var( 'page' ) : 1;
 
                                 // how many users to show per page
-                                $users_per_page = 1;
+                                $users_per_page = 12;
 
                                 // calculate the total number of pages.
                                 $total_pages = 1;
@@ -97,7 +97,7 @@ get_header(); ?>
                                         ?>
 
                                         <div class="col-md-4 col-sm-6">
-                                            <div class="post-item well-block" style="border-bottom: 3px solid #32a69f">
+                                            <div class="post-item well-block" style="border-bottom: 3px solid <?php echo $vendor_info->color; ?>">
                                                 <div class="well-header"><?php echo $profession; ?></div>
                                                 <div class="post-img">
                                                     <a href="/vendor/<?php echo $vendor->user_login; ?>">
