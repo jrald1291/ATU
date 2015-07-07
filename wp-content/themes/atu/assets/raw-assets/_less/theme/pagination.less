@@ -58,7 +58,7 @@
 			border-right: 1px solid @base_border_color;
 			border-left: 1px solid @base_border_color;
 			text-align: center;
-			a{
+			a, .disabled{
 				text-decoration: underline;
 				padding: 42px 30px;
 			}
@@ -77,7 +77,7 @@
 				text-align: left;
 			}
 		}
-		a{
+		a,.disabled{
 			display: block;
 			width: 100%;
 			padding: 30px 40px;
@@ -90,6 +90,10 @@
 				background-color: @base_color;
 				color: #fff;
 			}
+		}
+		.disabled{
+			background: @base_border_color!important;
+			cursor:  not-allowed;
 		}
 		.label{
 			text-transform: none;

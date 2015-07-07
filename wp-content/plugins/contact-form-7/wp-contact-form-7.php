@@ -50,7 +50,7 @@ if ( ! defined( 'WPCF7_LOAD_CSS' ) ) {
 }
 
 if ( ! defined( 'WPCF7_AUTOP' ) ) {
-	define( 'WPCF7_AUTOP', true );
+	define( 'WPCF7_AUTOP', false );
 }
 
 if ( ! defined( 'WPCF7_USE_PIPE' ) ) {

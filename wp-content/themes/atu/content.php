@@ -16,9 +16,11 @@
 			<h1 class="t-lg"><?php the_title(); ?></h1>
 			<div class="post-meta"><div class="meta date"><?php the_date(); ?></div> <div class="meta author t-upper"><?php the_author(); ?></div></div>
 		</div>
-		<div class="post-img well-img">
-			<?php the_post_thumbnail('img-wide'); ?>
-		</div>
+		<?php if ( has_post_thumbnail() ) { ?>
+			<div class="post-img well-img mb-20">
+				<?php the_post_thumbnail('img-wide'); ?>
+			</div>
+		<?php } ?>
 		<div class="post-core">
 			<div class="post-content copy">
 				<p><?php the_content(); ?></p>

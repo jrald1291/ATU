@@ -142,6 +142,9 @@ if ( !class_exists('ATU_Registration') ) {
                     'type'      => 'form',
                     'action'    => '#',
                     'method'    => 'post',
+                    'attributes'    => array(
+                        'class' => 'form form-labeled',
+                    ),
                     'id'        => 'registrationForm'
                 ),
 
@@ -323,7 +326,7 @@ if ( !class_exists('ATU_Registration') ) {
                     'type'      => 'button',
                     'id'        => 'register',
                     'attributes'    => array(
-                        'class' => 'btn btn-success'
+                        'class' => 'btn btn-primary btn-block btn-lg'
                     ),
                     'button_type'   => 'submit',
                     'value'     => 'register'
