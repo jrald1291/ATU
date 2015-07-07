@@ -40,7 +40,7 @@
                 <?php endforeach; ?>
             </ul>
 
-            <a href="#" class="btn btn-opposite btn-block btn-md"><?php _e( 'See all Vendors', 'atu'); ?></a>
+
 
         <?php else: ?>
 

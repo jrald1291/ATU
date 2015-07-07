@@ -125,9 +125,6 @@ get_header(); ?>
 
                             $vendor_info = get_userdata($vendor->ID);
 
-//                            echo '<pre>';
-//                            print_r($vendor_info);
-//                            echo '</pre>';
                             $description = wp_trim_words(  get_user_meta( $vendor->ID, 'description', true ), $num_words = 20, $more = '...' );
                             $profession = '';
                             $categories = wp_get_object_terms( $vendor->ID, 'profession', false );

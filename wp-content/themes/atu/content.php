@@ -42,13 +42,13 @@
 <?php }else{?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class("post-item"); ?>>
 		<div class="post-img well-img">
-			<?php the_post_thumbnail('thumbnail'); ?>
+			<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
 		</div>
 		<div class="post-core">
 			<div class="post-title t-normal"><a href="<?php the_permalink(); ?>" class="link"><?php the_title(); ?></a></div>
 			<div class="post-meta"><div class="meta date"><?php the_date(); ?></div> <div class="meta author t-upper"><?php the_author(); ?></div></div>
 			<div class="post-content">
-				<p><?php echo content(get_the_content(),25) ?> <a href="<?php the_permalink(); ?>">read more</a></p>
+				<p><?php echo content(strip_shortcodes(wp_trim_words(get_the_content())),25) ?> <a href="<?php the_permalink(); ?>">read more</a></p>
 			</div>
 		</div>
 	</article>

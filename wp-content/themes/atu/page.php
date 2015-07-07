@@ -52,6 +52,8 @@ get_header(); ?>
 							 		<?php get_template_part( 'content', 'about');?>
 							 	<?php } else if (is_page("meet-the-team")) {?>
 							 		<?php get_template_part( 'content', 'about');?>	
+							 	<?php } else if (is_page("author")) {?>
+							 		<?php get_template_part( 'author', 'bio');?>	
 							 	<?php } else {?>
 							 		<?php get_template_part( 'content', 'page');?>
 							 	<?php } ?>

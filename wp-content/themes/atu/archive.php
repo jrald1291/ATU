@@ -1,48 +1,57 @@
 <?php get_header(); ?>
 
-<?php get_template_part('page','title'); ?>
+<?php 
+	$bg = of_get_option('banner', '');
+	$page_bg = wp_get_attachment_image_src(get_field('page_background'),'large');
+	$page_bg = $page_bg[0];
+	if (!$page_bg) {
+		$page_bg = $bg;
+	}
+	if ($page_bg== "" and $bg == "") {
+		$page_bg = get_template_directory_uri()."/assets/images/banner.jpg";
+	}
 
-<div class="section section-l2">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-8">
-      <?php if ( have_posts() ) : ?>
-
-			<?php
-			// Start the Loop.
-			while ( have_posts() ) : the_post();
-
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				if (get_post_type()=='property') {
-					get_template_part( 'content', 'property' );
-				}else{
-					get_template_part( 'content', get_post_format() );
-				}
+?>
+<div class="l-content-bg" style="background: url('<?php echo $page_bg; ?>') no-repeat"> 
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="l-content-container">
+					<div class="page-header">
+						<div class="row">
+							<div class="col-md-6">
+								<button class="btn btn-secondary btn-block" data-toggle="modal" data-target=".form-venue">Search Venue</button>
+							</div>
+							<div class="col-md-6">
+								<button class="btn btn-secondary btn-block" data-toggle="modal" data-target=".form-vendor">Search Vendor</button>
+							</div>
+						</div>	
+					</div>
+					<div class="page-content">
+						<div class="page-title">
+							<h2 class="t-lg"></h2>
+						</div>
+						<div class="mb-20">
+							 <?php while ( have_posts() ) : the_post();?>
+							 	<?php if (is_author()) {?>
+							 		<?php get_template_part( 'author', 'bio');?>	
+							 	<?php } else {?>
+							 		<?php get_template_part( 'content', 'page');?>
+							 	<?php } ?>
+							 <?php endwhile;?>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<?php if (is_author()) {?>
+			 		<?php get_template_part('sidebar','primary') ?>	
+			 	<?php } else {?>
+			 		<?php get_template_part('sidebar','secondary') ?>
+			 	<?php } ?>
 				
-
-			// End the loop.
-			endwhile;
-
-			// Previous/next page navigation.
-			wp_pagenavi();
-
-		// If no content, include the "No posts found" template.
-		else :
-			get_template_part( 'content', 'none' );
-
-		endif;
-		?>
-
-      </div>
-      <div class="col-xs-4">
-        <?php get_template_part('sidebar'); ?>
-      </div>
-    </div>
-  </div>
+			</div>
+		</div>
+	</div>
 </div>
-
 <?php get_footer(); ?>

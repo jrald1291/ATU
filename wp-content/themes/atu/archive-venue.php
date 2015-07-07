@@ -19,17 +19,16 @@
 get_header();
 // Current URL for setting up Search Form Action
 global $wp;
-$current_url = get_home_url(null, $wp->request, null);
 
 ?>
-
+asdf
 <div class="l-content-bg" >
     <div class="container">
         <div class="row">
             <div class="col-md-9">
                 <div class="l-content-container">
                     <div class="page-header">
-                        <form action="<?php echo $current_url; ?>" method="get" class="form">
+                        <form action="<?php echo home_url( '/' ); ?>" class="form">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -45,11 +44,11 @@ $current_url = get_home_url(null, $wp->request, null);
                                             'class'              => 'form-control',
                                             'show_option_none'   => '',
                                             'option_none_value'  => '-1',
-                                            'name'               => 'venue-category',
                                         ) ); ?>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
+                                    <input type="hidden" name="post_type" value="venue">
                                     <button class="btn btn-secondary btn-block" ><span class="fa fa-search icon-l"></span>Search Venue</button>
                                 </div>
                             </div>
