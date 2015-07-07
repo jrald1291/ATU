@@ -14,8 +14,10 @@
 
 get_header();
 
-
 $user = get_user_by( 'login', get_query_var( 'username' ) );
+
+
+
 
 $user_info = get_userdata( $user->ID );
 

@@ -20,7 +20,18 @@ if( ! class_exists( 'ATU_Profile' ) ) {
         public function vendor_page_template( $page_template ) {
 
             if ( is_page( 'vendor' ) ) {
-                $page_template = dirname( __FILE__ ) . '/views/vendor-page-template.php';
+
+                $username = get_query_var( 'username' );
+
+                if( isset( $username ) && get_user_by( 'login', $username ) ) {
+
+                    $page_template = dirname(__FILE__) . '/views/vendor-page-template.php';
+
+                } else {
+                    $page_template = get_query_template('404');
+                }
+
+
             }
 
 
@@ -32,11 +43,7 @@ if( ! class_exists( 'ATU_Profile' ) ) {
 
             $username = get_query_var( 'username' );
 
-            if( isset( $username ) && get_user_by( 'login', $username ) ) {
-
-                echo '<h2>Yay! My friendly url seems to work, here is the $friendlyurl value: '.$username.'</h2>';
-
-            } else {
+            if( ! isset( $username ) && get_user_by( 'login', $username ) ) {
 
                 echo "<h2>". __( 'Vendor is not exists!', 'atu' ) . "</h2>";
 
