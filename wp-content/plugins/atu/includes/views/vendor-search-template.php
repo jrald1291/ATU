@@ -100,19 +100,19 @@ get_header(); ?>
 
                                         if ( !empty( $categories ) ) $profession = $categories[0]->name;
 
-
+                                    $single_page_permalink = get_permalink( get_page_by_path( 'vendor' ) )  . $vendor->user_login;
                                 ?>
 
                                     <div class="col-md-4 col-sm-6">
                                         <div class="post-item well-block" style="border-bottom: 3px solid <?php echo $vendor_info->color; ?>">
                                             <div class="well-header"><?php echo $profession; ?></div>
                                             <div class="post-img">
-                                                <a href="/vendor/<?php echo $vendor->user_login; ?>">
+                                                <a href="<?php echo $single_page_permalink; ?>">
                                                     <?php echo wp_get_attachment_image( $image_id, 'vendor-small-thumb' ); ?>
                                                 </a>
                                             </div>
                                             <div class="post-content t-sm">
-                                                <a href="/vendor/<?php echo $vendor->user_login; ?>" class="post-name">
+                                                <a href="<?php echo $single_page_permalink; ?>" class="post-name">
                                                     <?php echo $vendor_info->first_name .' '. $vendor_info->last_name; ?>
                                                 </a>
                                             </div>
