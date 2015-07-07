@@ -11,8 +11,8 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
 
 
         public static function pagination( $total_pages, $page ) {
-            global $wp;
-            $current_url = add_query_arg( $wp->query_string, '', home_url( $wp->request ) );
+
+            $current_url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; //add_query_arg( $wp->query_string, '', home_url( $wp->request ) );
 
             $next = $page < $total_pages ? $page + 1 : $page;
 
@@ -35,7 +35,6 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
             echo '<a class="nextpostslink" rel="next" href="'. esc_url( add_query_arg( array( 'page' => $next ), $current_url ) )  .'/">Next</a>';
             echo '</div>';
             echo '</div>';
-
 
 
         }

@@ -137,10 +137,11 @@ if ( ! empty( $vendors ) ) : ?>
     </div>
 
     <?php
-
-//    global $wp_query, $wp;
-//    $current_url = add_query_arg( $wp->query_string, '', home_url( $wp->request ) );
-
+    /**
+     * ATU custom pagination
+     * @params $total_pages,
+     * @params $page
+     */
     ATU_Helper::pagination( $total_pages, $page );
     ?>
 <?php else: ?>
