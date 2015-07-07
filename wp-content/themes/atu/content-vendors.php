@@ -63,7 +63,7 @@ if  (  get_query_var( 'page' ) ) {
 //$page = get_query_var( 'page' ) ? get_query_var( 'page' ) : 1;
 
 // how many users to show per page
-$users_per_page = 12;
+$users_per_page = 1;
 
 // calculate the total number of pages.
 $total_pages = 1;
@@ -116,12 +116,17 @@ if ( ! empty( $vendors ) ) : ?>
                         <div class="well-header"><?php echo $profession; ?></div>
                         <div class="post-img">
                             <a href="<?php echo get_permalink( get_page_by_path( 'vendor' ) ) . $vendor->user_login; ?>">
+
                                 <?php echo wp_get_attachment_image( $image_id, 'vendor-small-thumb' ); ?>
+
                             </a>
                         </div>
                         <div class="post-content t-sm">
+
                             <a href="<?php echo get_permalink( get_page_by_path( 'vendor' ) ) . $vendor->user_login; ?>" class="post-name">
+
                                 <?php echo $vendor_info->first_name .' '. $vendor_info->last_name; ?>
+
                             </a>
                         </div>
                     </div>
@@ -132,9 +137,11 @@ if ( ! empty( $vendors ) ) : ?>
     </div>
 
     <?php
-    $current_url = is_archive() ? get_term_link( $term, 'profession' ) : $current_url = get_permalink( get_page_by_path( 'vendors' ) );
 
-    //ATU_Helper::pagination( $current_url, $total_pages, $page );
+//    global $wp_query, $wp;
+//    $current_url = add_query_arg( $wp->query_string, '', home_url( $wp->request ) );
+
+    ATU_Helper::pagination( $total_pages, $page );
     ?>
 <?php else: ?>
 

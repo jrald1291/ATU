@@ -10,10 +10,9 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
         }
 
 
-        public static function pagination( $current_url, $total_pages, $page ) {
-            /*global $wp;
+        public static function pagination( $total_pages, $page ) {
+            global $wp;
             $current_url = add_query_arg( $wp->query_string, '', home_url( $wp->request ) );
-            print_r( $current_url );
 
             $next = $page < $total_pages ? $page + 1 : $page;
 
@@ -28,39 +27,17 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
 
                 } else {
 
-                    echo '<a class="page larger" href="'. $current_url . '?page=' . $i .'/">'. $i .'</a>';
+                    echo '<a class="page larger" href="'. esc_url( add_query_arg( array( 'page' => $i ), $current_url ) )  .'/">'. $i .'</a>';
                 }
             }
 
 
-            echo '<a class="nextpostslink" rel="next" href="'. $current_url . '?page=' . $next .'/">Next</a>';
+            echo '<a class="nextpostslink" rel="next" href="'. esc_url( add_query_arg( array( 'page' => $next ), $current_url ) )  .'/">Next</a>';
             echo '</div>';
             echo '</div>';
 
-            */
 
 
-            global $wp_query;
-            $big = 999999999; // need an unlikely integer
-            paginate_links( array(
-                'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-                'format' => '?paged=%#%',
-                'current' => max( 1, $page ),
-                'total' => $total_pages,
-                'prev_next' => false,
-                'type'  => 'array',
-                'prev_next'   => TRUE,
-                'prev_text'    => __('«'),
-                'next_text'    => __('»'),
-            ) );
-//            if( is_array( $pages ) ) {
-//                $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
-//                echo '<ul class="pagination">';
-//                foreach ( $pages as $page ) {
-//                    echo "<li>$page</li>";
-//                }
-//                echo '</ul>';
-//            }
         }
 
         public static function background_image( $attachment_id, $default_image = null, $echo = true ) {
