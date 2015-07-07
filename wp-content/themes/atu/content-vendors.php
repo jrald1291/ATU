@@ -63,12 +63,12 @@ if  (  get_query_var( 'page' ) ) {
 //$page = get_query_var( 'page' ) ? get_query_var( 'page' ) : 1;
 
 // how many users to show per page
-$users_per_page = 12;
+$users_per_page = get_option( 'show_vendors_per_page', 12 );
 
 // calculate the total number of pages.
 $total_pages = 1;
 $offset = $users_per_page * ($page - 1);
-$total_pages = ceil($total_users / $users_per_page);
+$total_pages = ceil( $total_users / $users_per_page );
 
 
 /**

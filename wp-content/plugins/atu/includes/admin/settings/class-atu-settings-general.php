@@ -29,6 +29,19 @@ if ( ! class_exists( 'ATU_Settings_General' ) ) {
                     ),
                     'default'   => '',
                 ),
+
+                array(
+                    'title'     => __( 'Vendors Page page', ATU_TEXT_DOMAIN ),
+                    'desc'      => __( '', ATU_TEXT_DOMAIN ),
+                    'id'        => 'show_vendors_per_page',
+                    'type'      => 'number',
+                    'attributes' => array(
+                        'class' => 'small-text',
+                        'step' => 1
+                    ),
+                    'default'   => 12,
+                ),
+
                 array(
                     'type'      => 'sectionend',
                     'id'        => 'general_options'
