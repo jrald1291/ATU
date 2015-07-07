@@ -21,7 +21,6 @@ get_header();
 global $wp;
 
 ?>
-asdf
 <div class="l-content-bg" >
     <div class="container">
         <div class="row">
@@ -71,7 +70,7 @@ asdf
                                         ?>
 
                                         <div class="col-md-4 col-sm-6">
-                                            <div class="post-item well-block" style="border-bottom: 3px solid #32a69f">
+                                            <div class="post-item well-block" style="border-bottom: 3px solid <?php the_field( 'color' ); ?>">
                                                 <div class="well-header"><?php echo $cat_name; ?></div>
                                                 <div class="post-img">
                                                     <a href="<?php the_permalink(); ?>"><?php do_action('aut_post_thumnail', 'venue-listing'); ?></a>

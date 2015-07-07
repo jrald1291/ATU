@@ -1,12 +1,12 @@
 <?php get_header(); ?>
 
-<?php get_template_part('page','title'); ?>
-<div class="section section-l2">
-	<div class="container">
-		<div class="row">
-		    <div class="col-xs-8">
-
+<div class="l-content-bg" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
 		      	<?php
+
+
 					if (isset($_GET['post_type'])) {
 						$post_type = $_GET['post_type'];
 					}
@@ -25,9 +25,29 @@
 					<?php } ?>
 
 			</div>
-	        <div class="col-xs-4">
-	        	<?php get_template_part('sidebar'); ?>
-	        </div>
+
+            <div class="col-md-3">
+                <aside class="l-sidebar">
+                    <div class="widget widget-aside widget-list">
+                        <div class="widget-header">Vendor Categories</div>
+                        <ul class="list">
+                            <?php wp_list_categories('taxonomy=venue-category&orderby=name&title_li=0'); ?>
+
+                        </ul>
+                    </div>
+                    <div class="widget widget-aside well-widget">
+                        <form action="" class="form form-labeled">
+                            <div class="well-header">Subscribe to our Newsletter</div>
+                            <div class="form-group field-wrap">
+                                <label for="">Email Address</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <button class="btn btn-primary btn-block">Subscribe now</button>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+
     	</div>
   	</div>
 </div>

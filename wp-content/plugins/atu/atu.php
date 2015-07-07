@@ -151,9 +151,22 @@ class ATU {
 
         add_action( 'after_setup_theme', array( $this, 'atu_theme_setup' ) );
         add_action( 'aut_post_thumnail', array( $this, 'atu_post_thumbnail' ), 1, 2 );
-        add_action( 'pre_get_posts', array( $this, 'alter_search_ppp_wpse_107154' ) );
+        //add_action( 'pre_get_posts', array( $this, 'alter_search_ppp_wpse_107154' ) );
 
+        add_filter('template_include', 'template_chooser');
     }
+
+    public function template_chooser($template)
+    {
+        global $wp_query;
+        $post_type = get_query_var('post_type');
+        if( isset($_GET['s']) && $post_type == 'products' )
+        {
+            return locate_template('archive-venue.php');  //  redirect to archive-search.php
+        }
+        return $template;
+    }
+
 
     public function alter_search_ppp_wpse_107154( $qry ) {
         if ( is_archive() ) {
