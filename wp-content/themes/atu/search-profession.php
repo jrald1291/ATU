@@ -34,10 +34,6 @@ get_header(); ?>
                                     ),
                                     'number'    => 999999
                                 );
-
-
-
-
                                 $user_count_query = new WP_User_Query($count_args);
                                 $user_count = $user_count_query->get_results();
 

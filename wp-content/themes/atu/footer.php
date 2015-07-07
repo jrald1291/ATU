@@ -98,23 +98,7 @@
 	  <div class="modal-content">
 			  <div class="modal-header t-normal">Search for Venue</div>
 			  <div class="modal-body">
-		      	<form action="" class="form form-labeled">
-					<div class="form-group field-wrap">
-						<label for="">Keyword<span class="req">*</span></label>
-						<input type="text" class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="" class="label-drop">Venue Category<span class="req">*</label>
-                        <?php wp_dropdown_categories( array(
-                            'taxonomy'  => 'venue-category',
-                            'hide_empty'         => 0,
-                            'class'              => 'form-control',
-                            'show_option_none'   => '',
-                            'option_none_value'  => '-1',
-                        ) ); ?>
-					</div>
-					<button class="btn btn-secondary btn-block" >Search Venue</button>
-				</form>
+		      	<?php do_action( 'atu_venue_search_form' ); ?>
 			  </div>
 	   
    			<div class="modal-footer">
@@ -128,17 +112,7 @@
 	  <div class="modal-content">
 			  <div class="modal-header t-normal">Search for Vendor</div>
 			  <div class="modal-body">
-		      	<form action="" class="form form-labeled">
-					<div class="form-group field-wrap">
-						<label for="">Keyword<span class="req">*</span></label>
-						<input type="text" class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="" class="label-drop">Vendor Category<span class="req">*</label>
-						<?php ATU_Helper::dropwdown_vendor_category(); ?>
-					</div>
-					<button class="btn btn-secondary btn-block" >Search Vendor</button>
-				</form>
+                  <?php do_action( 'atu_vendor_search_form' ); ?>
 			  </div>
 	   
    			<div class="modal-footer">

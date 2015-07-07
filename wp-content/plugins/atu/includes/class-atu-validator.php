@@ -36,14 +36,14 @@ class ATU_Validator {
     private function required( $key ) {
         $val = $this->input[$key];
 
-        if ( !isset( $val ) || strlen( trim( $val ) ) == 0  ) ATU_Notify::add( ucfirst( $key ) . ' is required.', 'error');
+        if ( !isset( $val ) || strlen( trim( $val ) ) == 0  ) ATU_Notify::add( ucfirst(  str_replace( '_', ' ', $key ) ) . ' is required.', 'error');
 
     }
 
     private function email( $key ) {
         $val = $this->input[$key];
 
-        if ( !filter_var( $val, FILTER_VALIDATE_EMAIL ) ) ATU_Notify::add( ucfirst( $key ) . ' is invalid.', 'error');
+        if ( !filter_var( $val, FILTER_VALIDATE_EMAIL ) ) ATU_Notify::add( ucfirst(  str_replace( '_', ' ', $key ) ) . ' is invalid.', 'error');
     }
 
 
@@ -59,7 +59,7 @@ class ATU_Validator {
     private function url( $key ) {
         $val = $this->input[$key];
 
-        if ( !filter_var( $val, FILTER_VALIDATE_URL ) ) ATU_Notify::add( ucfirst( $key ) . ' is invalid.', 'error');
+        if ( !filter_var( $val, FILTER_VALIDATE_URL ) ) ATU_Notify::add( ucfirst(  str_replace( '_', ' ', $key ) ) . ' is invalid.', 'error');
     }
 
     private function exists($key, $args) {
@@ -85,9 +85,10 @@ class ATU_Validator {
             }
 
         }
+        
 
 
-        if ( ! $wpdb->get_var( $sql ) )  ATU_Notify::add( ucfirst( $key ) . ' is not exists.', 'error');
+        if (  $wpdb->get_var( $sql ) == 0 )  ATU_Notify::add( ucfirst(  str_replace( '_', ' ', $key ) ) . ' is not exists.', 'error');
 
     }
 
@@ -112,7 +113,7 @@ class ATU_Validator {
 
         }
 
-        if ( $wpdb->get_var( $sql ) )  ATU_Notify::add( ucfirst( $key ) . ' already exists.', 'error');
+        if ( $wpdb->get_var( $sql ) )  ATU_Notify::add( ucfirst(  str_replace( '_', ' ', $key ) ) . ' already exists.', 'error');
 
     }
 
@@ -120,7 +121,7 @@ class ATU_Validator {
 
         $val = $this->input[$key];
 
-        if ( strlen( $val ) < $min) ATU_Notify::add( ucfirst( $key ) . ' minimum length is '. $min, 'error');
+        if ( strlen( $val ) < $min) ATU_Notify::add( ucfirst(  str_replace( '_', ' ', $key ) ) . ' minimum length is '. $min, 'error');
     }
 
     public function fails() {

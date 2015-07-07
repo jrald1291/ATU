@@ -38,8 +38,17 @@ if ( !class_exists('ATU_Registration') ) {
                 'website' => 'url',
                 'first_name' => 'required',
                 'last_name' => 'required',
-                'reg_code' => 'exists:'. $wpdb->prefix . ATU_TBL_PREFIX . 'registration_code,code'
+
             );
+
+            $validate_registration_code = get_option('atu_validate_registration_code', 'no');
+
+            if ( $validate_registration_code == 'yes' ) {
+                $rules['registration_code'] = 'exists:' . $wpdb->prefix . ATU_TBL_PREFIX . 'registration_code,code';
+            }
+
+
+
 
             $validator = new ATU_Validator();
             $validator = $validator->make($input, $rules);
@@ -340,7 +349,7 @@ if ( !class_exists('ATU_Registration') ) {
 
                 array(
                     'type'      => 'hidden',
-                    'id'        => 'reg_code',
+                    'id'        => 'registration_code',
                     'value'     => self::get_current_code(),
                     'default'   => '',
                 ),
@@ -377,11 +386,11 @@ if ( !class_exists('ATU_Registration') ) {
             $validate_registration_code = get_option('atu_validate_registration_code', 'no');
 
             if ( $validate_registration_code == 'yes' ) {
-                if ( ! isset( $_REQUEST['reg_code'] ) ) return __('Registration code is required', ATU_TEXT_DOMAIN);
-                $code =  self::get_current_code() == '' ? $_REQUEST['reg_code'] : self::get_current_code();
+
+                $code = ! isset( $_GET['reg_code'] ) ?  self::get_current_code() : $_GET['reg_code'];
                 //  check registration code is exists and active
-                if ( ! ATU_Admin_Settings::validate_code( $code ) ) {
-                    return __( 'Registration code does not exists', ATU_TEXT_DOMAIN);
+                if ( ATU_Admin_Settings::validate_code( esc_attr( $code ) ) == 0 ) {
+                    return __( 'Registration code does not exists', 'atu' );
                 } else {
                     self::add_current_code( $code );
                 }

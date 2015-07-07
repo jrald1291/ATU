@@ -38,21 +38,25 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
 
         public static function dropwdown_vendor_category( $args = array() ) {
 
-            $options = wp_parse_args( array(
+            $options = wp_parse_args( $args, array(
                 'echo' => true,
-            ), $args );
+                'selected' => ''
+            ) );
 
             extract( $options );
+
+
 
             $terms = get_terms( 'profession', array( 'hide_empty' => false ) );
 
             $return_string = '';
             if ( ! empty( $terms ) ) {
 
-                $return_string .= '<select name="vendor_category" class="form-control">';
+                $return_string .= '<select name="profession" class="form-control">';
                 $return_string .= '<option value="">' . __( 'None', 'atu' ) . '</option>';
                 foreach ( $terms as $term ) {
-                    $return_string .= '<option value="'. $term->slug .'">' . $term->name . '</option>';
+
+                    $return_string .= '<option value="'. $term->slug .'" '. selected( $selected, $term->slug, false ) .'>' . $term->name . '</option>';
                 }
                 $return_string .= '</select>';
             }
@@ -64,9 +68,9 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
         }
 
         public static function list_vendor_category( $args = array() ) {
-            $options = wp_parse_args( array(
+            $options = wp_parse_args( $args, array(
                 'echo' => true,
-            ), $args );
+            ) );
 
             extract( $options );
 

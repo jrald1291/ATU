@@ -21,6 +21,7 @@ if ( !class_exists('ATU_Admin_Settings') ) {
         public static function validate_code( $code ) {
             global $wpdb;
 
+
             return $wpdb->get_var( "SELECT count(*) FROM ". $wpdb->prefix . ATU_TBL_PREFIX . "registration_code WHERE code = '$code' AND is_active = 1" );
         }
 
