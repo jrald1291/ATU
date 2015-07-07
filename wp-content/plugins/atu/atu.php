@@ -203,7 +203,7 @@ class ATU {
                             'name'               => 'venue-category',
                             'hide_empty'         => 0,
                             'class'              => 'form-control',
-                            'show_option_none'   => '',
+                            'show_option_none'   => '-- Select --',
                             'option_none_value'  => '-1',
                         ) ); ?>
                     </div>

@@ -53,7 +53,7 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
             if ( ! empty( $terms ) ) {
 
                 $return_string .= '<select name="profession" class="form-control">';
-                $return_string .= '<option value="">' . __( 'None', 'atu' ) . '</option>';
+                $return_string .= '<option value="">' . __( '-- Select --', 'atu' ) . '</option>';
                 foreach ( $terms as $term ) {
 
                     $return_string .= '<option value="'. $term->slug .'" '. selected( $selected, $term->slug, false ) .'>' . $term->name . '</option>';
