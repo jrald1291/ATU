@@ -28,18 +28,17 @@
                     ?>
                     <li class="post-item">
                         <div class="post-img">
-                            <?php echo wp_get_attachment_image( $image_id, 'vendor-small-thumb' ); ?>
+                            <?php echo wp_get_attachment_image( $image_id, 'venue-xs-small-thumb' ); ?>
                         </div>
                         <div class="post-core">
-                            <a href="#" class="link"><div class="post-title"><?php echo $vendor_info->first_name .' '. $vendor_info->last_name; ?>
-                                    </div></a>
+                            <div class="post-title"><a href="#" class="link"><?php echo $vendor_info->first_name .' '. $vendor_info->last_name; ?></a>
+                                    </div>
                             <p><?php echo $profession; ?></p>
                         </div>
                     </li>
 
                 <?php endforeach; ?>
             </ul>
-
 
 
         <?php else: ?>
@@ -77,7 +76,7 @@
 					<a href=""><?php do_action( 'aut_post_thumnail', 'venue-xs-small-thumb' ); ?></a>
 				</div>
 				<div class="post-core">
-					<a href="#" class="link"><div class="post-title"<?php the_title(); ?></a>
+					<div class="post-title"><a href="#" class="link"><?php the_title(); ?></a></div>
 					<p><?php echo $cat_name; ?></p>
 				</div>
 			</li>

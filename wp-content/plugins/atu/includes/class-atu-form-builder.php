@@ -50,13 +50,13 @@ if ( ! class_exists( 'ATU_Form_Builder' ) ) {
                     case 'password':
                     case 'email':
                     case 'text':
-                        $return_string .= '<div class="form-group">';
+                        $return_string .= '<div class="form-group field-wrap">';
                         $return_string .= '<label for="'. $field['id'] .'">'. $field['title'];
                         if ( $field['required'] == true ) {
-                            $return_string .= '<span class="required">*</span>';
+                            $return_string .= '<span class="req">*</span>';
                         }
                         $return_string .= '</label>';
-                        $return_string .= '<input type="'. $field['type'] .'" ';
+                        $return_string .= '<span class="form-control-wrap"><input type="'. $field['type'] .'" ';
                         $return_string .= ' id="'. $field['id'] .'" ';
                         $return_string .= ' name="'. $field['id'] .'" ';
                         $return_string .= ' placeholder="'. $field['placeholder'] .'" ';
@@ -69,7 +69,7 @@ if ( ! class_exists( 'ATU_Form_Builder' ) ) {
                         break;
 
                 case 'hidden':
-                        $return_string .= '<input type="'. $field['type'] .'" ';
+                        $return_string .= '<span class="form-control-wrap"><input type="'. $field['type'] .'" ';
                         $return_string .= ' value="'. $field['value'] .'" ';
                         $return_string .= ' id="'. $field['id'] .'" ';
                         $return_string .= ' name="'. $field['id'] .'" ';
@@ -81,13 +81,13 @@ if ( ! class_exists( 'ATU_Form_Builder' ) ) {
                         break;
 
                     case 'textarea':
-                        $return_string .= '<div class="form-group">';
+                        $return_string .= '<div class="form-group field-wrap">';
                         $return_string .= '<label for="'. $field['id'] .'">'. $field['title'];
                         if ( $field['required'] == true ) {
-                            $return_string .= '<span class="required">*</span>';
+                            $return_string .= '<span class="req">*</span>';
                         }
                         $return_string .= '</label>';
-                        $return_string .= '<textarea name="'. $field['id'] .'" id="'. $field['id'] .'" placeholder="'. $field['placeholder'] .'"';
+                        $return_string .= '<span class="form-control-wrap"><textarea name="'. $field['id'] .'" id="'. $field['id'] .'" placeholder="'. $field['placeholder'] .'"';
                         foreach( $field['attributes'] as $name => $attribute ) {
                             $return_string .= sanitize_title( $name ) . '="'. esc_html( $attribute ) . '" ';
                         }
@@ -99,12 +99,12 @@ if ( ! class_exists( 'ATU_Form_Builder' ) ) {
 
                     case 'select':
                         $return_string .= '<div class="form-group">';
-                        $return_string .= '<label for="'. $field['id'] .'">'. $field['title'];
+                        $return_string .= '<label for="'. $field['id'] .'"class="label-drop">'. $field['title'];
                         if ( $field['required'] == true ) {
-                            $return_string .= '<span class="required">*</span>';
+                            $return_string .= '<span class="req">*</span>';
                         }
                         $return_string .= '</label>';
-                        $return_string .= '<select name="'. $field['id'] .'" ';
+                        $return_string .= '<span class="form-control-wrap"><select name="'. $field['id'] .'" ';
                         $return_string .= 'id="'. $field['id'] .'" ';
                         $return_string .= 'type="'. $field['type'] .'" ';
                         $return_string .= 'placeholder="'. $field['placeholder'] .'" ';
@@ -123,7 +123,7 @@ if ( ! class_exists( 'ATU_Form_Builder' ) ) {
 
                     case 'checkbox':
                         $return_string .= '<div class="checkbox">';
-                        $return_string .= '<input type="'. $field['type'] .'" ';
+                        $return_string .= '<span class="form-control-wrap"><input type="'. $field['type'] .'" ';
                         $return_string .= 'name="'. $field['id'] .'" ';
                         $return_string .= 'id="'. $field['id'] .'" ';
                         $return_string .= 'value="1" ';

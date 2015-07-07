@@ -7,14 +7,9 @@
 * @since Twenty Fifteen 1.0
 */
 
+$current_user = wp_get_current_user();
 
-	if ( ! is_user_logged_in() ) {
-	    exit( wp_redirect( wp_login_url() ) );
-	}
-
-	$current_user = wp_get_current_user();
-
-	$user_info = get_user_meta( $current_user->ID );
+$user_info = get_user_meta( $current_user->ID );
 
 ?>
 
@@ -187,3 +182,4 @@
 		<li><a href=""><span class="fa fa-facebook"></span></a></li>
 	</ul>
 </div>
+

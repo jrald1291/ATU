@@ -11,9 +11,11 @@
 	<div class="page-title ">
 		<h1 class="t-lg"><?php the_title(); ?></h1>
 		</div>
-		<div class="post-img well-img">
-		<?php the_post_thumbnail('img-wide'); ?>
-		</div>
+		<?php if ( has_post_thumbnail() ) { ?>
+			<div class="post-img well-img mb-20">
+				<?php the_post_thumbnail('img-wide'); ?>
+			</div>
+		<?php } ?>
 		<div class="post-core">
 		<div class="post-content copy mb-30">
 			<p><?php the_content(); ?></p>

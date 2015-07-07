@@ -6,6 +6,12 @@
  * @subpackage Twenty_Fifteen
  * @since Twenty Fifteen 1.0
  */
+
+
+	$current_user = wp_get_current_user();
+
+	$user_info = get_user_meta( $current_user->ID );
+
 ?>
 <aside class="l-sidebar">
 	<div class="widget widget-aside">
@@ -34,7 +40,7 @@
 
 	</div>
 	<div class="widget widget-aside">
-		<a href="" class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Vendor</a>
+		<a href="<?php echo get_permalink( get_page_by_title( 'Contact' ))?>" class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Vendor</a>
 	</div>
 	<div class="widget widget-aside">
 		<a href="<?php the_field( 'website' ); ?>" target="_blank" class="btn btn-sm btn-block btn-secondary"><span class="fa icon-l-sm fa-globe"></span>Visit website</a>

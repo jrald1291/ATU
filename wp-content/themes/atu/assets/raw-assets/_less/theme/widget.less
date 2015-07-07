@@ -67,9 +67,24 @@
 		a{
 			font-size: 13px;
 			color: @base_font_color;
+			position: relative;
 
 			&:active, &:hover, &:focus{
 				color: @base_color;
+				text-decoration: none;
+
+				&:after{
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: @base_color;
+					.opacity(.2);
+					display: block;
+					height: 100%;
+					width: 100%;
+
+				}
 			}
 		}
 		.widget-list_logo{

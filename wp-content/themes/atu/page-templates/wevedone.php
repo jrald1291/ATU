@@ -103,6 +103,3 @@ get_header(); ?>
 	</div>
 </div>
 <?php get_footer(); ?>
-<script>
-	 new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
-</script>

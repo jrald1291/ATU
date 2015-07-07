@@ -15,6 +15,7 @@ var util = {
         this.Forms();
         this.Isotope();
         this.SmoothScroll();
+        this.Marquee();
       },
 
 
@@ -93,7 +94,7 @@ var util = {
         $('.form-labeled').find('input, textarea').on('keyup blur focus', function (e) {
   
             var $this = $(this),
-                label = $this.prev('label');
+                label = $this.parent(".wpcf7-form-control-wrap, .form-control-wrap").prev('label');
 
               if (e.type === 'keyup') {
                 if ($this.val() === '') {
@@ -141,6 +142,28 @@ var util = {
       });
       }, 
   
+      Marquee: function(){
+        function startMarquee() {
+
+            var menuItemWidth = $(this).width();
+            var listItemWidth = $(this).parent().width();
+            
+            if(menuItemWidth > listItemWidth) {
+                var scrollDistance = menuItemWidth - listItemWidth;
+                var listItem = $(this).parent();
+                listItem.stop();
+                
+                listItem.animate({scrollLeft: scrollDistance}, 3000, 'linear');
+            }
+        }
+
+        function stopMarquee() {
+            var listItem = $(this).parent();
+            listItem.stop();
+            listItem.animate({scrollLeft: 0}, 'medium', 'swing');
+        }
+        $('.marquee a').hover(startMarquee, stopMarquee);
+      },
 
       Slider: function(){
           $(window).load(function() {
