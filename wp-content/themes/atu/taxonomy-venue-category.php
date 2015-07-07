@@ -90,14 +90,7 @@ get_header();
                         </ul>
                     </div>
                     <div class="widget widget-aside well-widget">
-                        <form action="" class="form form-labeled">
-                            <div class="well-header">Subscribe to our Newsletter</div>
-                            <div class="form-group field-wrap">
-                                <label for="">Email Address</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <button class="btn btn-primary btn-block">Subscribe now</button>
-                        </form>
+                        <?php echo do_shortcode( '[mc4wp_form]' ); ?>
                     </div>
                 </aside>
             </div>
