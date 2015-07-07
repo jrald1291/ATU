@@ -63,14 +63,14 @@ get_header(); ?>
                                 $page = get_query_var( 'page' ) ? get_query_var( 'page' ) : 1;
 
                                 // how many users to show per page
-                                $users_per_page = 12;
+                                $users_per_page = 1;
 
                                 // calculate the total number of pages.
                                 $total_pages = 1;
                                 $offset = $users_per_page * ($page - 1);
                                 $total_pages = ceil($total_users / $users_per_page);
 
-
+                                $term = get_query_var( 'term' );
                                 /**
                                  * WP Query users
                                  * @var  $vendors */
@@ -85,7 +85,7 @@ get_header(); ?>
                                         'relation'  => 'OR',
                                         array(
                                             'key'       => 'profession',
-                                            'value'     => get_query_var( 'term' ),
+                                            'value'     => $term,
                                             'compare'   => '='
                                         )
                                     ),
@@ -138,7 +138,7 @@ get_header(); ?>
                         </div>
 
                         <?php
-                        $current_url = get_permalink( get_page_by_path( 'vendors' ) );
+                        $current_url = get_term_link( $term, 'profession' );
                         $next = $page < $total_pages ? $page + 1 : $page;
 
                         echo '<div class="pagination">';
@@ -152,12 +152,12 @@ get_header(); ?>
 
                             } else {
 
-                                echo '<a class="page larger" href="'. $current_url . $i .'/">'. $i .'</a>';
+                                echo '<a class="page larger" href="'. $current_url . '?page=' . $i .'/">'. $i .'</a>';
                             }
                         }
 
 
-                        echo '<a class="nextpostslink" rel="next" href="'. $current_url . $next .'/">Next</a>';
+                        echo '<a class="nextpostslink" rel="next" href="'. $current_url . '?page=' . $next .'/">Next</a>';
                         echo '</div>';
                         echo '</div>';
 

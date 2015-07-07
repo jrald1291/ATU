@@ -133,7 +133,7 @@ get_header(); ?>
                             </li>
                         <?php endforeach; ?>
                     </ul>
-                    <a href="#" class="btn btn-opposite btn-block btn-md"><?php _e( 'See all Vendors', 'atu'); ?></a>
+                    <a href="<?php echo get_permalink( get_page_by_path( 'vendors' ) ); ?>" class="btn btn-opposite btn-block btn-md"><?php _e( 'See all Vendors', 'atu'); ?></a>
                 <?php else: ?>
                     <h3><?php _e( 'No vendors found.', 'atu'); ?></h3>
                 <?php endif; ?>
