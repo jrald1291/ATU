@@ -9,26 +9,7 @@ get_header(); ?>
             <div class="col-md-9">
                 <div class="l-content-container">
                     <div class="page-header">
-                        <form action="" class="form">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control input-block" placeholder="Keyword...">
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="input-group">
-                                        <div class="input-group-addon">Venue Category</div>
-                                        <select class="form-control input-block" name="" id="">
-                                            <option value="">test</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <button class="btn btn-secondary btn-block" ><span class="fa fa-search icon-l"></span>Search Venue</button>
-                                </div>
-                            </div>
-                        </form>
+                        <?php do_action( 'atu_vendor_search_form' ); ?>
                     </div>
                     <div class="page-content">
                         <div class="post post-block">
@@ -39,6 +20,7 @@ get_header(); ?>
                                 * We start by doing a query to retrieve all users
                                 * We need a total user count so that we can calculate how many pages there are
                                 */
+                                $search_args = array();
 
                                 $count_args  = array(
                                     'role'      => 'Vendor',
@@ -46,6 +28,27 @@ get_header(); ?>
                                     'number'    => 999999
                                 );
 
+                                if ( isset( $_GET['keyword'] ) && isset( $_GET['profession'] ) && ! empty( $_GET['profession'] ) ) {
+                                    $search_args['search'] = '*'.esc_attr( $_GET['keyword'] ).'*';
+
+
+                                    $search_args['meta_query'] = array(
+                                        'relation'  => 'AND',
+                                        array(
+                                            'key'       => 'profession',
+                                            'value'     => esc_attr( $_GET['profession'] ),
+                                            'compare'   => '='
+                                        ),
+                                        array(
+                                            'key'     => 'company_name',
+                                            'value'   => $_GET['keyword'],
+                                            'compare' => 'LIKE'
+                                        )
+                                    );
+                                }
+
+
+                                $count_args = array_merge( $count_args, $search_args );
 
                                 $user_count_query = new WP_User_Query($count_args);
                                 $user_count = $user_count_query->get_results();
@@ -78,6 +81,8 @@ get_header(); ?>
                                     'number'    => $users_per_page,
                                     'offset'    => $offset // skip the number of users that we have per page
                                 );
+
+                                $args = array_merge( $args, $search_args );
 
                                 $wp_user_query = new WP_User_Query( $args );
 

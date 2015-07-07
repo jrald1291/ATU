@@ -21,16 +21,16 @@
 
                                 <?php
 
-                                $post_type = $_GET['post_type'];
 
                                 // check to see if there was a post type in the
                                 // URL string and if a results template for that
                                 // post type actually exists
-                                if ( isset( $post_type ) && locate_template( 'search-' . $post_type . '.php' ) ) {
+                                if ( isset( $_REQUEST['post_type'] ) && locate_template( 'search-' . $_REQUEST['post_type'] . '.php' ) ) {
 
                                     // if so, load that template
-                                    get_template_part( 'search', $post_type );
-
+                                    get_template_part('search', $_REQUEST['post_type']);
+                                } elseif ( isset( $_REQUEST['tax'] ) && locate_template( 'taxonomy-' . $_REQUEST['tax'] . '.php' ) ) {
+                                    get_template_part('taxonomy', $_REQUEST['tax']);
                                 } else {
 
                                     /*

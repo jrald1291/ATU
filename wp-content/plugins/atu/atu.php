@@ -160,29 +160,24 @@ class ATU {
 
     public function atu_vendor_search_form() {
         ?>
-        <form action="<?php echo home_url( '/' ); ?>" class="form">
+        <form action="<?php echo get_permalink( get_page_by_path( 'vendors' ) ); ?>" class="form">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                    <input type="text" name="s" class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
+                    <input type="text" name="keyword" value="<?php echo isset( $_GET['keyword'] ) ? $_GET['keyword'] : ''; ?>" class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
                     </div>
                 </div>
                 <div class="col-md-5">
                     <div class="input-group">
-                        <div class="input-group-addon"><?php _e( 'Venue Category', 'atu' ); ?></div>
-                            <?php wp_dropdown_categories( array(
-                            'taxonomy'  => 'venue-category',
-                            'name'               => 'venue-category',
-                            'hide_empty'         => 0,
-                            'class'              => 'form-control',
-                            'show_option_none'   => '',
-                            'option_none_value'  => '-1',
-                            ) ); ?>
+                        <div class="input-group-addon"><?php _e( 'Vendor Category', 'atu' ); ?></div>
+                            <?php ATU_Helper::dropwdown_vendor_category(array(
+                                'selected' => isset( $_REQUEST['profession'] ) ? $_REQUEST['profession'] : ''
+                            )); ?>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <input type="hidden" name="post_type" value="venue">
-                    <button class="btn btn-secondary btn-block" ><span class="fa fa-search icon-l"></span><?php _e( 'Search Venue', 'atu' ); ?></button>
+                    <input type="hidden" name="tax" value="profession">
+                    <button class="btn btn-secondary btn-block" ><span class="fa fa-search icon-l"></span><?php _e( 'Search Vendor', 'atu' ); ?></button>
                 </div>
             </div>
         </form>
