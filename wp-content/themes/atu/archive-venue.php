@@ -16,10 +16,22 @@
  * @since Twenty Fifteen 1.0
  */
 
-get_header();
+get_header();?>
+
+<?php 
+    $bg = of_get_option('banner', '');
+    $page_bg = wp_get_attachment_image_src(get_field('page_background'),'large');
+    $page_bg = $page_bg[0];
+    if (!$page_bg) {
+        $page_bg = $bg;
+    }
+    if ($page_bg== "" and $bg == "") {
+        $page_bg = get_template_directory_uri()."/assets/images/banner.jpg";
+    }
 
 ?>
-<div class="l-content-bg" >
+
+<div class="l-content-bg" style="background: url('<?php echo $page_bg; ?>') no-repeat"> 
     <div class="container">
         <div class="row">
             <div class="col-md-9">
@@ -56,7 +68,7 @@ get_header();
                                                 <div class="post-img">
                                                     <a href="<?php the_permalink(); ?>"><?php do_action('aut_post_thumnail', 'venue-listing'); ?></a>
                                                 </div>
-                                                <div class="post-content t-sm">
+                                                <div class="post-content t-sm marquee">
                                                     <a href="<?php the_permalink(); ?>" class="post-name"><?php the_title(); ?></a>
                                                 </div>
                                             </div>

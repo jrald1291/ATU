@@ -58,7 +58,7 @@ get_header(); ?>
                                  */
                                 get_template_part( 'content', get_post_format() );
 
-
+                            	echo '<p>Written by: '. get_author_posts_link() .'</p>';
 
                                 // End the loop.
                             endwhile;
