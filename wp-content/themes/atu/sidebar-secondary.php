@@ -41,7 +41,6 @@
             </ul>
 
 
-
         <?php else: ?>
 
             <h3><?php _e( 'No vendors found.', 'atu'); ?></h3>

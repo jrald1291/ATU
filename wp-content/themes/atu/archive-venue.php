@@ -38,6 +38,9 @@ get_header();
                                 <?php if ( have_posts() ) : ?>
 
                                     <?php
+
+
+
                                     // Start the Loop.
                                     while ( have_posts() ) : the_post();
                                         $cat_name = get_the_title();

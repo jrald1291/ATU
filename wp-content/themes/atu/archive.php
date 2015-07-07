@@ -31,7 +31,14 @@
 						<div class="page-title">
 							<h2 class="t-lg"></h2>
 						</div>
-
+						<div class="mb-20 xx">
+							 <?php while ( have_posts() ) : the_post();?>
+							 	<?php if (is_author()) {?>
+							 		<?php get_template_part( 'author', 'bio');?>	
+							 	<?php } else {?>
+							 		<?php get_template_part( 'content', 'page');?>
+							 	<?php } ?>
+							 <?php endwhile;?>
 						</div>
 					</div>
 				</div>

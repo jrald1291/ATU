@@ -32,7 +32,10 @@
 		</div>
 		<div class="widget-header">Florist and Stylist</div>
 		<ul class="list">
-
+			<li><a href="tel:<?php the_field( 'mobile' ); ?>">Mobile: <?php the_field( 'mobile' ); ?></a></li>
+			<li><a href="tel:<?php the_field( 'phone' ); ?>">Phone: <?php the_field( 'phone' ); ?></a></li>
+			<li><a href="mailto:<?php the_field( 'email' ); ?>"><?php the_field( 'email' ); ?></a></li>
+			<li><a href="<?php the_field( 'website' ); ?>" target="_blank"><?php the_field( 'website' ); ?></a></li>
 		</ul>
 
 	</div>
