@@ -19,7 +19,7 @@ if ( ! class_exists('ATU_Admin') ) {
             include_once( 'class-atu-admin-post.php' );
             include_once( 'class-atu-admin-users.php' );
 
-            if ( ! is_admin() ) return;
+//            if ( ! is_admin() ) return;
 
 
             include_once( 'class-atu-admin-settings.php' );
