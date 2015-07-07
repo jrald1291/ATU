@@ -41,6 +41,7 @@ if ( have_posts() ):
                                         <?php wp_dropdown_categories( array(
                                             'taxonomy'  => 'venue-category',
                                             'hide_empty'         => 0,
+                                            'name'               => 'venue-category',
                                             'class'              => 'form-control',
                                             'show_option_none'   => '',
                                             'option_none_value'  => '-1',
