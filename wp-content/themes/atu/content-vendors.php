@@ -63,7 +63,7 @@ if  (  get_query_var( 'page' ) ) {
 //$page = get_query_var( 'page' ) ? get_query_var( 'page' ) : 1;
 
 // how many users to show per page
-$users_per_page = 1;
+$users_per_page = 12;
 
 // calculate the total number of pages.
 $total_pages = 1;
