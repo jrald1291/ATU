@@ -31,7 +31,7 @@ if( ! class_exists( 'ATU_Profile' ) ) {
 
             $username = get_query_var( 'username' );
 
-            if( isset($username) ) {
+            if( isset( $username ) && get_user_by( 'login', $username ) ) {
 
                 echo '<h2>Yay! My friendly url seems to work, here is the $friendlyurl value: '.$username.'</h2>';
 
