@@ -1,39 +1,52 @@
 <?php
+/**
+ * The template for displaying pages
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages and that
+ * other "pages" on your WordPress site will use a different template.
+ *
+ * @package WordPress
+ * @subpackage Twenty_Fifteen
+ * @since Twenty Fifteen 1.0
+ */
 
-get_header(); ?>
 
-<?php if ( have_posts() ): while( have_posts() ): the_post();?>
+get_header();
 
-<div class="l-content-bg" style="background: url('<?php ATU_Helper::background_image( get_field( 'page_background', get_the_ID() ) ); ?>') no-repeat">
+
+$user = get_user_by( 'login', get_query_var( 'username' ) );
+
+$user_info = get_userdata( $user->ID );
+
+?>
+
+<div class="l-content-bg" style="background: url('<?php ATU_Helper::background_image( $user_info->background_image ); ?>') no-repeat">
     <div class="container">
         <div class="row">
             <div class="col-md-9">
                 <div class="l-content-container">
-
                     <div class="page-header">
-
-                        <?php do_action( 'atu_venue_search_form' ); ?>
-
+                        <?php do_action( 'atu_vendor_search_form' ); ?>
                     </div>
-
                     <div class="page-content">
                         <div class="page-title ">
-                            <h2 class="t-lg"><?php the_field( 'company_name' ) ?></h2>
+                            <h2 class="t-lg"><?php echo $user_info->company_name; ?></h2>
                         </div>
                         <div class="slider mb-20">
                             <div class="slider-single slider-capt flexslider mb-0">
-                                <?php if ( have_rows( 'gallery' ) ): ?>
+                                <?php if ( have_rows( 'gallery', 'user_'. $user->ID ) ): ?>
                                     <ul class="slides">
 
-                                        <?php while( have_rows( 'gallery' ) ): the_row(); ?>
+                                        <?php while( have_rows( 'gallery', 'user_'. $user->ID ) ): the_row(); ?>
 
                                             <li>
-                                                    <?php
-                                                    /**
-                                                     * Get gallery image
-                                                     */
-                                                    echo wp_get_attachment_image( get_sub_field( 'gallery_image' ), array( 800, 292 ), array( 'alt' => 'image' ) );
-                                                    ?>
+                                                <?php
+                                                /**
+                                                 * Get gallery image
+                                                 */
+                                                echo wp_get_attachment_image( get_sub_field( 'gallery_image' ), array( 800, 292 ), array( 'alt' => 'image' ) );
+                                                ?>
                                             </li>
 
                                         <?php endwhile; ?>
@@ -50,46 +63,39 @@ get_header(); ?>
                         </div>
                         <div class="section section-tabbed">
                             <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#description" aria-controls="home" role="tab" data-toggle="tab"><?php _e( 'Description', 'atu'); ?></a></li>
-                                <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab"><?php _e( 'Gallery', 'atu'); ?></a></li>
-                                <li role="presentation"><a href="#youtube" aria-controls="youtube" role="tab" data-toggle="tab"><?php _e( 'Youtube Video', 'atu'); ?></a></li>
-                                <li role="presentation"><a href="#offers" aria-controls="offers" role="tab" data-toggle="tab"><?php _e( 'Special Offer', 'atu'); ?></a></li>
-                                <li role="presentation"><a href="#map" aria-controls="map" role="tab" data-toggle="tab"><?php _e( 'Map', 'atu'); ?></a></li>
+                                <li role="presentation" class="active"><a href="#description" aria-controls="home" role="tab" data-toggle="tab">Description</a></li>
+                                <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Gallery</a></li>
+                                <li role="presentation"><a href="#youtube" aria-controls="youtube" role="tab" data-toggle="tab">Youtube Video</a></li>
+                                <li role="presentation"><a href="#offers" aria-controls="offers" role="tab" data-toggle="tab">Special Offer</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active copy" id="description">
-                                    <?php the_content() ?>
-                                    <p>Address: <?php the_field( 'address' ); ?></p>
-                                    <p>Postcode: <?php the_field( 'post_code' ); ?></p>
-                                    <p>Service Area: <?php the_field( 'service_area' ); ?></p>
-                                    <p>Business Hours: <?php the_field( 'business_hours' ); ?></p>
-                                    <p>Capacity: <?php the_field( 'capacity' ); ?></p>
-
+                                    <p><?php echo $user_info->description ?></p>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="gallery">
                                     <div id="grid-gallery" class="grid-gallery">
                                         <section class="grid-wrap">
-                                            <?php if ( have_rows( 'gallery' ) ): ?>
-                                            <ul class="grid">
-                                                <li class="grid-sizer"></li><!-- for Masonry column width -->
+                                            <?php if ( have_rows( 'gallery', 'user_'. $user->ID ) ): ?>
+                                                <ul class="grid">
+                                                    <li class="grid-sizer"></li><!-- for Masonry column width -->
 
-                                                <?php while( have_rows( 'gallery' ) ): the_row();?>
+                                                    <?php while( have_rows( 'gallery', 'user_'. $user->ID ) ): the_row();?>
 
-                                                    <li>
-                                                        <figure>
+                                                        <li>
+                                                            <figure>
 
-                                                            <?php
-                                                            /**
-                                                             * Get gallery image
-                                                             */
-                                                            echo wp_get_attachment_image( get_sub_field( 'gallery_image' ), 'gallery-thumb', array( 'alt' => 'image' ) );
-                                                            ?>
-                                                        </figure>
-                                                    </li>
+                                                                <?php
+                                                                /**
+                                                                 * Get gallery image
+                                                                 */
+                                                                echo wp_get_attachment_image( get_sub_field( 'gallery_image' ), 'gallery-thumb', array( 'alt' => 'image' ) );
+                                                                ?>
+                                                            </figure>
+                                                        </li>
 
-                                                <?php endwhile; ?>
+                                                    <?php endwhile; ?>
 
-                                            </ul>
+                                                </ul>
                                             <?php else: ?>
 
                                                 <?php _e( 'No Gallery found', 'atu' ); ?>
@@ -163,23 +169,23 @@ get_header(); ?>
                                     </div><!-- // grid-gallery -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="youtube">
-                                    <?php the_field( 'youtube_iframe' ); ?>
+                                    <?php echo $user_info->youtube_iframe; ?>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="offers">
-                                    <?php if ( have_rows( 'special_offer' ) ): ?>
-                                    <ul class="post-inline post-member mb-20">
-                                        <?php while( have_rows( 'special_offer' ) ):the_row();  ?>
-                                        <li class="post-item">
-                                            <div class="post-img well-img">
-                                                <img src="<?php echo get_template_directory_uri() ?>/images/placeholders/pdf.jpg" alt="">
-                                            </div>
-                                            <div class="post-core">
-                                                <a href="<?php echo get_sub_field( 'special_offer_pdf', '#' ); ?>" target="_blank" class="link"><div class="post-title t-normal"><?php the_sub_field( 'special_offer_title' ); ?> <span class="post-cat t-highlight">Download PDF</span></div></a>
-                                                <p><?php the_sub_field( 'special_offer_description' ); ?></p>
-                                            </div>
-                                        </li>
-                                        <?php endwhile; ?>
-                                    </ul>
+                                    <?php if ( have_rows( 'special_offer', 'user_'. $user->ID ) ): ?>
+                                        <ul class="post-inline post-member mb-20">
+                                            <?php while( have_rows( 'special_offer', 'user_'. $user->ID ) ):the_row();  ?>
+                                                <li class="post-item">
+                                                    <div class="post-img well-img">
+                                                        <img src="<?php echo get_template_directory_uri() ?>/images/placeholders/pdf.jpg" alt="">
+                                                    </div>
+                                                    <div class="post-core">
+                                                        <a href="<?php echo get_sub_field( 'special_offer_pdf', '#' ); ?>" target="_blank" class="link"><div class="post-title t-normal"><?php the_sub_field( 'special_offer_title' ); ?> <span class="post-cat t-highlight">Download PDF</span></div></a>
+                                                        <p><?php the_sub_field( 'special_offer_description' ); ?></p>
+                                                    </div>
+                                                </li>
+                                            <?php endwhile; ?>
+                                        </ul>
 
                                     <?php else: ?>
 
@@ -187,63 +193,84 @@ get_header(); ?>
 
                                     <?php endif; ?>
                                 </div>
-                                <div role="tabpanel" class="tab-pane" id="map">
-                                    <?php
-
-                                    $location = get_field('map');
-
-                                    if( !empty($location) ):
-                                    ?>
-                                    <div class="acf-map">
-                                        <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>"></div>
-                                    </div>
-                                    <?php endif; ?>
-
-
-                                </div>
                             </div>
                         </div>
                         <div class="social-links list-labeled-inline bt-0">
                             <label for="">Follow us in social :</label>
                             <ul>
-                                <li><a href="<?php the_field( 'instagram' ); ?>"><span class="fa fa-instagram"></span></a></li>
-                                <li><a href="<?php the_field( 'youtube' ); ?>"><span class="fa fa-youtube"></span></a></li>
-                                <li><a href="<?php the_field( 'google_+' ); ?>"><span class="fa fa-google-plus"></span></a></li>
-                                <li><a href="<?php the_field( 'pinterest' ); ?>"><span class="fa fa-pinterest"></span></a></li>
-                                <li><a href="<?php the_field( 'twitter' ); ?>"><span class="fa fa-twitter"></span></a></li>
-                                <li><a href="<?php the_field( 'linkedin' ); ?>"><span class="fa fa-linkedin"></span></a></li>
-                                <li><a href="<?php the_field( 'facebook' ); ?>"><span class="fa fa-facebook"></span></a></li>
+                                <li><a href="<?php echo $user_info->instagram ?>"><span class="fa fa-instagram"></span></a></li>
+                                <li><a href="<?php echo $user_info->youtube ?>"><span class="fa fa-youtube"></span></a></li>
+                                <li><a href="<?php echo $user_info->google_plus; ?>"><span class="fa fa-google-plus"></span></a></li>
+                                <li><a href="<?php echo $user_info->pinterest; ?>"><span class="fa fa-pinterest"></span></a></li>
+                                <li><a href="<?php echo $user_info->twitter ?>"><span class="fa fa-twitter"></span></a></li>
+                                <li><a href="<?php echo $user_info->linkedin ?>"><span class="fa fa-linkedin"></span></a></li>
+                                <li><a href="<?php echo $user_info->facebook ?>"><span class="fa fa-facebook"></span></a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                <?php get_sidebar(); ?>
+                <aside class="l-sidebar">
+                    <div class="widget widget-aside">
+                        <div class="ven-avatar">
+
+                            <?php echo wp_get_attachment_image( $user_info->profile_image, 'venue-listing' ); ?>
+                            <div class="ven-name" data-color="#ff73b2"><?php the_title(); ?></div>
+                        </div>
+                    </div>
+                    <div class="widget widget-aside widget-list">
+                        <div class="widget-list_logo">
+                            <?php echo wp_get_attachment_image( $user_info->company_logo,  'venue-listing' ); ?>
+                        </div>
+                        <div class="widget-header">Florist and Stylist</div>
+                        <ul class="list">
+                            <li><a href="tel:<?php echo $user_info->mobile; ?>">Mobile: <?php echo $user_info->mobile; ?></a></li>
+                            <li><a href="tel:<?php echo $user_info->phone; ?>">Phone: <?php echo $user_info->phone; ?></a></li>
+                            <li><a href="mailto:<?php echo $user_info->email; ?>"><?php echo $user_info->email; ?></a></li>
+                            <li><a href="<?php echo $user_info->website; ?>" target="_blank"><?php echo $user_info->website; ?></a></li>
+                        </ul>
+
+                    </div>
+                    <div class="widget widget-aside">
+                        <a href="" class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Vendor</a>
+                    </div>
+                    <div class="widget widget-aside">
+                        <a href="<?php echo $user_info->website; ?>" target="_blank" class="btn btn-sm btn-block btn-secondary"><span class="fa icon-l-sm fa-globe"></span>Visit website</a>
+                    </div>
+                    <div class="widget widget-aside">
+                        <div class="call-to-action">
+                            <span class="icon icon-tel"></span>
+                            <p>Any questions?</p>
+                            <p>Call US Now</p>
+                            <p><a href="">0405 421 387</a></p>
+                        </div>
+                    </div>
+                </aside>
             </div>
         </div>
     </div>
     <div class="pagination-single">
         <ul>
             <li class="prev">
-                <?php previous_post_link( '%link', '<span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
-                    <span>%title</span>' ); ?>
+                <a href="">
+                    <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
+                    <span>Gledswood wedding</span>
+                </a>
             </li>
             <li class="back">
-                <a href="<?php echo get_post_type_archive_link( 'venue' ); ?>">back to vendors listing</a>
+                <a href="#">back to vendors listing</a>
             </li>
             <li class="next">
-                <?php next_post_link( '%link', '<span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
-                    <span>%title</span>' ); ?>
+                <a href="">
+                    <span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
+                    <span>Gledswood wedding</span>
+                </a>
             </li>
         </ul>
     </div>
 </div>
-    <?php endwhile; ?>
-
-<?php endif; ?>
-
-<script>
-   // new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
-</script>
 <?php get_footer(); ?>
+<script>
+    new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
+</script>

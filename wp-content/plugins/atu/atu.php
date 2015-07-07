@@ -155,9 +155,10 @@ class ATU {
         add_action( 'atu_pagination', array( $this, 'atu_do_pagination' ) );
 
         add_action( 'atu_venue_search_form', array( $this, 'atu_venue_search_form' ) );
+        add_action( 'atu_vendor_search_form', array( $this, 'atu_vendor_search_form' ) );
     }
 
-    public function atu_venue_search_form() {
+    public function atu_vendor_search_form() {
         ?>
         <form action="<?php echo home_url( '/' ); ?>" class="form">
             <div class="row">
@@ -177,6 +178,39 @@ class ATU {
                             'show_option_none'   => '',
                             'option_none_value'  => '-1',
                             ) ); ?>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <input type="hidden" name="post_type" value="venue">
+                    <button class="btn btn-secondary btn-block" ><span class="fa fa-search icon-l"></span><?php _e( 'Search Venue', 'atu' ); ?></button>
+                </div>
+            </div>
+        </form>
+    <?php
+    }
+
+
+
+    public function atu_venue_search_form() {
+        ?>
+        <form action="<?php echo home_url( '/' ); ?>" class="form">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="s" class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <div class="input-group-addon"><?php _e( 'Venue Category', 'atu' ); ?></div>
+                        <?php wp_dropdown_categories( array(
+                            'taxonomy'  => 'venue-category',
+                            'name'               => 'venue-category',
+                            'hide_empty'         => 0,
+                            'class'              => 'form-control',
+                            'show_option_none'   => '',
+                            'option_none_value'  => '-1',
+                        ) ); ?>
                     </div>
                 </div>
                 <div class="col-md-3">

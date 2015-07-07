@@ -9,6 +9,32 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
             $string = strip_tags( $string );
         }
 
+        public static function background_image( $attachment_id, $default_image = null, $echo = true ) {
+
+            $default_image = $default_image == null ? ATU_ASSSETS_DIR . 'images/banner.jpg' : $default_image;
+
+            $page_background = wp_get_attachment_image_src( $attachment_id, 'full' );
+
+            $page_background = isset( $page_background[0] ) ?  $page_background[0] : '';
+
+
+            $option_bg = of_get_option('banner', '');
+
+
+            if ( empty( $page_background ) && empty( $option_bg ) ) {
+
+                $page_background = $default_image;
+
+            } elseif ( empty( $page_background ) && ! empty( $option_bg ) ) {
+
+                $page_background = $option_bg;
+            }
+
+            if ( ! $echo )return $page_background;
+
+            echo $page_background;
+        }
+
 
         public static function dropwdown_vendor_category( $args = array() ) {
 
