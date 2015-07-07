@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2015 at 11:43 PM
+-- Generation Time: Jul 08, 2015 at 12:04 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -1829,8 +1829,8 @@ CREATE TABLE IF NOT EXISTS `wp_term_relationships` (
 
 INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES
 (2, 9, 0),
-(3, 9, 0),
-(4, 9, 0),
+(3, 8, 0),
+(4, 8, 0),
 (11, 2, 0),
 (13, 2, 0),
 (20, 3, 0),
@@ -1910,8 +1910,8 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 (5, 5, 'portfolio-category', '', 0, 3),
 (6, 6, 'portfolio-category', '', 0, 1),
 (7, 7, 'portfolio-category', '', 0, 2),
-(8, 8, 'profession', '', 0, 0),
-(9, 9, 'profession', '', 0, 3),
+(8, 8, 'profession', '', 0, 2),
+(9, 9, 'profession', '', 0, 1),
 (10, 10, 'venue-category', '', 0, 0),
 (11, 11, 'venue-category', '', 0, 0),
 (12, 12, 'venue-category', '', 0, 2),
@@ -1950,7 +1950,7 @@ CREATE TABLE IF NOT EXISTS `wp_usermeta` (
   `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_value` longtext COLLATE utf8mb4_unicode_ci
-) ENGINE=InnoDB AUTO_INCREMENT=141 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=210 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_usermeta`
@@ -2039,11 +2039,11 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (81, 2, '_mobile', 'field_55993fd48f752'),
 (82, 2, '_youtube_link', 'field_55993fde8f753'),
 (83, 2, '_company_name', 'field_55993ffb8f754'),
-(84, 2, 'profession', '9'),
+(84, 2, 'profession', 'planner'),
 (85, 2, '_profession', 'field_5599400c8f755'),
 (86, 1, 'closedpostboxes_venue', 'a:0:{}'),
 (87, 1, 'metaboxhidden_venue', 'a:8:{i:0;s:6:"acf_40";i:1;s:7:"acf_124";i:2;s:7:"acf_183";i:3;s:11:"postexcerpt";i:4;s:16:"commentstatusdiv";i:5;s:11:"commentsdiv";i:6;s:7:"slugdiv";i:7;s:9:"authordiv";}'),
-(88, 2, 'background_image', ''),
+(88, 2, 'background_image', '155'),
 (89, 2, '_background_image', 'field_559c1ca92695d'),
 (90, 2, 'color', '#32a69f'),
 (91, 2, '_color', 'field_559bc4445800a'),
@@ -2095,7 +2095,73 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (137, 2, 'special_offer_1_special_offer_pdf', '187'),
 (138, 2, '_special_offer_1_special_offer_pdf', 'field_559af7fd62b78'),
 (139, 2, 'company_logo', '87'),
-(140, 2, '_company_logo', 'field_559c29f940b76');
+(140, 2, '_company_logo', 'field_559c29f940b76'),
+(141, 4, 'background_image', '162'),
+(142, 4, '_background_image', 'field_559c1ca92695d'),
+(143, 4, 'profile_image', '89'),
+(144, 4, '_profile_image', 'field_559933782fd22'),
+(145, 4, 'color', '#dd3333'),
+(146, 4, '_color', 'field_559bc4445800a'),
+(147, 4, '_phone', 'field_55993fa98f751'),
+(148, 4, '_mobile', 'field_55993fd48f752'),
+(149, 4, '_company_name', 'field_55993ffb8f754'),
+(150, 4, 'company_logo', '87'),
+(151, 4, '_company_logo', 'field_559c29f940b76'),
+(152, 4, '_description', 'field_559af52b62b71'),
+(153, 4, 'gallery', '0'),
+(154, 4, '_gallery', 'field_559af36f62b6c'),
+(155, 4, 'youtube_iframe', ''),
+(156, 4, '_youtube_iframe', 'field_55993fde8f753'),
+(157, 4, 'special_offer', '0'),
+(158, 4, '_special_offer', 'field_559af7c062b75'),
+(159, 4, 'instagram', 'http://www.instagram.com'),
+(160, 4, '_instagram', 'field_559afb5550b57'),
+(161, 4, 'youtube', 'http://www.youtube.com'),
+(162, 4, '_youtube', 'field_559afb6250b58'),
+(163, 4, 'google_plus', 'http://www.google.com'),
+(164, 4, '_google_plus', 'field_559afb7050b59'),
+(165, 4, 'pinterest', 'http://www.pinterest.com'),
+(166, 4, '_pinterest', 'field_559afb8250b5a'),
+(167, 4, 'twitter', 'http://www.twitter.com'),
+(168, 4, '_twitter', 'field_559afb8d50b5b'),
+(169, 4, 'linkedin', 'http://www.linkedin.com'),
+(170, 4, '_linkedin', 'field_559afb9d50b5c'),
+(171, 4, 'facebook', 'http://www.facebook.com'),
+(172, 4, '_facebook', 'field_559afbab50b5d'),
+(173, 4, 'profession', 'photographer'),
+(175, 3, 'background_image', '95'),
+(176, 3, '_background_image', 'field_559c1ca92695d'),
+(177, 3, 'profile_image', '79'),
+(178, 3, '_profile_image', 'field_559933782fd22'),
+(179, 3, 'color', '#eeee22'),
+(180, 3, '_color', 'field_559bc4445800a'),
+(181, 3, '_phone', 'field_55993fa98f751'),
+(182, 3, '_mobile', 'field_55993fd48f752'),
+(183, 3, '_company_name', 'field_55993ffb8f754'),
+(184, 3, 'company_logo', '72'),
+(185, 3, '_company_logo', 'field_559c29f940b76'),
+(186, 3, '_description', 'field_559af52b62b71'),
+(187, 3, 'gallery', '0'),
+(188, 3, '_gallery', 'field_559af36f62b6c'),
+(189, 3, 'youtube_iframe', ''),
+(190, 3, '_youtube_iframe', 'field_55993fde8f753'),
+(191, 3, 'special_offer', '0'),
+(192, 3, '_special_offer', 'field_559af7c062b75'),
+(193, 3, 'instagram', 'http://www.instagram.com'),
+(194, 3, '_instagram', 'field_559afb5550b57'),
+(195, 3, 'youtube', 'http://www.youtube.com'),
+(196, 3, '_youtube', 'field_559afb6250b58'),
+(197, 3, 'google_plus', 'http://www.google.com'),
+(198, 3, '_google_plus', 'field_559afb7050b59'),
+(199, 3, 'pinterest', 'http://www.pinterest.com'),
+(200, 3, '_pinterest', 'field_559afb8250b5a'),
+(201, 3, 'twitter', 'http://www.twitter.com'),
+(202, 3, '_twitter', 'field_559afb8d50b5b'),
+(203, 3, 'linkedin', 'http://www.linkedin.com'),
+(204, 3, '_linkedin', 'field_559afb9d50b5c'),
+(205, 3, 'facebook', 'http://www.facebook.com'),
+(206, 3, '_facebook', 'field_559afbab50b5d'),
+(207, 3, 'profession', 'photographer');
 
 -- --------------------------------------------------------
 
@@ -2266,7 +2332,7 @@ ALTER TABLE `wp_term_taxonomy`
 -- AUTO_INCREMENT for table `wp_usermeta`
 --
 ALTER TABLE `wp_usermeta`
-  MODIFY `umeta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=141;
+  MODIFY `umeta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=210;
 --
 -- AUTO_INCREMENT for table `wp_users`
 --

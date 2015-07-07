@@ -43,6 +43,14 @@ get_header(); ?>
                                 $count_args  = array(
                                     'role'      => 'Vendor',
                                     'fields'    => 'all_with_meta',
+                                    'meta_query' => array(
+                                        'relation'  => 'OR',
+                                        array(
+                                            'key'       => 'profession',
+                                            'value'     => get_query_var( 'term' ),
+                                            'compare'   => '='
+                                        )
+                                    ),
                                     'number'    => 999999
                                 );
                                 $user_count_query = new WP_User_Query($count_args);
@@ -73,8 +81,17 @@ get_header(); ?>
                                     'orderby'   => 'display_name',
                                     // return all fields
                                     'fields'    => 'all_with_meta',
+                                    'meta_query' => array(
+                                        'relation'  => 'OR',
+                                        array(
+                                            'key'       => 'profession',
+                                            'value'     => get_query_var( 'term' ),
+                                            'compare'   => '='
+                                        )
+                                    ),
                                     'number'    => $users_per_page,
                                     'offset'    => $offset // skip the number of users that we have per page
+
                                 );
 
                                 $wp_user_query = new WP_User_Query( $args );
