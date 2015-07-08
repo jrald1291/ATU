@@ -42,8 +42,9 @@ get_header(); ?>
 					<div class="page-content">
 						<div class="post-inline post-blog post-member mb-20">
 							 <?php 
+							 	$next_link = get_next_posts_link(__('Newer Entries &raquo;'));
 							    $paged = get_query_var('paged');
-							    $args = array( 'post_type' => 'post', 'posts_per_page' => 10,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
+							    $args = array( 'post_type' => 'post', 'posts_per_page' => 1,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
 							    $loop = new WP_Query( $args );
 
 								    while ( $loop->have_posts() ) : $loop->the_post();
@@ -55,6 +56,9 @@ get_header(); ?>
 									<div class="pagination">
 										<label for="">Pagination :</label>
 										<?php wp_pagenavi( array( 'query' => $loop ) ); ?>
+										<?php if (!$next_link){
+												echo "<div class='wp-pagenavi'><span class='pages'>Page 1 of 1</span></div>";
+										} ?>
 									</div>
 								<?php wp_reset_postdata(); ?>
 						</div>

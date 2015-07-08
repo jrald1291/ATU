@@ -63,7 +63,7 @@ if  (  get_query_var( 'page' ) ) {
 //$page = get_query_var( 'page' ) ? get_query_var( 'page' ) : 1;
 
 // how many users to show per page
-$users_per_page = 12;
+$users_per_page = 1;
 
 // calculate the total number of pages.
 $total_pages = 1;
@@ -134,7 +134,7 @@ if ( ! empty( $vendors ) ) : ?>
     <?php
     $current_url = is_archive() ? get_term_link( $term, 'profession' ) : $current_url = get_permalink( get_page_by_path( 'vendors' ) );
 
-    //ATU_Helper::pagination( $current_url, $total_pages, $page );
+    ATU_Helper::pagination( $current_url, $total_pages, $page );
     ?>
 <?php else: ?>
 

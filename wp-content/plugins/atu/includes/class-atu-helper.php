@@ -11,9 +11,9 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
 
 
         public static function pagination( $current_url, $total_pages, $page ) {
-            /*global $wp;
+            global $wp;
             $current_url = add_query_arg( $wp->query_string, '', home_url( $wp->request ) );
-            print_r( $current_url );
+            // print_r( $current_url );
 
             $next = $page < $total_pages ? $page + 1 : $page;
 
@@ -22,22 +22,32 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
             echo '<div class="wp-pagenavi">';
             echo '<span class="pages">Page '. $page .' of '. $total_pages .'</span>';
 
-            for( $i = 1; $i <= $total_pages; $i++ ) {
-                if ( $i == $page ) {
-                    echo '<span class="current">'. $page .'</span>';
-
-                } else {
-
-                    echo '<a class="page larger" href="'. $current_url . '?page=' . $i .'/">'. $i .'</a>';
-                }
+            if ($page>1) {
+               echo '<a class="nextpostslink" rel="prev" href="'. get_home_url() . '/vendors/page/' . ($page-1) .'/">«</a>';
             }
 
+            for( $i = 1; $i <= $total_pages; $i++ ) {
+                if ($total_pages!=1) {
+                    if ( $i == $page) {
+                    echo '<span class="current">'. $page .'</span>';
 
-            echo '<a class="nextpostslink" rel="next" href="'. $current_url . '?page=' . $next .'/">Next</a>';
+                    } else {
+
+                        echo '<a class="page larger" href="'. get_home_url() . '/vendors/page/' . $i .'/">'. $i .'</a>';
+                        // echo '<a class="page larger" href="'. $current_url . '?page=' . $i .'/">'. $i .'</a>';
+                    }
+                }
+                
+            }
+            if ($page<$total_pages) {
+               echo '<a class="nextpostslink" rel="next" href="'. get_home_url() . '/vendors/page/' . $next .'/">»</a>';
+            }
+           
+            // echo '<a class="nextpostslink" rel="next" href="'. $current_url . '?page=' . $next .'/">Next</a>';
             echo '</div>';
             echo '</div>';
 
-            */
+            
 
 
             global $wp_query;
