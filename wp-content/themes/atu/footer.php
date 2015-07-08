@@ -66,13 +66,10 @@
 										<a href=""><span class="fa fa-phone"></span> : 1234-0000-34-00</a>
 									</li>
 								</ul>
-                                <form class="form form-labeled atu-membership-form">
-                                    <div class="form-group field-wrap">
-                                        <label for="email">Email Address</label>
-                                        <input type="email" name="email" class="form-control" required>
-                                    </div>
-                                    <button class="btn btn-primary btn-block" type="submit"><span class="fa fa-user icon-l"></span>Become a member</button>
+                                <form class="">
+                                    
                                 </form>
+                                <?php echo do_shortcode('[contact-form-7 id="198" title="Become a Member" html_class="form form-labeled atu-membership-form"]'); ?>
 							</div>
 
 						</div>
