@@ -232,6 +232,3 @@ $user_info = get_userdata( $user->ID );
     </div>
 </div>
 <?php get_footer(); ?>
-<script>
-    new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
-</script>

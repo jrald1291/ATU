@@ -126,6 +126,10 @@
 		for ( var i = 1; i < 6; i++ ) {
 			setTimeout( resizeAndScroll, 100 * i );
 		}
+
+        if ( $( '#grid-gallery').length )
+            new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
+
 	} );
 
 } )( jQuery );
