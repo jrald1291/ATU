@@ -184,11 +184,11 @@ class ATU {
 
     public function atu_venue_search_form() {
         ?>
-        <form action="<?php echo home_url( '/' ); ?>" class="form">
+        <form action="<?php echo home_url( '/' ); ?>" method="get" class="form">
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <input type="text" name="s" <?php echo isset( $_GET['s'] ) ? $_GET['s'] : ''; ?> class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
+                        <input type="text" name="s" value="<?php echo isset( $_GET['s'] ) ? $_GET['s'] : ''; ?>" class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -196,7 +196,7 @@ class ATU {
                         <?php wp_dropdown_categories( array(
                             'taxonomy'  => 'venue-category',
                             'name'               => 'venue-category',
-                            'selected'              => isset( $_GET['s'] ) ? $_GET['s'] : '-1',
+                            'selected'              => isset( $_GET['venue-category'] ) ? $_GET['venue-category'] : '-1',
                             'hide_empty'         => 0,
                             'class'              => 'form-control',
                             'show_option_none'   => 'Venue Category',
