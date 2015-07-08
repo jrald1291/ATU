@@ -188,7 +188,7 @@ class ATU {
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <input type="text" name="s" class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
+                        <input type="text" name="s" <?php echo isset( $_GET['s'] ) ? $_GET['s'] : ''; ?> class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -196,6 +196,7 @@ class ATU {
                         <?php wp_dropdown_categories( array(
                             'taxonomy'  => 'venue-category',
                             'name'               => 'venue-category',
+                            'selected'              => isset( $_GET['s'] ) ? $_GET['s'] : '-1',
                             'hide_empty'         => 0,
                             'class'              => 'form-control',
                             'show_option_none'   => 'Venue Category',
@@ -206,10 +207,11 @@ class ATU {
 
                 <div class="col-md-2">
                     <div class="input-group">
+                        <?php $ft = isset( $_GET['ft'] ) ? $_GET['ft'] : ''; ?>
                         <select id="filterType" name="ft" class="form-control">
-                            <option value=""><?php _e( '-- Select --', 'atu' ); ?></option>
-                            <option value="post_code"><?php _e( 'Postcode', 'atu' ); ?></option>
-                            <option value="region"><?php _e( 'Region', 'atu' ); ?></option>
+                            <option value="" <?php selected($ft, ''); ?>><?php _e( '-- Select --', 'atu' ); ?></option>
+                            <option value="post_code" <?php selected($ft, 'post_code'); ?>><?php _e( 'Postcode', 'atu' ); ?></option>
+                            <option value="region" <?php selected($ft, 'region'); ?>><?php _e( 'Region', 'atu' ); ?></option>
                         </select>
                     </div>
                 </div>
@@ -225,7 +227,8 @@ class ATU {
                 <div class="col-md-2">
                     <div class="input-group">
 
-                        <select name="<?php echo $region_field['name']; ?>" class="form-control hidden" disabled>
+                        <select name="<?php echo $region_field['name']; ?>" class="form-control <?php echo isset( $_GET[$region_field['name']] ) ?  'hidden' : ''; ?>"
+                            <?php echo isset( $_GET[$region_field['name']] ) ?  'disabled="disabled"' : ''; ?>>
                             <option value="" <?php selected('', $post_region); ?>><?php echo $region_field['label']; ?></option>
                             <?php foreach( $region_field['choices'] as $key => $value ): ?>
                             <option value="<?php echo $key; ?>"  <?php selected($key, $post_region); ?> ><?php echo $value; ?></option>
@@ -247,7 +250,8 @@ class ATU {
                     <div class="col-md-2">
                         <div class="input-group">
 
-                            <select name="<?php echo $postcode_field['name']; ?>" class="form-control hidden" disabled>
+                            <select name="<?php echo $postcode_field['name']; ?>" class="form-control <?php echo isset( $_GET[$postcode_field['name']] ) ?  'hidden' : ''; ?>"
+                                <?php echo isset( $_GET[$postcode_field['name']] ) ?  'disabled="disabled"' : ''; ?>>
                                 <option value="" <?php selected('', $post_postcode); ?>><?php echo $postcode_field['label']; ?></option>
                                 <?php foreach( $postcode_field['choices'] as $key => $value ): ?>
                                     <option value="<?php echo $key; ?>"  <?php selected($key, $post_postcode); ?> ><?php echo $value; ?></option>
@@ -312,46 +316,48 @@ class ATU {
 
     public function atu_advance_search( $query ) {
 
-        if ( !$query->is_search )
-            return $query;
+        if ( ! $query->is_main_query() ) return $query;
 
-        if ( isset( $_REQUEST['venue-category'] ) ) {
+        if ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'venue' ) {
+            $query->set('post_type', array('venue'));
+            if ( isset( $_REQUEST['venue-category'] ) && $_REQUEST['venue-category'] != -1 ) {
 
-            $query->set( 'post_type', array( 'venue' ) );
-            $query->set( 'tax_query', array(
-                'relation' => 'OR',
-                array(
-                    'taxonomy' => 'venue-category',
-                    'field' => 'id',
-                    'terms' => array( intval($_REQUEST['venue-category']) ),
-                    'operator' => 'IN'
-                )
-            ) );
 
+                $query->set('tax_query', array(
+                    'relation' => 'OR',
+                    array(
+                        'taxonomy' => 'venue-category',
+                        'field' => 'id',
+                        'terms' => array(intval($_REQUEST['venue-category'])),
+                        'operator' => 'IN'
+                    )
+                ));
+
+
+            }
+
+
+            $ft_value = '';
+            if (isset($_GET['post_code']))
+                $ft_value = $_GET['post_code'];
+            elseif (isset($_GET['region']))
+                $ft_value = $_GET['region'];
+
+            if ( isset( $_GET['ft'] ) && ! empty( $ft_value ) ) {
+                $query->set( 'meta_query', array(
+                        'relation' => 'OR',
+                        // this is the part that gets a key with no value
+                        array(
+                            'key'     => $_GET['ft'],
+                            'value'    => $ft_value, // just has to be something because of a bug in WordPress
+                            'compare' => '==',
+                        )
+                    )
+                );
+
+            }
 
         }
-        $ft_value = '';
-        if ( isset( $_GET['post_code'] ) )
-            $ft_value = $_GET['post_code'];
-        elseif ( isset( $_GET['region'] ) )
-            $ft_value = $_GET['region'];
-
-        if ( isset( $_GET['ft'] ) && ! empty( $value ) ) {
-            //Get original meta query
-            $meta_query = $query->get('meta_query');
-
-            //Add our meta query to the original meta queries
-            $meta_query[] = array(
-                'key' => esc_attr( $_GET['ft'] ),
-                'value' => $ft_value,
-                'compare' => '=',
-            );
-
-            $query->set('meta_query', $meta_query);
-
-        }
-
-
 
         return $query;
     }
