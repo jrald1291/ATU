@@ -206,7 +206,7 @@ class ATU {
 
                 <div class="col-md-2">
                     <div class="input-group">
-                        <select id="filterType" class="form-control">
+                        <select id="filterType" name="ft" class="form-control">
                             <option value=""><?php _e( '-- Select --', 'atu' ); ?></option>
                             <option value="postcode"><?php _e( 'Postcode', 'atu' ); ?></option>
                             <option value="region"><?php _e( 'Region', 'atu' ); ?></option>
