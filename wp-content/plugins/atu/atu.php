@@ -173,7 +173,7 @@ class ATU {
                 </div>
                 <div class="col-md-3">
                     <input type="hidden" name="tax" value="profession">
-                    <button class="btn btn-secondary btn-block" ><span class="fa fa-search icon-l"></span><?php _e( 'Search Vendor', 'atu' ); ?></button>
+                    <button class="btn btn-secondary btn-block" ><?php _e( 'Search Vendor', 'atu' ); ?></button>
                 </div>
             </div>
         </form>
@@ -206,7 +206,7 @@ class ATU {
                 </div>
                 <div class="col-md-3">
                     <input type="hidden" name="post_type" value="venue">
-                    <button class="btn btn-secondary btn-block" ><span class="fa fa-search icon-l"></span><?php _e( 'Search Venue', 'atu' ); ?></button>
+                    <button class="btn btn-secondary btn-block" ><?php _e( 'Search Venue', 'atu' ); ?></button>
                 </div>
             </div>
         </form>
