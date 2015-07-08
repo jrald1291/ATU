@@ -186,24 +186,44 @@ class ATU {
         ?>
         <form action="<?php echo home_url( '/' ); ?>" class="form">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         <input type="text" name="s" class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
                     </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-3">
                     <div class="input-group">
-                        <div class="input-group-addon"><?php _e( 'Venue Category', 'atu' ); ?></div>
                         <?php wp_dropdown_categories( array(
                             'taxonomy'  => 'venue-category',
                             'name'               => 'venue-category',
                             'hide_empty'         => 0,
                             'class'              => 'form-control',
-                            'show_option_none'   => '-- Select --',
+                            'show_option_none'   => 'Venue Category',
                             'option_none_value'  => '-1',
                         ) ); ?>
                     </div>
                 </div>
+
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <select name="type" class="form-control">
+                            <option value=""><?php _e( '-- Select --', 'atu' ); ?></option>
+                            <option value="postcode"><?php _e( 'Postcode', 'atu' ); ?></option>
+                            <option value="region"><?php _e( 'Region', 'atu' ); ?></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <select name="type" class="form-control">
+                            <option value=""><?php _e( '-- Post Code --', 'atu' ); ?></option>
+                            <option value="1001">1001</option>
+                            <option value="1002">1002</option>
+                        </select>
+                    </div>
+                </div>
+
+
                 <div class="col-md-3">
                     <input type="hidden" name="post_type" value="venue">
                     <button class="btn btn-secondary btn-block" ><?php _e( 'Search Venue', 'atu' ); ?></button>
