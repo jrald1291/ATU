@@ -43,7 +43,7 @@
             var val = $(this).val();
             var $postcode = $('select[name=post_code]');
             var $region = $('select[name=region]');
-            if ( val == 'postcode' ) {
+            if ( val == 'post_code' ) {
                 $postcode.removeClass('hidden').removeAttr('disabled');
                 $region.addClass('hidden').attr('disabled', true);
             } else if(val == 'region') {

@@ -208,7 +208,7 @@ class ATU {
                     <div class="input-group">
                         <select id="filterType" name="ft" class="form-control">
                             <option value=""><?php _e( '-- Select --', 'atu' ); ?></option>
-                            <option value="postcode"><?php _e( 'Postcode', 'atu' ); ?></option>
+                            <option value="post_code"><?php _e( 'Postcode', 'atu' ); ?></option>
                             <option value="region"><?php _e( 'Region', 'atu' ); ?></option>
                         </select>
                     </div>
@@ -330,6 +330,28 @@ class ATU {
 
 
         }
+        $ft_value = '';
+        if ( isset( $_GET['post_code'] ) )
+            $ft_value = $_GET['post_code'];
+        elseif ( isset( $_GET['region'] ) )
+            $ft_value = $_GET['region'];
+
+        if ( isset( $_GET['ft'] ) && ! empty( $value ) ) {
+            //Get original meta query
+            $meta_query = $query->get('meta_query');
+
+            //Add our meta query to the original meta queries
+            $meta_query[] = array(
+                'key' => esc_attr( $_GET['ft'] ),
+                'value' => $ft_value,
+                'compare' => '=',
+            );
+
+            $query->set('meta_query', $meta_query);
+
+        }
+
+
 
         return $query;
     }
