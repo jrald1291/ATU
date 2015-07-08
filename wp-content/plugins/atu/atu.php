@@ -206,7 +206,7 @@ class ATU {
 
                 <div class="col-md-2">
                     <div class="input-group">
-                        <select name="type" class="form-control">
+                        <select id="filterType" class="form-control">
                             <option value=""><?php _e( '-- Select --', 'atu' ); ?></option>
                             <option value="postcode"><?php _e( 'Postcode', 'atu' ); ?></option>
                             <option value="region"><?php _e( 'Region', 'atu' ); ?></option>
@@ -225,7 +225,7 @@ class ATU {
                 <div class="col-md-2">
                     <div class="input-group">
 
-                        <select name="<?php echo $region_field['name']; ?>" class="form-control">
+                        <select name="<?php echo $region_field['name']; ?>" class="form-control hidden" disabled>
                             <option value="" <?php selected('', $post_region); ?>><?php echo $region_field['label']; ?></option>
                             <?php foreach( $region_field['choices'] as $key => $value ): ?>
                             <option value="<?php echo $key; ?>"  <?php selected($key, $post_region); ?> ><?php echo $value; ?></option>
@@ -247,7 +247,7 @@ class ATU {
                     <div class="col-md-2">
                         <div class="input-group">
 
-                            <select name="<?php echo $postcode_field['name']; ?>" class="form-control">
+                            <select name="<?php echo $postcode_field['name']; ?>" class="form-control hidden" disabled>
                                 <option value="" <?php selected('', $post_postcode); ?>><?php echo $postcode_field['label']; ?></option>
                                 <?php foreach( $postcode_field['choices'] as $key => $value ): ?>
                                     <option value="<?php echo $key; ?>"  <?php selected($key, $post_postcode); ?> ><?php echo $value; ?></option>

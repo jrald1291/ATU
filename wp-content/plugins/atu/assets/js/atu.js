@@ -39,5 +39,22 @@
         });
 
 
+        $('select#filterType').on('change', function(e) {
+            var val = $(this).val();
+            var $postcode = $('select[name=post_code]');
+            var $region = $('select[name=region]');
+            if ( val == 'postcode' ) {
+                $postcode.removeClass('hidden').removeAttr('disabled');
+                $region.addClass('hidden').attr('disabled', true);
+            } else if(val == 'region') {
+                $region.removeClass('hidden').removeAttr('disabled');
+                $postcode.addClass('hidden').attr('disabled', true);
+            } else {
+                $region.addClass('hidden').attr('disabled', true);
+                $postcode.addClass('hidden').attr('disabled', true);
+            }
+        });
+
+
     });
 }(jQuery, document, window));
