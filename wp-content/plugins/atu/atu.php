@@ -227,8 +227,8 @@ class ATU {
                 <div class="col-md-2">
                     <div class="input-group">
 
-                        <select name="<?php echo $region_field['name']; ?>" class="form-control <?php echo isset( $_GET[$region_field['name']] ) ?  'hidden' : ''; ?>"
-                            <?php echo isset( $_GET[$region_field['name']] ) ?  'disabled="disabled"' : ''; ?>>
+                        <select name="<?php echo $region_field['name']; ?>" class="form-control <?php echo  ! isset( $_GET[$region_field['name']] ) ?  'hidden' : ''; ?>"
+                            <?php echo ! isset( $_GET[$region_field['name']] ) ?  'disabled="disabled"' : ''; ?>>
                             <option value="" <?php selected('', $post_region); ?>><?php echo $region_field['label']; ?></option>
                             <?php foreach( $region_field['choices'] as $key => $value ): ?>
                             <option value="<?php echo $key; ?>"  <?php selected($key, $post_region); ?> ><?php echo $value; ?></option>
@@ -250,8 +250,8 @@ class ATU {
                     <div class="col-md-2">
                         <div class="input-group">
 
-                            <select name="<?php echo $postcode_field['name']; ?>" class="form-control <?php echo isset( $_GET[$postcode_field['name']] ) ?  'hidden' : ''; ?>"
-                                <?php echo isset( $_GET[$postcode_field['name']] ) ?  'disabled="disabled"' : ''; ?>>
+                            <select name="<?php echo $postcode_field['name']; ?>" class="form-control <?php echo ! isset( $_GET[$postcode_field['name']] ) ?  'hidden' : ''; ?>"
+                                <?php echo ! isset( $_GET[$postcode_field['name']] ) ?  'disabled="disabled"' : ''; ?>>
                                 <option value="" <?php selected('', $post_postcode); ?>><?php echo $postcode_field['label']; ?></option>
                                 <?php foreach( $postcode_field['choices'] as $key => $value ): ?>
                                     <option value="<?php echo $key; ?>"  <?php selected($key, $post_postcode); ?> ><?php echo $value; ?></option>
