@@ -213,15 +213,50 @@ class ATU {
                         </select>
                     </div>
                 </div>
+
+                <?php
+                $region_field = get_field_object('field_559d2588b58b5');
+
+                if ( $region_field ):
+
+                    $post_region = isset( $_GET[$region_field['name']] ) ? $_GET[$region_field['name']] : $region_field['default_value'];
+                ?>
+
                 <div class="col-md-2">
                     <div class="input-group">
-                        <select name="type" class="form-control">
-                            <option value=""><?php _e( '-- Post Code --', 'atu' ); ?></option>
-                            <option value="1001">1001</option>
-                            <option value="1002">1002</option>
+
+                        <select name="<?php echo $region_field['name']; ?>" class="form-control">
+                            <option value="" <?php selected('', $post_region); ?>><?php echo $region_field['label']; ?></option>
+                            <?php foreach( $region_field['choices'] as $key => $value ): ?>
+                            <option value="<?php echo $key; ?>"  <?php selected($key, $post_region); ?> ><?php echo $value; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
+
+                <?php endif; ?>
+
+                <?php
+                $postcode_field = get_field_object('field_559a8fbbaf4fa');
+
+                if ( $postcode_field ):
+
+                    $post_postcode = isset( $_GET[$postcode_field['name']] ) ? $_GET[$postcode_field['name']] : $postcode_field['default_value'];
+                    ?>
+
+                    <div class="col-md-2">
+                        <div class="input-group">
+
+                            <select name="<?php echo $postcode_field['name']; ?>" class="form-control">
+                                <option value="" <?php selected('', $post_postcode); ?>><?php echo $postcode_field['label']; ?></option>
+                                <?php foreach( $postcode_field['choices'] as $key => $value ): ?>
+                                    <option value="<?php echo $key; ?>"  <?php selected($key, $post_postcode); ?> ><?php echo $value; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+
+                <?php endif; ?>
 
 
                 <div class="col-md-3">
@@ -343,3 +378,6 @@ class ATU {
 }
 
 $GLOBALS['ATU'] = new ATU();
+
+
+
