@@ -316,7 +316,7 @@ class ATU {
 
     public function atu_advance_search( $query ) {
 
-        if ( ! $query->is_main_query() ) return $query;
+        if ( ! $query->is_main_query() || is_admin() ) return $query;
 
         if ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'venue' ) {
             $query->set('post_type', array('venue'));
