@@ -15,7 +15,7 @@
 ?>
 <aside class="l-sidebar">
 	<div class="widget widget-aside">
-		<div class="ven-avatar">
+		<div class="ven-avatar" style="border-bottom: 3px solid <?php echo hex2rgba(get_field( 'color')); ?>">
 
 			<?php
             // Get featured image
@@ -23,7 +23,7 @@
                 the_post_thumbnail( 'venue-listing' );
             }
              ?>
-			<div class="ven-name" data-color="#ff73b2"><?php the_title(); ?></div>
+			<div class="ven-name" style="background-color: <?php echo hex2rgba(get_field( 'color'),0.5); ?>"><?php the_title(); ?></div>
 		</div>
 	</div>
 	<div class="widget widget-aside widget-list">
@@ -46,7 +46,7 @@
 		<a href="<?php the_field( 'website' ); ?>" target="_blank" class="btn btn-sm btn-block btn-secondary"><span class="fa icon-l-sm fa-globe"></span>Visit website</a>
 	</div>
 	<div class="widget widget-aside">
-		<div class="call-to-action">
+		<div class="call-to-action" >
 			<span class="icon icon-tel"></span>
 			<p>Any questions?</p>
 			<p>Call US Now</p>

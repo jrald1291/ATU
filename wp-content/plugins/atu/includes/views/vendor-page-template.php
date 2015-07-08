@@ -106,60 +106,19 @@ $user_info = get_userdata( $user->ID );
                                         </section><!-- // grid-wrap -->
                                         <section class="slideshow">
                                             <ul>
-                                                <li>
-                                                    <figure>
-                                                        <figcaption>
-                                                            <h3>Letterpress asymmetrical</h3>
-                                                            <p>Kale chips lomo biodiesel stumptown Godard Tumblr, mustache sriracha tattooed cray aute slow-carb placeat delectus. Letterpress asymmetrical fanny pack art party est pour-over skateboard anim quis, ullamco craft beer.</p>
-                                                        </figcaption>
-                                                        <img src="<?php echo get_template_directory_uri() ?>/images/placeholders/gallery1.jpg" alt="img01"/>
-                                                    </figure>
-                                                </li>
-                                                <li>
-                                                    <figure>
-                                                        <figcaption>
-                                                            <h3>Vice velit chia</h3>
-                                                            <p>Chillwave Echo Park Etsy organic Cosby sweater seitan authentic pour-over. Occupy wolf selvage bespoke tattooed, cred sustainable Odd Future hashtag butcher.</p>
-                                                        </figcaption>
-                                                        <img src="<?php echo get_template_directory_uri() ?>/images/placeholders/gallery2.jpg" alt="img02"/>
-                                                    </figure>
-                                                </li>
-                                                <li>
-                                                    <figure>
-                                                        <figcaption>
-                                                            <h3>Brunch semiotics</h3>
-                                                            <p>IPhone PBR polaroid before they sold out meh you probably haven't heard of them leggings tattooed tote bag, butcher paleo next level single-origin coffee photo booth.</p>
-                                                        </figcaption>
-                                                        <img src="<?php echo get_template_directory_uri() ?>/images/placeholders/gallery3.jpg" alt="img03"/>
-                                                    </figure>
-                                                </li>
-                                                <li>
-                                                    <figure>
-                                                        <figcaption>
-                                                            <h3>Chillwave nihil occupy</h3>
-                                                            <p>Vice cliche locavore mumblecore vegan wayfarers asymmetrical letterpress hoodie mustache. Shabby chic lomo polaroid, scenester 8-bit Portland Pitchfork VHS tote bag.</p>
-                                                        </figcaption>
-                                                        <img src="<?php echo get_template_directory_uri() ?>/images/placeholders/gallery4.jpg" alt="img04"/>
-                                                    </figure>
-                                                </li>
-                                                <li>
-                                                    <figure>
-                                                        <figcaption>
-                                                            <h3>Kale chips lomo biodiesel</h3>
-                                                            <p>Chambray Schlitz pug YOLO, PBR Tumblr semiotics. Flexitarian YOLO ennui Blue Bottle, forage dreamcatcher chillwave put a bird on it craft beer Etsy.</p>
-                                                        </figcaption>
-                                                        <img src="<?php echo get_template_directory_uri() ?>/images/placeholders/gallery5.jpg" alt="img05"/>
-                                                    </figure>
-                                                </li>
-                                                <li>
-                                                    <figure>
-                                                        <figcaption>
-                                                            <h3>Exercitation occaecat</h3>
-                                                            <p>Cosby sweater hella lomo Thundercats VHS occupy High Life. Synth pop-up readymade single-origin coffee, fanny pack tousled retro. Fingerstache mlkshk ugh hashtag, church-key ethnic street art pug yr.</p>
-                                                        </figcaption>
-                                                        <img src="<?php echo get_template_directory_uri() ?>/images/placeholders/gallery6.jpg" alt="img06"/>
-                                                    </figure>
-                                                </li>
+                                                <?php while( have_rows( 'gallery', 'user_'. $user->ID ) ): the_row();?>
+
+                                                    <li>
+                                                        <figure>
+                                                            <figcaption>
+                                                                <h3><?php echo the_sub_field( 'gallery_title' ); ?></h3>
+                                                                <p><?php echo the_sub_field( 'gallery_description' ); ?></p>
+                                                            </figcaption>
+                                                            <?php echo wp_get_attachment_image( get_sub_field( 'gallery_image' ), 'img-lscape', array( 'alt' => 'image' ) ); ?>
+                                                        </figure>
+                                                    </li>
+
+                                                <?php endwhile; ?>
                                             </ul>
                                             <nav>
                                                 <span class="icon nav-prev"></span>
@@ -215,10 +174,10 @@ $user_info = get_userdata( $user->ID );
             <div class="col-md-3">
                 <aside class="l-sidebar">
                     <div class="widget widget-aside">
-                        <div class="ven-avatar">
+                        <div class="ven-avatar" style="border: 2px solid <?php echo hex2rgba($user_info->color); ?>">
 
                             <?php echo wp_get_attachment_image( $user_info->profile_image, 'venue-listing' ); ?>
-                            <div class="ven-name" data-color="#ff73b2"><?php the_title(); ?></div>
+                            <div class="ven-name"style="background-color:<?php echo hex2rgba(($user_info->color),0.5); ?>"><?php echo $user_info->first_name; ?></div>
                         </div>
                     </div>
                     <div class="widget widget-aside widget-list">
@@ -235,13 +194,13 @@ $user_info = get_userdata( $user->ID );
 
                     </div>
                     <div class="widget widget-aside">
-                        <a href="" class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Vendor</a>
+                        <a href="<?php echo get_permalink( get_page_by_title( 'Contact' ))."?contact_id=".$user->ID;?>" class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Vendor</a>
                     </div>
                     <div class="widget widget-aside">
-                        <a href="<?php echo $user_info->website; ?>" target="_blank" class="btn btn-sm btn-block btn-secondary"><span class="fa icon-l-sm fa-globe"></span>Visit website</a>
+                        <a href="<?php echo $user_info->url; ?>" target="_blank" class="btn btn-sm btn-block btn-secondary"><span class="fa icon-l-sm fa-globe"></span>Visit website</a>
                     </div>
                     <div class="widget widget-aside">
-                        <div class="call-to-action">
+                        <div class="call-to-action" style="background-color:<?php echo hex2rgba($user_info->color); ?>">
                             <span class="icon icon-tel"></span>
                             <p>Any questions?</p>
                             <p>Call US Now</p>

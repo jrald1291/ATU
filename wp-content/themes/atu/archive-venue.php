@@ -63,7 +63,7 @@ get_header();?>
                                         ?>
 
                                         <div class="col-md-4 col-sm-6">
-                                            <div class="post-item well-block" style="border-bottom: 3px solid <?php the_field( 'color' ); ?>">
+                                            <div class="post-item well-block" style="border-bottom: 3px solid <?php echo hex2rgba(get_field( 'color')); ?>">
                                                 <div class="well-header"><?php echo $cat_name; ?></div>
                                                 <div class="post-img">
                                                     <a href="<?php the_permalink(); ?>"><?php do_action('aut_post_thumnail', 'venue-listing'); ?></a>
@@ -99,6 +99,20 @@ get_header();?>
                         <ul class="list">
                             <?php wp_list_categories('taxonomy=venue-category&orderby=name&title_li=0'); ?>
 
+                        </ul>
+                    </div>
+                    <div class="widget widget-aside widget-list">
+                        <div class="widget-header">Venue Regions</div>
+                        <ul class="list">
+                            <li><a href="">The Hills Shire</a></li>
+                            <li><a href="">Sydney</a></li>
+                            <li><a href="">Northern Beaches</a></li>
+                            <li><a href="">Wetherill Park / Campbelltown</a></li>
+                            <li><a href="">Blue Mountains</a></li>
+                            <li><a href="">Hunter Valley </a></li>
+                            <li><a href="">Central Coast</a></li>
+                            <li><a href="">Wollongong/Sutherland</a></li>
+                            <li><a href="">Kangaroo Valley </a></li>
                         </ul>
                     </div>
                     <div class="widget widget-aside well-widget">

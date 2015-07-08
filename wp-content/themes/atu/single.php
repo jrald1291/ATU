@@ -58,9 +58,6 @@ get_header(); ?>
                                  */
                                 get_template_part( 'content', get_post_format() );
 
-                            	echo '<p>Written by: '. get_author_posts_link() .'</p>';
-
-                                // End the loop.
                             endwhile;
                             ?>
 						</div>
@@ -101,12 +98,12 @@ get_header(); ?>
 					$nepoid=$nepo->ID;
 					$ne_post_url = get_permalink($nepoid);?>
 					<a href="<?php echo $ne_post_url; ?>">
-						<span class="label"><i class="fa fa-angle-left icon-l"></i>Next</span>
+						<span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
 						<span><?php echo get_the_title($nepoid); ?></span>
 					</a>
 			<?php }else{?>
 				<div class="disabled">
-						<span class="label"><i class="fa fa-angle-left icon-l"></i>Next</span>
+						<span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
 						<span>No next post</span>
 				</div>
 			<?php } ?>

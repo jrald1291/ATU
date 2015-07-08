@@ -76,7 +76,7 @@
 					<a href=""><?php do_action( 'aut_post_thumnail', 'venue-xs-small-thumb' ); ?></a>
 				</div>
 				<div class="post-core">
-					<div class="post-title"><a href="#" class="link"><?php the_title(); ?></a></div>
+					<div class="post-title"><a href="#" class="link"><?php echo content(get_the_title(),4); ?></a></div>
 					<p><?php echo $cat_name; ?></p>
 				</div>
 			</li>

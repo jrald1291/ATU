@@ -23,7 +23,7 @@ var util = {
 
           var winsize = $(window).outerHeight();
           var headh = $('.l-header').outerHeight();
-          var conth = $('.l-content');
+          var conth = $('.l-content, .l-content-bg');
           var banner = $('.section-banner');
           var adminbar = $('#wpadminbar').outerHeight();
           var footh = $('.l-footer').outerHeight();
@@ -38,7 +38,7 @@ var util = {
               headh = $('.l-header').outerHeight();
               adminbar = $('#wpadminbar').outerHeight();
               banner = $('.section-banner');
-              conth = $('.l-content');
+              conth = $('.l-content, .l-content-bg');
               footh = $('.l-footer').outerHeight();
               toth =  winsize - (headh + footh + adminbar);
               conth.css('min-height',toth);
