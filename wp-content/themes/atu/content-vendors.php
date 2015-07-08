@@ -14,22 +14,44 @@ $count_args  = array(
     'number'    => 999999
 );
 
-if ( isset( $_GET['keyword'] ) && isset( $_GET['profession'] ) && ! empty( $_GET['profession'] ) ) {
+$search_args['meta_query'] = array(
+        'relation'  => 'OR'
+    );
+
+if ( isset( $_GET['keyword'] ) ) {
     $search_args['search'] = '*'.esc_attr( $_GET['keyword'] ).'*';
 
 
-    $search_args['meta_query'] = array(
-        'relation'  => 'AND',
+    $search_args['meta_query'] += array(
         array(
-            'key'       => 'profession',
-            'value'     => esc_attr( $_GET['profession'] ),
-            'compare'   => '='
+            'key'     => 'last_name',
+            'value'   => $_GET['keyword'],
+            'compare' => 'LIKE'
+        ),
+        array(
+            'key'     => 'first_name',
+            'value'   => $_GET['keyword'],
+            'compare' => 'LIKE'
         ),
         array(
             'key'     => 'company_name',
             'value'   => $_GET['keyword'],
             'compare' => 'LIKE'
         )
+    );
+}
+
+if(  isset( $_GET['profession'] ) && ! empty( $_GET['profession'] ) ) {
+
+
+    $search_args['meta_query'] += array(
+
+        array(
+            'key'       => 'profession',
+            'value'     => esc_attr( $_GET['profession'] ),
+            'compare'   => '='
+        )
+
     );
 } elseif ( is_archive() ) {
     $search_args['meta_query'] = array(
