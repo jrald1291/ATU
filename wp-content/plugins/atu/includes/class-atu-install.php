@@ -39,7 +39,6 @@ if ( !class_exists('ATU_Install') ) {
 
             global $wp_rewrite;
 
-
             // || ! isset( $rules['(vendors)/(.+)$'] )
             if ( ! isset( $rules['(vendor)/(.+)$'] ) ) {
 
