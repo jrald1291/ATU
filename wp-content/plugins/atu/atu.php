@@ -337,6 +337,7 @@ class ATU {
             }
 
 
+
             $ft_value = '';
             if (isset($_GET['post_code']))
                 $ft_value = $_GET['post_code'];
