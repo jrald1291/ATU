@@ -147,7 +147,7 @@ class ATU {
 
         add_action( 'after_setup_theme', array( $this, 'atu_theme_setup' ) );
         add_action( 'aut_post_thumnail', array( $this, 'atu_post_thumbnail' ), 1, 2 );
-        add_action( 'pre_get_posts', array( $this, 'atu_advance_search' ) );
+
 
 
 
@@ -159,6 +159,7 @@ class ATU {
 
         add_filter('posts_join', array( $this, 'websmart_search_join' ) );
         add_filter('posts_where', array( $this, 'websmart_search_where' ) );
+        add_action( 'pre_get_posts', array( $this, 'atu_advance_search' ) );
     }
 
 
@@ -166,7 +167,7 @@ class ATU {
     public function websmart_search_join( $join ) {
         global $wpdb;
         if( is_search() && !is_admin()) {
-            $join .= "LEFT JOIN $wpdb->postmeta AS m ON ($wpdb->posts.ID = m.post_id) ";
+            $join .= " LEFT JOIN $wpdb->postmeta AS m ON ($wpdb->posts.ID = m.post_id) ";
         }
         return $join;
     }
@@ -187,7 +188,7 @@ class ATU {
                 $ft_value = $_GET['region'];
 
 
-            $where .= " AND ( m.{$_GET['ft']} = 'post_code' AND m.meta_value='{$ft_value}' ) ";
+            $where .= " AND ( m.meta_key = '{$_GET['ft']}' AND m.meta_value='{$ft_value}' ) ";
         }
 
         return $where;
@@ -381,25 +382,6 @@ class ATU {
 
 
         return $query;
-    }
-
-
-    public function atu_custom_search_where( $where ) {
-
-        $ft_value = '';
-        if (isset($_GET['post_code']))
-            $ft_value = $_GET['post_code'];
-        elseif (isset($_GET['region']))
-            $ft_value = $_GET['region'];
-
-        if ( isset( $_GET['ft'] ) && ! empty( $ft_value ) ) {
-
-
-            $query = ' ( m.meta_key = "'. esc_attr( $_GET['ft'] ) .'" AND m.meta_value = "'. esc_attr( $ft_value ) .'" ) ';
-
-            $where .= ' AND ' . $query;
-        }
-        return $where;
     }
 
 
