@@ -37,7 +37,7 @@ if ( !class_exists('ATU_Admin_Settings') ) {
                 ),
                array(
                    'code' => $code
-               ), array( '%d', '%s' ), array( '%d' )  );
+               ), array( '%d', '%s' ), array( '%s' )  );
         }
 
 

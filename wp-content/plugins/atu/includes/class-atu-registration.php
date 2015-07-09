@@ -109,7 +109,6 @@ if ( !class_exists('ATU_Registration') ) {
 
 
 
-
                 exit( wp_redirect( get_page_link( $page_id ) ) );
 
 
