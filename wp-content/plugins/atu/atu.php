@@ -162,11 +162,39 @@ class ATU {
         add_action( 'pre_get_posts', array( $this, 'atu_advance_search' ) );
     }
 
+    public function atu_advance_search( $query ) {
+
+        if ( ! $query->is_main_query() || is_admin() ) return $query;
+
+        if ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'venue' && is_post_type_archive( 'venue' ) ) {
+
+            $query->set('post_type', array('venue'));
+            if ( isset( $_GET['venue-category'] ) && $_GET['venue-category'] != -1 ) {
+
+
+                $query->set('tax_query', array(
+                    'relation' => 'OR',
+                    array(
+                        'taxonomy' => 'venue-category',
+                        'field' => 'id',
+                        'terms' => array(intval($_GET['venue-category'])),
+                        'operator' => 'IN'
+                    )
+                ));
+
+
+            }
+
+        }
+
+
+        return $query;
+    }
 
 
     public function websmart_search_join( $join ) {
         global $wpdb;
-        if( is_search() && !is_admin()) {
+        if( is_search() && !is_admin() && isset( $_GET['ft'] ) && ! empty( $_GET['ft'] ) ) {
             $join .= " LEFT JOIN $wpdb->postmeta AS m ON ($wpdb->posts.ID = m.post_id) ";
         }
         return $join;
@@ -176,7 +204,7 @@ class ATU {
 
     public function websmart_search_where( $where ) {
 
-        if( is_search() && ! is_admin() ) {
+        if( is_search() && ! is_admin() && isset( $_GET['ft'] ) && ! empty( $_GET['ft'] ) ) {
 
             $where = "";
 
@@ -355,34 +383,7 @@ class ATU {
         echo '</div>';
     }
 
-    public function atu_advance_search( $query ) {
 
-        if ( ! $query->is_main_query() || is_admin() ) return $query;
-
-        if ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'venue' && is_post_type_archive( 'venue' ) ) {
-
-            $query->set('post_type', array('venue'));
-            if ( isset( $_REQUEST['venue-category'] ) && $_REQUEST['venue-category'] != -1 ) {
-
-
-                $query->set('tax_query', array(
-                    'relation' => 'OR',
-                    array(
-                        'taxonomy' => 'venue-category',
-                        'field' => 'id',
-                        'terms' => array(intval($_REQUEST['venue-category'])),
-                        'operator' => 'IN'
-                    )
-                ));
-
-
-            }
-
-        }
-
-
-        return $query;
-    }
 
 
 
