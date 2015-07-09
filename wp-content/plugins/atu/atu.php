@@ -160,7 +160,29 @@ class ATU {
         add_filter('posts_join', array( $this, 'websmart_search_join' ) );
         add_filter('posts_where', array( $this, 'websmart_search_where' ) );
         add_action( 'pre_get_posts', array( $this, 'atu_advance_search' ) );
+
+
+        add_action( 'atu_venue_region_list', array( $this, 'atu_region_list' ) );
     }
+
+    public function atu_region_list() {
+
+        $region_field = get_field_object('field_559d2588b58b5');
+
+        if ( $region_field ):
+
+            echo '<div class="widget widget-aside widget-list">';
+            echo '<div class="widget-header">Venue Regions</div>';
+            echo '<ul class="list">';
+            foreach( $region_field['choices'] as $key => $value ):
+                echo '<li><a href="'. home_url() .'/?s=&ft=region&region='.  urlencode( $key ) .'&post_type=venue">'. $value .'</a></li>';
+            endforeach;
+            echo '</ul>';
+            echo '</div>';
+
+        endif;
+    }
+
 
     public function atu_advance_search( $query ) {
 
@@ -190,6 +212,8 @@ class ATU {
 
         return $query;
     }
+
+
 
 
     public function websmart_search_join( $join ) {

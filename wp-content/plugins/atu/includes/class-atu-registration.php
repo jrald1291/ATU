@@ -81,8 +81,8 @@ if ( !class_exists('ATU_Registration') ) {
             if ( ! is_wp_error( $new_user_id ) ) {
 
 
-                add_user_meta( $new_user_id, 'youtube_link', $post['youtube_link'] )
-                or update_user_meta( $new_user_id, 'youtube_link', $post['youtube_link']  );
+//                add_user_meta( $new_user_id, 'youtube_link', $post['youtube_link'] )
+//                or update_user_meta( $new_user_id, 'youtube_link', $post['youtube_link']  );
 
                 add_user_meta( $new_user_id, 'company_name', $post['company_name'] )
                 or update_user_meta( $new_user_id, 'company_name', $post['company_name']  );
@@ -101,8 +101,14 @@ if ( !class_exists('ATU_Registration') ) {
 
                 clean_object_term_cache( $new_user_id, 'profession' );
 
+                // Update registration code to inactive
+                ATU_Admin_Settings::set_used_reg_code( $post['registration_code'] );
 
                 $page_id = get_option( 'atu_registration_success_page' );
+
+
+
+
 
                 exit( wp_redirect( get_page_link( $page_id ) ) );
 
@@ -247,18 +253,18 @@ if ( !class_exists('ATU_Registration') ) {
                 ),
 
 
-                array(
-                    'title'     => __( 'Youtube Link', 'atu' ),
-                    'type'      => 'text',
-                    'id'        => 'youtube_link',
-                    'attributes'    => array(
-                        'class' => 'form-control'
-                    ),
-                    'placeholder'   => '',
-                    'required'  => true,
-                    'value'     => $this->get_post_value( 'youtube_link' ),
-                    'default'   => '',
-                ),
+//                array(
+//                    'title'     => __( 'Youtube Link', 'atu' ),
+//                    'type'      => 'text',
+//                    'id'        => 'youtube_link',
+//                    'attributes'    => array(
+//                        'class' => 'form-control'
+//                    ),
+//                    'placeholder'   => '',
+//                    'required'  => true,
+//                    'value'     => $this->get_post_value( 'youtube_link' ),
+//                    'default'   => '',
+//                ),
 
 
                 array(

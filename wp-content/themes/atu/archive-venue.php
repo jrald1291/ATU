@@ -89,20 +89,9 @@ get_header();?>
 
                         </ul>
                     </div>
-                    <div class="widget widget-aside widget-list">
-                        <div class="widget-header">Venue Regions</div>
-                        <ul class="list">
-                            <li><a href="">The Hills Shire</a></li>
-                            <li><a href="">Sydney</a></li>
-                            <li><a href="">Northern Beaches</a></li>
-                            <li><a href="">Wetherill Park / Campbelltown</a></li>
-                            <li><a href="">Blue Mountains</a></li>
-                            <li><a href="">Hunter Valley </a></li>
-                            <li><a href="">Central Coast</a></li>
-                            <li><a href="">Wollongong/Sutherland</a></li>
-                            <li><a href="">Kangaroo Valley </a></li>
-                        </ul>
-                    </div>
+
+                   <?php do_action( 'atu_venue_region_list' ); ?>
+
                     <div class="widget widget-aside well-widget">
                         <?php echo do_shortcode( '[mc4wp_form]' ); ?>
                     </div>

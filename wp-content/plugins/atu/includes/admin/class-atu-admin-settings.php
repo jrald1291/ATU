@@ -26,6 +26,21 @@ if ( !class_exists('ATU_Admin_Settings') ) {
         }
 
 
+        public static function set_used_reg_code( $code ) {
+            global $wpdb;
+
+
+           $wpdb->update( $wpdb->prefix . ATU_TBL_PREFIX . "registration_code",
+               array(
+                    'is_active' => 0,
+                    'date_used' => date('Y-m-d H:i:s')
+                ),
+               array(
+                   'code' => $code
+               ), array( '%d', '%s' ), array( '%d' )  );
+        }
+
+
         public static function output() {
             global $current_tab;
 
