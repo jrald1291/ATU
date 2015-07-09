@@ -18,20 +18,8 @@
 
 get_header();?>
 
-<?php 
-    $bg = of_get_option('banner', '');
-    $page_bg = wp_get_attachment_image_src(get_field('page_background'),'large');
-    $page_bg = $page_bg[0];
-    if (!$page_bg) {
-        $page_bg = $bg;
-    }
-    if ($page_bg== "" and $bg == "") {
-        $page_bg = get_template_directory_uri()."/assets/images/banner.jpg";
-    }
 
-?>
-
-<div class="l-content-bg" style="background: url('<?php echo $page_bg; ?>') no-repeat"> 
+<div class="l-content-bg" style="background: url('<?php ATU_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>') no-repeat">
     <div class="container">
         <div class="row">
             <div class="col-md-9">
@@ -55,11 +43,11 @@ get_header();?>
 
                                     // Start the Loop.
                                     while ( have_posts() ) : the_post();
+
                                         $cat_name = get_the_title();
+
                                         $cats = get_the_terms( get_the_ID(), 'venue-category' );
-                                        if ( ! empty( $cats ) ) {
-                                            $cat_name = $cats[0]->name;
-                                        }
+                                        if ( ! empty( $cats ) )$cat_name = $cats[0]->name;
                                         ?>
 
                                         <div class="col-md-4 col-sm-6">

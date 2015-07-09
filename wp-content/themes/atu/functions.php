@@ -441,3 +441,11 @@ require get_template_directory() . '/inc/media.php';
 require get_template_directory() . '/inc/taxonomies.php';
 
 
+
+
+
+
+
+
+
+
