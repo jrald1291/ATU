@@ -148,11 +148,51 @@ class ATU {
         add_action( 'after_setup_theme', array( $this, 'atu_theme_setup' ) );
         add_action( 'aut_post_thumnail', array( $this, 'atu_post_thumbnail' ), 1, 2 );
         add_action( 'pre_get_posts', array( $this, 'atu_advance_search' ) );
+
+
+
         add_action( 'atu_pagination', array( $this, 'atu_do_pagination' ) );
 
         add_action( 'atu_venue_search_form', array( $this, 'atu_venue_search_form' ) );
         add_action( 'atu_vendor_search_form', array( $this, 'atu_vendor_search_form' ) );
+
+
+        add_filter('posts_join', array( $this, 'websmart_search_join' ) );
+        add_filter('posts_where', array( $this, 'websmart_search_where' ) );
     }
+
+
+
+    public function websmart_search_join( $join ) {
+        global $wpdb;
+        if( is_search() && !is_admin()) {
+            $join .= "LEFT JOIN $wpdb->postmeta AS m ON ($wpdb->posts.ID = m.post_id) ";
+        }
+        return $join;
+    }
+
+
+
+    public function websmart_search_where( $where ) {
+
+        if( is_search() && ! is_admin() ) {
+
+            $where = "";
+
+            $ft_value = '';
+
+            if (isset($_GET['post_code']))
+                $ft_value = $_GET['post_code'];
+            elseif (isset($_GET['region']))
+                $ft_value = $_GET['region'];
+
+
+            $where .= " AND ( m.{$_GET['ft']} = 'post_code' AND m.meta_value='{$ft_value}' ) ";
+        }
+
+        return $where;
+    }
+
 
     public function atu_vendor_search_form() {
         ?>
@@ -318,7 +358,8 @@ class ATU {
 
         if ( ! $query->is_main_query() || is_admin() ) return $query;
 
-        if ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'venue' ) {
+        if ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'venue' && is_post_type_archive( 'venue' ) ) {
+
             $query->set('post_type', array('venue'));
             if ( isset( $_REQUEST['venue-category'] ) && $_REQUEST['venue-category'] != -1 ) {
 
@@ -336,30 +377,17 @@ class ATU {
 
             }
 
-
-            $ft_value = '';
-            if (isset($_GET['post_code']))
-                $ft_value = $_GET['post_code'];
-            elseif (isset($_GET['region']))
-                $ft_value = $_GET['region'];
-
-            if ( isset( $_GET['ft'] ) && ! empty( $ft_value ) ) {
-                $query->set( 'meta_query', array(
-                        'relation' => 'OR',
-                        // this is the part that gets a key with no value
-                        array(
-                            'key'     => $_GET['ft'],
-                            'value'    => $ft_value, // just has to be something because of a bug in WordPress
-                            'compare' => '==',
-                        )
-                    )
-                );
-
-            }
-
         }
 
         return $query;
+    }
+
+
+    public function atu_custom_search_where( $where ) {
+        $query = ' ( m.meta_key = "post_code" AND m.meta_value = "1001" ) ';
+
+        $where .= ' AND ' . $query;
+        return $where;
     }
 
 
