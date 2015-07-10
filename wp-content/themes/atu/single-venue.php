@@ -32,7 +32,7 @@ get_header(); ?>
                                                     /**
                                                      * Get gallery image
                                                      */
-                                                    echo wp_get_attachment_image( get_sub_field( 'gallery_image' ), array( 800, 292 ), array( 'alt' => 'image' ) );
+                                                    echo wp_get_attachment_image( get_sub_field( 'gallery_image' ), 'img-wide', array( 'alt' => 'image' ) );
                                                     ?>
                                             </li>
 

@@ -15,7 +15,7 @@
 ?>
 <aside class="l-sidebar">
 	<div class="widget widget-aside">
-		<div class="ven-avatar" style="border-bottom: 3px solid <?php echo hex2rgba(get_field( 'color')); ?>">
+		<div class="ven-avatar" style="border: 2px solid <?php echo hex2rgba(get_field( 'color')); ?>">
 
 			<?php
             // Get featured image
@@ -46,7 +46,7 @@
 		<a href="<?php the_field( 'website' ); ?>" target="_blank" class="btn btn-sm btn-block btn-secondary"><span class="fa icon-l-sm fa-globe"></span>Visit website</a>
 	</div>
 	<div class="widget widget-aside">
-		<div class="call-to-action" >
+		<div class="call-to-action" style="background-color: <?php echo hex2rgba(get_field( 'color')); ?>">
 			<span class="icon icon-tel"></span>
 			<p>Any questions?</p>
 			<p>Call US Now</p>
