@@ -340,7 +340,7 @@ class ATU {
                     ?>
 
                     <div class="col-md-2">
-                        <div class="input-group">
+                        <div class="form-group">
 
                             <select name="<?php echo $postcode_field['name']; ?>" class="form-control <?php echo ! isset( $_GET[$postcode_field['name']] ) ?  'hidden' : ''; ?>"
                                 <?php echo ! isset( $_GET[$postcode_field['name']] ) ?  'disabled="disabled"' : ''; ?>>

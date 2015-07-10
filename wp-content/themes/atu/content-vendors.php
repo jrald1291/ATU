@@ -140,11 +140,11 @@ if ( ! empty( $vendors ) ) : ?>
                         <div class="post-img">
                             <a href="<?php echo get_permalink( get_page_by_path( 'vendor' ) ) . $vendor->user_login; ?>">
 
-                                <?php echo wp_get_attachment_image( $image_id, 'vendor-small-thumb' ); ?>
+                                <?php echo wp_get_attachment_image( $image_id, 'venue-listing' ); ?>
 
                             </a>
                         </div>
-                        <div class="post-content t-sm">
+                        <div class="post-content t-sm marquee">
 
                             <a href="<?php echo get_permalink( get_page_by_path( 'vendor' ) ) . $vendor->user_login; ?>" class="post-name">
 

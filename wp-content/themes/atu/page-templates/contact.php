@@ -60,7 +60,7 @@ get_header(); ?>
 							<ul class="list list-contact list-inline">
 								<li><a href="tel:<?php echo $user_info->mobile; ?>"><span class="fa fa-mobile icon-l-sm"></span><?php echo $user_info->mobile; ?></a></li>
 	                            <li><a href="tel:<?php echo $user_info->phone; ?>"><span class="fa fa-phone icon-l-sm"></span><?php echo $user_info->phone; ?></a></li>
-	                            <li><a href="mailto:<?php echo $user_info->email; ?>"><span class="fa fa-envelope icon-l-sm"></span><?php echo $user_info->email; ?></a></li>
+	                            <li><a href="mailto:<?php echo $user_info->user_email; ?>"><span class="fa fa-envelope icon-l-sm"></span><?php echo $user_info->user_email; ?></a></li>
 							</ul>
 						</div>				
 						<?php echo do_shortcode('[contact-form-7 id="196" title="Contact ATU" html_class="form form-labeled"]'); ?>
@@ -74,7 +74,7 @@ get_header(); ?>
 	</div>
 </div>
 <script type="text/javascript">
-  document.getElementById("user_email").value = "<?php echo $user_info->email ?>";
+  document.getElementById("user_email").value = "<?php echo $user_info->user_email; ?>";
   document.getElementById("company_name").value = "<?php echo $user_info->company_name ?>";
 </script>
 <?php get_footer(); ?>

@@ -188,8 +188,8 @@ $user_info = get_userdata( $user->ID );
                         <ul class="list">
                             <li><a href="tel:<?php echo $user_info->mobile; ?>">Mobile: <?php echo $user_info->mobile; ?></a></li>
                             <li><a href="tel:<?php echo $user_info->phone; ?>">Phone: <?php echo $user_info->phone; ?></a></li>
-                            <li><a href="mailto:<?php echo $user_info->email; ?>"><?php echo $user_info->email; ?></a></li>
-                            <li><a href="<?php echo $user_info->website; ?>" target="_blank"><?php echo $user_info->website; ?></a></li>
+                            <li><a href="mailto:<?php echo $user_info->user_email;?>"><?php echo $user_info->user_email; ?></a></li>
+                            <li><a href="<?php echo $user_info->user_url; ?>" target="_blank"><?php echo $user_info->user_url; ?></a></li>
                         </ul>
 
                     </div>
@@ -204,7 +204,7 @@ $user_info = get_userdata( $user->ID );
                             <span class="icon icon-tel"></span>
                             <p>Any questions?</p>
                             <p>Call US Now</p>
-                            <p><a href="">0405 421 387</a></p>
+                            <p><a href="tel:<?php echo $user_info->phone; ?>"><?php echo $user_info->phone; ?></a></p>
                         </div>
                     </div>
                 </aside>
