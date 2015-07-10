@@ -4,6 +4,39 @@
  * We need a total user count so that we can calculate how many pages there are
  */
 
+
+add_action( 'pre_user_query', 'extended_user_search' );
+
+function extended_user_search( $user_query ){
+    global $wpdb;
+
+
+//    $user_query->query_from .= " JOIN {$wpdb->usermeta} Mz ON Mz.user_id = {$wpdb->users}.ID AND Mz.meta_key = 'wp_capabilities'";
+    $user_query->query_where = 'WHERE 1=1 ';//. $user_query->get_search_sql( 'venue', array( 'Mz.meta_value' ), 'both' );;
+
+    if ( isset( $_GET['keyword'] ) && ! empty( $_GET['keyword'] ) ) {
+        $search = $_GET['keyword'];
+
+        $user_query->query_from .= " JOIN {$wpdb->usermeta} MF ON MF.user_id = {$wpdb->users}.ID AND MF.meta_key = 'first_name'";
+        $user_query->query_from .= " JOIN {$wpdb->usermeta} ML ON ML.user_id = {$wpdb->users}.ID AND ML.meta_key = 'last_name'";
+        $user_query->query_from .= " JOIN {$wpdb->usermeta} MX ON MX.user_id = {$wpdb->users}.ID AND MX.meta_key = 'company_name'";
+
+
+
+        $user_query->query_where .= ' ' . $user_query->get_search_sql( $search, array( 'user_login', 'user_email', 'user_nicename', 'MF.meta_value', 'ML.meta_value', 'MX.meta_value' ), 'both' );
+
+
+
+    }
+
+    if ( isset( $_GET['profession'] ) && ! empty( $_GET['profession'] ) ){
+        $user_query->query_from .= " JOIN {$wpdb->usermeta} MY ON MY.user_id = {$wpdb->users}.ID AND MY.meta_key = 'profession'";
+        $user_query->query_where .= ' ' . $user_query->get_search_sql( esc_attr( $_GET['profession'] ), array( 'MY.meta_value' ), false );
+
+    }
+}
+
+
 $term = get_query_var( 'term' );
 
 $search_args = array();
@@ -14,61 +47,13 @@ $count_args  = array(
     'number'    => 999999
 );
 
-$search_args['meta_query'] = array(
-        'relation'  => 'OR'
-    );
 
-if ( isset( $_GET['keyword'] ) ) {
-    $search_args['search'] = '*'.esc_attr( $_GET['keyword'] ).'*';
-
-
-    $search_args['meta_query'] += array(
-        array(
-            'key'     => 'last_name',
-            'value'   => $_GET['keyword'],
-            'compare' => 'LIKE'
-        ),
-        array(
-            'key'     => 'first_name',
-            'value'   => $_GET['keyword'],
-            'compare' => 'LIKE'
-        ),
-        array(
-            'key'     => 'company_name',
-            'value'   => $_GET['keyword'],
-            'compare' => 'LIKE'
-        )
-    );
-}
-
-if(  isset( $_GET['profession'] ) && ! empty( $_GET['profession'] ) ) {
-
-
-    $search_args['meta_query'] += array(
-
-        array(
-            'key'       => 'profession',
-            'value'     => esc_attr( $_GET['profession'] ),
-            'compare'   => '='
-        )
-
-    );
-} elseif ( is_archive() ) {
-    $search_args['meta_query'] = array(
-        array(
-            'key'       => 'profession',
-            'value'     => $term,
-            'compare'   => '='
-        )
-    );
-}
-
-
-$count_args = array_merge( $count_args, $search_args );
 
 
 
 $user_count_query = new WP_User_Query($count_args);
+
+
 $user_count = $user_count_query->get_results();
 
 // count the number of users found in the query
@@ -110,7 +95,7 @@ $args  = array(
 
 );
 
-$args = array_merge( $args, $search_args );
+//$args = array_merge( $args, $search_args );
 
 
 $wp_user_query = new WP_User_Query( $args );
@@ -174,3 +159,6 @@ if ( ! empty( $vendors ) ) : ?>
     <h2><?php _e( 'No vendors found', 'atu'); ?></h2>
 
 <?php endif; ?>
+
+
+
