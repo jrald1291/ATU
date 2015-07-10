@@ -194,16 +194,41 @@ get_header(); ?>
     </div>
     <div class="pagination-single">
         <ul>
-            <li class="prev">
-                <?php previous_post_link( '%link', '<span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
-                    <span>%title</span>' ); ?>
+            <li class="next">
+                <?php $nepo=get_next_post(); 
+                if ($nepo) {
+                        $nepoid=$nepo->ID;
+                        $ne_post_url = get_permalink($nepoid);?>
+                        <a href="<?php echo $ne_post_url; ?>">
+                            <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
+                            <span><?php echo get_field('company_name',$nepoid)?></span>
+                        </a>
+                <?php }else{?>
+                    <div class="disabled">
+                            <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
+                            <span>No next post</span>
+                    </div>
+                <?php } ?>
             </li>
             <li class="back">
-                <a href="<?php echo get_post_type_archive_link( 'venue' ); ?>">back to vendors listing</a>
+                <a href="<?php echo get_permalink( get_page_by_title( 'Blog' ))?>">back to Blog</a>
             </li>
-            <li class="next">
-                <?php next_post_link( '%link', '<span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
-                    <span>%title</span>' ); ?>
+            <li class="prev">
+                <?php $prepo=get_previous_post(); 
+                if ($prepo) {
+                        $prepoid=$prepo->ID;
+                        $pre_post_url = get_permalink($prepoid);?>
+                        <a href="<?php echo $pre_post_url; ?>">
+                            <span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
+                            <span><?php echo get_field('company_name',$prepoid)?></span>
+                        </a>
+                <?php }else{?>
+                    <div class="disabled">
+                            <span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
+                            <span>No previous post</span>
+                    </div>
+                <?php } ?>
+                
             </li>
         </ul>
     </div>
