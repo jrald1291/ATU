@@ -402,7 +402,7 @@ class ATU {
 
         endfor;
 
-        echo '<a class="nextpostslink" rel="next" href="'. $current_url  .'page/'. $next_page .'">Next</a>';
+        echo '<a class="nextpostslink" rel="next" href="'. $current_url  .'page/'. $next_page .'">»</a>';
         echo '</div>';
         echo '</div>';
     }

@@ -42,11 +42,13 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
             }
         }
 
-
-
-            echo '<a class="nextpostslink" rel="next" href="'. esc_url( add_query_arg( array( 'page' => $next ), $current_url ) )  .'/">Next</a>';
+            if ($total_pages!=1) {
+                echo '<a class="nextpostslink" rel="next" href="'. esc_url( add_query_arg( array( 'page' => $next ), $current_url ) )  .'/">»</a>';
+            }
             echo '</div>';
             echo '</div>';
+
+           
 
 
 

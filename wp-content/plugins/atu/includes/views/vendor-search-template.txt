@@ -119,7 +119,7 @@ get_header(); ?>
                                 echo '<a class="page larger" href="'. $current_url . $i .'/">'. $i .'</a>';
                             }
                         }
-                        echo '<a class="nextpostslink" rel="next" href="'. $current_url . $next .'/">Next</a>';
+                        echo '<a class="nextpostslink" rel="next" href="'. $current_url . $next .'/">»</a>';
                         echo '</div>';
                         echo '</div>';
                         ?>

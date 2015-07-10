@@ -90,7 +90,9 @@ var util = {
         });
       },
       Forms: function(){
-    
+      
+       
+
         $('.form-labeled').find('.form-control').on('keyup blur focus change', function (e) {
   
             var $this = $(this),
@@ -125,6 +127,15 @@ var util = {
               }
 
           });
+
+        $('.form-control').each(function() {
+            var $this_control =  $(this);
+            if ($this_control.value !== '') {
+              label = $this_control.parent(".wpcf7-form-control-wrap, .form-control-wrap").prev('label');
+              label.addClass('active highlight'); 
+            }
+        });
+            
 
 
       },
