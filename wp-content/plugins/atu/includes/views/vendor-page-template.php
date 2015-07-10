@@ -211,19 +211,27 @@ $user_info = get_userdata( $user->ID );
             </div>
         </div>
     </div>
+    <?php
+
+    $prev_user = ATU_Helper::get_prev_user( $user->ID );
+    $prev_user = $prev_user ? $prev_user : $user->user_login;
+
+    $next_user = ATU_Helper::get_next_user( $user->ID );
+    $next_user = $next_user ? $next_user : $user->user_login;
+    ?>
     <div class="pagination-single">
         <ul>
             <li class="prev">
-                <a href="">
+                <a href="<?php echo home_url('/vendor/') . $prev_user; ?>">
                     <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
                     <span>Gledswood wedding</span>
                 </a>
             </li>
             <li class="back">
-                <a href="#">back to vendors listing</a>
+                <a href="<?php echo home_url('/vendors'); ?>">back to vendors listing</a>
             </li>
             <li class="next">
-                <a href="">
+                <a href="<?php echo home_url('/vendor/') . $next_user; ?>">
                     <span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
                     <span>Gledswood wedding</span>
                 </a>

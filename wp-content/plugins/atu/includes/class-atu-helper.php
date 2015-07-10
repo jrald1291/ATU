@@ -8,8 +8,23 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
         public static function str_limit( $string, $limit, $echo = true ) {
             $string = strip_tags( $string );
         }
+        public static function get_prev_user( $user_id ) {
+            global $wpdb;
 
+            $sql = "SELECT user_login FROM {$wpdb->users} a JOIN {$wpdb->usermeta} b on a.ID = b.user_id WHERE a.ID < {$user_id} AND b.meta_key = 'wp_capabilities' AND b.meta_value like '%vendor%' ORDER BY a.ID DESC LIMIT 1";
+            $username = $wpdb->get_var($sql);
 
+            return $username;
+        }
+
+        public static function get_next_user( $user_id ) {
+            global $wpdb;
+
+            $sql = "SELECT user_login FROM {$wpdb->users} a JOIN {$wpdb->usermeta} b on a.ID = b.user_id WHERE a.ID > {$user_id} AND b.meta_key = 'wp_capabilities' AND b.meta_value like '%vendor%' ORDER BY a.ID ASC LIMIT 1";
+            $username = $wpdb->get_var($sql);
+
+            return $username;
+        }
 
         public static function pagination( $total_pages, $page ) {
 
