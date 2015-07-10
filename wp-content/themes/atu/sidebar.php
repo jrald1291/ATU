@@ -20,7 +20,7 @@
 			<?php
             // Get featured image
             if ( has_post_thumbnail() ) {
-                the_post_thumbnail( 'venue-listing' );
+                the_post_thumbnail( 'img-avatar' );
             }
              ?>
 			<div class="ven-name" style="background-color: <?php echo hex2rgba(get_field( 'color'),0.5); ?>"><?php the_title(); ?></div>
@@ -28,7 +28,7 @@
 	</div>
 	<div class="widget widget-aside widget-list">
 		<div class="widget-list_logo">
-            <?php echo wp_get_attachment_image( get_field( 'company_logo' ),  'venue-listing' ); ?>
+            <?php echo wp_get_attachment_image( get_field( 'company_logo' ),  'medium' ); ?>
 		</div>
 		<div class="widget-header">Florist and Stylist</div>
 		<ul class="list">

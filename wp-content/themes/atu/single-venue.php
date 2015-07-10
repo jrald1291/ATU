@@ -211,7 +211,7 @@ get_header(); ?>
                 <?php } ?>
             </li>
             <li class="back">
-                <a href="<?php echo get_permalink( get_page_by_title( 'Blog' ))?>">back to Blog</a>
+                <a href="<?php echo get_permalink( get_page_by_title( 'Venue' ))?>">back to Blog</a>
             </li>
             <li class="prev">
                 <?php $prepo=get_previous_post(); 

@@ -15,7 +15,7 @@ if ( ! empty( $cats ) ) {
         <div class="post-img">
             <a href="<?php the_permalink(); ?>"><?php do_action('aut_post_thumnail', 'venue-listing'); ?></a>
         </div>
-        <div class="post-content t-sm">
+        <div class="post-content t-sm marquee">
             <a href="<?php the_permalink(); ?>" class="post-name"><?php the_title(); ?></a>
         </div>
     </div>
