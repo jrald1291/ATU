@@ -25,7 +25,9 @@ get_header(); ?>
                                 <?php if ( have_rows( 'gallery' ) ): ?>
                                     <ul class="slides">
 
-                                        <?php while( have_rows( 'gallery' ) ): the_row(); ?>
+                                        <?php
+                                        $i = 1;
+                                        while( have_rows( 'gallery' ) ): the_row(); ?>
 
                                             <li>
                                                     <?php
@@ -36,7 +38,10 @@ get_header(); ?>
                                                     ?>
                                             </li>
 
-                                        <?php endwhile; ?>
+                                            <?php
+                                            if ( $i++ == 5 )
+                                                break;
+                                        endwhile; reset_rows();?>
 
                                     </ul>
 

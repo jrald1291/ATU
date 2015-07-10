@@ -17,7 +17,7 @@
     D.ready(function() {
 
 
-        $('select#filterType').on('change', function(e) {
+        $('body').on('change', 'select#filterType', function() {
             var val = $(this).val();
             var $postcode = $('select[name=post_code]');
             var $region = $('select[name=region]');
