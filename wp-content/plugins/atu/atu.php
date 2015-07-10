@@ -277,7 +277,7 @@ class ATU {
     public function atu_venue_search_form() {
         ?>
         <form action="<?php echo home_url( '/' ); ?>" method="get" class="form">
-            <div class="row">
+            <div class="row row-sm">
                 <div class="col-md-3">
                     <div class="form-group">
                         <input type="text" name="s" value="<?php echo isset( $_GET['s'] ) ? $_GET['s'] : ''; ?>" class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
@@ -355,9 +355,9 @@ class ATU {
                 <?php endif; ?>
 
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <input type="hidden" name="post_type" value="venue">
-                    <button class="btn btn-secondary btn-block" ><?php _e( 'Search Venue', 'atu' ); ?></button>
+                    <button class="btn btn-secondary btn-block" ><?php _e( 'Search', 'atu' ); ?></button>
                 </div>
             </div>
         </form>
