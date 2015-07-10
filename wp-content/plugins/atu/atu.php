@@ -257,8 +257,7 @@ class ATU {
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <div class="input-group">
-                        <div class="input-group-addon"><?php _e( 'Vendor Category', 'atu' ); ?></div>
+                    <div class="form-group">
                             <?php ATU_Helper::dropwdown_vendor_category(array(
                                 'selected' => isset( $_REQUEST['profession'] ) ? $_REQUEST['profession'] : ''
                             )); ?>
@@ -285,7 +284,7 @@ class ATU {
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="input-group">
+                    <div class="form-group">
                         <?php wp_dropdown_categories( array(
                             'taxonomy'  => 'venue-category',
                             'name'               => 'venue-category',
@@ -299,7 +298,7 @@ class ATU {
                 </div>
 
                 <div class="col-md-2">
-                    <div class="input-group">
+                    <div class="form-group">
                         <?php $ft = isset( $_GET['ft'] ) ? $_GET['ft'] : ''; ?>
                         <select id="filterType" name="ft" class="form-control">
                             <option value="" <?php selected($ft, ''); ?>><?php _e( '-- Select --', 'atu' ); ?></option>
@@ -318,7 +317,7 @@ class ATU {
                 ?>
 
                 <div class="col-md-2">
-                    <div class="input-group">
+                    <div class="form-group">
 
                         <select name="<?php echo $region_field['name']; ?>" class="form-control <?php echo  ! isset( $_GET[$region_field['name']] ) ?  'hidden' : ''; ?>"
                             <?php echo ! isset( $_GET[$region_field['name']] ) ?  'disabled="disabled"' : ''; ?>>
