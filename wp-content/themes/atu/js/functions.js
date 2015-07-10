@@ -130,6 +130,7 @@
         if ( $( '#grid-gallery').length )
             new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
 
+
 	} );
 
 } )( jQuery );

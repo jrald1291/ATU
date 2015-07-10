@@ -40,7 +40,9 @@ $user_info = get_userdata( $user->ID );
                                 <?php if ( have_rows( 'gallery', 'user_'. $user->ID ) ): ?>
                                     <ul class="slides">
 
-                                        <?php while( have_rows( 'gallery', 'user_'. $user->ID ) ): the_row(); ?>
+                                        <?php
+                                        $i = 1;
+                                        while( have_rows( 'gallery', 'user_'. $user->ID ) ): the_row(); ?>
 
                                             <li>
                                                 <?php
@@ -51,7 +53,10 @@ $user_info = get_userdata( $user->ID );
                                                 ?>
                                             </li>
 
-                                        <?php endwhile; ?>
+                                        <?php
+                                            if ( $i++ == 5 )
+                                                break;
+                                        endwhile; reset_rows();?>
 
                                     </ul>
 
