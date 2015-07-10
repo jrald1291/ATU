@@ -100,6 +100,7 @@
 			                <img src="<?php echo get_template_directory_uri() ?>/images/logo.png" alt="">
 			              <?php }else{ ?>
 							<img src="<?php echo of_get_option('logo_uploader', ''); ?>" alt="">
+							<?php echo var_dump(of_get_option('logo_uploader', '')); ?>
 			              <?php } ?>
 				      	
 				      </a>

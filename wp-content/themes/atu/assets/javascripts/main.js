@@ -23,6 +23,7 @@ var util = {
 
           var winsize = $(window).outerHeight();
           var headh = $('.l-header').outerHeight();
+          var asideh = $('.l-sidebar').outerHeight();
           var conth = $('.l-content, .l-content-bg');
           var banner = $('.section-banner');
           var adminbar = $('#wpadminbar').outerHeight();
@@ -31,6 +32,7 @@ var util = {
           conth.css('min-height',toth);
           banner.css('height',(winsize-headh-adminbar));
           $('.toggle-menuwrapper').css('top',adminbar+10);
+          $('.page-content').css('min-height',asideh);
 
           $( window ).resize(function() {
 
@@ -38,11 +40,13 @@ var util = {
               headh = $('.l-header').outerHeight();
               adminbar = $('#wpadminbar').outerHeight();
               banner = $('.section-banner');
+              asideh = $('.l-sidebar').outerHeight();
               conth = $('.l-content, .l-content-bg');
               footh = $('.l-footer').outerHeight();
               toth =  winsize - (headh + footh + adminbar);
               conth.css('min-height',toth);
               banner.css('height',(winsize-headh-adminbar));
+              $('.page-content').css('min-height',asideh);
 
           });
           $( window ).scroll(function() {
@@ -130,7 +134,7 @@ var util = {
 
         $('.form-control').each(function() {
             var $this_control =  $(this);
-            if ($this_control.value !== '') {
+            if ($this_control.val() != ''){
               label = $this_control.parent(".wpcf7-form-control-wrap, .form-control-wrap").prev('label');
               label.addClass('active highlight'); 
             }

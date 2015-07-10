@@ -26,7 +26,6 @@ class ATU {
 
     function atu_theme_setup() {
         add_image_size( 'gallery-thumb', 186, 186, true ); // (cropped)
-        add_image_size( 'venue-listing', 221, 221, true ); // (cropped)
         add_image_size( 'venue-medium', 553, 372, true ); // (cropped)
         add_image_size( 'venue-small-thumb', 110, 75, true ); // (cropped)
         add_image_size( 'venue-xs-small-thumb', 60, 60, true ); // (cropped)
@@ -316,7 +315,7 @@ class ATU {
                     $post_region = isset( $_GET[$region_field['name']] ) ? $_GET[$region_field['name']] : $region_field['default_value'];
                 ?>
 
-                <div class="col-md-2">
+                <div class="col-md-2 hidden">
                     <div class="form-group">
 
                         <select name="<?php echo $region_field['name']; ?>" class="form-control <?php echo  ! isset( $_GET[$region_field['name']] ) ?  'hidden' : ''; ?>"
@@ -339,7 +338,7 @@ class ATU {
                     $post_postcode = isset( $_GET[$postcode_field['name']] ) ? $_GET[$postcode_field['name']] : $postcode_field['default_value'];
                     ?>
 
-                    <div class="col-md-2">
+                    <div class="col-md-2 hidden">
                         <div class="form-group">
 
                             <select name="<?php echo $postcode_field['name']; ?>" class="form-control <?php echo ! isset( $_GET[$postcode_field['name']] ) ?  'hidden' : ''; ?>"

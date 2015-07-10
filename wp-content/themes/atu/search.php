@@ -75,8 +75,6 @@
                         </ul>
                     </div>
 
-                    <?php do_action( 'atu_venue_region_list' ); ?>
-
                     <div class="widget widget-aside well-widget">
                         <?php echo do_shortcode( '[mc4wp_form]' ); ?>
                     </div>

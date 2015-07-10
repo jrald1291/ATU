@@ -176,13 +176,13 @@ $user_info = get_userdata( $user->ID );
                     <div class="widget widget-aside">
                         <div class="ven-avatar" style="border: 2px solid <?php echo hex2rgba($user_info->color); ?>">
 
-                            <?php echo wp_get_attachment_image( $user_info->profile_image, 'venue-listing' ); ?>
+                            <?php echo wp_get_attachment_image( $user_info->profile_image, 'img-avatar' ); ?>
                             <div class="ven-name"style="background-color:<?php echo hex2rgba(($user_info->color),0.5); ?>"><?php echo $user_info->first_name; ?></div>
                         </div>
                     </div>
                     <div class="widget widget-aside widget-list">
                         <div class="widget-list_logo">
-                            <?php echo wp_get_attachment_image( $user_info->company_logo,  'venue-listing' ); ?>
+                            <?php echo wp_get_attachment_image( $user_info->company_logo,  'medium' ); ?>
                         </div>
                         <div class="widget-header">Florist and Stylist</div>
                         <ul class="list">

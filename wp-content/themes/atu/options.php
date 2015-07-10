@@ -58,7 +58,11 @@ function optionsframework_options() {
 	$options[] = array(
 		'name' => __('ATU Details', 'options_framework_theme'),
 		'type' => 'heading');
-
+	$options[] = array(
+		'name' => __('Website Logo', 'options_framework_theme'),
+		'desc' => __('Upload your logo image( size must be 175 x 75)', 'options_framework_theme'),
+		'id' => 'logo_uploader',
+		'type' => 'upload');
 	$options[] = array(
 		'name' => __('Email', 'options_framework_theme'),
 		'desc' => __('Enter Email address', 'options_framework_theme'),
