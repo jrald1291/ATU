@@ -10,8 +10,6 @@ add_action( 'pre_user_query', 'extended_user_search' );
 function extended_user_search( $user_query ){
     global $wpdb;
 
-
-//    $user_query->query_from .= " JOIN {$wpdb->usermeta} Mz ON Mz.user_id = {$wpdb->users}.ID AND Mz.meta_key = 'wp_capabilities'";
     $user_query->query_where = 'WHERE 1=1 ';//. $user_query->get_search_sql( 'venue', array( 'Mz.meta_value' ), 'both' );;
 
     if ( isset( $_GET['keyword'] ) && ! empty( $_GET['keyword'] ) ) {
@@ -33,11 +31,13 @@ function extended_user_search( $user_query ){
         $user_query->query_from .= " JOIN {$wpdb->usermeta} MY ON MY.user_id = {$wpdb->users}.ID AND MY.meta_key = 'profession'";
         $user_query->query_where .= ' ' . $user_query->get_search_sql( esc_attr( $_GET['profession'] ), array( 'MY.meta_value' ), false );
 
+    } elseif (  is_archive() ) {
+        $user_query->query_where .= "  AND meta_key = 'profession'";
+        $user_query->query_where .= ' ' . $user_query->get_search_sql( esc_attr( get_query_var( 'term' ) ), array( 'meta_value' ), false );
     }
 }
 
 
-$term = get_query_var( 'term' );
 
 $search_args = array();
 
@@ -50,9 +50,9 @@ $count_args  = array(
 
 
 
-
 $user_count_query = new WP_User_Query($count_args);
-
+//echo '<pre>';
+//print_r( $user_count_query );
 
 $user_count = $user_count_query->get_results();
 
