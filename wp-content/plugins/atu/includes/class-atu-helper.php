@@ -42,7 +42,7 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
             }
         }
 
-            if ($total_pages!=1) {
+            if ($total_pages!=1 and $page!=$total_pages) {
                 echo '<a class="nextpostslink" rel="next" href="'. esc_url( add_query_arg( array( 'page' => $next ), $current_url ) )  .'/">»</a>';
             }
             echo '</div>';

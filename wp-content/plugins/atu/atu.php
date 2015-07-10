@@ -401,8 +401,10 @@ class ATU {
             endif;
 
         endfor;
+        if ($total_page!=1 and $page!=$total_page) {
+            echo '<a class="nextpostslink" rel="next" href="'. $current_url  .'page/'. $next_page .'">»</a>';
+        }        
 
-        echo '<a class="nextpostslink" rel="next" href="'. $current_url  .'page/'. $next_page .'">»</a>';
         echo '</div>';
         echo '</div>';
     }
