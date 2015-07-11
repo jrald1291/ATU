@@ -77,7 +77,7 @@ $user_info = get_userdata( $user->ID );
                             </ul>
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active copy" id="description">
-                                    <p><?php echo $user_info->description ?></p>
+                                    <?php echo wpautop($user_info->description); ?>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="gallery">
                                     <div id="grid-gallery" class="grid-gallery">
