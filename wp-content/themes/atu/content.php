@@ -30,13 +30,28 @@
 	<div class="social-links list-labeled-inline mb-20">
 		<label for="">Follow us in social :</label>
 		<ul>
-			<li><a href=""><span class="fa fa-instagram"></span></a></li>
-			<li><a href=""><span class="fa fa-youtube"></span></a></li>
-			<li><a href=""><span class="fa fa-google-plus"></span></a></li>
-			<li><a href=""><span class="fa fa-pinterest"></span></a></li>
-			<li><a href=""><span class="fa fa-twitter"></span></a></li>
-			<li><a href=""><span class="fa fa-linkedin"></span></a></li>
-			<li><a href=""><span class="fa fa-facebook"></span></a></li>
+
+			<?php if (of_get_option('instagram', '')) {?>
+				<li><a href="<?php echo of_get_option('instagram', ''); ?>"><span class="fa fa-instagram"></span></a></li>
+			<?php } ?>
+			<?php if (of_get_option('youtube', '')) {?>
+				<li><a href="<?php echo of_get_option('youtube', ''); ?>"><span class="fa fa-youtube"></span></a></li>
+			<?php } ?>
+			<?php if (of_get_option('google', '')) {?>
+				<li><a href="<?php echo of_get_option('google', ''); ?>"><span class="fa fa-google-plus"></span></a></li>
+			<?php } ?>
+			<?php if (of_get_option('pinterest', '')) {?>
+				<li><a href="<?php echo of_get_option('pinterest', ''); ?>"><span class="fa fa-pinterest"></span></a></li>
+			<?php } ?>
+			<?php if (of_get_option('twitter', '')) {?>
+				<li><a href="<?php echo of_get_option('twitter', ''); ?>"><span class="fa fa-twitter"></span></a></li>
+			<?php } ?>
+			<?php if (of_get_option('linkedin', '')) {?>
+				<li><a href="<?php echo of_get_option('linkedin', ''); ?>"><span class="fa fa-linkedin"></span></a></li>
+			<?php } ?>
+			<?php if (of_get_option('facebook', '')) {?>
+				<li><a href="<?php echo of_get_option('facebook', ''); ?>"><span class="fa fa-facebook"></span></a></li>
+			<?php } ?>
 		</ul>
 	</div>
 	<div class="fb-comments" data-href="<?php echo current_page_url(); ?>" data-width="100%" data-numposts="10" data-colorscheme="light"></div>

@@ -59,12 +59,22 @@
 							<div class="widget-header">Contact info</div>
 							<div class="widget-core">
 								<ul class="widget-list">
-									<li>
-										<a href=""><span class="fa fa-envelope"></span> : info.yourweddingalltiedup.com.au</a>
-									</li>
-									<li>
-										<a href=""><span class="fa fa-phone"></span> : 1234-0000-34-00</a>
-									</li>
+									
+									<?php if (of_get_option('email', '')) {?>
+										<li>
+											<a href="mailto:<?php echo of_get_option('email', ''); ?>"><span class="fa fa-envelope"></span> : <?php echo of_get_option('email', ''); ?></a>
+										</li>
+									<?php } ?>
+										
+									<?php if (of_get_option('phone', '')) {?>
+										<li>
+											<a href="tel:<?php echo of_get_option('phone', ''); ?>"><span class="fa fa-phone"></span> : <?php echo of_get_option('phone', ''); ?></a>
+										</li>
+									<?php }else{ ?>
+										<li>
+											<a href="tel:<?php echo of_get_option('tel', ''); ?>"><span class="fa fa-phone"></span> : <?php echo of_get_option('tel', ''); ?></a>
+										</li>
+									<?php } ?>
 								</ul>
                                 <form class="">
                                     
@@ -88,51 +98,97 @@
 	</footer>
 
 
+
+
+
 	<!-- -----------------------------MODAL------------------------ -->
+
+
 
 	<div class="modal fade in form-venue" tabindex="-1" role="dialog" aria-labelledby="VenueSearch">
+
 	  <div class="modal-dialog modal-lg">
+
 	  <div class="modal-content">
+
 			  <div class="modal-header t-normal">Search for Venue</div>
+
 			  <div class="modal-body">
+
 		      	<?php do_action( 'atu_venue_search_form' ); ?>
+
 			  </div>
+
 	   
+
    			<div class="modal-footer">
+
 	   			<button class="btn btn-primary btn-block" class="btn btn-default" data-dismiss="modal">Close</button>
+
 	   		</div>
+
 	   </div>
+
 	  </div>
+
 	</div>
+
 	<div class="modal fade in form-vendor" tabindex="-1" role="dialog" aria-labelledby="VendorSearch">
+
 	  <div class="modal-dialog modal-lg">
+
 	  <div class="modal-content">
+
 			  <div class="modal-header t-normal">Search for Vendor</div>
+
 			  <div class="modal-body">
+
                   <?php do_action( 'atu_vendor_search_form' ); ?>
+
 			  </div>
+
 	   
+
    			<div class="modal-footer">
+
 	   			<button class="btn btn-primary btn-block" class="btn btn-default" data-dismiss="modal">Close</button>
+
 	   		</div>
+
 	   </div>
+
 	  </div>
+
 	</div>
+
+
+
 
 
 	<!-- -----------------------------MODAL------------------------ -->
+
 </div>
 
+
+
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+
 <script>
-(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-e.src='//www.google-analytics.com/analytics.js';
-r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-ga('create','UA-XXXXX-X');ga('send','pageview');
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64995349-1', 'auto');
+  ga('send', 'pageview');
+
 </script>
+
 <?php wp_footer(); ?>
+
 </body>
 
+
+
 </html>
+
