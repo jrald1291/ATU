@@ -219,26 +219,30 @@ $user_info = get_userdata( $user->ID );
     <?php
 
     $prev_user = ATU_Helper::get_prev_user( $user->ID );
-    $prev_user = $prev_user ? $prev_user : $user->user_login;
+    $prev_user = $prev_user ? $prev_user : $user;
+
+    $prev_company = get_user_meta( $prev_user->ID, 'company_name', true );
 
     $next_user = ATU_Helper::get_next_user( $user->ID );
-    $next_user = $next_user ? $next_user : $user->user_login;
+    $next_user = $next_user ? $next_user : $user;
+
+    $next_company = get_user_meta( $next_user->ID, 'company_name', true );
     ?>
     <div class="pagination-single">
         <ul>
             <li class="prev">
-                <a href="<?php echo home_url('/vendor/') . $prev_user; ?>">
+                <a href="<?php echo home_url('/vendor/') . $prev_user->user_login; ?>">
                     <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
-                    <span>Gledswood wedding</span>
+                    <span><?php echo get_user_meta( $prev_user->ID, 'company_name', true ); ?></span>
                 </a>
             </li>
             <li class="back">
                 <a href="<?php echo home_url('/vendors'); ?>">back to vendors listing</a>
             </li>
             <li class="next">
-                <a href="<?php echo home_url('/vendor/') . $next_user; ?>">
+                <a href="<?php echo home_url('/vendor/') . $next_user->user_login; ?>">
                     <span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
-                    <span>Gledswood wedding</span>
+                    <span><?php echo $next_company; ?></span>
                 </a>
             </li>
         </ul>
