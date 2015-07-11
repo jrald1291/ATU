@@ -5,37 +5,9 @@
  */
 
 
-add_action( 'pre_user_query', 'extended_user_search' );
-
-function extended_user_search( $user_query ){
-    global $wpdb;
-
-    $user_query->query_where = 'WHERE 1=1 ';//. $user_query->get_search_sql( 'venue', array( 'Mz.meta_value' ), 'both' );;
-
-    if ( isset( $_GET['keyword'] ) && ! empty( $_GET['keyword'] ) ) {
-        $search = $_GET['keyword'];
-
-        $user_query->query_from .= " JOIN {$wpdb->usermeta} MF ON MF.user_id = {$wpdb->users}.ID AND MF.meta_key = 'first_name'";
-        $user_query->query_from .= " JOIN {$wpdb->usermeta} ML ON ML.user_id = {$wpdb->users}.ID AND ML.meta_key = 'last_name'";
-        $user_query->query_from .= " JOIN {$wpdb->usermeta} MX ON MX.user_id = {$wpdb->users}.ID AND MX.meta_key = 'company_name'";
 
 
 
-        $user_query->query_where .= ' ' . $user_query->get_search_sql( $search, array( 'user_login', 'user_email', 'user_nicename', 'MF.meta_value', 'ML.meta_value', 'MX.meta_value' ), 'both' );
-
-
-
-    }
-
-    if ( isset( $_GET['profession'] ) && ! empty( $_GET['profession'] ) ){
-        $user_query->query_from .= " JOIN {$wpdb->usermeta} MY ON MY.user_id = {$wpdb->users}.ID AND MY.meta_key = 'profession'";
-        $user_query->query_where .= ' ' . $user_query->get_search_sql( esc_attr( $_GET['profession'] ), array( 'MY.meta_value' ), false );
-
-    } elseif (  is_archive() ) {
-        $user_query->query_where .= "  AND meta_key = 'profession'";
-        $user_query->query_where .= ' ' . $user_query->get_search_sql( esc_attr( get_query_var( 'term' ) ), array( 'meta_value' ), false );
-    }
-}
 
 
 

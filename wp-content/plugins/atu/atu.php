@@ -162,7 +162,48 @@ class ATU {
 
 
         add_action( 'atu_venue_region_list', array( $this, 'atu_region_list' ) );
+
+        add_action( 'pre_user_query', array( $this, 'extended_user_search' ) );
     }
+
+
+    public function extended_user_search( $user_query ){
+        global $wpdb;
+        if ( is_admin() || ( ! is_archive( 'profession' ) && ! is_page('vendors') ) ) return;
+
+        $user_query->query_from = " FROM wp_users  JOIN $wpdb->usermeta MA ON MA.user_id = $wpdb->users.ID AND MA.meta_key = 'wp_capabilities'";
+
+
+        $user_query->query_where = 'WHERE 1=1 '. " AND ( CAST(MA.meta_value AS CHAR) LIKE '%\"Vendor\"%' ) ";
+
+        if ( isset( $_GET['keyword'] ) && ! empty( $_GET['keyword'] ) ) {
+            $search = $_GET['keyword'];
+
+            $user_query->query_from .= " JOIN {$wpdb->usermeta} MF ON MF.user_id = {$wpdb->users}.ID AND MF.meta_key = 'first_name'";
+            $user_query->query_from .= " JOIN {$wpdb->usermeta} ML ON ML.user_id = {$wpdb->users}.ID AND ML.meta_key = 'last_name'";
+            $user_query->query_from .= " JOIN {$wpdb->usermeta} MX ON MX.user_id = {$wpdb->users}.ID AND MX.meta_key = 'company_name'";
+
+
+
+            $user_query->query_where .= ' ' . $user_query->get_search_sql( $search, array( 'user_login', 'user_email', 'user_nicename', 'MF.meta_value', 'ML.meta_value', 'MX.meta_value' ), 'both' );
+
+
+
+        }
+
+        if ( isset( $_GET['profession'] ) && ! empty( $_GET['profession'] ) ){
+            $user_query->query_from .= " JOIN {$wpdb->usermeta} MY ON MY.user_id = {$wpdb->users}.ID AND MY.meta_key = 'profession'";
+            $user_query->query_where .= ' ' . $user_query->get_search_sql( esc_attr( $_GET['profession'] ), array( 'MY.meta_value' ), false );
+
+        } elseif (  is_archive() ) {
+
+            $user_query->query_from .= " JOIN $wpdb->usermeta MB ON MB.user_id = $wpdb->users.ID AND MB.meta_key = 'profession'";
+            $user_query->query_where .= ' ' . $user_query->get_search_sql( esc_attr( get_query_var( 'term' ) ), array( 'MB.meta_value' ), false );
+
+        }
+
+    }
+
 
     public function atu_region_list() {
 
