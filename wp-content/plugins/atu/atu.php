@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 //error_reporting(0);
+//http://firecask.com/custom-fields-and-posts-in-wordpress-permalink-urls/
 
 class ATU {
     var $atu_db_version = '1.0';
@@ -268,7 +269,9 @@ class ATU {
 
     public function websmart_search_where( $where ) {
 
-        if( is_search() && ! is_admin() && isset( $_GET['ft'] ) && ! empty( $_GET['ft'] ) ) {
+        if ( ! is_search() && is_admin() ) return $where;
+
+        if( isset( $_GET['ft'] ) && ! empty( $_GET['ft'] ) ) {
 
             $where = "";
 
@@ -280,8 +283,13 @@ class ATU {
                 $ft_value = $_GET['region'];
 
 
+            
+
             $where .= " AND ( m.meta_key = '{$_GET['ft']}' AND m.meta_value='{$ft_value}' ) ";
         }
+
+
+
 
         return $where;
     }
@@ -315,15 +323,16 @@ class ATU {
 
 
     public function atu_venue_search_form() {
+
         ?>
         <form action="<?php echo home_url( '/' ); ?>" method="get" class="form">
             <div class="row row-sm">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
                         <input type="text" name="s" value="<?php echo isset( $_GET['s'] ) ? $_GET['s'] : ''; ?>" class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
                         <?php wp_dropdown_categories( array(
                             'taxonomy'  => 'venue-category',
@@ -393,6 +402,30 @@ class ATU {
                     </div>
 
                 <?php endif; ?>
+
+
+                <?php
+                $capacities = get_field_object('field_559a941791552');
+
+                if ( $capacities ):
+
+                    $selected_capacity = isset( $_GET['capacity'] ) ? $_GET['capacity'] : $capacities['default_value'];
+                    ?>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+
+                            <select name="capacity" class="form-control">
+                                <option value="" <?php selected('', $selected_capacity); ?>><?php echo $capacities['label']; ?></option>
+                                <?php foreach( $capacities['choices'] as $key => $value ): ?>
+                                    <option value="<?php echo $key; ?>"  <?php selected($key, $selected_capacity); ?> ><?php echo $value; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+
+                <?php endif; ?>
+
 
 
                 <div class="col-md-2">
