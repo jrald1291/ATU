@@ -5,7 +5,7 @@
         /**
          * Get all vendor user
          * @var  $user_query */
-        $wp_user_query = new WP_User_Query( array( 'role' => get_option( 'atu_default_user_role', 'vendor' ), 'number' => 4 ) );
+        $wp_user_query = new WP_User_Query( array( 'role' => get_option( 'atu_default_user_role', 'vendor' ), 'order'=>'DESC' ,'number' => 5 ) );
 
         // Get the results
         $vendors = $wp_user_query->get_results();
@@ -55,7 +55,7 @@
         /**
          * Get latest venue
          */
-        $wp_venue_query = new WP_Query( array( 'post_type' => 'venue', 'orderby' => 'date', 'order' => 'desc', 'post_status' => 'publish', 'posts_per_page' => -1 ) );
+        $wp_venue_query = new WP_Query( array( 'post_type' => 'venue', 'orderby' => 'date', 'order' => 'desc', 'post_status' => 'publish', 'posts_per_page' =>5 ) );
 
 
         if ( $wp_venue_query->have_posts(  ) ): ?>

@@ -32,7 +32,6 @@ var util = {
           conth.css('min-height',toth);
           banner.css('height',(winsize-headh-adminbar));
           $('.toggle-menuwrapper').css('top',adminbar+10);
-          $('.page-content').css('min-height',asideh);
 
           $( window ).resize(function() {
 
@@ -46,7 +45,6 @@ var util = {
               toth =  winsize - (headh + footh + adminbar);
               conth.css('min-height',toth);
               banner.css('height',(winsize-headh-adminbar));
-              $('.page-content').css('min-height',asideh);
 
           });
           $( window ).scroll(function() {
