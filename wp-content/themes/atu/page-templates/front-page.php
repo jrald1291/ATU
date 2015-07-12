@@ -114,7 +114,7 @@ get_header(); ?>
 
                             $vendor_info = get_userdata($vendor->ID);
 
-                            $description = wp_trim_words(  get_user_meta( $vendor->ID, 'description', true ), $num_words = 20, $more = '...' );
+                            $description = wp_trim_words(  get_user_meta( $vendor->ID, 'description', true ), $num_words = 16, $more = '...' );
                             $profession = '';
                             $categories = wp_get_object_terms( $vendor->ID, 'profession', false );
                             if ( !empty( $categories ) ) {

@@ -206,12 +206,12 @@ get_header(); ?>
                 <?php }else{?>
                     <div class="disabled">
                             <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
-                            <span>No next post</span>
+                            <span>No previous post</span>
                     </div>
                 <?php } ?>
             </li>
             <li class="back">
-                <a href="<?php echo get_permalink( get_page_by_title( 'Venue' ))?>">back to Blog</a>
+                <a href="<?php echo get_permalink( get_page_by_title( 'Venue' ))?>">back to Venue Listing</a>
             </li>
             <li class="prev">
                 <?php $prepo=get_previous_post(); 
@@ -225,7 +225,7 @@ get_header(); ?>
                 <?php }else{?>
                     <div class="disabled">
                             <span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
-                            <span>No previous post</span>
+                            <span>No Next post</span>
                     </div>
                 <?php } ?>
                 
