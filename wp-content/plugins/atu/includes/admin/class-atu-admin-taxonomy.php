@@ -86,6 +86,7 @@ if ( ! class_exists( 'ATU_Admin_Taxonomy' ) ) {
 
                             'rewrite' => array(
                                 'with_front' => true,
+                                'hierarchical' => true,
                                 'slug' => $slug
                             ),
                             //'update_count_callback' => array( $this, 'my_update_profession_count' ) // Use a custom function to update the count.
