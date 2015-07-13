@@ -83,7 +83,7 @@ get_header();?>
             <div class="col-md-3">
                 <aside class="l-sidebar">
                     <div class="widget widget-aside widget-list">
-                        <div class="widget-header">Vendor Categories</div>
+                        <div class="widget-header">Vendor Types</div>
                         <ul class="list">
                             <?php wp_list_categories('taxonomy=venue-category&orderby=name&title_li=0'); ?>
 
