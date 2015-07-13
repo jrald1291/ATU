@@ -220,7 +220,7 @@ if ( !class_exists('ATU_Admin_Users') ) {
 
                     'rewrite' => array(
                         'with_front' => true,
-                        'slug' => 'profession' // Use 'author' (default WP user slug).
+                        'slug' => 'eventvendors' // Use 'author' (default WP user slug).
                     ),
                     'update_count_callback' => array( $this, 'my_update_profession_count' ) // Use a custom function to update the count.
                 )

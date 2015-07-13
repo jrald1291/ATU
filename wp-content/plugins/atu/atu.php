@@ -283,7 +283,7 @@ class ATU {
                 $ft_value = $_GET['region'];
 
 
-            
+
 
             $where .= " AND ( m.meta_key = '{$_GET['ft']}' AND m.meta_value='{$ft_value}' ) ";
         }

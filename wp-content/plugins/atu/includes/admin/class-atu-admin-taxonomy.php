@@ -46,9 +46,59 @@ if ( ! class_exists( 'ATU_Admin_Taxonomy' ) ) {
                 )
             );
 
+
             foreach ( $post_types as $type => $args ) {
                 register_taxonomy( $type, $args['post_type'], $args['args'] );
             }
+
+
+
+            if ( have_rows( 'regions', 'option' ) ) {
+                while ( have_rows( 'regions', 'option' ) ) { the_row();
+                    $name =  sanitize_title( get_sub_field( 'region_name' ) );
+                    $label = esc_html( get_sub_field( 'region_label' ) );
+                    $slug = get_sub_field( 'region_slug' ) ? sanitize_title( get_sub_field( 'region_slug' ) ) : $name;
+
+                    register_taxonomy(
+                        $name,
+                        'user',
+                        array(
+                            'public' => true,
+                            'labels' => array(
+                                'name' => __( 'Group Categories' ),
+                                'singular_name' => __( 'Group Category' ),
+                                'menu_name' => $label,
+                                'search_items' => __( 'Search Group Categories' ),
+                                'popular_items' => __( 'Popular Group Categories' ),
+                                'all_items' => __( 'All Group Categories' ),
+                                'edit_item' => __( 'Edit Group Category' ),
+                                'update_item' => __( 'Update Group Category' ),
+                                'add_new_item' => __( 'Add New Group Category' ),
+                                'new_item_name' => __( 'New Group Category Name' ),
+                                'separate_items_with_commas' => __( 'Separate group categories with commas' ),
+                                'add_or_remove_items' => __( 'Add or remove group category' ),
+                                'choose_from_most_used' => __( 'Choose from the most popular group categories' ),
+                            ),
+                            'hierarchical'          => true,
+                            'show_ui'               => true,
+                            'show_admin_column'     => true,
+                            'query_var'             => true,
+
+                            'rewrite' => array(
+                                'with_front' => true,
+                                'slug' => $slug
+                            ),
+                            //'update_count_callback' => array( $this, 'my_update_profession_count' ) // Use a custom function to update the count.
+                        )
+                    );
+
+
+
+                }
+            }
+
+
+
         }
     }
 }

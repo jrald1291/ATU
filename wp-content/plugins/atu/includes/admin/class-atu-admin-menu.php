@@ -20,6 +20,19 @@ if ( ! class_exists('ATU_Admin_Menu') ) {
 
             $tax = get_taxonomy( 'profession' );
             add_submenu_page( 'atu-settings', __( 'Vendor Categories', ATU_TEXT_DOMAIN ), __( 'Vendor Categories', ATU_TEXT_DOMAIN ), 'administrator', 'edit-tags.php?taxonomy=' . $tax->name );
+
+            if ( have_rows( 'regions', 'option' ) ) {
+                while ( have_rows( 'regions', 'option' ) ) {
+                    the_row();
+                    $name = sanitize_title(get_sub_field('region_name'));
+                    $label = esc_html(get_sub_field('region_label'));
+//                    $slug = get_sub_field('region_slug') ? sanitize_title(get_sub_field('region_slug')) : $name;
+
+                    add_submenu_page( 'atu-settings', __( $label, 'wepn' ), __( $label, 'wepn' ), 'administrator', 'edit-tags.php?taxonomy=' . $name );
+                }
+            }
+
+
         }
 
 

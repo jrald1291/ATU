@@ -23,6 +23,7 @@ if ( ! class_exists('ATU_Admin') ) {
 
 
             include_once( 'class-atu-admin-settings.php' );
+            include_once( 'class-wepn-admin-options.php' );
             include_once( 'class-atu-admin-menu.php' );
 
 
