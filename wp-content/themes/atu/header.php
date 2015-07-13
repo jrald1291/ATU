@@ -158,13 +158,7 @@
 
 				'link_after'      => '',
 
-				'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s
-
-					<li><a class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15" data-toggle="modal" data-target=".form-venue">Search for Venue</a></li>
-
-					<li><a class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15" data-toggle="modal" data-target=".form-vendor">Search for Vendor</a></li>
-
-				</ul>',
+				'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 
 				'depth'           => 0,
 

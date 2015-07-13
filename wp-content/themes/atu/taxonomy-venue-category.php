@@ -90,7 +90,9 @@ get_header();
                         </ul>
                     </div>
                     <div class="widget widget-aside well-widget">
-                        <?php echo do_shortcode( '[mc4wp_form]' ); ?>
+                        <div class="form form-labeled">
+                            <?php echo do_shortcode('[mc4wp_form]'); ?>
+                        </div>
                     </div>
                 </aside>
             </div>
