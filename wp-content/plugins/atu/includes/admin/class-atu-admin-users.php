@@ -125,7 +125,7 @@ if ( !class_exists('ATU_Admin_Users') ) {
                             _e( 'There are no professions available.' );
                         }
 
-                        wp_dropdown_categories('taxonomy=sydney&hide_empty=0&hierarchical=1&orderby=name&name=types&show_option_none=Select type&selected=');
+
                         ?>
 
                     </td>

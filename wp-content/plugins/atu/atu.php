@@ -22,6 +22,52 @@ class ATU {
         $this->define_constant();
         $this->init_hooks();
         $this->includes();
+
+
+//        add_action('init', array( $this, 'wepn_add_rewrite_rules' ) );
+//        add_filter('post_type_link', array( $this, 'wepn_permalinks' ), 10, 3);
+    }
+
+
+
+
+
+    function wepn_permalinks($permalink, $post, $leavename)
+
+    {
+
+        $no_data = 'no-speciality';
+
+        $post_id = $post->ID;
+
+        if($post->post_type != 'solicitors' || empty($permalink) || in_array($post->post_status, array('draft', 'pending', 'auto-draft')))
+
+            return $permalink;
+
+        $var1 = get_post_meta($post_id, 'posts_solicitorspeciality', true);
+
+        $var1 = sanitize_title($var1);
+
+        if(!$var1) { $var1 = $no_data; }
+
+        $permalink = str_replace('%posts_solicitorspeciality%', $var1, $permalink);
+
+        return $permalink;
+
+    }
+
+    function tdd_add_rewrite_rules()
+
+    {
+
+        // Register custom rewrite rules
+
+        global $wp_rewrite;
+        $wp_rewrite->add_rewrite_tag('%solicitors%', '([^/]+)', 'solicitors=');
+        $wp_rewrite->add_rewrite_tag('%posts_solicitorspeciality%', '([^/]+)', 'posts_solicitorspeciality=');
+
+        $wp_rewrite->add_permastruct('solicitors', '/%posts_solicitorspeciality%/%solicitors%', false);
+
     }
 
 
@@ -32,7 +78,6 @@ class ATU {
         add_image_size( 'venue-xs-small-thumb', 60, 60, true ); // (cropped)
         add_image_size( 'vendor-small-thumb', 110, 105, true ); // (cropped)
     }
-
 
     function enqueue_scripts() {
         wp_enqueue_style( 'atu-css', ATU_ASSETS_URL . 'css/atu.css' );
