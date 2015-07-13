@@ -103,7 +103,7 @@ get_header(); ?>
                 /**
                  * Get all vendor user
                  * @var  $user_query */
-                $wp_user_query = new WP_User_Query( array( 'role' => get_option( 'atu_default_user_role', 'vendor' ), 'number' => 4 ) );
+                $wp_user_query = new WP_User_Query( array( 'role' => get_option( 'atu_default_user_role', 'vendor' ), 'order'=> 'DESC', 'number' => 4 ) );
 
                 // Get the results
                 $vendors = $wp_user_query->get_results();
