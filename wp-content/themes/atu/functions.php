@@ -441,7 +441,6 @@ require get_template_directory() . '/inc/media.php';
 require get_template_directory() . '/inc/taxonomies.php';
 
 
-//require get_template_directory() . '/wepn/wepn.php';
 
 
 
