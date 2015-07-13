@@ -173,14 +173,19 @@ p {
 
 .login #nav a,
 .login #backtoblog a {
+	background: #5dd2c9;
 	text-decoration: none;
-	color: #999;
+	border: 1px solid #39c8be;
+	color: #fff;
+	border-radius: 5px;
 }
 
 .login #nav a:hover,
 .login #backtoblog a:hover,
 .login h1 a:hover {
-	color: #00a0d2;
+	color: #fff;
+	background: #39c8be;
+	border: 1px solid #5dd2c9;
 }
 
 .login form .input,
