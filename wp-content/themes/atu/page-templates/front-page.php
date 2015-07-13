@@ -18,8 +18,8 @@ get_header(); ?>
 				<?php endif ?>
 			</h1>
 			<div class="actions">
-				<button class="btn btn-wooden btn-lg" data-toggle="modal" data-target=".form-vendor">Search for Vendor</button>
-				<button class="btn btn-wooden btn-lg" data-toggle="modal" data-target=".form-venue">Search for Venue</button>
+				<a href="<?php echo get_permalink( get_page_by_title( 'Vendors' ))?>" class="btn btn-wooden btn-lg">Search for Vendor</a>
+				<a href="<?php echo get_permalink( get_page_by_title( 'Venues' ))?>" class="btn btn-wooden btn-lg" data-toggle="modal" data-target=".form-venue">Search for Venue</a>
 			</div>
 		</div>
 		<?php if (get_field('banner_slogan') and get_field('slogan_line2')):?>

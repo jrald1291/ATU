@@ -68,9 +68,15 @@ get_header(); ?>
 								<div class="contact-company">Address: <?php echo get_field('address',$post_id) ?> <?php echo get_field('region',$post_id) ?> <?php echo get_field('post_code',$post_id) ?></div>
 								<div class="contact-content">Call us if you prefer to speak to a real life person</div>
 								<ul class="list list-contact list-inline">
-									<li><a href="tel:<?php echo get_field('mobile',$post_id) ?>"><span class="fa fa-mobile icon-l-sm"></span><?php echo get_field('mobile',$post_id) ?></a></li>
-		                            <li><a href="tel:<?php echo get_field('phone',$post_id) ?>"><span class="fa fa-phone icon-l-sm"></span><?php echo get_field('phone',$post_id) ?></a></li>
-		                            <li><a href="mailto:<?php echo get_field('email',$post_id) ?>"><span class="fa fa-envelope icon-l-sm"></span><?php echo get_field('email',$post_id) ?></a></li>
+									<?php if (get_field('mobile',$post_id)) {?>
+										<li><a href="tel:<?php echo get_field('mobile',$post_id) ?>"><span class="fa fa-mobile icon-l-sm"></span><?php echo get_field('mobile',$post_id) ?></a></li>
+									<?php } ?>
+									<?php if (get_field('phone',$post_id)) {?>
+										<li><a href="tel:<?php echo get_field('phone',$post_id) ?>"><span class="fa fa-phone icon-l-sm"></span><?php echo get_field('phone',$post_id) ?></a></li>
+									<?php } ?>
+									<?php if (get_field('email',$post_id)) {?>
+										<li><a href="mailto:<?php echo get_field('email',$post_id) ?>"><span class="fa fa-envelope icon-l-sm"></span><?php echo get_field('email',$post_id) ?></a></li>
+									<?php } ?>						
 								</ul>
 
 							<?php }else{ ?>
@@ -79,9 +85,18 @@ get_header(); ?>
 								<div class="contact-company"><?php echo $user_info->company_name ?></div>
 								<div class="contact-content">Call me if you prefer to speak to a real life person</div>
 								<ul class="list list-contact list-inline">
-									<li><a href="tel:<?php echo $user_info->mobile; ?>"><span class="fa fa-mobile icon-l-sm"></span><?php echo $user_info->mobile; ?></a></li>
-		                            <li><a href="tel:<?php echo $user_info->phone; ?>"><span class="fa fa-phone icon-l-sm"></span><?php echo $user_info->phone; ?></a></li>
-		                            <li><a href="mailto:<?php echo $user_info->user_email; ?>"><span class="fa fa-envelope icon-l-sm"></span><?php echo $user_info->user_email; ?></a></li>
+									<?php if ($user_info->mobile) {?>
+										<li><a href="tel:<?php echo $user_info->mobile; ?>"><span class="fa fa-mobile icon-l-sm"></span><?php echo $user_info->mobile; ?></a></li>
+									<?php } ?>
+									<?php if ($user_info->phone) {?>
+										 <li><a href="tel:<?php echo $user_info->phone; ?>"><span class="fa fa-phone icon-l-sm"></span><?php echo $user_info->phone; ?></a></li>
+									<?php } ?>
+									<?php if ($user_info->user_email) {?>
+										<li><a href="mailto:<?php echo $user_info->user_email; ?>"><span class="fa fa-envelope icon-l-sm"></span><?php echo $user_info->user_email; ?></a></li>
+									<?php } ?>
+									
+		                           
+		                            
 								</ul>
 
 							<?php } ?>
