@@ -212,7 +212,7 @@ if ( ! class_exists( 'ATU_Admin_Post' ) ) {
                     'show_ui'            => true,
                     'show_in_menu'       => false,
                     'query_var'          => true,
-                    'rewrite'            => array( 'slug' => 'vendors', 'with_front' => false ),///%group%
+                    'rewrite'            => array( 'slug' => 'vendors', 'hierarchical' => true, 'with_front' => false ),///%group%
                     'capability_type'    => 'post',
                     'has_archive'        => true,
                     'hierarchical'       => false,
