@@ -10,18 +10,18 @@ if ( !class_exists('ATU_Admin_Users') ) {
         }
 
         private function init_hooks() {
-            add_action( 'init', array( $this, 'my_register_user_taxonomy' ) );
+            //add_action( 'init', array( $this, 'my_register_user_taxonomy' ) );
             /* Create custom columns for the manage profession page. */
             add_filter( 'manage_edit-profession_columns', array( $this, 'my_manage_profession_user_column' ) );
             /* Customize the output of the custom column on the manage professions page. */
             add_action( 'manage_profession_custom_column', array( $this, 'my_manage_profession_column' ), 10, 3 );
 
             /* Add section to the edit user page in the admin to select profession. */
-            add_action( 'show_user_profile', array( $this, 'my_edit_user_profession_section' ), 20 );
-            add_action( 'edit_user_profile', array( $this, 'my_edit_user_profession_section' ), 20 );
+            add_action( 'show_user_profile', array( $this, 'my_edit_region_group_category_section' ), 20 );
+            add_action( 'edit_user_profile', array( $this, 'my_edit_region_group_category_section' ), 20 );
             /* Update the profession terms when the edit user page is updated. */
-            add_action( 'personal_options_update', array( $this, 'my_save_user_profession_terms' ) );
-            add_action( 'edit_user_profile_update', array( $this, 'my_save_user_profession_terms' ) );
+            add_action( 'personal_options_update', array( $this, 'my_save_user_region_group_category' ) );
+            add_action( 'edit_user_profile_update', array( $this, 'my_save_user_region_group_category' ) );
 
             add_action( 'personal_options', array ( $this, 'start' ) );
         }
@@ -63,21 +63,66 @@ if ( !class_exists('ATU_Admin_Users') ) {
          *
          * @param int $user_id The ID of the user to save the terms for.
          */
-        public function my_save_user_profession_terms( $user_id ) {
+        public function my_save_user_region_group_category( $user_id ) {
+            $region = $_POST['region'];
+            $group = explode( '::', $_POST['group'] );
+            $category = $_POST['category'];
+            $company_name = $_POST['company_name'];
 
-            $tax = get_taxonomy( 'profession' );
+            $group_title = $group[1];
+            $group_slug = sanitize_title( $group[0] );
 
-            /* Make sure the current user can edit the user and assign terms before proceeding. */
-//            if ( !current_user_can( 'edit_user', $user_id ) && current_user_can( $tax->cap->assign_terms ) )
-//                return false;
+            $category_slug = sanitize_title( $category );
 
-            $term = esc_attr( $_POST['profession'] );
+
+
 
             /* Sets the terms (we're just using a single term) for the user. */
-            wp_set_object_terms( $user_id, array( $term ), 'profession', false);
-            update_user_meta( $user_id, 'profession', $term );
 
-            clean_object_term_cache( $user_id, 'profession' );
+            if ( ! $parent = term_exists( $group_title, $region ) ) {
+                $parent = wp_insert_term( $group_title, $region, array(
+                    'slug' => $group_slug,
+                ));
+            }
+
+            if ( ! term_exists( $category, $region ) ) {
+
+                wp_insert_term($category, $region, array(
+                    'slug' => $category_slug,
+                    'parent' => $parent['term_id']
+                ));
+
+            }
+
+            global $wpdb;
+            $company_id = $wpdb->get_var("SELECT ID FROM wp_posts WHERE post_title = '" . $company_name . "'");
+
+            if ( ! empty( $company_name ) && ! $company_id ) {
+                $company_id = wp_insert_post( array(
+                    'post_title' => $company_name,
+                    'post_type' => 'company',
+                    'post_status' => 'publish'
+                ));
+
+                update_user_meta( $user_id, 'company', $company_id );
+
+            }
+
+
+
+            wp_delete_object_term_relationships( $company_id, $region );
+
+
+            wp_set_object_terms($company_id, $category_slug, $region, false);
+            update_post_meta( $company_id, 'vendor', $user_id );
+
+            update_user_meta( $user_id, 'region', $region );
+            update_user_meta( $user_id, 'group', $group_slug );
+            update_user_meta( $user_id, 'category', $category_slug );
+
+
+
+            clean_object_term_cache( $user_id, $region );
         }
 
 
@@ -88,48 +133,80 @@ if ( !class_exists('ATU_Admin_Users') ) {
          *
          * @param object $user The user object currently being edited.
          */
-        public function my_edit_user_profession_section( $user ) {
+        public function my_edit_region_group_category_section( $user ) {
 
-//            $tax = get_taxonomy( 'profession' );
 
-            /* Make sure the user can assign terms of the profession taxonomy before proceeding. */
-//            if ( !current_user_can( $tax->cap->assign_terms ) )
-//                return;
 
-            /* Get the terms of the 'profession' taxonomy. */
-            $terms = get_terms( 'profession', array( 'hide_empty' => false ) ); ?>
+            $region = get_user_meta( $user->ID, 'region', true );
+            $group  = get_user_meta( $user->ID, 'group', true );
+            $category = get_user_meta( $user->ID, 'category', true );
 
-            <h3><?php _e( 'Profession' ); ?></h3>
+
+            $company_id = get_user_meta( $user->ID, 'company', true );
+
+            $company_name = $company_id ? get_the_title( $company_id ) : get_user_meta( $user->ID, 'company_name', true );
+
+
+            ?>
+
 
             <table class="form-table">
-
                 <tr>
-                    <th><label for="profession"><?php _e( 'Select Profession' ); ?></label></th>
+                    <th><label for="">Select Region</label></th>
+                    <td>
+                        <?php if ( have_rows( 'regions', 'option' ) ) {
+                            echo '<select name="region">';
+                            while ( have_rows( 'regions', 'option' ) ) {
+                                the_row();
+                                $name = sanitize_title(get_sub_field('region_name'));
+                                $label = esc_html(get_sub_field('region_label'));
 
-                    <td><?php
-
-                        /* If there are any profession terms, loop through them and display checkboxes. */
-                        if ( !empty( $terms ) ) {
-                            ?>
-                            <select  name="profession">
-                            <?php
-                            foreach ( $terms as $term ) { ?>
-                                <option value="<?php echo esc_attr( $term->slug ); ?>" <?php selected( true, is_object_in_term( $user->ID, 'profession', $term ) ); ?>><?php echo $term->name; ?></option>
-                            <?php } ?>
-                            </select>
-                                <?php
-                        }
-
-                        /* If there are no profession terms, display a message. */
-                        else {
-                            _e( 'There are no professions available.' );
-                        }
-
-
-                        ?>
-
+                                echo '<option value="'. $name .'" '. selected( $name, $region, false ) .'>'. $label .'</option>';
+                            }
+                            echo '<select>';
+                        }?>
                     </td>
                 </tr>
+                <tr>
+                    <th><label for="">Select Group</label></th>
+                    <td>
+                        <?php if ( have_rows( 'groups', 'option' ) ) {
+                            echo '<select name="group">';
+                            while ( have_rows( 'groups', 'option' ) ) {
+                                the_row();
+                                $name = sanitize_title(get_sub_field('group_name'));
+                                $label = esc_html(get_sub_field('group_label'));
+
+                                echo '<option value="'. $name.'::'.$label .'" '. selected( $name, $group, false ) .'>'. $label .'</option>';
+                            }
+                            echo '<select>';
+                        }?>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="">Select Category</label></th>
+                    <td>
+                        <?php if ( have_rows( 'vendors_categories', 'option' ) ) {
+                            echo '<select name="category">';
+                            while ( have_rows( 'vendors_categories', 'option' ) ) {
+                                the_row();
+                                $label = esc_html(get_sub_field('category_name'));
+
+                                echo '<option value="'. $label .'" '. selected( sanitize_title( $label ), sanitize_title( $category ), false ) .'>'. $label .'</option>';
+                            }
+                            echo '<select>';
+                        }?>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th><label for="">Company Name</label></th>
+                    <td>
+                        <input type="text" name="company_name" value="<?php echo $company_name; ?>" class="regular-text" />
+                    </td>
+                </tr>
+
 
             </table>
         <?php }

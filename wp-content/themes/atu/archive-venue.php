@@ -83,17 +83,14 @@ get_header();?>
             <div class="col-md-3">
                 <aside class="l-sidebar">
                     <div class="widget widget-aside widget-list">
-                        <div class="widget-header">Vendor Types</div>
+                        <div class="widget-header">Venue Types</div>
                         <ul class="list">
                             <?php wp_list_categories('taxonomy=venue-category&orderby=name&title_li=0'); ?>
 
                         </ul>
                     </div>
-                    
-<!-- 
-                   <?php do_action( 'atu_venue_region_list' ); ?>
 
- -->
+
                     <div class="widget widget-aside well-widget">
                         <div class="form form-labeled">
                             <?php echo do_shortcode('[mc4wp_form]'); ?>

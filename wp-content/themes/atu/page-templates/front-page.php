@@ -99,46 +99,57 @@ get_header(); ?>
 			</div>
 			<div class="col-md-6 mb-30">
 				<h4 class="title-l1"><?php _e( 'Latest Vendor List', 'atu' ); ?> </h4>
+
                 <?php
                 /**
-                 * Get all vendor user
-                 * @var  $user_query */
-                $wp_user_query = new WP_User_Query( array( 'role' => get_option( 'atu_default_user_role', 'vendor' ), 'order'=> 'DESC', 'number' => 4 ) );
+                 * Get latest vendors
+                 */
+                $wp_venue_query = new WP_Query( array( 'post_type' => 'vendor', 'orderby' => 'date', 'order' => 'desc', 'post_status' => 'publish', 'posts_per_page' =>5 ) );
 
-                // Get the results
-                $vendors = $wp_user_query->get_results();
 
-                if ( ! empty( $vendors ) ): ?>
+                if ( $wp_venue_query->have_posts(  ) ): ?>
+
                     <ul class="post-inline post-member mb-20">
-                        <?php foreach( $vendors as $vendor ):
+
+                        <?php while( $wp_venue_query->have_posts() ): $wp_venue_query->the_post();
+
+                            $cat_name = get_the_title();
+
+                            $user_id = get_post_meta( get_the_ID(), 'vendor', true );
+
+                            $taxonomy = get_user_meta( $user_id, 'region', true );
+                            $cats = get_the_terms( get_the_ID(), $taxonomy );
+
+                            if ( ! empty( $cats ) )$cat_name = $cats[0]->name;
 
                             $vendor_info = get_userdata($vendor->ID);
 
-                            $description = wp_trim_words(  get_user_meta( $vendor->ID, 'description', true ), $num_words = 16, $more = '...' );
-                            $profession = '';
-                            $categories = wp_get_object_terms( $vendor->ID, 'profession', false );
-                            if ( !empty( $categories ) ) {
-                                $profession = $categories[0]->name;
-                            }
-                            $image_id = get_user_meta( $vendor->ID, 'profile_image', true );
+                            $description = wp_trim_words(  get_user_meta( $user_id, 'description', true ), $num_words = 16, $more = '...' );
+                            $image_id = get_user_meta( $user_id, 'profile_image', true );
+                            $company_name = get_user_meta( $user_id, 'company_name', true );
+
                             ?>
                             <li class="post-item">
                                 <div class="post-img well-img">
-                                    <?php echo wp_get_attachment_image( $image_id, 'vendor-small-thumb' ); ?>
+                                    <a href="<?php the_permalink(); ?>"><?php echo wp_get_attachment_image( $image_id, 'vendor-small-thumb' ); ?></a>
                                 </div>
                                 <div class="post-core">
-                                    <a href="<?php echo get_permalink( get_page_by_path( 'vendor' ) ) . $vendor->user_login; ?>" class="link"><div class="post-title t-normal"><?php echo $vendor_info->first_name .' '. $vendor_info->last_name; ?> <span class="post-cat t-highlight"><?php echo $profession; ?></span></div></a>
+                                    <a href="<?php the_permalink() ?>" class="link">
+                                        <div class="post-title t-normal"><?php echo $company_name; ?>
+                                            <span class="post-cat t-highlight"><?php echo $cat_name; ?></span>
+                                        </div>
+                                    </a>
                                     <p><?php echo $description; ?>.</p>
                                 </div>
                             </li>
-                        <?php endforeach; ?>
+                        <?php endwhile; wp_reset_query();?>
                     </ul>
-                    <a href="<?php echo get_permalink( get_page_by_path( 'vendors' ) ); ?>" class="btn btn-opposite btn-block btn-md"><?php _e( 'See all Vendors', 'atu'); ?></a>
+                    <a href="<?php echo home_url('/vendors/') ?>" class="btn btn-opposite btn-block btn-md"><?php _e( 'See all Vendors', 'atu'); ?></a>
                 <?php else: ?>
-                    <h3><?php _e( 'No vendors found.', 'atu'); ?></h3>
+
+                    <h3><?php _e( 'No Vendors found.', 'atu' ); ?></h3>
+
                 <?php endif; ?>
-
-
 
 			</div>
 		</div>

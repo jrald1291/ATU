@@ -14,6 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 //error_reporting(0);
 //http://firecask.com/custom-fields-and-posts-in-wordpress-permalink-urls/
+//$P$BCidvGzTeGs0VZcMWRPEQC0z.kPU9Q1
+//sydney/loremipsum/dj
 
 class ATU {
     var $atu_db_version = '1.0';
@@ -23,52 +25,13 @@ class ATU {
         $this->init_hooks();
         $this->includes();
 
-
-//        add_action('init', array( $this, 'wepn_add_rewrite_rules' ) );
-//        add_filter('post_type_link', array( $this, 'wepn_permalinks' ), 10, 3);
     }
 
 
 
 
 
-    function wepn_permalinks($permalink, $post, $leavename)
 
-    {
-
-        $no_data = 'no-speciality';
-
-        $post_id = $post->ID;
-
-        if($post->post_type != 'solicitors' || empty($permalink) || in_array($post->post_status, array('draft', 'pending', 'auto-draft')))
-
-            return $permalink;
-
-        $var1 = get_post_meta($post_id, 'posts_solicitorspeciality', true);
-
-        $var1 = sanitize_title($var1);
-
-        if(!$var1) { $var1 = $no_data; }
-
-        $permalink = str_replace('%posts_solicitorspeciality%', $var1, $permalink);
-
-        return $permalink;
-
-    }
-
-    function tdd_add_rewrite_rules()
-
-    {
-
-        // Register custom rewrite rules
-
-        global $wp_rewrite;
-        $wp_rewrite->add_rewrite_tag('%solicitors%', '([^/]+)', 'solicitors=');
-        $wp_rewrite->add_rewrite_tag('%posts_solicitorspeciality%', '([^/]+)', 'posts_solicitorspeciality=');
-
-        $wp_rewrite->add_permastruct('solicitors', '/%posts_solicitorspeciality%/%solicitors%', false);
-
-    }
 
 
     function atu_theme_setup() {
@@ -209,13 +172,13 @@ class ATU {
 
         add_action( 'atu_venue_region_list', array( $this, 'atu_region_list' ) );
 
-        add_action( 'pre_user_query', array( $this, 'extended_user_search' ) );
+       // add_action( 'pre_user_query', array( $this, 'extended_user_search' ) );
     }
 
 
     public function extended_user_search( $user_query ){
         global $wpdb;
-        if ( is_admin() || ( ! is_archive( 'profession' ) && ! is_page('vendors') ) ) return;
+        if ( is_admin() || ( ! is_archive() && ! is_page('vendors') ) ) return;
 
         $user_query->query_from = " FROM wp_users  JOIN $wpdb->usermeta MA ON MA.user_id = $wpdb->users.ID AND MA.meta_key = 'wp_capabilities'";
 
@@ -352,12 +315,11 @@ class ATU {
                 <div class="col-md-5">
                     <div class="form-group">
                             <?php ATU_Helper::dropwdown_vendor_category(array(
-                                'selected' => isset( $_REQUEST['profession'] ) ? $_REQUEST['profession'] : ''
+                                'selected' => isset( $_REQUEST['category'] ) ? $_REQUEST['category'] : ''
                             )); ?>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <input type="hidden" name="tax" value="profession">
                     <button class="btn btn-secondary btn-block" ><?php _e( 'Search Vendor', 'atu' ); ?></button>
                 </div>
             </div>
@@ -402,24 +364,25 @@ class ATU {
                     </div>
                 </div>
 
-                <?php
-                $region_field = get_field_object('field_559d2588b58b5');
 
-                if ( $region_field ):
-
-                    $post_region = isset( $_GET[$region_field['name']] ) ? $_GET[$region_field['name']] : $region_field['default_value'];
-                ?>
+                <?php if ( have_rows( 'regions', 'option' ) ): ?>
 
                 <div class="col-md-2 hidden">
                     <div class="form-group">
+                            <?php
+                            $region = isset( $_REQUEST['region'] ) ? $_REQUEST['region'] : '';
+                            echo '<select name="region">';
+                            echo '<option value="" '. selected( '', $region, false ) .'>-- Region --</option>';
 
-                        <select name="<?php echo $region_field['name']; ?>" class="form-control <?php echo  ! isset( $_GET[$region_field['name']] ) ?  'hidden' : ''; ?>"
-                            <?php echo ! isset( $_GET[$region_field['name']] ) ?  'disabled="disabled"' : ''; ?>>
-                            <option value="" <?php selected('', $post_region); ?>><?php echo $region_field['label']; ?></option>
-                            <?php foreach( $region_field['choices'] as $key => $value ): ?>
-                            <option value="<?php echo $key; ?>"  <?php selected($key, $post_region); ?> ><?php echo $value; ?></option>
-                            <?php endforeach; ?>
-                        </select>
+                            while ( have_rows( 'regions', 'option' ) ) {
+                                the_row();
+                                $name = sanitize_title(get_sub_field('region_name'));
+                                $label = esc_html(get_sub_field('region_label'));
+
+                                echo '<option value="'. $name .'" '. selected( $name, $region, false ) .'>'. $label .'</option>';
+                            }
+                            echo '<select>';
+                            ?>
                     </div>
                 </div>
 

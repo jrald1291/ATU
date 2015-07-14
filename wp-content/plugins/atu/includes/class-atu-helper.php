@@ -96,6 +96,103 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
         }
 
 
+
+
+        public static function dropwdown_vendor_category( $args = array() ) {
+
+            $selected = isset( $_REQUEST['category'] ) ? $_REQUEST['category'] : '';
+            if ( have_rows( 'vendors_categories', 'option' ) ) {
+                echo '<select name="category" class="form-control">';
+                while ( have_rows( 'vendors_categories', 'option' ) ) {
+                    the_row();
+                    $label = esc_html(get_sub_field('category_name'));
+
+                    echo '<option value="'. sanitize_title( $label ) .'" '. selected( sanitize_title( $label ), sanitize_title( $selected ), false ) .'>'. $label .'</option>';
+                }
+                echo '</select>';
+            }
+
+
+
+        }
+
+
+        public static function list_vendor_category( $args = array() ) {
+            $options = wp_parse_args( $args, array(
+                'taxonomy' => 'sydney',
+                'echo' => true,
+            ) );
+
+            extract( $options );
+
+            $selected = isset( $_REQUEST['category'] ) ? $_REQUEST['category'] : '';
+            $return_string = '';
+            if ( have_rows( 'vendors_categories', 'option' ) ) {
+                $return_string .= '<ul class="list">';
+                while ( have_rows( 'vendors_categories', 'option' ) ) {
+                    the_row();
+                    $label = esc_html(get_sub_field('category_name'));
+
+                    $term_link = get_term_link( sanitize_title( $label ), $taxonomy );
+
+                    if ( is_wp_error( $term_link ) ) {
+                        $term_link = '#';
+                    }
+                    $return_string .= '<li class="'. selected( sanitize_title( $label ), sanitize_title( $selected ), false ) .'">';
+                    $return_string .= '<a href="'. $term_link .'">';
+                    $return_string .= $label .'</a></li>';
+                }
+                $return_string .= '</ul>';
+            }
+
+
+
+            if ( ! $echo )
+                return $return_string;
+
+            echo $return_string;
+        }
+
+
+
+        public static function list_venue_category( $args = array() ) {
+            $options = wp_parse_args( $args, array(
+                'taxonomy' => 'sydney',
+                'echo' => true,
+            ) );
+
+            extract( $options );
+
+            $selected = isset( $_REQUEST['category'] ) ? $_REQUEST['category'] : '';
+            $return_string = '';
+            if ( have_rows( 'venue_categories', 'option' ) ) {
+                $return_string .= '<ul class="list">';
+                while ( have_rows( 'venue_categories', 'option' ) ) {
+                    the_row();
+                    $label = esc_html(get_sub_field('category_name'));
+
+                    $term_link = get_term_link( sanitize_title( $label ), $taxonomy );
+
+                    if ( is_wp_error( $term_link ) ) {
+                        $term_link = '#';
+                    }
+                    $return_string .= '<li class="'. selected( sanitize_title( $label ), sanitize_title( $selected ), false ) .'">';
+                    $return_string .= '<a href="'. $term_link .'">';
+                    $return_string .= $label .'</a></li>';
+                }
+                $return_string .= '</ul>';
+            }
+
+
+
+            if ( ! $echo )
+                return $return_string;
+
+            echo $return_string;
+        }
+
+        /** ToDO: Remove this method
+
         public static function dropwdown_vendor_category( $args = array() ) {
 
             $options = wp_parse_args( $args, array(
@@ -156,5 +253,6 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
 
             echo $return_string;
         }
+        */
     }
 }

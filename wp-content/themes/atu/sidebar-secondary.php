@@ -1,49 +1,49 @@
 <aside class="l-sidebar">
 	<div class="widget widget-aside widget-post">
         <div class="widget-header"><?php _e( 'Latest Vendor', 'atu'); ?></div>
+
         <?php
         /**
-         * Get all vendor user
-         * @var  $user_query */
-        $wp_user_query = new WP_User_Query( array( 'role' => get_option( 'atu_default_user_role', 'vendor' ), 'order'=>'DESC' ,'number' => 5 ) );
-
-        // Get the results
-        $vendors = $wp_user_query->get_results();
+         * Get latest vendors
+         */
+        $wp_venue_query = new WP_Query( array( 'post_type' => 'vendor', 'orderby' => 'date', 'order' => 'desc', 'post_status' => 'publish', 'posts_per_page' =>5 ) );
 
 
-        if ( ! empty( $vendors ) ): ?>
+        if ( $wp_venue_query->have_posts(  ) ): ?>
 
             <ul class="post-inline-sm">
 
-                <?php foreach( $vendors as $vendor ):
+                <?php while( $wp_venue_query->have_posts() ): $wp_venue_query->the_post();
 
-                    $vendor_info = get_userdata($vendor->ID);
-                    $description = wp_trim_words(  get_user_meta( $vendor->ID, 'description', true ), $num_words = 20, $more = '...' );
-                    $profession = '';
-                    $categories = wp_get_object_terms( $vendor->ID, 'profession', false );
-                    if ( !empty( $categories ) ) {
-                        $profession = $categories[0]->name;
-                    }
-                    $image_id = get_user_meta( $vendor->ID, 'profile_image', true );
+                    $cat_name = get_the_title();
+
+                    $user_id = get_post_meta( get_the_ID(), 'vendor', true );
+
+                    $taxonomy = get_user_meta( $user_id, 'region', true );
+                    $cats = get_the_terms( get_the_ID(), $taxonomy );
+
+                    if ( ! empty( $cats ) )$cat_name = $cats[0]->name;
+
+
+                    $image_id = get_user_meta( $user_id, 'profile_image', true );
+
                     ?>
                     <li class="post-item">
                         <div class="post-img">
-                            <a href="<?php echo get_permalink( get_page_by_path( 'vendor' ) ) . $vendor->user_login; ?>"><?php echo wp_get_attachment_image( $image_id, 'venue-xs-small-thumb' ); ?></a> 
+                            <a href="<?php the_permalink(); ?>"><?php echo wp_get_attachment_image( $image_id, 'venue-xs-small-thumb' ); ?></a>
                         </div>
                         <div class="post-core">
-                            <div class="post-title"><a href="<?php echo get_permalink( get_page_by_path( 'vendor' ) ) . $vendor->user_login; ?>" class="link"><?php echo $vendor_info->first_name .' '. $vendor_info->last_name; ?></a>
-                                    </div>
-                            <p><?php echo $profession; ?></p>
+                            <div class="post-title"><a href="<?php the_permalink(); ?>" class="link"><?php echo content(get_the_title(),4); ?></a></div>
+                            <p><?php echo $cat_name; ?></p>
                         </div>
                     </li>
-
-                <?php endforeach; ?>
+                <?php endwhile; wp_reset_query();?>
             </ul>
-
 
         <?php else: ?>
 
-            <h3><?php _e( 'No vendors found.', 'atu'); ?></h3>
+            <h3><?php _e( 'No Vendors found.', 'atu' ); ?></h3>
+
         <?php endif; ?>
 
 	</div>
