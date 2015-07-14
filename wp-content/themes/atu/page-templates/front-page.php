@@ -19,7 +19,7 @@ get_header(); ?>
 			</h1>
 			<div class="actions">
 				<a href="<?php echo get_permalink( get_page_by_title( 'Vendors' ))?>" class="btn btn-wooden btn-lg">Search for Vendor</a>
-				<a href="<?php echo get_permalink( get_page_by_title( 'Venues' ))?>" class="btn btn-wooden btn-lg" data-toggle="modal" data-target=".form-venue">Search for Venue</a>
+				<a href="<?php echo home_url('/venue'); ?>" class="btn btn-wooden btn-lg">Search for Venue</a>
 			</div>
 		</div>
 		<?php if (get_field('banner_slogan') and get_field('slogan_line2')):?>
