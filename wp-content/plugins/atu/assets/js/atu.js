@@ -16,8 +16,8 @@
 
     D.ready(function() {
             var val = $('select#filterType').val();
-            var $postcode = $('select[name=post_code]');
-            var $region = $('select[name=region]');
+            var $postcode = $('#venueSearchForm select[name=post_code]');
+            var $region = $('#venueSearchForm select[name=region]');
         if ( val == 'post_code' ) {
                 $postcode.removeClass('hidden').removeAttr('disabled');
                 $postcode.parent('.form-group').parent('.col-md-2').removeClass('hidden');

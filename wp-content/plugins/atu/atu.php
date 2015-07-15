@@ -13,9 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 //error_reporting(0);
-//http://firecask.com/custom-fields-and-posts-in-wordpress-permalink-urls/
-//$P$BCidvGzTeGs0VZcMWRPEQC0z.kPU9Q1
-//sydney/loremipsum/dj
+
 
 class ATU {
     var $atu_db_version = '1.0';
@@ -25,13 +23,7 @@ class ATU {
         $this->init_hooks();
         $this->includes();
 
-
-
-
     }
-
-
-
 
 
     function atu_theme_setup() {
@@ -172,70 +164,30 @@ class ATU {
 
         add_action( 'atu_venue_region_list', array( $this, 'atu_region_list' ) );
 
-       // add_action( 'pre_user_query', array( $this, 'extended_user_search' ) );
+        add_filter('template_include', array( $this, 'template_chooser' ) );
     }
 
 
-    public function extended_user_search( $user_query ){
-        global $wpdb;
-        if ( is_admin() || ( ! is_archive() && ! is_page('vendors') ) ) return;
-
-        $user_query->query_from = " FROM wp_users  JOIN $wpdb->usermeta MA ON MA.user_id = $wpdb->users.ID AND MA.meta_key = 'wp_capabilities'";
-
-
-        $user_query->query_where = 'WHERE 1=1 '. " AND ( CAST(MA.meta_value AS CHAR) LIKE '%\"Vendor\"%' ) ";
-
-        if ( isset( $_GET['keyword'] ) && ! empty( $_GET['keyword'] ) ) {
-            $search = $_GET['keyword'];
-
-            $user_query->query_from .= " JOIN {$wpdb->usermeta} MF ON MF.user_id = {$wpdb->users}.ID AND MF.meta_key = 'first_name'";
-            $user_query->query_from .= " JOIN {$wpdb->usermeta} ML ON ML.user_id = {$wpdb->users}.ID AND ML.meta_key = 'last_name'";
-            $user_query->query_from .= " JOIN {$wpdb->usermeta} MX ON MX.user_id = {$wpdb->users}.ID AND MX.meta_key = 'company_name'";
-
-
-
-            $user_query->query_where .= ' ' . $user_query->get_search_sql( $search, array( 'user_login', 'user_email', 'user_nicename', 'MF.meta_value', 'ML.meta_value', 'MX.meta_value' ), 'both' );
-
-
-
+    public function template_chooser($template)
+    {
+        global $wp_query;
+        $post_type = $_GET['post_type'];
+        if( $wp_query->is_search && $post_type == 'venue' )
+        {
+            return locate_template('archive-venue.php');
+        } elseif( $wp_query->is_search && $post_type == 'vendor' )
+        {
+            return locate_template('archive-vendor.php');
         }
-
-        if ( isset( $_GET['profession'] ) && ! empty( $_GET['profession'] ) ){
-            $user_query->query_from .= " JOIN {$wpdb->usermeta} MY ON MY.user_id = {$wpdb->users}.ID AND MY.meta_key = 'profession'";
-            $user_query->query_where .= ' ' . $user_query->get_search_sql( esc_attr( $_GET['profession'] ), array( 'MY.meta_value' ), false );
-
-        } elseif (  is_archive() ) {
-
-            $user_query->query_from .= " JOIN $wpdb->usermeta MB ON MB.user_id = $wpdb->users.ID AND MB.meta_key = 'profession'";
-            $user_query->query_where .= ' ' . $user_query->get_search_sql( esc_attr( get_query_var( 'term' ) ), array( 'MB.meta_value' ), false );
-
-        }
-
+        return $template;
     }
 
 
-    public function atu_region_list() {
-
-        $region_field = get_field_object('field_559d2588b58b5');
-
-        if ( $region_field ):
-
-            echo '<div class="widget widget-aside widget-list">';
-            echo '<div class="widget-header">Venue Regions</div>';
-            echo '<ul class="list">';
-            foreach( $region_field['choices'] as $key => $value ):
-                echo '<li><a href="'. home_url() .'/?s=&ft=region&region='.  urlencode( $key ) .'&post_type=venue">'. $value .'</a></li>';
-            endforeach;
-            echo '</ul>';
-            echo '</div>';
-
-        endif;
-    }
 
 
     public function atu_advance_search( $query ) {
 
-        if ( ! $query->is_main_query() || is_admin() ) return $query;
+        if ( ! $query->is_search || is_admin() ) return $query;
 
         if ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'venue' && is_post_type_archive( 'venue' ) ) {
 
@@ -256,6 +208,20 @@ class ATU {
 
             }
 
+        } elseif ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'vendor' && is_post_type_archive( 'vendor' ) ) {
+            $query->set('post_type', array('vendor'));
+
+            if ( isset( $_GET['category'] ) && ! empty( $_GET['category'] )  ) {
+                $query->set('tax_query', array(
+                    'relation' => 'OR',
+                    array(
+                        'taxonomy' => isset($_GET['region']) && !empty($_GET['region']) ? $_GET['region'] : 'sydney',
+                        'field' => 'slug',
+                        'terms' => array(esc_attr($_GET['category'])),
+                        'operator' => 'IN'
+                    )
+                ));
+            }
         }
 
 
@@ -305,14 +271,22 @@ class ATU {
 
     public function atu_vendor_search_form() {
         ?>
-        <form action="<?php echo get_permalink( get_page_by_path( 'vendors' ) ); ?>" class="form">
+        <form id="vendorSearchForm" action="<?php echo home_url( '/' ); ?>" class="form">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
-                    <input type="text" name="keyword" value="<?php echo isset( $_GET['keyword'] ) ? $_GET['keyword'] : ''; ?>" class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
+                    <input type="text" name="s" value="<?php echo isset( $_GET['s'] ) ? $_GET['s'] : ''; ?>" class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
                     </div>
                 </div>
-                <div class="col-md-5">
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <?php ATU_Helper::dropwdown_region(); ?>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
                     <div class="form-group">
                             <?php ATU_Helper::dropwdown_vendor_category(array(
                                 'selected' => isset( $_REQUEST['category'] ) ? $_REQUEST['category'] : ''
@@ -320,6 +294,7 @@ class ATU {
                     </div>
                 </div>
                 <div class="col-md-3">
+                    <input type="hidden" name="post_type" value="vendor">
                     <button class="btn btn-secondary btn-block" ><?php _e( 'Search Vendor', 'atu' ); ?></button>
                 </div>
             </div>
@@ -332,7 +307,7 @@ class ATU {
     public function atu_venue_search_form() {
 
         ?>
-        <form action="<?php echo home_url( '/' ); ?>" method="get" class="form">
+        <form id="venueSearchForm" action="<?php echo home_url( '/' ); ?>" method="get" class="form">
             <div class="row row-sm">
                 <div class="col-md-2">
                     <div class="form-group">
@@ -424,7 +399,7 @@ class ATU {
                         <div class="form-group">
 
                             <select name="capacity" class="form-control">
-                                <option value="" <?php selected('', $selected_capacity); ?>><?php echo $capacities['label']; ?></option>
+                                <option value="" <?php selected('', $selected_capacity); ?>>-- Capacity --</option>
                                 <?php foreach( $capacities['choices'] as $key => $value ): ?>
                                     <option value="<?php echo $key; ?>"  <?php selected($key, $selected_capacity); ?> ><?php echo $value; ?></option>
                                 <?php endforeach; ?>
