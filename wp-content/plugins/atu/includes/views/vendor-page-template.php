@@ -187,7 +187,7 @@ $user_info = get_userdata( $user->ID );
                     </div>
                     <div class="widget widget-aside widget-list">
                         <div class="widget-list_logo">
-                            <?php echo wp_get_attachment_image( $user_info->company_logo,  'medium' ); ?>
+                            <?php echo wp_get_attachment_image( $user_info->company_logo, 'medium' ); ?>
                         </div>
                         <div class="widget-header">Florist and Stylist</div>
                         <ul class="list">
