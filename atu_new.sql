@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2015 at 10:19 PM
+-- Generation Time: Jul 15, 2015 at 10:35 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -536,7 +536,7 @@ CREATE TABLE IF NOT EXISTS `wp_postmeta` (
   `post_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_value` longtext COLLATE utf8mb4_unicode_ci
-) ENGINE=InnoDB AUTO_INCREMENT=3688 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3910 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_postmeta`
@@ -3810,17 +3810,239 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (3674, 450, '_edit_last', '1'),
 (3675, 450, 'page_background', ''),
 (3676, 450, '_page_background', 'field_559772db48f33'),
-(3677, 450, 'custom_permalink', 'sydney/thehillsshire/love-lights'),
-(3678, 440, 'custom_permalink', 'sydney/thehillsshire/betts-candy-buffets'),
-(3679, 441, 'custom_permalink', 'sydney/thehillsshire/nattivo-invitations'),
-(3680, 442, 'custom_permalink', 'sydney/thehillsshire/be-spoke-ceremonies'),
+(3677, 450, 'custom_permalink', 'sydney/thehillsshire/decorations/love-lights'),
+(3678, 440, 'custom_permalink', 'sydney/thehillsshire/cakes/betts-candy-buffets'),
+(3679, 441, 'custom_permalink', 'sydney/thehillsshire/invitations/nattivo-invitations'),
+(3680, 442, 'custom_permalink', 'sydney/thehillsshire/celebrant/be-spoke-ceremonies'),
 (3681, 443, 'custom_permalink', 'sydney/thehillsshire/event-dj-photo-booth'),
-(3682, 444, 'custom_permalink', 'sydney/thehillsshire/jean-kropper-paper-pixel'),
-(3683, 445, 'custom_permalink', 'sydney/thehillsshire/jos-signs-by-design'),
-(3684, 446, 'custom_permalink', 'sydney/thehillsshire/special-request'),
-(3685, 447, 'custom_permalink', 'sydney/thehillsshire/mm-photos'),
-(3686, 449, 'custom_permalink', 'sydney/thehillsshire/inspired-by-happiness'),
-(3687, 448, 'custom_permalink', 'sydney/thehillsshire/soirees-events');
+(3682, 444, 'custom_permalink', 'sydney/thehillsshire/decorations/jean-kropper-paper-pixel'),
+(3683, 445, 'custom_permalink', 'sydney/thehillsshire/design-and-print/jos-signs-by-design'),
+(3684, 446, 'custom_permalink', 'sydney/thehillsshire/music/special-request'),
+(3685, 447, 'custom_permalink', 'sydney/thehillsshire/photography/mm-photos'),
+(3686, 449, 'custom_permalink', 'sydney/thehillsshire/flowers/inspired-by-happiness'),
+(3687, 448, 'custom_permalink', 'sydney/thehillsshire/planners/soirees-events'),
+(3688, 452, 'background_image', ''),
+(3689, 452, '_background_image', 'field_559c1ca92695d'),
+(3690, 452, 'profile_image', '266'),
+(3691, 452, '_profile_image', 'field_559933782fd22'),
+(3692, 452, 'color', '#20db43'),
+(3693, 452, '_color', 'field_559bc4445800a'),
+(3694, 452, 'phone', '0411 556 079 '),
+(3695, 452, '_phone', 'field_55993fa98f751'),
+(3696, 452, 'mobile', '0411 556 079 '),
+(3697, 452, '_mobile', 'field_55993fd48f752'),
+(3698, 452, 'company_logo', ''),
+(3699, 452, '_company_logo', 'field_559c29f940b76'),
+(3700, 452, 'description', 'Fun, relaxed wedding celebrant performing only original ceremonies written with warmth and unique personalisation.\r\n\r\nWhy would they hire you. What is your biggest point(s) of difference and value you give to clients that hire you ? What areas do you service? What sort of lead time do you need (or don’t need, maybe last minute deals are your specialties). Remember the type of people that will be seeing the page are venues / venue managers coordinators and customers, that are referred by each other / seen at trade shows. So I suggest you do your paragraph to attract these type of customers. I highly suggest doing it in numbered / bullet point form and making it easy to read.\r\nUniquely crafted, engaging, romantic, sentimental and original ceremonies.\r\nFriendly, personal, professional and spirited celebrant with exceptional organisation and attention to detail.\r\nCouple focused, warm and fun.\r\nExclusively written and personalised ceremonies drawn from the stories and sentiments of your friends and family.\r\nFriendly, charismatic and delightful celebrant\r\nFulltime authorized celebrant, giving exceptional service, originality, exclusivity, expertise and professionalism.\r\nGuests say; “That was the best wedding I’ve ever been to!”'),
+(3701, 452, '_description', 'field_559af52b62b71'),
+(3702, 452, 'gallery_0_gallery_title', ''),
+(3703, 452, '_gallery_0_gallery_title', 'field_559af3c762b6d'),
+(3704, 452, 'gallery_0_gallery_description', ''),
+(3705, 452, '_gallery_0_gallery_description', 'field_559af3d462b6e'),
+(3706, 452, 'gallery_0_gallery_image', '268'),
+(3707, 452, '_gallery_0_gallery_image', 'field_559af3ed62b6f'),
+(3708, 452, 'gallery_1_gallery_title', ''),
+(3709, 452, '_gallery_1_gallery_title', 'field_559af3c762b6d'),
+(3710, 452, 'gallery_1_gallery_description', ''),
+(3711, 452, '_gallery_1_gallery_description', 'field_559af3d462b6e'),
+(3712, 452, 'gallery_1_gallery_image', '267'),
+(3713, 452, '_gallery_1_gallery_image', 'field_559af3ed62b6f'),
+(3714, 452, 'gallery_2_gallery_title', ''),
+(3715, 452, '_gallery_2_gallery_title', 'field_559af3c762b6d'),
+(3716, 452, 'gallery_2_gallery_description', ''),
+(3717, 452, '_gallery_2_gallery_description', 'field_559af3d462b6e'),
+(3718, 452, 'gallery_2_gallery_image', '266'),
+(3719, 452, '_gallery_2_gallery_image', 'field_559af3ed62b6f'),
+(3720, 452, 'gallery_3_gallery_title', ''),
+(3721, 452, '_gallery_3_gallery_title', 'field_559af3c762b6d'),
+(3722, 452, 'gallery_3_gallery_description', ''),
+(3723, 452, '_gallery_3_gallery_description', 'field_559af3d462b6e'),
+(3724, 452, 'gallery_3_gallery_image', '265'),
+(3725, 452, '_gallery_3_gallery_image', 'field_559af3ed62b6f'),
+(3726, 452, 'gallery_4_gallery_title', ''),
+(3727, 452, '_gallery_4_gallery_title', 'field_559af3c762b6d'),
+(3728, 452, 'gallery_4_gallery_description', ''),
+(3729, 452, '_gallery_4_gallery_description', 'field_559af3d462b6e'),
+(3730, 452, 'gallery_4_gallery_image', '264'),
+(3731, 452, '_gallery_4_gallery_image', 'field_559af3ed62b6f'),
+(3732, 452, 'gallery_5_gallery_title', ''),
+(3733, 452, '_gallery_5_gallery_title', 'field_559af3c762b6d'),
+(3734, 452, 'gallery_5_gallery_description', ''),
+(3735, 452, '_gallery_5_gallery_description', 'field_559af3d462b6e'),
+(3736, 452, 'gallery_5_gallery_image', '263'),
+(3737, 452, '_gallery_5_gallery_image', 'field_559af3ed62b6f'),
+(3738, 452, 'gallery_6_gallery_title', ''),
+(3739, 452, '_gallery_6_gallery_title', 'field_559af3c762b6d'),
+(3740, 452, 'gallery_6_gallery_description', ''),
+(3741, 452, '_gallery_6_gallery_description', 'field_559af3d462b6e'),
+(3742, 452, 'gallery_6_gallery_image', '262'),
+(3743, 452, '_gallery_6_gallery_image', 'field_559af3ed62b6f'),
+(3744, 452, 'gallery_7_gallery_title', ''),
+(3745, 452, '_gallery_7_gallery_title', 'field_559af3c762b6d'),
+(3746, 452, 'gallery_7_gallery_description', ''),
+(3747, 452, '_gallery_7_gallery_description', 'field_559af3d462b6e'),
+(3748, 452, 'gallery_7_gallery_image', '261'),
+(3749, 452, '_gallery_7_gallery_image', 'field_559af3ed62b6f'),
+(3750, 452, 'gallery_8_gallery_title', ''),
+(3751, 452, '_gallery_8_gallery_title', 'field_559af3c762b6d'),
+(3752, 452, 'gallery_8_gallery_description', ''),
+(3753, 452, '_gallery_8_gallery_description', 'field_559af3d462b6e'),
+(3754, 452, 'gallery_8_gallery_image', '260'),
+(3755, 452, '_gallery_8_gallery_image', 'field_559af3ed62b6f'),
+(3756, 452, 'gallery_9_gallery_title', ''),
+(3757, 452, '_gallery_9_gallery_title', 'field_559af3c762b6d'),
+(3758, 452, 'gallery_9_gallery_description', ''),
+(3759, 452, '_gallery_9_gallery_description', 'field_559af3d462b6e'),
+(3760, 452, 'gallery_9_gallery_image', '259'),
+(3761, 452, '_gallery_9_gallery_image', 'field_559af3ed62b6f'),
+(3762, 452, 'gallery_10_gallery_title', ''),
+(3763, 452, '_gallery_10_gallery_title', 'field_559af3c762b6d'),
+(3764, 452, 'gallery_10_gallery_description', ''),
+(3765, 452, '_gallery_10_gallery_description', 'field_559af3d462b6e'),
+(3766, 452, 'gallery_10_gallery_image', '258'),
+(3767, 452, '_gallery_10_gallery_image', 'field_559af3ed62b6f'),
+(3768, 452, 'gallery_11_gallery_title', ''),
+(3769, 452, '_gallery_11_gallery_title', 'field_559af3c762b6d'),
+(3770, 452, 'gallery_11_gallery_description', ''),
+(3771, 452, '_gallery_11_gallery_description', 'field_559af3d462b6e'),
+(3772, 452, 'gallery_11_gallery_image', '257'),
+(3773, 452, '_gallery_11_gallery_image', 'field_559af3ed62b6f'),
+(3774, 452, 'gallery_12_gallery_title', ''),
+(3775, 452, '_gallery_12_gallery_title', 'field_559af3c762b6d'),
+(3776, 452, 'gallery_12_gallery_description', ''),
+(3777, 452, '_gallery_12_gallery_description', 'field_559af3d462b6e'),
+(3778, 452, 'gallery_12_gallery_image', '256'),
+(3779, 452, '_gallery_12_gallery_image', 'field_559af3ed62b6f'),
+(3780, 452, 'gallery_13_gallery_title', ''),
+(3781, 452, '_gallery_13_gallery_title', 'field_559af3c762b6d'),
+(3782, 452, 'gallery_13_gallery_description', ''),
+(3783, 452, '_gallery_13_gallery_description', 'field_559af3d462b6e'),
+(3784, 452, 'gallery_13_gallery_image', '255'),
+(3785, 452, '_gallery_13_gallery_image', 'field_559af3ed62b6f'),
+(3786, 452, 'gallery_14_gallery_title', ''),
+(3787, 452, '_gallery_14_gallery_title', 'field_559af3c762b6d'),
+(3788, 452, 'gallery_14_gallery_description', ''),
+(3789, 452, '_gallery_14_gallery_description', 'field_559af3d462b6e'),
+(3790, 452, 'gallery_14_gallery_image', '254'),
+(3791, 452, '_gallery_14_gallery_image', 'field_559af3ed62b6f'),
+(3792, 452, 'gallery_15_gallery_title', ''),
+(3793, 452, '_gallery_15_gallery_title', 'field_559af3c762b6d'),
+(3794, 452, 'gallery_15_gallery_description', ''),
+(3795, 452, '_gallery_15_gallery_description', 'field_559af3d462b6e'),
+(3796, 452, 'gallery_15_gallery_image', '253'),
+(3797, 452, '_gallery_15_gallery_image', 'field_559af3ed62b6f'),
+(3798, 452, 'gallery_16_gallery_title', ''),
+(3799, 452, '_gallery_16_gallery_title', 'field_559af3c762b6d'),
+(3800, 452, 'gallery_16_gallery_description', ''),
+(3801, 452, '_gallery_16_gallery_description', 'field_559af3d462b6e'),
+(3802, 452, 'gallery_16_gallery_image', '252'),
+(3803, 452, '_gallery_16_gallery_image', 'field_559af3ed62b6f'),
+(3804, 452, 'gallery_17_gallery_title', ''),
+(3805, 452, '_gallery_17_gallery_title', 'field_559af3c762b6d'),
+(3806, 452, 'gallery_17_gallery_description', ''),
+(3807, 452, '_gallery_17_gallery_description', 'field_559af3d462b6e'),
+(3808, 452, 'gallery_17_gallery_image', '251'),
+(3809, 452, '_gallery_17_gallery_image', 'field_559af3ed62b6f'),
+(3810, 452, 'gallery_18_gallery_title', ''),
+(3811, 452, '_gallery_18_gallery_title', 'field_559af3c762b6d'),
+(3812, 452, 'gallery_18_gallery_description', ''),
+(3813, 452, '_gallery_18_gallery_description', 'field_559af3d462b6e'),
+(3814, 452, 'gallery_18_gallery_image', '250'),
+(3815, 452, '_gallery_18_gallery_image', 'field_559af3ed62b6f'),
+(3816, 452, 'gallery_19_gallery_title', ''),
+(3817, 452, '_gallery_19_gallery_title', 'field_559af3c762b6d'),
+(3818, 452, 'gallery_19_gallery_description', ''),
+(3819, 452, '_gallery_19_gallery_description', 'field_559af3d462b6e'),
+(3820, 452, 'gallery_19_gallery_image', '249'),
+(3821, 452, '_gallery_19_gallery_image', 'field_559af3ed62b6f'),
+(3822, 452, 'gallery_20_gallery_title', ''),
+(3823, 452, '_gallery_20_gallery_title', 'field_559af3c762b6d'),
+(3824, 452, 'gallery_20_gallery_description', ''),
+(3825, 452, '_gallery_20_gallery_description', 'field_559af3d462b6e'),
+(3826, 452, 'gallery_20_gallery_image', '248'),
+(3827, 452, '_gallery_20_gallery_image', 'field_559af3ed62b6f'),
+(3828, 452, 'gallery_21_gallery_title', ''),
+(3829, 452, '_gallery_21_gallery_title', 'field_559af3c762b6d'),
+(3830, 452, 'gallery_21_gallery_description', ''),
+(3831, 452, '_gallery_21_gallery_description', 'field_559af3d462b6e'),
+(3832, 452, 'gallery_21_gallery_image', '247'),
+(3833, 452, '_gallery_21_gallery_image', 'field_559af3ed62b6f'),
+(3834, 452, 'gallery_22_gallery_title', ''),
+(3835, 452, '_gallery_22_gallery_title', 'field_559af3c762b6d'),
+(3836, 452, 'gallery_22_gallery_description', ''),
+(3837, 452, '_gallery_22_gallery_description', 'field_559af3d462b6e'),
+(3838, 452, 'gallery_22_gallery_image', '246'),
+(3839, 452, '_gallery_22_gallery_image', 'field_559af3ed62b6f'),
+(3840, 452, 'gallery_23_gallery_title', ''),
+(3841, 452, '_gallery_23_gallery_title', 'field_559af3c762b6d'),
+(3842, 452, 'gallery_23_gallery_description', ''),
+(3843, 452, '_gallery_23_gallery_description', 'field_559af3d462b6e'),
+(3844, 452, 'gallery_23_gallery_image', '245'),
+(3845, 452, '_gallery_23_gallery_image', 'field_559af3ed62b6f'),
+(3846, 452, 'gallery_24_gallery_title', ''),
+(3847, 452, '_gallery_24_gallery_title', 'field_559af3c762b6d'),
+(3848, 452, 'gallery_24_gallery_description', ''),
+(3849, 452, '_gallery_24_gallery_description', 'field_559af3d462b6e'),
+(3850, 452, 'gallery_24_gallery_image', '244'),
+(3851, 452, '_gallery_24_gallery_image', 'field_559af3ed62b6f'),
+(3852, 452, 'gallery_25_gallery_title', ''),
+(3853, 452, '_gallery_25_gallery_title', 'field_559af3c762b6d'),
+(3854, 452, 'gallery_25_gallery_description', ''),
+(3855, 452, '_gallery_25_gallery_description', 'field_559af3d462b6e'),
+(3856, 452, 'gallery_25_gallery_image', '243'),
+(3857, 452, '_gallery_25_gallery_image', 'field_559af3ed62b6f'),
+(3858, 452, 'gallery_26_gallery_title', ''),
+(3859, 452, '_gallery_26_gallery_title', 'field_559af3c762b6d'),
+(3860, 452, 'gallery_26_gallery_description', ''),
+(3861, 452, '_gallery_26_gallery_description', 'field_559af3d462b6e'),
+(3862, 452, 'gallery_26_gallery_image', '242'),
+(3863, 452, '_gallery_26_gallery_image', 'field_559af3ed62b6f'),
+(3864, 452, 'gallery_27_gallery_title', ''),
+(3865, 452, '_gallery_27_gallery_title', 'field_559af3c762b6d'),
+(3866, 452, 'gallery_27_gallery_description', ''),
+(3867, 452, '_gallery_27_gallery_description', 'field_559af3d462b6e'),
+(3868, 452, 'gallery_27_gallery_image', '241'),
+(3869, 452, '_gallery_27_gallery_image', 'field_559af3ed62b6f'),
+(3870, 452, 'gallery_28_gallery_title', ''),
+(3871, 452, '_gallery_28_gallery_title', 'field_559af3c762b6d'),
+(3872, 452, 'gallery_28_gallery_description', ''),
+(3873, 452, '_gallery_28_gallery_description', 'field_559af3d462b6e'),
+(3874, 452, 'gallery_28_gallery_image', '240'),
+(3875, 452, '_gallery_28_gallery_image', 'field_559af3ed62b6f'),
+(3876, 452, 'gallery_29_gallery_title', ''),
+(3877, 452, '_gallery_29_gallery_title', 'field_559af3c762b6d'),
+(3878, 452, 'gallery_29_gallery_description', ''),
+(3879, 452, '_gallery_29_gallery_description', 'field_559af3d462b6e'),
+(3880, 452, 'gallery_29_gallery_image', '239'),
+(3881, 452, '_gallery_29_gallery_image', 'field_559af3ed62b6f'),
+(3882, 452, 'gallery_30_gallery_title', ''),
+(3883, 452, '_gallery_30_gallery_title', 'field_559af3c762b6d'),
+(3884, 452, 'gallery_30_gallery_description', ''),
+(3885, 452, '_gallery_30_gallery_description', 'field_559af3d462b6e'),
+(3886, 452, 'gallery_30_gallery_image', '238'),
+(3887, 452, '_gallery_30_gallery_image', 'field_559af3ed62b6f'),
+(3888, 452, 'gallery', '31'),
+(3889, 452, '_gallery', 'field_559af36f62b6c'),
+(3890, 452, 'youtube_iframe', ''),
+(3891, 452, '_youtube_iframe', 'field_55993fde8f753'),
+(3892, 452, 'special_offer', '0'),
+(3893, 452, '_special_offer', 'field_559af7c062b75'),
+(3894, 452, 'instagram', 'http://www.instagram.com'),
+(3895, 452, '_instagram', 'field_559afb5550b57'),
+(3896, 452, 'youtube', 'http://www.youtube.com'),
+(3897, 452, '_youtube', 'field_559afb6250b58'),
+(3898, 452, 'google_plus', 'http://www.google.com'),
+(3899, 452, '_google_plus', 'field_559afb7050b59'),
+(3900, 452, 'pinterest', 'http://www.pinterest.com'),
+(3901, 452, '_pinterest', 'field_559afb8250b5a'),
+(3902, 452, 'twitter', 'http://www.twitter.com'),
+(3903, 452, '_twitter', 'field_559afb8d50b5b'),
+(3904, 452, 'linkedin', 'http://www.linkedin.com'),
+(3905, 452, '_linkedin', 'field_559afb9d50b5c'),
+(3906, 452, 'facebook', 'http://www.facebook.com'),
+(3907, 452, '_facebook', 'field_559afbab50b5d'),
+(3908, 452, 'vendor', '1'),
+(3909, 452, 'custom_permalink', 'sydney/thehillsshire/accessories/alltiedup-wedding-artisans');
 
 -- --------------------------------------------------------
 
@@ -3852,7 +4074,7 @@ CREATE TABLE IF NOT EXISTS `wp_posts` (
   `post_type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'post',
   `post_mime_type` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `comment_count` bigint(20) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=452 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=453 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_posts`
@@ -4260,7 +4482,8 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (448, 1, '2015-07-14 17:22:46', '2015-07-14 17:22:46', '', 'Soirees Events', '', 'publish', 'open', 'open', '', 'soirees-events', '', '', '2015-07-14 17:22:46', '2015-07-14 17:22:46', '', 0, 'http://localhost/atu/company/soirees-events/', 0, 'vendor', '', 0),
 (449, 1, '2015-07-14 17:23:09', '2015-07-14 17:23:09', '', 'Inspired By Happiness', '', 'publish', 'open', 'open', '', 'inspired-by-happiness', '', '', '2015-07-14 17:23:09', '2015-07-14 17:23:09', '', 0, 'http://localhost/atu/company/inspired-by-happiness/', 0, 'vendor', '', 0),
 (450, 1, '2015-07-14 17:24:12', '2015-07-14 17:24:12', '', 'Love Lights', '', 'publish', 'closed', 'closed', '', 'love-lights', '', '', '2015-07-15 20:11:47', '2015-07-15 20:11:47', '', 0, 'http://localhost/atu/company/love-lights/', 0, 'vendor', '', 0),
-(451, 1, '2015-07-14 20:16:38', '2015-07-14 20:16:38', '', 'Event Vendors', '', 'publish', 'open', 'open', '', 'event-vendors', '', '', '2015-07-15 19:59:33', '2015-07-15 19:59:33', '', 0, 'http://localhost/atu/?p=451', 5, 'nav_menu_item', '', 0);
+(451, 1, '2015-07-14 20:16:38', '2015-07-14 20:16:38', '', 'Event Vendors', '', 'publish', 'open', 'open', '', 'event-vendors', '', '', '2015-07-15 19:59:33', '2015-07-15 19:59:33', '', 0, 'http://localhost/atu/?p=451', 5, 'nav_menu_item', '', 0),
+(452, 1, '2015-07-15 20:33:19', '2015-07-15 20:33:19', '', 'Alltiedup Wedding Artisans', '', 'publish', 'open', 'open', '', 'alltiedup-wedding-artisans', '', '', '2015-07-15 20:33:19', '2015-07-15 20:33:19', '', 0, 'http://localhost/atu/alltiedup-wedding-artisans/', 0, 'company', '', 0);
 
 -- --------------------------------------------------------
 
@@ -4454,7 +4677,8 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 (448, 109, 0),
 (449, 110, 0),
 (450, 106, 0),
-(451, 2, 0);
+(451, 2, 0),
+(452, 94, 0);
 
 -- --------------------------------------------------------
 
@@ -4576,7 +4800,7 @@ CREATE TABLE IF NOT EXISTS `wp_usermeta` (
   `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_value` longtext COLLATE utf8mb4_unicode_ci
-) ENGINE=InnoDB AUTO_INCREMENT=2194 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2198 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_usermeta`
@@ -6578,7 +6802,11 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (2190, 13, 'category', 'decorations'),
 (2191, 182, 'region', 'abbotsbury'),
 (2192, 182, 'group', 'thehillsshire'),
-(2193, 182, 'category', 'alfresco-wedding');
+(2193, 182, 'category', 'alfresco-wedding'),
+(2194, 1, 'company', '452'),
+(2195, 1, 'region', 'sydney'),
+(2196, 1, 'group', 'thehillsshire'),
+(2197, 1, 'category', 'accessories');
 
 -- --------------------------------------------------------
 
@@ -6737,12 +6965,12 @@ ALTER TABLE `wp_options`
 -- AUTO_INCREMENT for table `wp_postmeta`
 --
 ALTER TABLE `wp_postmeta`
-  MODIFY `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3688;
+  MODIFY `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3910;
 --
 -- AUTO_INCREMENT for table `wp_posts`
 --
 ALTER TABLE `wp_posts`
-  MODIFY `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=452;
+  MODIFY `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=453;
 --
 -- AUTO_INCREMENT for table `wp_terms`
 --
@@ -6757,7 +6985,7 @@ ALTER TABLE `wp_term_taxonomy`
 -- AUTO_INCREMENT for table `wp_usermeta`
 --
 ALTER TABLE `wp_usermeta`
-  MODIFY `umeta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2194;
+  MODIFY `umeta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2198;
 --
 -- AUTO_INCREMENT for table `wp_users`
 --
