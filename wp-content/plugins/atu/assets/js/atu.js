@@ -54,5 +54,34 @@
         });
 
 
+
+
+        $('body').on('submit', 'form#vendorSearchForm, form#venueSearchForm', function(e) {
+            e.preventDefault();
+
+
+            $(".page-content").append( '<div id="loader-overlay"><span class="loading"></span></div>' );
+
+
+            var url = $(this).attr('action');
+
+            var params = $(this).serialize();
+
+            $.get(url, params,function(data){
+                if(data.length>0){
+
+
+                    $(".page-content").html( $(data).find('.page-content').html() );
+                }
+            });
+
+        });
+
+
+
+
+
+
+
     });
 }(jQuery, document, window));
