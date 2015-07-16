@@ -1,17 +1,23 @@
 	</div>
 	<footer class="l-footer">
 		<?php if (of_get_option('rsvp_text', '') and of_get_option('rsvp_link', '')): ?>
-		<div class="section-rsvp section-dark section-l0">
-			<div class="container">
-				<span class="t-sm mr-10"><?php echo of_get_option('rsvp_text', ''); ?></span> <a href="<?php echo of_get_option('rsvp_link', ''); ?>" target="_blank" class="btn btn-md btn-secondary">Meeting RSVP</a>
+			<div class="section-rsvp section-dark section-l0">
+				<div class="container">
+					<span class="t-sm mr-10"><?php echo of_get_option('rsvp_text', ''); ?></span> <a href="<?php echo of_get_option('rsvp_link', ''); ?>" target="_blank" class="btn btn-md btn-secondary">Meeting RSVP</a>
+				</div>
 			</div>
 		<?php endif ?>
-		</div>
 		<div class="section section-l4">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 col-sm-12">
-						<div class="footer-logo"><img src="<?php echo get_template_directory_uri() ?>/images/logo-footer.png" alt=""></div>
+						<div class="footer-logo">
+						<?php if(!of_get_option('footer_logo', '')){?>
+			               <img src="<?php echo get_template_directory_uri() ?>/images/logo-footer.png" alt="">
+			              <?php }else{ ?>
+							<img src="<?php echo of_get_option('footer_logo', ''); ?>" alt="">
+			              <?php } ?>
+			              </div>
 					</div>
 					<div class="col-md-2 col-sm-6">
 						<div class="widget widget-footer widget-nav">
