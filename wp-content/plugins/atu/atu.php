@@ -346,7 +346,7 @@ class ATU {
                     <div class="form-group">
                             <?php
                             $region = isset( $_REQUEST['region'] ) ? $_REQUEST['region'] : '';
-                            echo '<select name="region">';
+                            echo '<select name="region" class="form-control">';
                             echo '<option value="" '. selected( '', $region, false ) .'>-- Region --</option>';
 
                             while ( have_rows( 'regions', 'option' ) ) {
