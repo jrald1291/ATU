@@ -112,17 +112,32 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
             echo $page_background;
         }
 
-
-        public static function dropwdown_region(  ) {
-
+        public static function dropwdown_regions() {
             $selected = isset( $_REQUEST['region'] ) ? $_REQUEST['region'] : '';
-            if ( have_rows( 'regions', 'option' ) ) {
+            if ( have_rows( 'groups', 'option' ) ) {
                 echo '<select name="region" class="form-control">';
                 echo '<option value="" '. selected( '', $selected, false ) .'>-- Region --</option>';
-                while ( have_rows( 'regions', 'option' ) ) {
+                while ( have_rows( 'groups', 'option' ) ) {
                     the_row();
-                    $name = sanitize_title(get_sub_field('region_name'));
-                    $label = esc_html(get_sub_field('region_label'));
+                    $name = sanitize_title(get_sub_field('group_name'));
+                    $label = esc_html(get_sub_field('group_label'));
+
+                    echo '<option value="'. $name .'" '. selected( $name, $selected, false ) .'>'. $label .'</option>';
+                }
+                echo '<select>';
+            }
+        }
+
+        public static function dropwdown_cities(  ) {
+
+            $selected = isset( $_REQUEST['city'] ) ? $_REQUEST['city'] : '';
+            if ( have_rows( 'cities', 'option' ) ) {
+                echo '<select name="city" class="form-control">';
+                echo '<option value="" '. selected( '', $selected, false ) .'>-- City --</option>';
+                while ( have_rows( 'cities', 'option' ) ) {
+                    the_row();
+                    $name = sanitize_title(get_sub_field('city_name'));
+                    $label = esc_html(get_sub_field('city_label'));
 
                     echo '<option value="'. $name .'" '. selected( $name, $selected, false ) .'>'. $label .'</option>';
                 }

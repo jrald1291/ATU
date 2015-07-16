@@ -167,14 +167,8 @@ class ATU {
         add_filter('template_include', array( $this, 'template_chooser' ) );
 
 
-        add_action('wp_ajax_get-region-cities', array( $this, 'get_region_cities' ) );
     }
 
-    public function get_region_cities() {
-
-        $index = isset( $_POST['index'] ) ? $_POST['index'] : 0;
-        exit( ATU_Helper::get_city_by_region( $index ) );
-    }
 
     public function template_chooser($template)
     {
@@ -224,7 +218,7 @@ class ATU {
                 $query->set('tax_query', array(
                     'relation' => 'OR',
                     array(
-                        'taxonomy' => isset($_GET['region']) && !empty($_GET['region']) ? $_GET['region'] : 'sydney',
+                        'taxonomy' => isset($_GET['city']) && !empty($_GET['city']) ? esc_attr( $_GET['city'] ) : 'sydney',
                         'field' => 'slug',
                         'terms' => array(esc_attr($_GET['category'])),
                         'operator' => 'IN'
@@ -242,10 +236,16 @@ class ATU {
 
     public function websmart_search_join( $join ) {
         global $wpdb;
-        $join .= " LEFT JOIN $wpdb->postmeta AS m ON ($wpdb->posts.ID = m.post_id) ";
-        /*if( is_search() && !is_admin() && isset( $_GET['ft'] ) && ! empty( $_GET['ft'] ) ) {
+
+        if ( ! is_search() && is_admin() ) return $join;
+
+
+        if( ( isset( $_GET['post_code'] ) && ! empty( $_GET['post_code'] ) ) || ( isset( $_GET['region'] ) && ! empty( $_GET['region'] ) ) ) {
             $join .= " LEFT JOIN $wpdb->postmeta AS m ON ($wpdb->posts.ID = m.post_id) ";
-        }*/
+        }
+
+
+
         return $join;
     }
 
@@ -255,27 +255,20 @@ class ATU {
 
         if ( ! is_search() && is_admin() ) return $where;
 
-        if( isset( $_GET['ft'] ) && ! empty( $_GET['ft'] ) ) {
+        if( isset( $_GET['post_code'] ) && ! empty( $_GET['post_code'] ) ) {
 
-            $where = "";
-
-            $ft_value = '';
-
-            if (isset($_GET['post_code']))
-                $ft_value = $_GET['post_code'];
-            elseif (isset($_GET['region']))
-                $ft_value = $_GET['region'];
-
-            $where .= " AND ( m.meta_key = '{$_GET['ft']}' AND m.meta_value='{$ft_value}' ) ";
+            $where .= " AND ( m.meta_key = 'post_code' AND m.meta_value='". esc_attr( $_GET['post_code'] ) ."' ) ";
         }
 
 
+        if( isset( $_GET['capacity'] ) && ! empty( $_GET['capacity'] ) ) {
 
-
-        if ( isset( $_GET['city'] ) && ! empty( $_GET['city'] ) ) {
-            $where .= " AND ( m.meta_key = 'city' AND m.meta_value='". esc_attr($_GET['city']) ."' ) ";
+            $where .= " AND ( m.meta_key = 'capacity' AND m.meta_value='". esc_attr( $_GET['capacity'] ) ."' ) ";
         }
 
+        if ( isset( $_GET['region'] ) && ! empty( $_GET['region'] ) ) {
+            $where .= " AND ( m.meta_key = 'region' AND m.meta_value='". esc_attr( $_GET['region'] ) ."' ) ";
+        }
 
 
 
@@ -296,19 +289,17 @@ class ATU {
 
                 <div class="col-md-2">
                     <div class="form-group">
-                        <?php ATU_Helper::dropwdown_region(); ?>
+                        <?php ATU_Helper::dropwdown_cities(); ?>
                     </div>
                 </div>
 
                 <div class="col-md-2">
                     <div class="form-group">
-                        <select name="city" class="form-control">
-                            <?php ATU_Helper::get_city_by_region(0, isset( $_GET['city'] ) ?  $_GET['city']  : ''  );  ?>
-                        </select>
+                        <?php ATU_Helper::dropwdown_regions(); ?>
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
                             <?php ATU_Helper::dropwdown_vendor_category(array(
                                 'selected' => isset( $_REQUEST['category'] ) ? $_REQUEST['category'] : ''
@@ -332,59 +323,6 @@ class ATU {
         ?>
         <form id="venueSearchForm" action="<?php echo home_url( '/' ); ?>" method="get" class="form">
             <div class="row row-sm">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <input type="text" name="s" value="<?php echo isset( $_GET['s'] ) ? $_GET['s'] : ''; ?>" class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <?php wp_dropdown_categories( array(
-                            'taxonomy'  => 'venue-category',
-                            'name'               => 'venue-category',
-                            'selected'              => isset( $_GET['venue-category'] ) ? $_GET['venue-category'] : '-1',
-                            'hide_empty'         => 0,
-                            'class'              => 'form-control',
-                            'show_option_none'   => 'Venue Category',
-                            'option_none_value'  => '-1',
-                        ) ); ?>
-                    </div>
-                </div>
-
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <?php $ft = isset( $_GET['ft'] ) ? $_GET['ft'] : ''; ?>
-                        <select id="filterType" name="ft" class="form-control">
-                            <option value="" <?php selected($ft, ''); ?>><?php _e( '-- Select --', 'atu' ); ?></option>
-                            <option value="post_code" <?php selected($ft, 'post_code'); ?>><?php _e( 'Postcode', 'atu' ); ?></option>
-                            <option value="region" <?php selected($ft, 'region'); ?>><?php _e( 'Region', 'atu' ); ?></option>
-                        </select>
-                    </div>
-                </div>
-
-
-                <?php if ( have_rows( 'regions', 'option' ) ): ?>
-
-                <div class="col-md-2 hidden">
-                    <div class="form-group">
-                            <?php
-                            $region = isset( $_REQUEST['region'] ) ? $_REQUEST['region'] : '';
-                            echo '<select name="region" class="form-control">';
-                            echo '<option value="" '. selected( '', $region, false ) .'>-- Region --</option>';
-
-                            while ( have_rows( 'regions', 'option' ) ) {
-                                the_row();
-                                $name = sanitize_title(get_sub_field('region_name'));
-                                $label = esc_html(get_sub_field('region_label'));
-
-                                echo '<option value="'. $name .'" '. selected( $name, $region, false ) .'>'. $label .'</option>';
-                            }
-                            echo '<select>';
-                            ?>
-                    </div>
-                </div>
-
-                <?php endif; ?>
 
                 <?php
                 $postcode_field = get_field_object('field_559a8fbbaf4fa');
@@ -394,11 +332,10 @@ class ATU {
                     $post_postcode = isset( $_GET[$postcode_field['name']] ) ? $_GET[$postcode_field['name']] : $postcode_field['default_value'];
                     ?>
 
-                    <div class="col-md-2 hidden">
+                    <div class="col-md-2">
                         <div class="form-group">
 
-                            <select name="<?php echo $postcode_field['name']; ?>" class="form-control <?php echo ! isset( $_GET[$postcode_field['name']] ) ?  'hidden' : ''; ?>"
-                                <?php echo ! isset( $_GET[$postcode_field['name']] ) ?  'disabled="disabled"' : ''; ?>>
+                            <select name="<?php echo $postcode_field['name']; ?>" class="form-control">
                                 <option value="" <?php selected('', $post_postcode); ?>><?php echo $postcode_field['label']; ?></option>
                                 <?php foreach( $postcode_field['choices'] as $key => $value ): ?>
                                     <option value="<?php echo $key; ?>"  <?php selected($key, $post_postcode); ?> ><?php echo $value; ?></option>
@@ -409,6 +346,12 @@ class ATU {
 
                 <?php endif; ?>
 
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <?php ATU_Helper::dropwdown_cities(); ?>
+                    </div>
+                </div>
 
                 <?php
                 $capacities = get_field_object('field_559a941791552');
@@ -432,9 +375,22 @@ class ATU {
 
                 <?php endif; ?>
 
-
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <?php wp_dropdown_categories( array(
+                            'taxonomy'  => 'venue-category',
+                            'name'               => 'venue-category',
+                            'selected'              => isset( $_GET['venue-category'] ) ? $_GET['venue-category'] : '-1',
+                            'hide_empty'         => 0,
+                            'class'              => 'form-control',
+                            'show_option_none'   => '-- Select Category --',
+                            'option_none_value'  => '-1',
+                        ) ); ?>
+                    </div>
+                </div>
 
                 <div class="col-md-2">
+                    <input type="hidden" name="s" value="">
                     <input type="hidden" name="post_type" value="venue">
                     <button class="btn btn-secondary btn-block" ><?php _e( 'Search', 'atu' ); ?></button>
                 </div>
@@ -533,6 +489,3 @@ class ATU {
 }
 
 $GLOBALS['ATU'] = new ATU();
-
-
-

@@ -55,57 +55,14 @@ if ( ! class_exists( 'ATU_Admin_Post' ) ) {
             /* OK, it's safe for us to save the data now. */
 
             // Make sure that it is set.
-            if ( ! isset( $_POST['region'] ) ) { //|| ! isset( $_POST['group'] ) || ! isset( $_POST['category'] )
+            if ( ! isset( $_POST['city'] ) ) {
                 return;
             }
 
 
-            $region = $_POST['region'];
-            /*$group = explode( '::', $_POST['group'] );
-            $category = $_POST['category'];
+            $city = $_POST['city'];
 
-
-            $group_title = $group[1];
-            $group_slug = sanitize_title( $group[0] );
-
-            $category_slug = sanitize_title( $category );*/
-
-
-
-
-            /* Sets the terms (we're just using a single term) for the user. */
-            /*
-            if ( ! $parent = term_exists( $group_title, $region ) ) {
-                $parent = wp_insert_term( $group_title, $region, array(
-                    'slug' => $group_slug,
-                ));
-            }
-
-            if ( ! term_exists( $category, $region ) ) {
-
-                wp_insert_term($category, $region, array(
-                    'slug' => $category_slug,
-                    'parent' => $parent['term_id']
-                ));
-
-            }
-            */
-
-
-
-
-           // wp_delete_object_term_relationships( $post_id, $region );
-
-
-            //wp_set_object_terms($post_id, $category_slug, $region, false);
-
-            update_post_meta( $post_id, 'region', $region );
-            //update_user_meta( $post_id, 'group', $group_slug );
-            //update_user_meta( $post_id, 'category', $category_slug );
-
-
-
-            //clean_object_term_cache( $post_id, $region );
+            update_post_meta( $post_id, 'city', $city );
 
 
 
@@ -119,7 +76,7 @@ if ( ! class_exists( 'ATU_Admin_Post' ) ) {
 
                 add_meta_box(
                     'wepn_sectionid',
-                    __( 'Region', 'wepn' ),
+                    __( 'City', 'wepn' ),
                     array( $this, 'wepn_meta_box_callback' ),
                     $screen
                 );
@@ -130,20 +87,20 @@ if ( ! class_exists( 'ATU_Admin_Post' ) ) {
         public function wepn_meta_box_callback( $post ) {
             wp_nonce_field( 'wepn_save_meta_box_data', 'wepn_meta_box_nonce' );
 
-            $region = get_post_meta( $post->ID, 'region', true );
+            $city = get_post_meta( $post->ID, 'city', true );
             ?>
             <table class="form-table">
                 <tr>
-                    <th><label for="">Select Region</label></th>
+                    <th><label for="">Select City</label></th>
                     <td>
-                        <?php if ( have_rows( 'regions', 'option' ) ) {
-                            echo '<select name="region">';
-                            while ( have_rows( 'regions', 'option' ) ) {
+                        <?php if ( have_rows( 'cities', 'option' ) ) {
+                            echo '<select name="city">';
+                            while ( have_rows( 'cities', 'option' ) ) {
                                 the_row();
-                                $name = sanitize_title(get_sub_field('region_name'));
-                                $label = esc_html(get_sub_field('region_label'));
+                                $name = sanitize_title(get_sub_field('city_name'));
+                                $label = esc_html(get_sub_field('city_label'));
 
-                                echo '<option value="'. $name .'" '. selected( $name, $region, false ) .'>'. $label .'</option>';
+                                echo '<option value="'. $name .'" '. selected( $name, $city, false ) .'>'. $label .'</option>';
                             }
                             echo '<select>';
                         }?>
@@ -231,3 +188,7 @@ if ( ! class_exists( 'ATU_Admin_Post' ) ) {
 }
 
 return new ATU_Admin_Post();
+
+
+
+

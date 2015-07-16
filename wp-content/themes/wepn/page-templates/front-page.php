@@ -17,10 +17,18 @@ get_header(); ?>
 					<?php echo of_get_option('intro', ''); ?>
 				<?php endif ?>
 			</h1>
-			<div class="actions">
-				<a href="<?php echo home_url('/vendors'); ?>" class="btn btn-wooden btn-lg">Search for Vendor</a>
-				<a href="<?php echo home_url('/venue'); ?>" class="btn btn-wooden btn-lg">Search for Venue</a>
-			</div>
+            <form method="get">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <?php ATU_Helper::dropwdown_cities(); ?>
+                    </div>
+                </div>
+                <div class="actions">
+                    <input type="hidden" name="s" value="" />
+                    <button type="submit" name="post_type" value="vendor" class="btn btn-wooden btn-lg">Search for Vendor</button>
+                    <button type="submit" name="post_type" value="vendor"  class="btn btn-wooden btn-lg">Search for Venue</button>
+                </div>
+            </form>
 		</div>
 		<?php if (get_field('banner_slogan') and get_field('slogan_line2')):?>
 			<div class="banner-intro">

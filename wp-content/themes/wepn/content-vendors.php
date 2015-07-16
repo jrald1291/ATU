@@ -23,10 +23,10 @@
 
                 $user_id = get_post_meta( get_the_ID(), 'vendor', true );
 
-                $taxonomy = get_user_meta( $user_id, 'region', true );
+                $taxonomy = get_user_meta( $user_id, 'city', true );
                 $cats = get_the_terms( get_the_ID(), $taxonomy );
 
-                if ( ! empty( $cats ) )$cat_name = $cats[0]->name;
+                if ( ! empty( $cats ) && ! is_wp_error( $cats ) )$cat_name = $cats[0]->name;
 
 
                 $image_id = get_user_meta( $user_id, 'profile_image', true );

@@ -20,8 +20,8 @@ if ( !class_exists('ATU_Admin_Users') ) {
             add_action( 'show_user_profile', array( $this, 'my_edit_region_group_category_section' ), 20 );
             add_action( 'edit_user_profile', array( $this, 'my_edit_region_group_category_section' ), 20 );
             /* Update the profession terms when the edit user page is updated. */
-            add_action( 'personal_options_update', array( $this, 'my_save_user_region_group_category' ) );
-            add_action( 'edit_user_profile_update', array( $this, 'my_save_user_region_group_category' ) );
+            add_action( 'personal_options_update', array( $this, 'wepn_save_user_city_group_category' ) );
+            add_action( 'edit_user_profile_update', array( $this, 'wepn_save_user_city_group_category' ) );
 
             add_action( 'personal_options', array ( $this, 'start' ) );
         }
@@ -63,8 +63,8 @@ if ( !class_exists('ATU_Admin_Users') ) {
          *
          * @param int $user_id The ID of the user to save the terms for.
          */
-        public function my_save_user_region_group_category( $user_id ) {
-            $region = $_POST['region'];
+        public function wepn_save_user_city_group_category( $user_id ) {
+
             $city = $_POST['city'];
             $group = explode( '::', $_POST['group'] );
             $category = $_POST['category'];
@@ -80,15 +80,15 @@ if ( !class_exists('ATU_Admin_Users') ) {
 
             /* Sets the terms (we're just using a single term) for the user. */
 
-            if ( ! $parent = term_exists( $group_title, $region ) ) {
-                $parent = wp_insert_term( $group_title, $region, array(
+            if ( ! $parent = term_exists( $group_title, $city ) ) {
+                $parent = wp_insert_term( $group_title, $city, array(
                     'slug' => $group_slug,
                 ));
             }
 
-            if ( ! term_exists( $category, $region ) ) {
+            if ( ! term_exists( $category, $city ) ) {
 
-                wp_insert_term($category, $region, array(
+                wp_insert_term($category, $city, array(
                     'slug' => $category_slug,
                     'parent' => $parent['term_id']
                 ));
@@ -111,23 +111,24 @@ if ( !class_exists('ATU_Admin_Users') ) {
 
 
 
-            wp_delete_object_term_relationships( $company_id, $region );
+            wp_delete_object_term_relationships( $company_id, $city );
 
 
-            wp_set_object_terms($company_id, $category_slug, $region, false);
+            wp_set_object_terms($company_id, $category_slug, $city, false);
             update_post_meta( $company_id, 'vendor', $user_id );
-            update_user_meta( $company_id, 'city', $city );
-            // Update custom permalink
-            update_post_meta( $company_id, 'custom_permalink', $region.'/'.$group_slug.'/'. $category_slug .'/'. sanitize_title($company_name) );
+            update_post_meta( $company_id, 'region', $group_slug );
 
-            update_user_meta( $user_id, 'region', $region );
+            // Update custom permalink
+            update_post_meta( $company_id, 'custom_permalink', $city.'/'.$group_slug.'/'. $category_slug .'/'. sanitize_title($company_name) );
+
+
             update_user_meta( $user_id, 'city', $city );
             update_user_meta( $user_id, 'group', $group_slug );
             update_user_meta( $user_id, 'category', $category_slug );
 
 
 
-            clean_object_term_cache( $user_id, $region );
+            clean_object_term_cache( $user_id, $city );
         }
 
 
@@ -141,8 +142,6 @@ if ( !class_exists('ATU_Admin_Users') ) {
         public function my_edit_region_group_category_section( $user ) {
 
 
-
-            $region = get_user_meta( $user->ID, 'region', true );
             $city = get_user_meta( $user->ID, 'city', true );
             $group  = get_user_meta( $user->ID, 'group', true );
             $category = get_user_meta( $user->ID, 'category', true );
@@ -158,33 +157,25 @@ if ( !class_exists('ATU_Admin_Users') ) {
 
             <table class="form-table">
                 <tr>
-                    <th><label for="">Select Region</label></th>
+                    <th><label for="">Select City</label></th>
                     <td>
-                        <?php if ( have_rows( 'regions', 'option' ) ) {
-                            echo '<select name="region">';
-                            while ( have_rows( 'regions', 'option' ) ) {
+                        <?php if ( have_rows( 'cities', 'option' ) ) {
+                            echo '<select name="city">';
+                            while ( have_rows( 'cities', 'option' ) ) {
                                 the_row();
-                                $name = sanitize_title(get_sub_field('region_name'));
-                                $label = esc_html(get_sub_field('region_label'));
+                                $name = sanitize_title(get_sub_field('city_name'));
+                                $label = esc_html(get_sub_field('city_label'));
 
-                                echo '<option value="'. $name .'" '. selected( $name, $region, false ) .'>'. $label .'</option>';
+                                echo '<option value="'. $name .'" '. selected( $name, $city, false ) .'>'. $label .'</option>';
                             }
                             echo '<select>';
 
                         }?>
                     </td>
                 </tr>
-                <tr>
-                    <th><label for="">Select City</label></th>
-                    <td>
 
-                        <select name="city">
-                        <?php ATU_Helper::get_city_by_region(0, $city);  ?>
-                            </select>
-                    </td>
-                </tr>
                 <tr>
-                    <th><label for="">Select Group</label></th>
+                    <th><label for="">Select Region/Group</label></th>
                     <td>
                         <?php if ( have_rows( 'groups', 'option' ) ) {
                             echo '<select name="group">';
@@ -225,25 +216,6 @@ if ( !class_exists('ATU_Admin_Users') ) {
 
 
             </table>
-
-            <script>
-                (function($) {
-                    var B = $('body');
-                    B.on('change', 'select[name=region]', function(e) {
-                        e.preventDefault();
-
-                        $('<span class="spinner city-spinner">').insertAfter(this).css({visibility: 'visible', float: 'none'});
-
-                        var i = parseInt($('option:selected', this).index());
-
-                        $.post(ajaxurl, {action: 'get-region-cities', index: i}).done(function(results) {
-                            $('select[name=city]').html(results);
-                            $('.city-spinner').remove();
-                        });
-
-                    });
-                })(jQuery)
-            </script>
         <?php }
 
 

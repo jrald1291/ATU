@@ -53,11 +53,11 @@ if ( ! class_exists( 'ATU_Admin_Taxonomy' ) ) {
 
 
 
-            if ( have_rows( 'regions', 'option' ) ) {
-                while ( have_rows( 'regions', 'option' ) ) { the_row();
-                    $name =  sanitize_title( get_sub_field( 'region_name' ) );
-                    $label = esc_html( get_sub_field( 'region_label' ) );
-                    $slug = get_sub_field( 'region_slug' ) ? sanitize_title( get_sub_field( 'region_slug' ) ) : $name;
+            if ( have_rows( 'cities', 'option' ) ) {
+                while ( have_rows( 'cities', 'option' ) ) { the_row();
+                    $name =  sanitize_title( get_sub_field( 'city_name' ) );
+                    $label = esc_html( get_sub_field( 'city_label' ) );
+                    $slug = $name; //get_sub_field( 'region_slug' ) ? sanitize_title( get_sub_field( 'region_slug' ) ) : $name;
 
                     register_taxonomy(
                         $name,
