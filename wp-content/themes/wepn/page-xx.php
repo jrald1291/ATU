@@ -45,7 +45,7 @@ $page_bg = get_template_directory_uri()."/assets/images/banner.jpg";
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <button class="btn btn-secondary btn-block" ><span class="fa fa-search icon-l"></span>Search Venue</button>
+                                    <button class="btn btn-secondary btn-block" ><span class="fa fa-search icon-l"></span>Find Venue</button>
                                 </div>
                             </div>
                         </form>

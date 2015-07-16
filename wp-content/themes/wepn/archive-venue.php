@@ -27,7 +27,7 @@ get_header();?>
                     <div class="page-header">
                         <?php
                         /**
-                         * Search venue form
+                         * Find Venue form
                          */
                         do_action( 'atu_venue_search_form' ); ?>
                     </div>
