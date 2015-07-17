@@ -117,6 +117,7 @@ if ( !class_exists('ATU_Admin_Users') ) {
             wp_set_object_terms($company_id, $category_slug, $city, false);
             update_post_meta( $company_id, 'vendor', $user_id );
             update_post_meta( $company_id, 'region', $group_slug );
+            update_post_meta( $company_id, 'city', $city );
 
             // Update custom permalink
             update_post_meta( $company_id, 'custom_permalink', $city.'/'.$group_slug.'/'. $category_slug .'/'. sanitize_title($company_name) );

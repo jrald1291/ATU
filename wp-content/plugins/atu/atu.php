@@ -201,12 +201,12 @@ class ATU {
 
 
                 $query->set('tax_query', array(
-                    'relation' => 'OR',
+//                    'relation' => 'OR',
                     array(
                         'taxonomy' => 'venue-category',
                         'field' => 'id',
                         'terms' => array(intval($_GET['venue-category'])),
-                        'operator' => 'IN'
+//                        'operator' => 'IN'
                     )
                 ));
 
@@ -244,6 +244,7 @@ class ATU {
 
         if( ( isset( $_GET['post_code'] ) && ! empty( $_GET['post_code'] ) )
             || ( isset( $_GET['capacity'] ) && ! empty( $_GET['capacity'] ) )
+            || ( isset( $_GET['city'] ) && ! empty( $_GET['city'] ) )
             || ( isset( $_GET['region'] ) && ! empty( $_GET['region'] ) ) ) {
             $join .= " LEFT JOIN $wpdb->postmeta AS m ON ($wpdb->posts.ID = m.post_id) ";
         }
@@ -259,11 +260,17 @@ class ATU {
 
         if ( ! is_search() && is_admin() ) return $where;
 
+        $where = str_replace('0 = 1', '1 = 1', $where);
+
         if( isset( $_GET['post_code'] ) && ! empty( $_GET['post_code'] ) ) {
 
             $where .= " AND ( m.meta_key = 'post_code' AND m.meta_value='". esc_attr( $_GET['post_code'] ) ."' ) ";
         }
 
+        if( isset( $_GET['city'] ) && ! empty( $_GET['city'] ) ) {
+
+            $where .= " AND ( m.meta_key = 'city' AND m.meta_value='". esc_attr( $_GET['city'] ) ."' ) ";
+        }
 
         if( isset( $_GET['capacity'] ) && ! empty( $_GET['capacity'] ) ) {
 
