@@ -112,9 +112,10 @@ if ( ! class_exists('WEPN_Form_Builder') ) {
                             $return_string .= sanitize_title( $name ) . '="'. esc_html( $attribute ) . '" ';
                         }
                         $return_string .= '>';
-
-                        foreach( $field['options'] as $value => $label ) {
-                            $return_string .= '<option value="'. $value .'" '. selected(  $field['value'], $value, false ) .'>'. $label .'</option>';
+                        if ( count( $field['options'] ) != 0 ) {
+                            foreach ($field['options'] as $value => $label) {
+                                $return_string .= '<option value="' . $value . '" ' . selected($field['value'], $value, false) . '>' . $label . '</option>';
+                            }
                         }
 
                         $return_string .= '</select>';

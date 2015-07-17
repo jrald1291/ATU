@@ -81,8 +81,7 @@ if ( !class_exists('WEPN_Registration') ) {
             if ( ! is_wp_error( $new_user_id ) ) {
 
 
-//                add_user_meta( $new_user_id, 'youtube_link', $post['youtube_link'] )
-//                or update_user_meta( $new_user_id, 'youtube_link', $post['youtube_link']  );
+                global $wpdb;
 
                 add_user_meta( $new_user_id, 'company_name', $post['company_name'] )
                 or update_user_meta( $new_user_id, 'company_name', $post['company_name']  );
@@ -94,12 +93,75 @@ if ( !class_exists('WEPN_Registration') ) {
                 or update_user_meta( $new_user_id, 'phone', $post['phone']  );
 
 
-                $term = esc_attr( $post['profession'] );
+
+                $city = $post['city'];
+                $group = explode( '::', $post['group'] );
+                $category = $post['category'];
+                $company_name = esc_attr( $post['company_name'] );
+
+                $group_title = $group[1];
+                $group_slug = sanitize_title( $group[0] );
+
+                $category_slug = sanitize_title( $category );
+
+
+
 
                 /* Sets the terms (we're just using a single term) for the user. */
-                wp_set_object_terms( $new_user_id, array( $term ), 'profession', false);
 
-                clean_object_term_cache( $new_user_id, 'profession' );
+                if ( ! $parent = term_exists( $group_title, $city ) ) {
+                    $parent = wp_insert_term( $group_title, $city, array(
+                        'slug' => $group_slug,
+                    ));
+                }
+
+
+                if ( ! term_exists( $category, $city ) ) {
+
+                    wp_insert_term($category, $city, array(
+                        'slug' => $category_slug,
+                        'parent' => $parent['term_id']
+                    ));
+
+                }
+
+
+                $company_id = $wpdb->get_var("SELECT ID FROM wp_posts WHERE post_title = '" . $company_name . "'");
+
+                if ( ! empty( $company_name ) && ! $company_id ) {
+                    $company_id = wp_insert_post( array(
+                        'post_title' => $company_name,
+                        'post_type' => 'vendor',
+                        'post_status' => 'publish'
+                    ));
+
+                    update_user_meta( $new_user_id, 'company', $company_id );
+
+                }
+
+
+
+                wp_delete_object_term_relationships( $company_id, $city );
+
+
+                wp_set_object_terms($company_id, $category_slug, $city, false);
+                update_post_meta( $company_id, 'vendor', $new_user_id );
+                update_post_meta( $company_id, 'region', $group_slug );
+                update_post_meta( $company_id, 'city', $city );
+
+                // Update custom permalink
+                update_post_meta( $company_id, 'custom_permalink', $city.'/'.$group_slug.'/'. $category_slug .'/'. sanitize_title($company_name) );
+
+
+                update_user_meta( $new_user_id, 'city', $city );
+                update_user_meta( $new_user_id, 'group', $group_slug );
+                update_user_meta( $new_user_id, 'category', $category_slug );
+
+
+
+                clean_object_term_cache( $new_user_id, $city );
+
+
 
                 // Update registration code to inactive
                 WEPN_Admin_Settings::set_used_reg_code( $post['registration_code'] );
@@ -110,10 +172,6 @@ if ( !class_exists('WEPN_Registration') ) {
 
 
                 exit( wp_redirect( get_page_link( $page_id ) ) );
-
-
-
-
 
 
             } else {
@@ -139,14 +197,6 @@ if ( !class_exists('WEPN_Registration') ) {
 
         private function get_fields() {
 
-            $professions = array( '' => __( '-- Select --', 'atu' ) );
-            $terms = get_terms( 'profession', array( 'hide_empty' => false ) );
-
-
-
-            foreach ( $terms as $term ) {
-                $professions[$term->slug] = $term->name;
-            }
 
 
 
@@ -252,18 +302,6 @@ if ( !class_exists('WEPN_Registration') ) {
                 ),
 
 
-//                array(
-//                    'title'     => __( 'Youtube Link', 'atu' ),
-//                    'type'      => 'text',
-//                    'id'        => 'youtube_link',
-//                    'attributes'    => array(
-//                        'class' => 'form-control'
-//                    ),
-//                    'placeholder'   => '',
-//                    'required'  => true,
-//                    'value'     => $this->get_post_value( 'youtube_link' ),
-//                    'default'   => '',
-//                ),
 
 
                 array(
@@ -320,19 +358,46 @@ if ( !class_exists('WEPN_Registration') ) {
                     'default'   => '',
                 ),
 
-
                 array(
-                    'title'     => __( 'Profession', 'atu' ),
+                    'title'     => __( 'City', 'atu' ),
                     'type'      => 'select',
-                    'id'        => 'profession',
+                    'id'        => 'city',
                     'attributes'    => array(
                         'class' => 'form-control'
                     ),
                     'required'  => true,
-                    'value'     => $this->get_post_value( 'profession' ),
+                    'value'     => '',
                     'default'   => '0',
-                    'options'   => $professions
+                    'options'   => WEPN_Helper::city_lists()
                 ),
+
+                array(
+                    'title'     => __( 'Region', 'atu' ),
+                    'type'      => 'select',
+                    'id'        => 'group',
+                    'attributes'    => array(
+                        'class' => 'form-control'
+                    ),
+                    'required'  => true,
+                    'value'     => '',
+                    'default'   => '0',
+                    'options'   => WEPN_Helper::region_lists()
+                ),
+
+                array(
+                    'title'     => __( 'Category', 'atu' ),
+                    'type'      => 'select',
+                    'id'        => 'category',
+                    'attributes'    => array(
+                        'class' => 'form-control'
+                    ),
+                    'required'  => true,
+                    'value'     => '',
+                    'default'   => '0',
+                    'options'   => WEPN_Helper::category_list()
+                ),
+
+
 
 
                 array(
