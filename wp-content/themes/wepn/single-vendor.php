@@ -233,7 +233,7 @@ $user_info = get_userdata( $user_id );
                 <?php } else {?>
                     <div class="disabled">
                         <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
-                        <span>No previous post</span>
+                        <span>No previous Supplier</span>
                     </div>
                 <?php } ?>
             </li>
@@ -257,7 +257,7 @@ $user_info = get_userdata( $user_id );
 
                     <div class="disabled">
                         <span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
-                        <span>No Next post</span>
+                        <span>No Next Supplier</span>
                     </div>
 
                 <?php } ?>

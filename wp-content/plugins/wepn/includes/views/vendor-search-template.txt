@@ -83,7 +83,7 @@ get_header(); ?>
 
                                         <div class="col-md-4 col-sm-6">
                                             <div class="post-item well-block" style="border-bottom: 3px solid <?php echo $vendor_info->color; ?>">
-                                                <div class="well-header"><?php echo $profession; ?></div>
+                                                <div class="well-header"><div class="marquee"><span><?php echo $profession; ?></span></div></div>
                                                 <div class="post-img">
                                                     <a href="<?php echo $single_page_permalink; ?>">
                                                         <?php echo wp_get_attachment_image( $image_id, 'vendor-small-thumb' ); ?>

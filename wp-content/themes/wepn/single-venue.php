@@ -206,7 +206,7 @@ get_header(); ?>
                 <?php }else{?>
                     <div class="disabled">
                             <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
-                            <span>No previous post</span>
+                            <span>No previous Venue</span>
                     </div>
                 <?php } ?>
             </li>
@@ -225,7 +225,7 @@ get_header(); ?>
                 <?php }else{?>
                     <div class="disabled">
                             <span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
-                            <span>No Next post</span>
+                            <span>No Next Venue</span>
                     </div>
                 <?php } ?>
                 

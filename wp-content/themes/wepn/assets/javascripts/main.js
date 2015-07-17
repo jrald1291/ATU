@@ -179,9 +179,10 @@ var util = {
         function stopMarquee() {
             var listItem = $(this).parent();
             listItem.stop();
-            listItem.animate({scrollLeft: 0}, 'medium', 'swing');
+            listItem.animate({scrollLeft: 0}, 'fast', 'swing');
         }
         $('.marquee a').hover(startMarquee, stopMarquee);
+        $('.marquee span').hover(startMarquee, stopMarquee);
       },
 
       Slider: function(){

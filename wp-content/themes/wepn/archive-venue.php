@@ -52,7 +52,7 @@ get_header();?>
 
                                         <div class="col-md-4 col-sm-6">
                                             <div class="post-item well-block" style="border-bottom: 3px solid <?php echo hex2rgba(get_field( 'color')); ?>">
-                                                <div class="well-header"><?php echo $cat_name; ?></div>
+                                                <div class="well-header"><div class="marquee"><span><?php echo $cat_name; ?></span></div></div>
                                                 <div class="post-img">
                                                     <a href="<?php the_permalink(); ?>"><?php do_action('aut_post_thumnail', 'img-avatar'); ?></a>
                                                 </div>
