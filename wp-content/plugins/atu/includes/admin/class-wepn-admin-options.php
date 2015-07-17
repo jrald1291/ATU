@@ -140,8 +140,9 @@ if ( ! class_exists( 'acf_options_page_plugin' ) ) {
             }
 
 
+            $parent_page = add_submenu_page( 'atu-settings', $parent_title, $parent_menu, $this->settings['capability'], $parent_slug, array($this, 'html'));
             // Parent
-            $parent_page = add_menu_page($parent_title, $parent_menu, $this->settings['capability'], $parent_slug, array($this, 'html'));
+//            $parent_page = add_menu_page($parent_title, $parent_menu, $this->settings['capability'], $parent_slug, array($this, 'html'));
 
 
             // actions

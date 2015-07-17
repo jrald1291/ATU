@@ -157,8 +157,9 @@ class ATU {
         add_action( 'atu_vendor_search_form', array( $this, 'atu_vendor_search_form' ) );
 
 
-        add_filter('posts_join', array( $this, 'websmart_search_join' ) );
+
         add_filter('posts_where', array( $this, 'websmart_search_where' ) );
+        add_filter('posts_join', array( $this, 'websmart_search_join' ) );
         add_action( 'pre_get_posts', array( $this, 'atu_advance_search' ) );
 
 
@@ -168,6 +169,7 @@ class ATU {
 
 
     }
+
 
 
     public function template_chooser($template)
@@ -240,7 +242,9 @@ class ATU {
         if ( ! is_search() && is_admin() ) return $join;
 
 
-        if( ( isset( $_GET['post_code'] ) && ! empty( $_GET['post_code'] ) ) || ( isset( $_GET['region'] ) && ! empty( $_GET['region'] ) ) ) {
+        if( ( isset( $_GET['post_code'] ) && ! empty( $_GET['post_code'] ) )
+            || ( isset( $_GET['capacity'] ) && ! empty( $_GET['capacity'] ) )
+            || ( isset( $_GET['region'] ) && ! empty( $_GET['region'] ) ) ) {
             $join .= " LEFT JOIN $wpdb->postmeta AS m ON ($wpdb->posts.ID = m.post_id) ";
         }
 
@@ -324,27 +328,28 @@ class ATU {
         <form id="venueSearchForm" action="<?php echo home_url( '/' ); ?>" method="get" class="form">
             <div class="row row-sm">
 
-                <?php
-                $postcode_field = get_field_object('field_559a8fbbaf4fa');
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <?php
+                        $selected_post_code = isset( $_REQUEST['post_code'] ) ? $_REQUEST['post_code'] : '';
+                        $post_codes = get_field( 'post_codes', 'option' );
 
-                if ( $postcode_field ):
+                        $post_codes_array = explode( "\r\n", $post_codes );
 
-                    $post_postcode = isset( $_GET[$postcode_field['name']] ) ? $_GET[$postcode_field['name']] : $postcode_field['default_value'];
-                    ?>
 
-                    <div class="col-md-2">
-                        <div class="form-group">
 
-                            <select name="<?php echo $postcode_field['name']; ?>" class="form-control">
-                                <option value="" <?php selected('', $post_postcode); ?>><?php echo $postcode_field['label']; ?></option>
-                                <?php foreach( $postcode_field['choices'] as $key => $value ): ?>
-                                    <option value="<?php echo $key; ?>"  <?php selected($key, $post_postcode); ?> ><?php echo $value; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
+                        if ( count( $post_codes_array ) != 0 ) {
+                            echo '<select name="post_code" class="form-control">';
+                            echo '<option value=""'. selected('', $selected_post_code) .'>-- Post Code --</option>';
+                            foreach ( $post_codes_array as $post_code ) {
+                                $post_code = wp_strip_all_tags( $post_code );
+                                echo '<option value="'. $post_code .'" '. selected( $post_code, $selected_post_code, false ) .'>'. $post_code .'</option>';
+                            }
+                            echo '<select>';
+                        }?>
                     </div>
+                </div>
 
-                <?php endif; ?>
 
 
                 <div class="col-md-2">
@@ -353,29 +358,31 @@ class ATU {
                     </div>
                 </div>
 
-                <?php
-                $capacities = get_field_object('field_559a941791552');
-
-                if ( $capacities ):
-
-                    $selected_capacity = isset( $_GET['capacity'] ) ? $_GET['capacity'] : $capacities['default_value'];
-                    ?>
-
-                    <div class="col-md-2">
-                        <div class="form-group">
-
-                            <select name="capacity" class="form-control">
-                                <option value="" <?php selected('', $selected_capacity); ?>>-- Capacity --</option>
-                                <?php foreach( $capacities['choices'] as $key => $value ): ?>
-                                    <option value="<?php echo $key; ?>"  <?php selected($key, $selected_capacity); ?> ><?php echo $value; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                    </div>
-
-                <?php endif; ?>
 
                 <div class="col-md-2">
+                    <div class="form-group">
+
+                        <?php
+                        $selected_capacity = isset( $_REQUEST['capacity'] ) ? $_REQUEST['capacity'] : '';
+                        $capacities = get_field( 'capacity', 'option' );
+
+                        $capacities_array = explode( "\r\n", $capacities );
+
+
+
+                        if ( count( $capacities_array ) != 0 ) {
+                            echo '<select name="capacity" class="form-control">';
+                            echo '<option value=""'. selected('', $selected_capacity) .'>-- Capacity --</option>';
+                            foreach ( $capacities_array as $capacity ) {
+                                $capacity = wp_strip_all_tags( $capacity );
+                                echo '<option value="'. $capacity .'" '. selected( $capacity, $selected_capacity, false ) .'>'. $capacity .'</option>';
+                            }
+                            echo '<select>';
+                        }?>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
                     <div class="form-group">
                         <?php wp_dropdown_categories( array(
                             'taxonomy'  => 'venue-category',

@@ -55,14 +55,18 @@ if ( ! class_exists( 'ATU_Admin_Post' ) ) {
             /* OK, it's safe for us to save the data now. */
 
             // Make sure that it is set.
-            if ( ! isset( $_POST['city'] ) ) {
-                return;
-            }
+//            if ( ! isset( $_POST['city'] ) ) {
+//                return;
+//            }
 
 
             $city = $_POST['city'];
+            $post_code = $_POST['post_code'];
+            $capacity = $_POST['capacity'];
 
             update_post_meta( $post_id, 'city', $city );
+            update_post_meta( $post_id, 'post_code', $post_code );
+            update_post_meta( $post_id, 'capacity', $capacity );
 
 
 
@@ -76,7 +80,7 @@ if ( ! class_exists( 'ATU_Admin_Post' ) ) {
 
                 add_meta_box(
                     'wepn_sectionid',
-                    __( 'City', 'wepn' ),
+                    __( 'City/Post code/Capacity', 'wepn' ),
                     array( $this, 'wepn_meta_box_callback' ),
                     $screen
                 );
@@ -88,6 +92,9 @@ if ( ! class_exists( 'ATU_Admin_Post' ) ) {
             wp_nonce_field( 'wepn_save_meta_box_data', 'wepn_meta_box_nonce' );
 
             $city = get_post_meta( $post->ID, 'city', true );
+            $selected_post_code = get_post_meta( $post->ID, 'post_code', true );
+            $selected_capacity = get_post_meta( $post->ID, 'capacity', true );
+
             ?>
             <table class="form-table">
                 <tr>
@@ -101,6 +108,48 @@ if ( ! class_exists( 'ATU_Admin_Post' ) ) {
                                 $label = esc_html(get_sub_field('city_label'));
 
                                 echo '<option value="'. $name .'" '. selected( $name, $city, false ) .'>'. $label .'</option>';
+                            }
+                            echo '<select>';
+                        }?>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th><label for="">Post Code</label></th>
+                    <td>
+                        <?php
+                            $post_codes = get_field( 'post_codes', 'option' );
+
+                            $post_codes_array = explode( "\r\n", $post_codes );
+
+
+
+                            if ( count( $post_codes_array ) != 0 ) {
+                            echo '<select name="post_code">';
+                            foreach ( $post_codes_array as $post_code ) {
+                                $post_code = wp_strip_all_tags( $post_code );
+                                echo '<option value="'. $post_code .'" '. selected( $post_code, $selected_post_code, false ) .'>'. $post_code .'</option>';
+                            }
+                            echo '<select>';
+                        }?>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th><label for="">Capacity</label></th>
+                    <td>
+                        <?php
+                        $capacities = get_field( 'capacity', 'option' );
+
+                        $capacities_array = explode( "\r\n", $capacities );
+
+
+
+                        if ( count( $capacities_array ) != 0 ) {
+                            echo '<select name="capacity">';
+                            foreach ( $capacities_array as $capacity ) {
+                                $capacity = wp_strip_all_tags( $capacity );
+                                echo '<option value="'. $capacity .'" '. selected( $capacity, $selected_capacity, false ) .'>'. $capacity .'</option>';
                             }
                             echo '<select>';
                         }?>
