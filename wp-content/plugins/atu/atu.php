@@ -214,23 +214,7 @@ class ATU {
     }
 
 
-    public function atu_region_list() {
 
-        $region_field = get_field_object('field_559d2588b58b5');
-
-        if ( $region_field ):
-
-            echo '<div class="widget widget-aside widget-list">';
-            echo '<div class="widget-header">Venue Regions</div>';
-            echo '<ul class="list">';
-            foreach( $region_field['choices'] as $key => $value ):
-                echo '<li><a href="'. home_url() .'/?s=&ft=region&region='.  urlencode( $key ) .'&post_type=venue">'. $value .'</a></li>';
-            endforeach;
-            echo '</ul>';
-            echo '</div>';
-
-        endif;
-    }
 
 
     public function atu_advance_search( $query ) {
@@ -305,7 +289,7 @@ class ATU {
 
     public function atu_vendor_search_form() {
         ?>
-        <form action="<?php echo get_permalink( get_page_by_path( 'vendors' ) ); ?>" class="form">
+        <form action="<?php echo home_url( '/' ); ?>" class="form">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -320,6 +304,7 @@ class ATU {
                     </div>
                 </div>
                 <div class="col-md-3">
+                    <input type="hidden" name="post_type" value="vendors">
                     <button class="btn btn-secondary btn-block" ><?php _e( 'Search Vendor', 'atu' ); ?></button>
                 </div>
             </div>
