@@ -29,7 +29,7 @@ get_header();
                         /**
                          * Find Venue form
                          */
-                        do_action( 'atu_venue_search_form' ); ?>
+                        do_action( 'wepn_venue_search_form' ); ?>
                     </div>
                     <div class="page-content">
                         <div class="post post-block">
@@ -76,7 +76,7 @@ get_header();
                                 ?>
                             </div>
                         </div>
-                        <?php  do_action( 'atu_pagination' ); ?>
+                        <?php  do_action( 'wepn_pagination' ); ?>
                     </div>
                 </div>
             </div>

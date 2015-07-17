@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-<div class="section section-banner banner" style="background: url('<?php ATU_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>') no-repeat">
+<div class="section section-banner banner" style="background: url('<?php WEPN_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>') no-repeat">
 	<div class="banner-content">
 		<div class="banner-actions">
 			<h1 class="t-md t-title">
@@ -20,7 +20,7 @@ get_header(); ?>
             <form method="get">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <?php ATU_Helper::dropwdown_cities(); ?>
+                        <?php WEPN_Helper::dropwdown_cities(); ?>
                     </div>
                 </div>
                 <div class="actions">

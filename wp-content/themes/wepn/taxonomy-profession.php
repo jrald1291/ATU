@@ -3,13 +3,13 @@
 get_header(); ?>
 
 
-<div class="l-content-bg" style="background: url('<?php ATU_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>') no-repeat">
+<div class="l-content-bg" style="background: url('<?php WEPN_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>') no-repeat">
     <div class="container">
         <div class="row">
             <div class="col-md-9">
                 <div class="l-content-container">
                     <div class="page-header">
-                        <?php do_action( 'atu_vendor_search_form' ); ?>
+                        <?php do_action( 'wepn_vendor_search_form' ); ?>
                     </div>
                     <div class="page-content">
 
@@ -34,7 +34,7 @@ get_header(); ?>
                 <aside class="l-sidebar">
                     <div class="widget widget-aside widget-list">
                         <div class="widget-header">Supplier Types</div>
-                        <?php ATU_Helper::list_vendor_category(); ?>
+                        <?php WEPN_Helper::list_vendor_category(); ?>
                     </div>
                     <div class="widget widget-aside well-widget">
                         <div class="form form-labeled">

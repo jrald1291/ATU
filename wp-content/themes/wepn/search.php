@@ -4,7 +4,7 @@
 ?>
 
 
-<div class="l-content-bg" style="background: url('<?php ATU_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>') no-repeat">
+<div class="l-content-bg" style="background: url('<?php WEPN_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>') no-repeat">
     <div class="container">
         <div class="row">
             <div class="col-md-9">

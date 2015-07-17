@@ -14,12 +14,12 @@
 
 get_header();
 
-$user_id = get_post_meta( get_the_ID(), 'vendor', true );
+$user = get_user_by( 'login', get_query_var( 'username' ) );
 
 
 
 
-$user_info = get_userdata( $user_id );
+$user_info = get_userdata( $user->ID );
 
 ?>
 
@@ -37,12 +37,12 @@ $user_info = get_userdata( $user_id );
                         </div>
                         <div class="slider mb-20">
                             <div class="slider-single slider-capt flexslider mb-0">
-                                <?php if ( have_rows( 'gallery', 'user_'. $user_id ) ): ?>
+                                <?php if ( have_rows( 'gallery', 'user_'. $user->ID ) ): ?>
                                     <ul class="slides">
 
                                         <?php
                                         $i = 1;
-                                        while( have_rows( 'gallery', 'user_'. $user_id ) ): the_row(); ?>
+                                        while( have_rows( 'gallery', 'user_'. $user->ID ) ): the_row(); ?>
 
                                             <li>
                                                 <?php
@@ -53,7 +53,7 @@ $user_info = get_userdata( $user_id );
                                                 ?>
                                             </li>
 
-                                            <?php
+                                        <?php
                                             if ( $i++ == 5 )
                                                 break;
                                         endwhile; reset_rows();?>
@@ -82,11 +82,11 @@ $user_info = get_userdata( $user_id );
                                 <div role="tabpanel" class="tab-pane" id="gallery">
                                     <div id="grid-gallery" class="grid-gallery">
                                         <section class="grid-wrap">
-                                            <?php if ( have_rows( 'gallery', 'user_'. $user_id ) ): ?>
+                                            <?php if ( have_rows( 'gallery', 'user_'. $user->ID ) ): ?>
                                                 <ul class="grid">
                                                     <li class="grid-sizer"></li><!-- for Masonry column width -->
 
-                                                    <?php while( have_rows( 'gallery', 'user_'. $user_id ) ): the_row();?>
+                                                    <?php while( have_rows( 'gallery', 'user_'. $user->ID ) ): the_row();?>
 
                                                         <li>
                                                             <figure>
@@ -111,7 +111,7 @@ $user_info = get_userdata( $user_id );
                                         </section><!-- // grid-wrap -->
                                         <section class="slideshow">
                                             <ul>
-                                                <?php while( have_rows( 'gallery', 'user_'. $user_id ) ): the_row();?>
+                                                <?php while( have_rows( 'gallery', 'user_'. $user->ID ) ): the_row();?>
 
                                                     <li>
                                                         <figure>
@@ -138,9 +138,9 @@ $user_info = get_userdata( $user_id );
                                     <?php echo $user_info->youtube_iframe; ?>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="offers">
-                                    <?php if ( have_rows( 'special_offer', 'user_'. $user_id ) ): ?>
+                                    <?php if ( have_rows( 'special_offer', 'user_'. $user->ID ) ): ?>
                                         <ul class="post-inline post-member mb-20">
-                                            <?php while( have_rows( 'special_offer', 'user_'. $user_id ) ):the_row();  ?>
+                                            <?php while( have_rows( 'special_offer', 'user_'. $user->ID ) ):the_row();  ?>
                                                 <li class="post-item">
                                                     <div class="post-img well-img">
                                                         <img src="<?php echo get_template_directory_uri() ?>/images/placeholders/pdf.jpg" alt="">
@@ -187,7 +187,7 @@ $user_info = get_userdata( $user_id );
                     </div>
                     <div class="widget widget-aside widget-list">
                         <div class="widget-list_logo">
-                            <?php echo wp_get_attachment_image( $user_info->company_logo,  'medium' ); ?>
+                            <?php echo wp_get_attachment_image( $user_info->company_logo, 'medium' ); ?>
                         </div>
                         <div class="widget-header">Florist and Stylist</div>
                         <ul class="list">
@@ -199,7 +199,7 @@ $user_info = get_userdata( $user_id );
 
                     </div>
                     <div class="widget widget-aside">
-                        <a href="<?php echo get_permalink( get_page_by_title( 'Contact' ))."?contact_id=".$user_id;?>" class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Vendor</a>
+                        <a href="<?php echo get_permalink( get_page_by_title( 'Contact' ))."?contact_id=".$user->ID;?>" class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Vendor</a>
                     </div>
                     <div class="widget widget-aside">
                         <a href="<?php echo $user_info->user_url; ?>" target="_blank" class="btn btn-sm btn-block btn-secondary"><span class="fa icon-l-sm fa-globe"></span>Visit website</a>
@@ -216,52 +216,34 @@ $user_info = get_userdata( $user_id );
             </div>
         </div>
     </div>
+    <?php
+
+    $prev_user = WEPN_Helper::get_prev_user( $user->ID );
+    $prev_user = $prev_user ? $prev_user : $user;
+
+    $prev_company = get_user_meta( $prev_user->ID, 'company_name', true );
+
+    $next_user = WEPN_Helper::get_next_user( $user->ID );
+    $next_user = $next_user ? $next_user : $user;
+
+    $next_company = get_user_meta( $next_user->ID, 'company_name', true );
+    ?>
     <div class="pagination-single">
         <ul>
-            <li class="next">
-                <?php $nepo = get_next_post();
-                if ($nepo) {
-                    $nepoid = $nepo->ID;
-
-                    $next_user_id = get_post_meta( $nepoid, 'vendor', true );?>
-
-                    <a href="<?php echo get_permalink( $nepoid ); ?>">
-                        <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
-                        <span><?php echo get_user_meta( $next_user_id, 'company_name', true)?></span>
-                    </a>
-
-                <?php } else {?>
-                    <div class="disabled">
-                        <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
-                        <span>No previous post</span>
-                    </div>
-                <?php } ?>
+            <li class="prev">
+                <a href="<?php echo home_url('/vendor/') . $prev_user->user_login; ?>">
+                    <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
+                    <span><?php echo get_user_meta( $prev_user->ID, 'company_name', true ); ?></span>
+                </a>
             </li>
             <li class="back">
-                <a href="<?php echo get_post_type_archive_link( 'vendors' );  ?>">back to Vendors Listing</a>
+                <a href="<?php echo home_url('/vendors'); ?>">back to vendors listing</a>
             </li>
-            <li class="prev">
-                <?php $prepo = get_previous_post();
-
-                if ( $prepo ) {
-
-                    $prepoid = $prepo->ID;
-                    $prev_user_id = get_post_meta( $prepoid, 'vendor', true );
-                    ?>
-                    <a href="<?php echo get_permalink( $prepoid ); ?>">
-                        <span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
-                        <span><?php echo get_user_meta( $prev_user_id, 'company_name', true)?></span>
-                    </a>
-
-                <?php }else{?>
-
-                    <div class="disabled">
-                        <span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
-                        <span>No Next post</span>
-                    </div>
-
-                <?php } ?>
-
+            <li class="next">
+                <a href="<?php echo home_url('/vendor/') . $next_user->user_login; ?>">
+                    <span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
+                    <span><?php echo $next_company; ?></span>
+                </a>
             </li>
         </ul>
     </div>

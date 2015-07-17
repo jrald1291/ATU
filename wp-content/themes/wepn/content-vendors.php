@@ -58,6 +58,6 @@
         ?>
     </div>
 </div>
-<?php  do_action( 'atu_pagination' ); ?>
+<?php  do_action( 'wepn_pagination' ); ?>
 
 

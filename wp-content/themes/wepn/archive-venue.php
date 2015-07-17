@@ -19,7 +19,7 @@
 get_header();?>
 
 
-<div class="l-content-bg" style="background: url('<?php ATU_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>') no-repeat">
+<div class="l-content-bg" style="background: url('<?php WEPN_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>') no-repeat">
     <div class="container">
         <div class="row">
             <div class="col-md-9">
@@ -29,7 +29,7 @@ get_header();?>
                         /**
                          * Find Venue form
                          */
-                        do_action( 'atu_venue_search_form' ); ?>
+                        do_action( 'wepn_venue_search_form' ); ?>
                     </div>
                     <div class="page-content">
                         <div class="post post-block">
@@ -76,7 +76,7 @@ get_header();?>
                                 ?>
                             </div>
                         </div>
-                        <?php  do_action( 'atu_pagination' ); ?>
+                        <?php  do_action( 'wepn_pagination' ); ?>
                     </div>
                 </div>
             </div>
