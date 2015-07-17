@@ -65,6 +65,7 @@ if ( !class_exists('ATU_Admin_Users') ) {
          */
         public function my_save_user_region_group_category( $user_id ) {
             $region = $_POST['region'];
+            $city = $_POST['city'];
             $group = explode( '::', $_POST['group'] );
             $category = $_POST['category'];
             $company_name = $_POST['company_name'];
@@ -119,6 +120,7 @@ if ( !class_exists('ATU_Admin_Users') ) {
             update_post_meta( $company_id, 'custom_permalink', $region.'/'.$group_slug.'/'. $category_slug .'/'. sanitize_title($company_name) );
 
             update_user_meta( $user_id, 'region', $region );
+            update_user_meta( $user_id, 'city', $city );
             update_user_meta( $user_id, 'group', $group_slug );
             update_user_meta( $user_id, 'category', $category_slug );
 
@@ -140,6 +142,7 @@ if ( !class_exists('ATU_Admin_Users') ) {
 
 
             $region = get_user_meta( $user->ID, 'region', true );
+            $city = get_user_meta( $user->ID, 'city', true );
             $group  = get_user_meta( $user->ID, 'group', true );
             $category = get_user_meta( $user->ID, 'category', true );
 
@@ -166,7 +169,17 @@ if ( !class_exists('ATU_Admin_Users') ) {
                                 echo '<option value="'. $name .'" '. selected( $name, $region, false ) .'>'. $label .'</option>';
                             }
                             echo '<select>';
+
                         }?>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="">Select City</label></th>
+                    <td>
+
+                        <select name="city">
+                        <?php ATU_Helper::get_city_by_region(0, $city);  ?>
+                            </select>
                     </td>
                 </tr>
                 <tr>
@@ -211,6 +224,25 @@ if ( !class_exists('ATU_Admin_Users') ) {
 
 
             </table>
+
+            <script>
+                (function($) {
+                    var B = $('body');
+                    B.on('change', 'select[name=region]', function(e) {
+                        e.preventDefault();
+
+                        $('<span class="spinner city-spinner">').insertAfter(this).css({visibility: 'visible', float: 'none'});
+
+                        var i = parseInt($('option:selected', this).index());
+
+                        $.post(ajaxurl, {action: 'get-region-cities', index: i}).done(function(results) {
+                            $('select[name=city]').html(results);
+                            $('.city-spinner').remove();
+                        });
+
+                    });
+                })(jQuery)
+            </script>
         <?php }
 
 

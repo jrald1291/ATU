@@ -26,6 +26,23 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
             return $username;
         }
 
+
+        public static function get_city_by_region( $region_index = 0, $selected = '' ) {
+            $selected = isset( $_REQUEST['city'] ) ? $_REQUEST['city'] : $selected;
+            $total_cities = intval( get_option( 'options_regions_'. $region_index .'_cities' ) );
+
+            if ( $total_cities > 0 ) {
+
+                for ( $i = 0; $i < $total_cities; $i++ ) {
+                    $label = get_option( 'options_regions_'. $region_index .'_cities_'. $i .'_city_name' );
+
+                    echo '<option value="'. $label .'" '. selected( $label, $selected, false ) .'>'. $label .'</option>';
+                }
+
+            }
+
+        }
+
         public static function pagination( $total_pages, $page ) {
 
             $current_url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; //add_query_arg( $wp->query_string, '', home_url( $wp->request ) );

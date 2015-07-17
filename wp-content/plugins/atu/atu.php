@@ -165,8 +165,16 @@ class ATU {
         add_action( 'atu_venue_region_list', array( $this, 'atu_region_list' ) );
 
         add_filter('template_include', array( $this, 'template_chooser' ) );
+
+
+        add_action('wp_ajax_get-region-cities', array( $this, 'get_region_cities' ) );
     }
 
+    public function get_region_cities() {
+
+        $index = isset( $_POST['index'] ) ? $_POST['index'] : 0;
+        exit( ATU_Helper::get_city_by_region( $index ) );
+    }
 
     public function template_chooser($template)
     {
