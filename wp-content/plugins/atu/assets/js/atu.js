@@ -15,9 +15,12 @@
     };
 
     D.ready(function() {
-            var val = $('select#filterType').val();
-            var $postcode = $('#venueSearchForm select[name=post_code]');
-            var $region = $('#venueSearchForm select[name=region]');
+
+        var B = $('body');
+
+        var val = $('select#filterType').val();
+        var $postcode = $('#venueSearchForm select[name=post_code]');
+        var $region = $('#venueSearchForm select[name=region]');
         if ( val == 'post_code' ) {
                 $postcode.removeClass('hidden').removeAttr('disabled');
                 $postcode.parent('.form-group').parent('.col-md-2').removeClass('hidden');
@@ -33,7 +36,7 @@
                 $postcode.addClass('hidden').attr('disabled', true);
             }
 
-        $('body').on('change', 'select#filterType', function() {
+        B.on('change', 'select#filterType', function() {
              val = $(this).val();
              $postcode = $('select[name=post_code]');
              $region = $('select[name=region]');
@@ -56,7 +59,7 @@
 
 
 
-        $('body').on('submit', 'form#vendorSearchForm, form#venueSearchForm', function(e) {
+        B.on('submit', 'form#vendorSearchForm, form#venueSearchForm', function(e) {
             e.preventDefault();
 
 
@@ -78,6 +81,21 @@
         });
 
 
+
+
+        //B.on('change', 'select[name=region]', function(e) {
+        //    e.preventDefault();
+        //
+        //    $('<span class="spinner city-spinner">').insertAfter(this).css({visibility: 'visible', float: 'none'});
+        //
+        //    var i = parseInt($('option:selected', this).index());
+        //
+        //    $.post(ajaxurl, {action: 'get-region-cities', index: i}).done(function(results) {
+        //        $('select[name=city]').html(results);
+        //        $('.city-spinner').remove();
+        //    });
+        //
+        //});
 
 
 

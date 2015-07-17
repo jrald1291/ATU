@@ -242,9 +242,10 @@ class ATU {
 
     public function websmart_search_join( $join ) {
         global $wpdb;
-        if( is_search() && !is_admin() && isset( $_GET['ft'] ) && ! empty( $_GET['ft'] ) ) {
+        $join .= " LEFT JOIN $wpdb->postmeta AS m ON ($wpdb->posts.ID = m.post_id) ";
+        /*if( is_search() && !is_admin() && isset( $_GET['ft'] ) && ! empty( $_GET['ft'] ) ) {
             $join .= " LEFT JOIN $wpdb->postmeta AS m ON ($wpdb->posts.ID = m.post_id) ";
-        }
+        }*/
         return $join;
     }
 
@@ -265,10 +266,14 @@ class ATU {
             elseif (isset($_GET['region']))
                 $ft_value = $_GET['region'];
 
-
-
-
             $where .= " AND ( m.meta_key = '{$_GET['ft']}' AND m.meta_value='{$ft_value}' ) ";
+        }
+
+
+
+
+        if ( isset( $_GET['city'] ) && ! empty( $_GET['city'] ) ) {
+            $where .= " AND ( m.meta_key = 'city' AND m.meta_value='". esc_attr($_GET['city']) ."' ) ";
         }
 
 
@@ -294,7 +299,6 @@ class ATU {
                         <?php ATU_Helper::dropwdown_region(); ?>
                     </div>
                 </div>
-
 
                 <div class="col-md-4">
                     <div class="form-group">
