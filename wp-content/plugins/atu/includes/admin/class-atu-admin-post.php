@@ -189,7 +189,7 @@ if ( ! class_exists( 'ATU_Admin_Post' ) ) {
                     'show_ui'            => true,
                     'show_in_menu'       => true,
                     'query_var'          => true,
-                    'rewrite'            => array( 'slug' => 'venue' ),
+                    'rewrite'            => array( 'slug' => 'venue', 'with_front' => false ),
                     'capability_type'    => 'post',
                     'has_archive'        => true,
                     'hierarchical'       => false,
