@@ -27,8 +27,9 @@
 }
 
 #nav-primary .cbp-tm-show .sub-menu {
-	width: 16em;
+	width: auto;
 	left: 50%;
+	min-width: 200px;
 	margin: 0 0 0 -8em;
 	opacity: 1;
 	visibility: visible;
@@ -108,6 +109,7 @@ the right position for the arrow
 }
 
 #nav-primary .sub-menu > li > a {
+	white-space: nowrap;
 	padding: 5px 2.3em 5px 0.6em; /* top/bottom paddings in 'em' cause a tiny "jump" in Chrome on Win */
 	display: block;
 	font-size: 1.2em;
