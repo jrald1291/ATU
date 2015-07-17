@@ -107,15 +107,15 @@
 <div class="modal fade in form-subscribe" id="EventSubscribe" tabindex="-1" role="dialog" aria-labelledby="EventSubscribe">
   <div class="modal-dialog modal-lg">
 	  <div class="modal-content">
-	  		  <div class="modal-header t-normal">Search for Venue</div>
+	  		  <div class="modal-header t-normal">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        		<h3 class="modal-title t-title text-center">Subscribe to our Newsletter</h3>
+	  		  </div>
 			  <div class="modal-body">
 		      	<div class="form form-labeled">
 					<?php echo do_shortcode('[mc4wp_form]'); ?>
 		        </div>
 			  </div>
-				<div class="modal-footer">
-	   			<button class="btn btn-primary btn-block" class="btn btn-default" data-dismiss="modal">Close</button>
-	   		</div>
 	   </div>
   </div>
 </div>
@@ -136,8 +136,18 @@
 </script>
 
 <?php wp_footer(); ?>
+<?php 
+	session_start(); 
+	if (!isset($_SESSION['visisted'])) {
+	  $_SESSION['visisted'] = 0;
+	} else {
+	  echo $_SESSION['visisted']++;
+	}
+?>
 <script type="text/javascript">
-	$('#EventSubscribe').modal('show');
+	<?php if ($_SESSION['visisted'] == 0) { ?>
+		$('#EventSubscribe').modal('show');
+	<?php } ?>
 </script>
 </body>
 

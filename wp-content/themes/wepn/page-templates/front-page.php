@@ -18,11 +18,7 @@ get_header(); ?>
 				<?php endif ?>
 			</h1>
             <form method="get">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <?php ATU_Helper::dropwdown_cities(); ?>
-                    </div>
-                </div>
+                <?php ATU_Helper::dropwdown_cities(); ?>
                 <div class="actions">
                     <input type="hidden" name="s" value="" />
                     <button type="submit" name="post_type" value="vendor" class="btn btn-wooden btn-lg">Search for Vendor</button>
