@@ -280,7 +280,7 @@ class ATU {
         ?>
 
         <form id="vendorSearchForm" action="<?php echo home_url( '/' ); ?>" class="form">
-            <div class="row">
+            <div class="row row-sm">
                 <div class="col-md-3">
                     <div class="form-group">
                     <input type="text" name="s" value="<?php echo isset( $_GET['s'] ) ? $_GET['s'] : ''; ?>" class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
@@ -299,17 +299,17 @@ class ATU {
                     </div>
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="form-group">
                             <?php ATU_Helper::dropwdown_vendor_category(array(
                                 'selected' => isset( $_REQUEST['category'] ) ? $_REQUEST['category'] : ''
                             )); ?>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
 
                     <input type="hidden" name="post_type" value="vendor">
-                    <button class="btn btn-secondary btn-block" ><?php _e( 'Search Vendor', 'atu' ); ?></button>
+                    <button class="btn btn-secondary btn-block" ><?php _e( 'Search', 'atu' ); ?></button>
                 </div>
             </div>
         </form>

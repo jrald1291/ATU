@@ -190,7 +190,7 @@
 
 					      <?php if(!of_get_option('logo_uploader', '')){?>
 
-			                <img src="<?php echo get_template_directory_uri() ?>/images/logo.png" alt="">
+			                <img src="<?php echo get_template_directory_uri() ?>/images/logo-sm.png" alt="">
 
 			              <?php }else{ ?>
 
