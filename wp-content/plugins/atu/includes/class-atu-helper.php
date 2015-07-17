@@ -96,18 +96,37 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
         }
 
 
+        public static function dropwdown_region(  ) {
 
+            $selected = isset( $_REQUEST['region'] ) ? $_REQUEST['region'] : '';
+            if ( have_rows( 'regions', 'option' ) ) {
+                echo '<select name="region" class="form-control">';
+                echo '<option value="" '. selected( '', $selected, false ) .'>-- Region --</option>';
+                while ( have_rows( 'regions', 'option' ) ) {
+                    the_row();
+                    $name = sanitize_title(get_sub_field('region_name'));
+                    $label = esc_html(get_sub_field('region_label'));
+
+                    echo '<option value="'. $name .'" '. selected( $name, $selected, false ) .'>'. $label .'</option>';
+                }
+                echo '<select>';
+            }
+
+
+
+        }
 
         public static function dropwdown_vendor_category( $args = array() ) {
 
             $selected = isset( $_REQUEST['category'] ) ? $_REQUEST['category'] : '';
             if ( have_rows( 'vendors_categories', 'option' ) ) {
                 echo '<select name="category" class="form-control">';
+                echo '<option value="" '. selected( '', $selected, false ) .'>-- Category --</option>';
                 while ( have_rows( 'vendors_categories', 'option' ) ) {
                     the_row();
                     $label = esc_html(get_sub_field('category_name'));
 
-                    echo '<option value="'. sanitize_title( $label ) .'" '. selected( sanitize_title( $label ), sanitize_title( $selected ), false ) .'>'. $label .'</option>';
+                    echo '<option value="'. sanitize_title( $label ) .'" '. selected( sanitize_title( $label ), $selected, false ) .'>'. $label .'</option>';
                 }
                 echo '</select>';
             }
@@ -191,68 +210,6 @@ if ( ! class_exists( 'ATU_Helper' ) ) {
             echo $return_string;
         }
 
-        /** ToDO: Remove this method
 
-        public static function dropwdown_vendor_category( $args = array() ) {
-
-            $options = wp_parse_args( $args, array(
-                'echo' => true,
-                'selected' => ''
-            ) );
-
-            extract( $options );
-
-
-
-            $terms = get_terms( 'profession', array( 'hide_empty' => false ) );
-
-            $return_string = '';
-            if ( ! empty( $terms ) ) {
-
-                $return_string .= '<select name="profession" class="form-control">';
-                $return_string .= '<option value="">' . __( 'Vendor Category', 'atu' ) . '</option>';
-                foreach ( $terms as $term ) {
-
-                    $return_string .= '<option value="'. $term->slug .'" '. selected( $selected, $term->slug, false ) .'>' . $term->name . '</option>';
-                }
-                $return_string .= '</select>';
-            }
-
-            if ( ! $echo )
-                return $return_string;
-
-            echo $return_string;
-        }
-
-        public static function list_vendor_category( $args = array() ) {
-            $options = wp_parse_args( $args, array(
-                'echo' => true,
-            ) );
-
-            extract( $options );
-
-            $terms = get_terms( 'profession', array( 'hide_empty' => false ) );
-
-            $return_string = '';
-            if ( ! empty( $terms ) ) {
-
-
-                $return_string .= '<ul class="list">';
-                foreach ( $terms as $term ) {
-
-                    $return_string .= '<li><a href="'. get_term_link( $term->slug, 'profession' ) .'">' . $term->name . '</a></li>';
-
-                    //$return_string .= '<option value="'. $term->slug .'">' . $term->name . '</option>';
-                }
-
-                $return_string .= '</ul>';
-            }
-
-            if ( ! $echo )
-                return $return_string;
-
-            echo $return_string;
-        }
-        */
     }
 }

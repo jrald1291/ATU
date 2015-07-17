@@ -64,6 +64,11 @@ function optionsframework_options() {
 		'id' => 'logo_uploader',
 		'type' => 'upload');
 	$options[] = array(
+		'name' => __('Footer Logo', 'options_framework_theme'),
+		'desc' => __('Upload your logo image( size must be 220 x 100) or smaller', 'options_framework_theme'),
+		'id' => 'footer_logo',
+		'type' => 'upload');
+	$options[] = array(
 		'name' => __('Email', 'options_framework_theme'),
 		'desc' => __('Enter Email address', 'options_framework_theme'),
 		'id' => 'email',

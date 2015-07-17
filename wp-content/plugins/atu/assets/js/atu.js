@@ -16,8 +16,8 @@
 
     D.ready(function() {
             var val = $('select#filterType').val();
-            var $postcode = $('select[name=post_code]');
-            var $region = $('select[name=region]');
+            var $postcode = $('#venueSearchForm select[name=post_code]');
+            var $region = $('#venueSearchForm select[name=region]');
         if ( val == 'post_code' ) {
                 $postcode.removeClass('hidden').removeAttr('disabled');
                 $postcode.parent('.form-group').parent('.col-md-2').removeClass('hidden');
@@ -52,6 +52,35 @@
                 $postcode.addClass('hidden').attr('disabled', true);
             }
         });
+
+
+
+
+        $('body').on('submit', 'form#vendorSearchForm, form#venueSearchForm', function(e) {
+            e.preventDefault();
+
+
+            $(".page-content").append( '<div id="loader-overlay"><span class="loading"></span></div>' );
+
+
+            var url = $(this).attr('action');
+
+            var params = $(this).serialize();
+
+            $.get(url, params,function(data){
+                if(data.length>0){
+
+
+                    $(".page-content").html( $(data).find('.page-content').html() );
+                }
+            });
+
+        });
+
+
+
+
+
 
 
     });

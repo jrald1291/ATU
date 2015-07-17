@@ -18,7 +18,7 @@ get_header(); ?>
 				<?php endif ?>
 			</h1>
 			<div class="actions">
-				<a href="<?php echo get_permalink( get_page_by_title( 'Vendors' ))?>" class="btn btn-wooden btn-lg">Search for Vendor</a>
+				<a href="<?php echo home_url('/vendors'); ?>" class="btn btn-wooden btn-lg">Search for Vendor</a>
 				<a href="<?php echo home_url('/venue'); ?>" class="btn btn-wooden btn-lg">Search for Venue</a>
 			</div>
 		</div>
@@ -104,7 +104,7 @@ get_header(); ?>
                 /**
                  * Get latest vendors
                  */
-                $wp_venue_query = new WP_Query( array( 'post_type' => 'vendor', 'orderby' => 'date', 'order' => 'desc', 'post_status' => 'publish', 'posts_per_page' =>5 ) );
+                $wp_venue_query = new WP_Query( array( 'post_type' => 'vendor', 'orderby' => 'date', 'order' => 'desc', 'post_status' => 'publish', 'posts_per_page' =>4 ) );
 
 
                 if ( $wp_venue_query->have_posts(  ) ): ?>

@@ -446,3 +446,59 @@ require get_template_directory() . '/inc/taxonomies.php';
 
 
 
+function multiple_category_post_link($url = '')
+{
+    // check permalink structure for the required construct; /%category%/%postname%/
+    if (strrpos(get_option('permalink_structure'), '%category%/%postname%') !== false)
+    {
+        // get the current post
+        global $post, $wp_query;
+
+        // prepare variables for use below
+        $post_id = $cat_id = 0;
+        $new_url = '';
+
+        // for categories
+        if (is_category())
+        {
+            // remember current category and post
+            $cat_id = get_query_var('cat');
+            $post_id = $post->ID;
+
+            // add the post slug to the current url
+            $new_url = $_SERVER['REQUEST_URI'] . $post->post_name;
+        }
+
+        // for single posts
+        else if (is_single())
+        {
+            // last part in the 'category_name' should be the slug for the current category
+            $cat_slug = array_pop(explode('/', get_query_var('category_name')));
+            $cat = get_category_by_slug($cat_slug);
+
+            // remember current category and post
+            $post_id = $wp_query->post->ID;
+            if ($cat) $cat_id = $cat->cat_ID;
+
+            // replace the slug of the post being viewed by the slug of $post
+            $new_url = str_replace('/' . get_query_var('name'), '', $_SERVER['REQUEST_URI']) . $post->post_name;
+        }
+
+        if ($post_id > 0 && $cat_id > 0 && !empty($new_url))
+        {
+            // make sure categories match!
+            foreach(get_the_category($post_id) as $cat)
+            {
+                if ($cat->cat_ID == $cat_id)
+                {
+                    $url = $new_url;
+                    break;
+                }
+            }
+        }
+    }
+
+    // always return an url!
+    return $url;
+}
+//add_filter('post_link', 'multiple_category_post_link');
