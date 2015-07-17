@@ -91,6 +91,7 @@
 	</div>
 	<div class="widget widget-aside well-widget">
 		<div class="form form-labeled">
+            <div class="well-header">Subscribe to our Newsletter</div>
 			<?php echo do_shortcode('[mc4wp_form]'); ?>
         </div>
 	</div>

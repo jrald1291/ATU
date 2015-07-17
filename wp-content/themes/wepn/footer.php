@@ -104,6 +104,22 @@
 	</footer>
 </div>
 
+<div class="modal fade in form-subscribe" id="EventSubscribe" tabindex="-1" role="dialog" aria-labelledby="EventSubscribe">
+  <div class="modal-dialog modal-lg">
+	  <div class="modal-content">
+	  		  <div class="modal-header t-normal">Search for Venue</div>
+			  <div class="modal-body">
+		      	<div class="form form-labeled">
+					<?php echo do_shortcode('[mc4wp_form]'); ?>
+		        </div>
+			  </div>
+				<div class="modal-footer">
+	   			<button class="btn btn-primary btn-block" class="btn btn-default" data-dismiss="modal">Close</button>
+	   		</div>
+	   </div>
+  </div>
+</div>
+
 
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -120,7 +136,9 @@
 </script>
 
 <?php wp_footer(); ?>
-
+<script type="text/javascript">
+	$('#EventSubscribe').modal('show');
+</script>
 </body>
 
 
