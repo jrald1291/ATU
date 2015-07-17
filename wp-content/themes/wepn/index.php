@@ -32,10 +32,10 @@ get_header(); ?>
 					<div class="page-header">
 						<div class="row">
 							<div class="col-md-6">
-								<button class="btn btn-secondary btn-block" data-toggle="modal" data-target=".form-venue">Find Venue</button>
+								<a href="<?php echo get_home_url().'/venue/';?>" class="btn btn-secondary btn-block">Find Venue</a>
 							</div>
 							<div class="col-md-6">
-								<button class="btn btn-secondary btn-block" data-toggle="modal" data-target=".form-vendor">Find Supplier</button>
+								<a href="<?php echo get_home_url().'/suppliers/';?>" class="btn btn-secondary btn-block">Find Venue</a>
 							</div>
 						</div>	
 					</div>
