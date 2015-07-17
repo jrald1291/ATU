@@ -25,7 +25,7 @@ get_header(); ?>
                 </div>
                 <div class="actions">
                     <input type="hidden" name="s" value="" />
-                    <button type="submit" name="post_type" value="vendor" class="btn btn-wooden btn-lg">Search for Vendor</button>
+                    <button type="submit" name="post_type" value="vendor" class="btn btn-wooden btn-lg">Search for Supplier</button>
                     <button type="submit" name="post_type" value="venue"  class="btn btn-wooden btn-lg">Search for Venue</button>
                 </div>
             </form>

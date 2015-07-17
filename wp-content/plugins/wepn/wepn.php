@@ -359,7 +359,7 @@ class WEPN {
 
 
 
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="form-group">
                         <?php WEPN_Helper::dropwdown_cities(); ?>
                     </div>
