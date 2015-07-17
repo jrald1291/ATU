@@ -300,7 +300,15 @@ class ATU {
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <select name="city" class="form-control">
+                            <?php ATU_Helper::get_city_by_region(0, isset( $_GET['city'] ) ?  $_GET['city']  : ''  );  ?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
                     <div class="form-group">
                             <?php ATU_Helper::dropwdown_vendor_category(array(
                                 'selected' => isset( $_REQUEST['category'] ) ? $_REQUEST['category'] : ''
