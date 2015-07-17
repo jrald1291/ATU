@@ -120,7 +120,6 @@ get_header(); ?>
 		document.getElementById("user_email").value = "<?php echo $user_info->user_email; ?>";
   		document.getElementById("company_name").value = "<?php echo $user_info->company_name ?>";
 	<?php } ?>
-  
 </script>
 <?php get_footer(); ?>
 
