@@ -157,7 +157,7 @@ function optionsframework_options() {
 		'id' => 'banner',
 		'type' => 'upload');
 	$options[] = array(
-		'name' => __('Home Slider Intro Text', 'options_framework_theme'),
+		'name' => __('Home Banner Intro Text', 'options_framework_theme'),
 		'desc' => __('Banner intro text', 'options_framework_theme'),
 		'id' => 'intro',
 		'std' => '',
