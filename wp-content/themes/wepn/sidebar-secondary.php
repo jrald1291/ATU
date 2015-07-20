@@ -1,6 +1,6 @@
 <aside class="l-sidebar">
 	<div class="widget widget-aside widget-post">
-        <div class="widget-header"><?php _e( 'Latest Vendor', 'atu'); ?></div>
+        <div class="widget-header"><?php _e( 'Latest Suppliers', 'atu'); ?></div>
 
         <?php
         /**
@@ -42,7 +42,7 @@
 
         <?php else: ?>
 
-            <h3><?php _e( 'No Vendors found.', 'atu' ); ?></h3>
+            <h3><?php _e( 'No Suppliers found.', 'atu' ); ?></h3>
 
         <?php endif; ?>
 

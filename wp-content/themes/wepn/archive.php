@@ -75,7 +75,7 @@
 				
 			</li>
 			<li class="back">
-				<a href="<?php echo get_permalink( get_page_by_title( 'Blog' ))?>">back to Vendor Listing</a>
+				<a href="<?php echo get_permalink( get_page_by_title( 'Blog' ))?>">back to Suppliers Listing</a>
 			</li>
 			<li class="next">
 				<?php $nepo=get_next_post(); 

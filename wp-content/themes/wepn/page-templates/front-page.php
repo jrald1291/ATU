@@ -100,17 +100,17 @@ get_header(); ?>
 
 					</div>
 				</div>
-				<a href="<?php echo get_post_type_archive_link( 'venue' ); ?>" class="btn btn-opposite btn-block btn-md"><?php _e( 'See all venues.', 'atu' ); ?></a>
+				<a href="<?php echo get_post_type_archive_link( 'venue' ); ?>" class="btn btn-opposite btn-block btn-md"><?php _e( 'See all venues', 'atu' ); ?></a>
                 <?php else: ?>
                     <h3><?php _e( 'No Venue found.', 'atu' ); ?></h3>
                 <?php endif; ?>
 			</div>
 			<div class="col-md-6 mb-30">
-				<h4 class="title-l1"><?php _e( 'Latest Vendor List', 'atu' ); ?> </h4>
+				<h4 class="title-l1"><?php _e( 'Latest Supplier List', 'atu' ); ?> </h4>
 
                 <?php
                 /**
-                 * Get latest vendors
+                 * Get latest Supplier
                  */
                 $wp_venue_query = new WP_Query( array( 'post_type' => 'vendor', 'orderby' => 'date', 'order' => 'desc', 'post_status' => 'publish', 'posts_per_page' =>4 ) );
 
@@ -152,10 +152,10 @@ get_header(); ?>
                             </li>
                         <?php endwhile; wp_reset_query();?>
                     </ul>
-                    <a href="<?php echo home_url('/vendors/') ?>" class="btn btn-opposite btn-block btn-md"><?php _e( 'See all Vendors', 'atu'); ?></a>
+                    <a href="<?php echo home_url('/suppliers/') ?>" class="btn btn-opposite btn-block btn-md"><?php _e( 'See all Suppliers', 'atu'); ?></a>
                 <?php else: ?>
 
-                    <h3><?php _e( 'No Vendors found.', 'atu' ); ?></h3>
+                    <h3><?php _e( 'No Suppliers found.', 'atu' ); ?></h3>
 
                 <?php endif; ?>
 

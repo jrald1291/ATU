@@ -33,7 +33,7 @@ get_header(); ?>
             <div class="col-md-3">
                 <aside class="l-sidebar">
                     <div class="widget widget-aside widget-list">
-                        <div class="widget-header">Vendor Types</div>
+                        <div class="widget-header">Supplier Types</div>
                         <?php WEPN_Helper::list_vendor_category(); ?>
                     </div>
                     <div class="widget widget-aside well-widget">

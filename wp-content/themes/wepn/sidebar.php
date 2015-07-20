@@ -40,7 +40,7 @@
 
 	</div>
 	<div class="widget widget-aside">
-		<a href="<?php echo get_permalink( get_page_by_title( 'Contact' )).'/?post_id='?><?php echo get_the_ID(); ?> " class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Vendor</a>
+		<a href="<?php echo get_permalink( get_page_by_title( 'Contact' )).'/?post_id='?><?php echo get_the_ID(); ?> " class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Supplier</a>
 	</div>
 	<div class="widget widget-aside">
 		<a href="<?php the_field( 'website' ); ?>" target="_blank" class="btn btn-sm btn-block btn-secondary"><span class="fa icon-l-sm fa-globe"></span>Visit website</a>
