@@ -101,6 +101,7 @@ if ( !class_exists('WEPN_Admin_Users') ) {
             if ( ! empty( $company_name ) && ! $company_id ) {
                 $company_id = wp_insert_post( array(
                     'post_title' => $company_name,
+//                    'post_author' => $user_id,
                     'post_type' => 'vendor',
                     'post_status' => 'publish'
                 ));

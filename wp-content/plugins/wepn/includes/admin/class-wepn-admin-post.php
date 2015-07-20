@@ -52,12 +52,6 @@ if ( ! class_exists('WEPN_Admin_Post') ) {
                 }
             }
 
-            /* OK, it's safe for us to save the data now. */
-
-            // Make sure that it is set.
-//            if ( ! isset( $_POST['city'] ) ) {
-//                return;
-//            }
 
 
             $city = $_POST['city'];
