@@ -119,6 +119,7 @@ if ( !class_exists('WEPN_Admin_Users') ) {
             update_post_meta( $company_id, 'vendor', $user_id );
             update_post_meta( $company_id, 'region', $group_slug );
             update_post_meta( $company_id, 'city', $city );
+            update_post_meta( $company_id, 'category', $category_slug );
 
             // Update custom permalink
             update_post_meta( $company_id, 'custom_permalink', $city.'/'.$group_slug.'/'. $category_slug .'/'. sanitize_title($company_name) );

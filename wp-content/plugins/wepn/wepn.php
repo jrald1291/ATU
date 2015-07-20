@@ -245,7 +245,7 @@ class WEPN {
                 $query->set('post_type', array('vendor'));
 
 
-                if (isset($_REQUEST['category']) && !empty($_REQUEST['category'])) {
+                if (isset($_REQUEST['category']) && !empty($_REQUEST['category']) ) {
                     $query->set('tax_query', array(
                         'relation' => 'OR',
                         array(
@@ -340,7 +340,7 @@ class WEPN {
     public function wepn_vendor_search_form() {
         ?>
 
-        <form id="vendorSearchForm" action="<?php echo home_url( '/' ); ?>" class="form">
+        <form id="vendorSearchForm" action="<?php echo home_url( '/' ); ?>" method="post" class="form">
             <div class="row row-sm">
                 <div class="col-md-3">
                     <div class="form-group">
@@ -382,7 +382,7 @@ class WEPN {
     public function wepn_venue_search_form() {
 
         ?>
-        <form id="venueSearchForm" action="<?php echo home_url( '/' ); ?>" method="get" class="form">
+        <form id="venueSearchForm" action="<?php echo home_url( '/' ); ?>" method="post" class="form">
             <div class="row row-sm">
 
                 <div class="col-md-2">
