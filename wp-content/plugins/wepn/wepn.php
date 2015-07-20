@@ -309,7 +309,7 @@ class WEPN {
     public function websmart_search_where( $where ) {
 
         if ( ! is_search() && is_admin() ) return $where;
-        
+
         if (isset($_REQUEST['post_type']) && $_REQUEST['post_type'] == 'venue' && is_post_type_archive('venue')) {
             $where = str_replace('0 = 1', '1 = 1', $where);
         }
