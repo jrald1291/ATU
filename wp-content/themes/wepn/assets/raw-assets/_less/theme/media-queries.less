@@ -193,6 +193,38 @@
 			}
 		}
 	}
+	.marquee{
+		a,span{
+			white-space: normal;
+			line-height: 25px;
+		}
+	}
+	.pagination,.social-links.list-labeled-inline{
+		label{
+			display: block;
+			width: 100%;
+			float: none;
+			border-bottom: 1px solid @base_border_color;
+			text-align: center;
+		}
+		.wp-pagenavi{
+			float: none;
+			display: block;
+		}
+		.pages{
+			border-left: none;
+		}
+	}
+	.social-links.list-labeled-inline{
+		li{
+			width: 20%;
+			a,span{
+				width: 100%;
+				display: block;
+				text-decoration: none;
+			}
+		}
+	}
 }
 
 @media (max-width: 580px){
