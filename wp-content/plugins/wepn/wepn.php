@@ -189,7 +189,7 @@ class WEPN {
     public function template_chooser($template)
     {
         global $wp_query;
-        $post_type = $_GET['post_type'];
+        $post_type = $_REQUEST['post_type'];
         if( $wp_query->is_search && $post_type == 'venue' )
         {
             return locate_template('archive-venue.php');
@@ -222,10 +222,10 @@ class WEPN {
 
             if (!$query->is_search) return $query;
 
-            if (isset($_GET['post_type']) && $_GET['post_type'] == 'venue' && is_post_type_archive('venue')) {
+            if (isset($_REQUEST['post_type']) && $_REQUEST['post_type'] == 'venue' && is_post_type_archive('venue')) {
 
                 $query->set('post_type', array('venue'));
-                if (isset($_GET['venue-category']) && $_GET['venue-category'] != -1) {
+                if (isset($_REQUEST['venue-category']) && $_REQUEST['venue-category'] != -1) {
 
 
                     $query->set('tax_query', array(
@@ -233,7 +233,7 @@ class WEPN {
                         array(
                             'taxonomy' => 'venue-category',
                             'field' => 'id',
-                            'terms' => array(intval($_GET['venue-category'])),
+                            'terms' => array(intval($_REQUEST['venue-category'])),
 //                        'operator' => 'IN'
                         )
                     ));
@@ -241,17 +241,17 @@ class WEPN {
 
                 }
 
-            } elseif (isset($_GET['post_type']) && $_GET['post_type'] == 'vendor' && is_post_type_archive('vendor')) {
+            } elseif (isset($_REQUEST['post_type']) && $_REQUEST['post_type'] == 'vendor' && is_post_type_archive('vendor')) {
                 $query->set('post_type', array('vendor'));
 
 
-                if (isset($_GET['category']) && !empty($_GET['category'])) {
+                if (isset($_REQUEST['category']) && !empty($_REQUEST['category'])) {
                     $query->set('tax_query', array(
                         'relation' => 'OR',
                         array(
-                            'taxonomy' => isset($_GET['city']) && !empty($_GET['city']) ? esc_attr($_GET['city']) : 'sydney',
+                            'taxonomy' => isset($_REQUEST['city']) && !empty($_REQUEST['city']) ? esc_attr($_REQUEST['city']) : 'sydney',
                             'field' => 'slug',
-                            'terms' => array(esc_attr($_GET['category'])),
+                            'terms' => array(esc_attr($_REQUEST['category'])),
                             'operator' => 'IN'
                         )
                     ));
@@ -273,29 +273,29 @@ class WEPN {
         if ( ! is_search() && is_admin() ) return $join;
 
 
-//        if( ( isset( $_GET['post_code'] ) && ! empty( $_GET['post_code'] ) )
-//            || ( isset( $_GET['capacity'] ) && ! empty( $_GET['capacity'] ) )
-//            || ( isset( $_GET['city'] ) && ! empty( $_GET['city'] ) )
-//            || ( isset( $_GET['region'] ) && ! empty( $_GET['region'] ) ) ) {
+//        if( ( isset( $_REQUEST['post_code'] ) && ! empty( $_REQUEST['post_code'] ) )
+//            || ( isset( $_REQUEST['capacity'] ) && ! empty( $_REQUEST['capacity'] ) )
+//            || ( isset( $_REQUEST['city'] ) && ! empty( $_REQUEST['city'] ) )
+//            || ( isset( $_REQUEST['region'] ) && ! empty( $_REQUEST['region'] ) ) ) {
 //            $join .= " LEFT JOIN $wpdb->postmeta AS m ON ($wpdb->posts.ID = m.post_id) ";
 //        }
 
 
-        if( isset( $_GET['post_code'] ) && ! empty( $_GET['post_code'] ) ) {
+        if( isset( $_REQUEST['post_code'] ) && ! empty( $_REQUEST['post_code'] ) ) {
             $join .= " LEFT JOIN $wpdb->postmeta AS m ON $wpdb->posts.ID = m.post_id AND m.meta_key='post_code'";
         }
 
-        if( isset( $_GET['capacity'] ) && ! empty( $_GET['capacity'] ) ) {
+        if( isset( $_REQUEST['capacity'] ) && ! empty( $_REQUEST['capacity'] ) ) {
             $join .= " LEFT JOIN $wpdb->postmeta AS m1 ON $wpdb->posts.ID = m1.post_id AND m1.meta_key='capacity'";
         }
 
 
-        if( isset( $_GET['city'] ) && ! empty( $_GET['city'] )) {
+        if( isset( $_REQUEST['city'] ) && ! empty( $_REQUEST['city'] )) {
             $join .= " LEFT JOIN $wpdb->postmeta AS m2 ON $wpdb->posts.ID = m2.post_id  AND m2.meta_key='city'";
         }
 
 
-        if( isset( $_GET['region'] ) && ! empty( $_GET['region'] )) {
+        if( isset( $_REQUEST['region'] ) && ! empty( $_REQUEST['region'] )) {
             $join .= " LEFT JOIN $wpdb->postmeta AS m3 ON $wpdb->posts.ID = m3.post_id  AND m3.meta_key='region'";
         }
 
@@ -312,23 +312,23 @@ class WEPN {
 
         $where = str_replace('0 = 1', '1 = 1', $where);
 
-        if( isset( $_GET['post_code'] ) && ! empty( $_GET['post_code'] ) ) {
+        if( isset( $_REQUEST['post_code'] ) && ! empty( $_REQUEST['post_code'] ) ) {
 
-            $where .= " AND ( m.meta_key = 'post_code' AND m.meta_value='". esc_attr( $_GET['post_code'] ) ."' ) ";
+            $where .= " AND ( m.meta_key = 'post_code' AND m.meta_value='". esc_attr( $_REQUEST['post_code'] ) ."' ) ";
         }
 
-        if( isset( $_GET['city'] ) && ! empty( $_GET['city'] ) ) {
+        if( isset( $_REQUEST['city'] ) && ! empty( $_REQUEST['city'] ) ) {
 
-            $where .= " AND ( m2.meta_value = '". esc_attr( $_GET['city'] ) ."' ) ";
+            $where .= " AND ( m2.meta_value = '". esc_attr( $_REQUEST['city'] ) ."' ) ";
         }
 
-        if( isset( $_GET['capacity'] ) && ! empty( $_GET['capacity'] ) ) {
+        if( isset( $_REQUEST['capacity'] ) && ! empty( $_REQUEST['capacity'] ) ) {
 
-            $where .= " AND ( m1.meta_value='". esc_attr( $_GET['capacity'] ) ."' ) ";
+            $where .= " AND ( m1.meta_value='". esc_attr( $_REQUEST['capacity'] ) ."' ) ";
         }
 
-        if ( isset( $_GET['region'] ) && ! empty( $_GET['region'] ) ) {
-            $where .= " AND ( m3.meta_value='". esc_attr( $_GET['region'] ) ."' ) ";
+        if ( isset( $_REQUEST['region'] ) && ! empty( $_REQUEST['region'] ) ) {
+            $where .= " AND ( m3.meta_value='". esc_attr( $_REQUEST['region'] ) ."' ) ";
         }
 
 
@@ -344,7 +344,7 @@ class WEPN {
             <div class="row row-sm">
                 <div class="col-md-3">
                     <div class="form-group">
-                    <input type="text" name="s" value="<?php echo isset( $_GET['s'] ) ? $_GET['s'] : ''; ?>" class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
+                    <input type="text" name="s" value="<?php echo isset( $_REQUEST['s'] ) ? $_REQUEST['s'] : ''; ?>" class="form-control input-block" placeholder="<?php _e( 'Keyword...', 'atu' ); ?>">
                     </div>
                 </div>
 
@@ -444,7 +444,7 @@ class WEPN {
                         <?php wp_dropdown_categories( array(
                             'taxonomy'  => 'venue-category',
                             'name'               => 'venue-category',
-                            'selected'              => isset( $_GET['venue-category'] ) ? $_GET['venue-category'] : '-1',
+                            'selected'              => isset( $_REQUEST['venue-category'] ) ? $_REQUEST['venue-category'] : '-1',
                             'hide_empty'         => 0,
                             'class'              => 'form-control',
                             'show_option_none'   => '-- Select Category --',

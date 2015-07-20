@@ -196,12 +196,12 @@ if ( ! class_exists('WEPN_Helper') ) {
             return $arr;
         }
 
-        public static function dropwdown_cities(  ) {
+        public static function dropwdown_cities( $placeholder = '-- City --' ) {
 
             $selected = isset( $_REQUEST['city'] ) ? $_REQUEST['city'] : '';
             if ( have_rows( 'cities', 'option' ) ) {
                 echo '<select name="city" class="form-control">';
-                echo '<option value="" '. selected( '', $selected, false ) .'>-- City --</option>';
+                echo '<option value="" '. selected( '', $selected, false ) .'>'. $placeholder .'</option>';
                 while ( have_rows( 'cities', 'option' ) ) {
                     the_row();
                     $name = sanitize_title(get_sub_field('city_name'));

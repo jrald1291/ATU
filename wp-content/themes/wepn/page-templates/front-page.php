@@ -17,9 +17,9 @@ get_header(); ?>
 					<?php echo of_get_option('intro', ''); ?>
 				<?php endif ?>
 			</h1>
-            <form method="get">
+            <form method="post">
                 <div class="form-group">
-                    <?php WEPN_Helper::dropwdown_cities(); ?>
+                    <?php WEPN_Helper::dropwdown_cities('Select City'); ?>
                 </div>
                 <div class="actions">
                     <input type="hidden" name="s" value="" />
