@@ -19,33 +19,42 @@
             // Start the Loop.
             while ( have_posts() ) : the_post();
 
-                $cat_name = get_the_title();
-
                 $user_id = get_post_meta( get_the_ID(), 'vendor', true );
 
-                $taxonomy = get_user_meta( $user_id, 'city', true );
-                $cats = get_the_terms( get_the_ID(), $taxonomy );
+               // if ( WEPN_Helper::check_user_role( 'vendor', $user_id ) ) {
 
-                if ( ! empty( $cats ) && ! is_wp_error( $cats ) )$cat_name = $cats[0]->name;
+                    $cat_name = get_the_title();
 
 
-                $image_id = get_user_meta( $user_id, 'profile_image', true );
-                ?>
+                    $taxonomy = get_user_meta($user_id, 'city', true);
+                    $cats = get_the_terms(get_the_ID(), $taxonomy);
 
-                <div class="col-md-4 col-sm-6">
-                    <div class="post-item well-block" style="border-bottom: 3px solid <?php echo hex2rgba(get_field( 'color')); ?>">
-                        <div class="well-header"><div class="marquee"><span><?php echo $cat_name; ?></span></div></div>
-                        <div class="post-img">
-                            <a href="<?php the_permalink(); ?>"><?php echo wp_get_attachment_image( $image_id, 'img-avatar' ); ?></a>
-                        </div>
-                        <div class="post-content t-sm marquee">
-                            <a href="<?php the_permalink(); ?>" class="post-name"><?php the_title(); ?></a>
+                    if (!empty($cats) && !is_wp_error($cats)) $cat_name = $cats[0]->name;
+
+
+                    $image_id = get_user_meta($user_id, 'profile_image', true);
+                    ?>
+
+                    <div class="col-md-4 col-sm-6">
+                        <div class="post-item well-block"
+                             style="border-bottom: 3px solid <?php echo hex2rgba(get_field('color')); ?>">
+                            <div class="well-header">
+                                <div class="marquee"><span><?php echo $cat_name; ?></span></div>
+                            </div>
+                            <div class="post-img">
+                                <a href="<?php the_permalink(); ?>"><?php echo wp_get_attachment_image($image_id, 'img-avatar'); ?></a>
+                            </div>
+                            <div class="post-content t-sm marquee">
+                                <a href="<?php the_permalink(); ?>" class="post-name"><?php the_title(); ?></a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
-            <?php
+                    <?php
+//                } else {
+//                    wp_delete_post( get_the_ID(), true );
+//                }
 
                 // End the loop.
             endwhile;

@@ -311,5 +311,26 @@ if ( ! class_exists('WEPN_Helper') ) {
         }
 
 
+        public static function get_user_ids_by_role( $role = 'vendor' ) {
+            $args1 = array(
+                'role' => $role,
+                'orderby' => 'user_nicename',
+                'order' => 'ASC'
+            );
+            $users = get_users($args1);
+
+            $arr = array();
+
+            foreach( $users as $user ) {
+                $arr[] = $user->ID;
+            }
+
+            return $arr;
+        }
+
+
     }
+
+
+
 }
