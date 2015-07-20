@@ -206,43 +206,60 @@ class WEPN {
 
     public function wepn_advance_search( $query ) {
 
-        if ( ! $query->is_search || is_admin() ) return $query;
-
-        if ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'venue' && is_post_type_archive( 'venue' ) ) {
-
-            $query->set('post_type', array('venue'));
-            if ( isset( $_GET['venue-category'] ) && $_GET['venue-category'] != -1 ) {
 
 
-                $query->set('tax_query', array(
+        if ( !is_admin() && $query->is_main_query() ) {
+
+            if ( is_post_type_archive( 'vendor' ) ) {
+                $query->set('meta_query', array(
+                    array(
+                        'key' => 'vendor', // name of custom field
+                        'value' => WEPN_Helper::get_user_ids_by_role('vendor'), // matches exaclty "red", not just red. This prevents a match for "acquired"
+                        'compare' => 'IN'
+                    )
+                ));
+            }
+
+            if (!$query->is_search) return $query;
+
+            if (isset($_GET['post_type']) && $_GET['post_type'] == 'venue' && is_post_type_archive('venue')) {
+
+                $query->set('post_type', array('venue'));
+                if (isset($_GET['venue-category']) && $_GET['venue-category'] != -1) {
+
+
+                    $query->set('tax_query', array(
 //                    'relation' => 'OR',
-                    array(
-                        'taxonomy' => 'venue-category',
-                        'field' => 'id',
-                        'terms' => array(intval($_GET['venue-category'])),
+                        array(
+                            'taxonomy' => 'venue-category',
+                            'field' => 'id',
+                            'terms' => array(intval($_GET['venue-category'])),
 //                        'operator' => 'IN'
-                    )
-                ));
+                        )
+                    ));
 
 
+                }
+
+            } elseif (isset($_GET['post_type']) && $_GET['post_type'] == 'vendor' && is_post_type_archive('vendor')) {
+                $query->set('post_type', array('vendor'));
+
+
+                if (isset($_GET['category']) && !empty($_GET['category'])) {
+                    $query->set('tax_query', array(
+                        'relation' => 'OR',
+                        array(
+                            'taxonomy' => isset($_GET['city']) && !empty($_GET['city']) ? esc_attr($_GET['city']) : 'sydney',
+                            'field' => 'slug',
+                            'terms' => array(esc_attr($_GET['category'])),
+                            'operator' => 'IN'
+                        )
+                    ));
+                }
             }
 
-        } elseif ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'vendor' && is_post_type_archive( 'vendor' ) ) {
-            $query->set('post_type', array('vendor'));
 
-            if ( isset( $_GET['category'] ) && ! empty( $_GET['category'] )  ) {
-                $query->set('tax_query', array(
-                    'relation' => 'OR',
-                    array(
-                        'taxonomy' => isset($_GET['city']) && !empty($_GET['city']) ? esc_attr( $_GET['city'] ) : 'sydney',
-                        'field' => 'slug',
-                        'terms' => array(esc_attr($_GET['category'])),
-                        'operator' => 'IN'
-                    )
-                ));
-            }
         }
-
 
         return $query;
     }

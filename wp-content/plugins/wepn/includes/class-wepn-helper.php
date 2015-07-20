@@ -5,9 +5,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists('WEPN_Helper') ) {
     class WEPN_Helper {
-        public static function str_limit( $string, $limit, $echo = true ) {
-            $string = strip_tags( $string );
+        /**
+         * Checks if a particular user has a role.
+         * Returns true if a match was found.
+         *
+         * @param string $role Role name.
+         * @param int $user_id (Optional) The ID of a user. Defaults to the current user.
+         * @return bool
+         */
+        public static function check_user_role( $role, $user_id = null ) {
+
+            if ( is_numeric( $user_id ) )
+                $user = get_userdata( $user_id );
+            else
+                $user = wp_get_current_user();
+
+            if ( empty( $user ) )
+                return false;
+
+            return in_array( $role, (array) $user->roles );
         }
+
         public static function get_prev_user( $user_id ) {
             global $wpdb;
 
@@ -293,5 +311,26 @@ if ( ! class_exists('WEPN_Helper') ) {
         }
 
 
+        public static function get_user_ids_by_role( $role = 'vendor' ) {
+            $args1 = array(
+                'role' => $role,
+                'orderby' => 'user_nicename',
+                'order' => 'ASC'
+            );
+            $users = get_users($args1);
+
+            $arr = array();
+
+            foreach( $users as $user ) {
+                $arr[] = $user->ID;
+            }
+
+            return $arr;
+        }
+
+
     }
+
+
+
 }

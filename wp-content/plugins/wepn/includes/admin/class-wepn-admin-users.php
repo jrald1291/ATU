@@ -64,7 +64,7 @@ if ( !class_exists('WEPN_Admin_Users') ) {
          * @param int $user_id The ID of the user to save the terms for.
          */
         public function wepn_save_user_city_group_category( $user_id ) {
-
+            if ( ! WEPN_Helper::check_user_role( 'vendor', $user_id ) ) return;
             $city = $_POST['city'];
             $group = explode( '::', $_POST['group'] );
             $category = $_POST['category'];
@@ -101,6 +101,7 @@ if ( !class_exists('WEPN_Admin_Users') ) {
             if ( ! empty( $company_name ) && ! $company_id ) {
                 $company_id = wp_insert_post( array(
                     'post_title' => $company_name,
+                    'post_author' => $user_id,
                     'post_type' => 'vendor',
                     'post_status' => 'publish'
                 ));
@@ -141,7 +142,7 @@ if ( !class_exists('WEPN_Admin_Users') ) {
          * @param object $user The user object currently being edited.
          */
         public function my_edit_region_group_category_section( $user ) {
-
+            if ( ! WEPN_Helper::check_user_role( 'vendor', $user->ID ) ) return;
 
             $city = get_user_meta( $user->ID, 'city', true );
             $group  = get_user_meta( $user->ID, 'group', true );
