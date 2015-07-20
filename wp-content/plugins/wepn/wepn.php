@@ -247,7 +247,7 @@ class WEPN {
 
                 if (isset($_REQUEST['category']) && !empty($_REQUEST['category']) ) {
                     $query->set('tax_query', array(
-                        'relation' => 'OR',
+                       // 'relation' => 'OR',
                         array(
                             'taxonomy' => isset($_REQUEST['city']) && !empty($_REQUEST['city']) ? esc_attr($_REQUEST['city']) : 'sydney',
                             'field' => 'slug',
@@ -309,8 +309,10 @@ class WEPN {
     public function websmart_search_where( $where ) {
 
         if ( ! is_search() && is_admin() ) return $where;
-
-        $where = str_replace('0 = 1', '1 = 1', $where);
+        
+        if (isset($_REQUEST['post_type']) && $_REQUEST['post_type'] == 'venue' && is_post_type_archive('venue')) {
+            $where = str_replace('0 = 1', '1 = 1', $where);
+        }
 
         if( isset( $_REQUEST['post_code'] ) && ! empty( $_REQUEST['post_code'] ) ) {
 
