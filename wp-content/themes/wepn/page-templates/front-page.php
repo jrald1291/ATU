@@ -18,10 +18,8 @@ get_header(); ?>
 				<?php endif ?>
 			</h1>
             <form method="get">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <?php WEPN_Helper::dropwdown_cities(); ?>
-                    </div>
+                <div class="form-group">
+                    <?php WEPN_Helper::dropwdown_cities(); ?>
                 </div>
                 <div class="actions">
                     <input type="hidden" name="s" value="" />
