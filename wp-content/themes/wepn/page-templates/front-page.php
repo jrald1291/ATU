@@ -110,10 +110,22 @@ get_header(); ?>
                 /**
                  * Get latest Supplier
                  */
-                $wp_venue_query = new WP_Query( array( 'post_type' => 'vendor', 'orderby' => 'date', 'order' => 'desc', 'post_status' => 'publish', 'posts_per_page' =>4 ) );
+                $wp_venue_query = new WP_Query( array(
+                    'post_type' => 'vendor',
+                    'orderby' => 'date',
+                    'order' => 'desc',
+                    'post_status' => 'publish',
+                    'posts_per_page' => 4,
+                    'meta_query' => array(
+                        array(
+                            'key' => 'vendor', // name of custom field
+                            'value' => WEPN_Helper::get_user_ids_by_role('vendor'), // matches exaclty "red", not just red. This prevents a match for "acquired"
+                            'compare' => 'IN'
+                        )
+                    )) );
 
 
-                if ( $wp_venue_query->have_posts(  ) ): ?>
+                if ( $wp_venue_query->have_posts() ): ?>
 
                     <ul class="post-inline post-member mb-20">
 
