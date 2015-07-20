@@ -273,11 +273,30 @@ class WEPN {
         if ( ! is_search() && is_admin() ) return $join;
 
 
-        if( ( isset( $_GET['post_code'] ) && ! empty( $_GET['post_code'] ) )
-            || ( isset( $_GET['capacity'] ) && ! empty( $_GET['capacity'] ) )
-            || ( isset( $_GET['city'] ) && ! empty( $_GET['city'] ) )
-            || ( isset( $_GET['region'] ) && ! empty( $_GET['region'] ) ) ) {
-            $join .= " LEFT JOIN $wpdb->postmeta AS m ON ($wpdb->posts.ID = m.post_id) ";
+//        if( ( isset( $_GET['post_code'] ) && ! empty( $_GET['post_code'] ) )
+//            || ( isset( $_GET['capacity'] ) && ! empty( $_GET['capacity'] ) )
+//            || ( isset( $_GET['city'] ) && ! empty( $_GET['city'] ) )
+//            || ( isset( $_GET['region'] ) && ! empty( $_GET['region'] ) ) ) {
+//            $join .= " LEFT JOIN $wpdb->postmeta AS m ON ($wpdb->posts.ID = m.post_id) ";
+//        }
+
+
+        if( isset( $_GET['post_code'] ) && ! empty( $_GET['post_code'] ) ) {
+            $join .= " LEFT JOIN $wpdb->postmeta AS m ON $wpdb->posts.ID = m.post_id AND m.meta_key='post_code'";
+        }
+
+        if( isset( $_GET['capacity'] ) && ! empty( $_GET['capacity'] ) ) {
+            $join .= " LEFT JOIN $wpdb->postmeta AS m1 ON $wpdb->posts.ID = m1.post_id AND m1.meta_key='capacity'";
+        }
+
+
+        if( isset( $_GET['city'] ) && ! empty( $_GET['city'] )) {
+            $join .= " LEFT JOIN $wpdb->postmeta AS m2 ON $wpdb->posts.ID = m2.post_id  AND m2.meta_key='city'";
+        }
+
+
+        if( isset( $_GET['region'] ) && ! empty( $_GET['region'] )) {
+            $join .= " LEFT JOIN $wpdb->postmeta AS m3 ON $wpdb->posts.ID = m3.post_id  AND m3.meta_key='region'";
         }
 
 
@@ -300,16 +319,16 @@ class WEPN {
 
         if( isset( $_GET['city'] ) && ! empty( $_GET['city'] ) ) {
 
-            $where .= " AND ( m.meta_key = 'city' AND m.meta_value='". esc_attr( $_GET['city'] ) ."' ) ";
+            $where .= " AND ( m2.meta_value = '". esc_attr( $_GET['city'] ) ."' ) ";
         }
 
         if( isset( $_GET['capacity'] ) && ! empty( $_GET['capacity'] ) ) {
 
-            $where .= " AND ( m.meta_key = 'capacity' AND m.meta_value='". esc_attr( $_GET['capacity'] ) ."' ) ";
+            $where .= " AND ( m1.meta_value='". esc_attr( $_GET['capacity'] ) ."' ) ";
         }
 
         if ( isset( $_GET['region'] ) && ! empty( $_GET['region'] ) ) {
-            $where .= " AND ( m.meta_key = 'region' AND m.meta_value='". esc_attr( $_GET['region'] ) ."' ) ";
+            $where .= " AND ( m3.meta_value='". esc_attr( $_GET['region'] ) ."' ) ";
         }
 
 
