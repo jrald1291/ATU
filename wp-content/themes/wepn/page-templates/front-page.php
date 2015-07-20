@@ -37,6 +37,13 @@ get_header(); ?>
 	</div>
 	<a href="#scroll-target" class="t-upper scroll-down link scroll_to">Scroll Down</a>
 </div>
+<?php if (of_get_option('rsvp_text', '') and of_get_option('rsvp_link', '')): ?>
+    <div class="section-rsvp section-dark section-l0" id="section-rsvp">
+        <div class="container">
+            <span class="t-sm mr-10"><?php echo of_get_option('rsvp_text', ''); ?></span> <a href="<?php echo of_get_option('rsvp_link', ''); ?>" target="_blank" class="btn btn-md btn-secondary">Meeting RSVP</a>
+        </div>
+    </div>
+<?php endif ?>
 <?php if (get_field('intro_text') and get_field('intro_image')):?>
 	<div id="scroll-target" class="section section-l4">
 		<div class="container">	
@@ -59,6 +66,20 @@ get_header(); ?>
 <?php endif ?>
 	<div class="container">
 		<h2 class="t-title t-huge mb-30">What is New Today?</h2>
+        <div class="post-inline post-blog post-member mb-20">
+            <h4 class="title-l1">Latest Articles</h4>
+             <?php 
+                $paged = get_query_var('paged');
+                $args = array( 'post_type' => 'post', 'posts_per_page' => 10,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
+                $loop = new WP_Query( $args );
+
+                    while ( $loop->have_posts() ) : $loop->the_post();
+
+                        get_template_part( 'content', get_post_format() );
+
+                    endwhile; ?>   
+                <?php wp_reset_postdata(); ?>
+        </div>
 		<div class="row">
 			<div class="col-md-6 mb-30">
 				<h4 class="title-l1">Latest Venue</h4>
@@ -170,6 +191,7 @@ get_header(); ?>
                 <?php endif; ?>
 
 			</div>
+            
 		</div>
 		
 	</div>
