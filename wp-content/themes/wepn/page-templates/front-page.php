@@ -83,7 +83,7 @@ get_header(); ?>
                                     <?php do_action('aut_post_thumnail', 'venue-medium'); ?>
                                     <div class="slider-caption">
                                         <a href="#" class="link"><div class="slide-title"><?php the_title(); ?></div></a>
-                                        <div class="slide-desc"><?php echo wp_trim_words(  get_the_content(), $num_words = 20, $more = '<a href="'. get_permalink() .'">read more</a>' ); ?></div>
+                                        <div class="slide-desc"><?php echo wp_trim_words(  get_the_content(), $num_words = 10, $more = ' <a href="'. get_permalink() .'">read more</a>' ); ?></div>
                                     </div>
                                 </li>
                             <?php endwhile; ?>
