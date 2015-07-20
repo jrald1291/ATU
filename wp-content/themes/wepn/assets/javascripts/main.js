@@ -23,6 +23,7 @@ var util = {
 
           var winsize = $(window).outerHeight();
           var headh = $('.l-header').outerHeight();
+          var rsvp = $('#section-rsvp').outerHeight();
           var asideh = $('.l-sidebar').outerHeight();
           var conth = $('.l-content, .l-content-bg');
           var banner = $('.section-banner');
@@ -30,13 +31,14 @@ var util = {
           var footh = $('.l-footer').outerHeight();
           var toth =  winsize - (headh + footh + adminbar);
           conth.css('min-height',toth);
-          banner.css('height',(winsize-headh-adminbar));
+          banner.css('height',(winsize-headh-adminbar-rsvp));
           $('.toggle-menuwrapper').css('top',adminbar+10);
 
           $( window ).resize(function() {
 
               winsize = $(window).outerHeight();
               headh = $('.l-header').outerHeight();
+              rsvp = $('#section-rsvp').outerHeight();
               adminbar = $('#wpadminbar').outerHeight();
               banner = $('.section-banner');
               asideh = $('.l-sidebar').outerHeight();
@@ -44,7 +46,7 @@ var util = {
               footh = $('.l-footer').outerHeight();
               toth =  winsize - (headh + footh + adminbar);
               conth.css('min-height',toth);
-              banner.css('height',(winsize-headh-adminbar));
+              banner.css('height',(winsize-headh-adminbar-rsvp));
 
           });
           $( window ).scroll(function() {
