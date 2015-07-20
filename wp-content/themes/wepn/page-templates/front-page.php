@@ -66,19 +66,32 @@ get_header(); ?>
 <?php endif ?>
 	<div class="container">
 		<h2 class="t-title t-huge mb-30">What is New Today?</h2>
-        <div class="post-inline post-blog post-member mb-20">
+        <div class="post-inline post-blog post-blog-md mb-30">
+            <div class="well well-transparent">
             <h4 class="title-l1">Latest Articles</h4>
              <?php 
                 $paged = get_query_var('paged');
-                $args = array( 'post_type' => 'post', 'posts_per_page' => 10,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
+                $args = array( 'post_type' => 'post', 'posts_per_page' => 3,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
                 $loop = new WP_Query( $args );
 
-                    while ( $loop->have_posts() ) : $loop->the_post();
+                    while ( $loop->have_posts() ) : $loop->the_post();?>
 
-                        get_template_part( 'content', get_post_format() );
+                        <article id="post-<?php the_ID(); ?>" <?php post_class("post-item"); ?>>
+                            <div class="post-img well-img">
+                                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+                            </div>
+                            <div class="post-core">
+                                <div class="post-title t-normal"><a href="<?php the_permalink(); ?>" class="link"><?php the_title(); ?></a></div>
+                                <div class="post-meta"><div class="meta date"><?php the_date(); ?></div> <div class="meta author t-upper"><?php the_author(); ?></div></div>
+                                <div class="post-content">
+                                    <p><?php echo content(strip_shortcodes(wp_trim_words(get_the_content())),40) ?> <a href="<?php the_permalink(); ?>">read more</a></p>
+                                </div>
+                            </div>
+                        </article>
 
-                    endwhile; ?>   
+                    <?php endwhile; ?>   
                 <?php wp_reset_postdata(); ?>
+            </div>
         </div>
 		<div class="row">
 			<div class="col-md-6 mb-30">
