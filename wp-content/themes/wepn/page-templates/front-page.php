@@ -69,7 +69,7 @@ get_header(); ?>
             <h4 class="title-l1">Latest Articles</h4>
              <?php 
                 $paged = get_query_var('paged');
-                $args = array( 'post_type' => 'post', 'posts_per_page' => 3,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
+                $args = array( 'post_type' => 'post', 'posts_per_page' => 3,'paged' => $paged, 'orderby' => 'date',  'order' => 'DESC','post_status'  => 'publish' );
                 $loop = new WP_Query( $args );
 
                     while ( $loop->have_posts() ) : $loop->the_post();?>
