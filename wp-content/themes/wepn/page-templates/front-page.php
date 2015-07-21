@@ -18,9 +18,7 @@ get_header(); ?>
 				<?php endif ?>
 			</h1>
             <form method="post">
-                <div class="form-group">
-                    <?php WEPN_Helper::dropwdown_cities('Select City'); ?>
-                </div>
+                <?php WEPN_Helper::dropwdown_cities('Select City'); ?>
                 <div class="actions">
                     <input type="hidden" name="s" value="" />
                     <button type="submit" name="post_type" value="vendor" class="btn btn-wooden btn-lg">Search for Supplier</button>
