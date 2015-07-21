@@ -77,6 +77,9 @@ get_header(); ?>
 											<div class="grid-wrap">
 												<div class="grid-img">
 													<?php the_post_thumbnail('venue-medium'); ?>
+													<div class="grid-date">
+														<?php the_field('date'); ?>
+													</div>
 													<div class="grid-title">
 														<?php the_title(); ?>
 													</div>
