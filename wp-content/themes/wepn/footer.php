@@ -138,6 +138,8 @@
 	session_start(); 
 	if (!isset($_SESSION['visisted'])) {
 	  $_SESSION['visisted'] = 0;
+	}else{
+		$_SESSION['visisted']++;
 	}
 ?>
 <script type="text/javascript">
