@@ -38,7 +38,7 @@ get_header(); ?>
 								<a href="<?php echo get_home_url().'/venue/';?>" class="btn btn-secondary btn-block">Find Venue</a>
 							</div>
 							<div class="col-md-6">
-								<a href="<?php echo get_home_url().'/suppliers/';?>" class="btn btn-secondary btn-block">Find Venue</a>
+								<a href="<?php echo get_home_url().'/suppliers/';?>" class="btn btn-secondary btn-block">Find Supplier</a>
 							</div>
 						</div>	
 					</div>
