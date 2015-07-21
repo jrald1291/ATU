@@ -64,12 +64,19 @@ var util = {
       Isotope: function(){
         // init Isotope
         var winwidth = $(window).outerWidth();
-        var grid = $('.grid');
+        var grid = $('.grid-isotope-sm');
+        var grid2 = $('.grid-isotope-md');
         grid.isotope({
           itemSelector: '.grid-item',
           layoutMode: 'masonry',
           resizable: true, 
           masonry: { columnWidth: grid.width() / 3 }
+        });
+        grid2.isotope({
+          itemSelector: '.grid-item',
+          layoutMode: 'fitRows',
+          resizable: true, 
+          masonry: { columnWidth: grid.width() / 2 }
         });
         // filter items on button click
         $('.grid-filter').on( 'click', 'button', function() {
@@ -109,7 +116,7 @@ var util = {
           var filterValue = this.value;
           // use filterFn if matches value
           filterValue = filterFns[ filterValue ] || filterValue;
-          grid.isotope({ filter: filterValue });
+          grid2.isotope({ filter: filterValue });
         });
       },
       Forms: function(){
