@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: What weve done
+ * Template Name: RSVP Group
  *
  * @package WordPress
  * @subpackage Twenty_Fourteen
@@ -38,31 +38,29 @@ get_header(); ?>
 						</div>	
 					</div>
 					<div class="page-content">
-						<div class="grid-filter">
-						    <button class="button btn" data-filter="*">show all</button>
-						    
-						    <?php
-							$tax = 'portfolio-category';
+						<select class="filters-select">
+						  <option value="*">Show all latest</option>
+						  <?php
+							$tax = 'meetup_groups-category';
 							$terms = get_terms( $tax, $args = array(
 							  'hide_empty' => false, 
 							));
+						  foreach( $terms as $term ) {
+						    $term_link = get_term_link( $term );
 
-							foreach( $terms as $term ) {
-							    $term_link = get_term_link( $term );
-
-							    if( $term->count > 0 )?>
-									<button class="button btn" data-filter=".<?php echo $term->slug ?>"><?php echo $term->name ?></button>
-							<?php } ?>
-						</div>
-						<div class="grid grid-isotope">
+						    if( $term->count > 0 )?>
+								<option value=".<?php echo $term->slug ?>"><?php echo $term->name ?></option>
+						<?php } ?>
+						</select>
+						<div class="grid grid-isotope-md">
 
 							 <?php 
 							    $paged = get_query_var('paged');
-							    $args = array( 'post_type' => 'portfolio', 'posts_per_page' => 30,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
+							    $args = array( 'post_type' => 'meetup_groups', 'posts_per_page' => 30,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
 							    $loop = new WP_Query( $args );
 
 								    while ( $loop->have_posts() ) : $loop->the_post();
-								    	$my_terms = get_the_terms( $post->ID, 'portfolio-category' );
+								    	$my_terms = get_the_terms( $post->ID, 'meetup_groups-category' );
 										
 								    ?>
 
@@ -78,9 +76,6 @@ get_header(); ?>
 														<?php the_title(); ?>
 													</div>
 												</div>	
-												<div class="grid-content">
-													<?php the_content(); ?>
-												</div>
 											</div>
 										</div>
 
