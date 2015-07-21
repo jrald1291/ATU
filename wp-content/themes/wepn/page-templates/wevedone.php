@@ -54,7 +54,7 @@ get_header(); ?>
 									<button class="button btn" data-filter=".<?php echo $term->slug ?>"><?php echo $term->name ?></button>
 							<?php } ?>
 						</div>
-						<div class="grid grid-isotope">
+						<div class="grid grid-isotope grid-isotope-sm">
 
 							 <?php 
 							    $paged = get_query_var('paged');

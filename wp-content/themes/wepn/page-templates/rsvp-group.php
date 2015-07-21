@@ -38,25 +38,30 @@ get_header(); ?>
 						</div>	
 					</div>
 					<div class="page-content">
-						<select class="filters-select">
-						  <option value="*">Show all latest</option>
-						  <?php
-							$tax = 'meetup_groups-category';
-							$terms = get_terms( $tax, $args = array(
-							  'hide_empty' => false, 
-							));
-						  foreach( $terms as $term ) {
-						    $term_link = get_term_link( $term );
+						<div class="form-labeled">
+							<div class="form-group">
+								<label for="" class="label-drop">RSVP Meeting Groups - <span class="req">Sort by City</span></label>
+								<select class="filters-select form-control">
+								  <option value="*">Show all latest Groups</option>
+								  <?php
+									$tax = 'meetup_groups-category';
+									$terms = get_terms( $tax, $args = array(
+									  'hide_empty' => false, 
+									));
+								  foreach( $terms as $term ) {
+								    $term_link = get_term_link( $term );
 
-						    if( $term->count > 0 )?>
-								<option value=".<?php echo $term->slug ?>"><?php echo $term->name ?></option>
-						<?php } ?>
-						</select>
-						<div class="grid grid-isotope-md">
+								    if( $term->count > 0 )?>
+										<option value=".<?php echo $term->slug ?>"><?php echo $term->name ?></option>
+								<?php } ?>
+								</select>
+							</div>
+						</div>
+						<div class="grid grid-isotope grid-isotope-md">
 
 							 <?php 
 							    $paged = get_query_var('paged');
-							    $args = array( 'post_type' => 'meetup_groups', 'posts_per_page' => 30,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
+							    $args = array( 'post_type' => 'meetup_groups', 'posts_per_page' => 6,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
 							    $loop = new WP_Query( $args );
 
 								    while ( $loop->have_posts() ) : $loop->the_post();
@@ -71,7 +76,7 @@ get_header(); ?>
 											} ?>">
 											<div class="grid-wrap">
 												<div class="grid-img">
-													<?php the_post_thumbnail('medium'); ?>
+													<?php the_post_thumbnail('venue-medium'); ?>
 													<div class="grid-title">
 														<?php the_title(); ?>
 													</div>

@@ -218,6 +218,11 @@ class WEPN {
                         'compare' => 'IN'
                     )
                 ));
+
+
+                $query->set('meta_key', 'vendor' );
+                $query->set('orderby', 'meta_value_num');
+                $query->set('order', 'DESC');
             }
 
             if (!$query->is_search) return $query;
@@ -256,6 +261,9 @@ class WEPN {
                         )
                     ));
                 }
+
+
+
             }
 
 

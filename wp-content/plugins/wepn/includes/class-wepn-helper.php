@@ -314,8 +314,8 @@ if ( ! class_exists('WEPN_Helper') ) {
         public static function get_user_ids_by_role( $role = 'vendor' ) {
             $args1 = array(
                 'role' => $role,
-                'orderby' => 'user_nicename',
-                'order' => 'ASC'
+                'orderby' => 'ID',
+                'order' => 'DESC'
             );
             $users = get_users($args1);
 

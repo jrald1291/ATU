@@ -69,7 +69,7 @@ get_header(); ?>
             <h4 class="title-l1">Latest Articles</h4>
              <?php 
                 $paged = get_query_var('paged');
-                $args = array( 'post_type' => 'post', 'posts_per_page' => 3,'paged' => $paged, 'orderby' => 'date',  'order' => 'DESC','post_status'  => 'publish' );
+                $args = array( 'post_type' => 'post', 'posts_per_page' => 3,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
                 $loop = new WP_Query( $args );
 
                     while ( $loop->have_posts() ) : $loop->the_post();?>
@@ -142,10 +142,13 @@ get_header(); ?>
                 /**
                  * Get latest Supplier
                  */
+//                print_r(WEPN_Helper::get_user_ids_by_role('vendor'));
+
                 $wp_venue_query = new WP_Query( array(
                     'post_type' => 'vendor',
-                    'orderby' => 'date',
-                    'order' => 'desc',
+                    'meta_key' => 'vendor',
+                    'orderby' => 'meta_value_num',
+                    'order' => 'DESC',
                     'post_status' => 'publish',
                     'posts_per_page' => 4,
                     'meta_query' => array(

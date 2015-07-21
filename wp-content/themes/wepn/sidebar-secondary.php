@@ -6,7 +6,10 @@
         /**
          * Get latest vendors
          */
-        $wp_venue_query = new WP_Query( array( 'post_type' => 'vendor', 'orderby' => 'date', 'order' => 'desc', 'post_status' => 'publish', 'posts_per_page' =>5 ) );
+        $wp_venue_query = new WP_Query( array( 'post_type' => 'vendor',
+                    'order' => 'DESC',
+                    'orderby' => 'meta_value_num',
+                    'meta_key' => 'vendor', 'post_status' => 'publish', 'posts_per_page' =>5 ) );
 
 
         if ( $wp_venue_query->have_posts(  ) ): ?>
