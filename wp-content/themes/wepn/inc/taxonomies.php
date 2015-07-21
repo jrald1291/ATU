@@ -31,3 +31,36 @@
   );
 
   register_taxonomy( 'portfolio-category', 'portfolio', $args );
+
+
+ $labels = array(
+  'name'                       => _x( 'Meetup Groups Category', 'taxonomy general name' ),
+  'singular_name'              => _x( 'Meetup Groups Category', 'taxonomy singular name' ),
+  'search_items'               => __( 'Search Cities' ),
+  'popular_items'              => __( 'Popular Cities' ),
+  'all_items'                  => __( 'All Cities' ),
+  'parent_item'                => null,
+  'parent_item_colon'          => null,
+  'edit_item'                  => __( 'Edit City' ),
+  'update_item'                => __( 'Update City' ),
+  'add_new_item'               => __( 'Add New City' ),
+  'new_item_name'              => __( 'New City Name' ),
+  'separate_items_with_commas' => __( 'Separate categories with commas' ),
+  'add_or_remove_items'        => __( 'Add or remove categories' ),
+  'choose_from_most_used'      => __( 'Choose from the most used categories' ),
+  'not_found'                  => __( 'No categories found.' ),
+  'menu_name'                  => __( 'Meetup Groups City' ),
+);
+
+$args = array(
+  'hierarchical'          => true,
+  'show_option_all'       => true,
+  'labels'                => $labels,
+  'show_ui'               => true,
+  'show_admin_column'     => true,
+  'update_count_callback' => '_update_post_term_count',
+  'query_var'             => true,
+  'rewrite'               => array( 'slug' => 'meetup_groups-category' )
+);
+
+register_taxonomy( 'meetup_groups-category', 'meetup_groups', $args );
