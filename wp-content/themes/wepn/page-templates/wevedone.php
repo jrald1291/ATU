@@ -52,8 +52,21 @@ get_header(); ?>
 
 							    if( $term->count > 0 )?>
 									<button class="button btn" data-filter=".<?php echo $term->slug ?>"><?php echo $term->name ?></button>
-								<?php } ?>
+							<?php } ?>
 						</div>
+						<!-- <select class="filters-select">
+							  <?php
+								$tax = 'portfolio-category';
+								$terms = get_terms( $tax, $args = array(
+								  'hide_empty' => false, 
+								));
+							  foreach( $terms as $term ) {
+							    $term_link = get_term_link( $term );
+
+							    if( $term->count > 0 )?>
+									<option value=".<?php echo $term->slug ?>"><?php echo $term->name ?></option>
+							<?php } ?>
+						</select> -->
 						<div class="grid grid-isotope">
 
 							 <?php 
