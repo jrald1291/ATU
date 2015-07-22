@@ -443,3 +443,50 @@ require get_template_directory() . '/inc/taxonomies.php';
 
 
 
+add_filter( 'wp_nav_menu_items', 'your_custom_menu_item', 10, 2 );
+function your_custom_menu_item ( $items, $args ) {
+    if ($args->theme_location == 'primary') {
+
+        if( count( WEPN_Helper::get_regions() ) ) {
+            $submenu = '<ul class="sub-menu">';
+            foreach( WEPN_Helper::get_regions() as $key => $val ) {
+
+                $submenu .= '<li class="menu-item menu-item-type-custom menu-item-object-custom">';
+
+                $submenu .= '<a href="'. home_url('/?s=&region='. $key .'&post_type=vendor') .'">'. $val .'</a></li>';
+            }
+            $submenu .= '</ul>';
+
+            $items = str_replace('WEPN Groups</a>', 'WEPN Groups</a>'. $submenu, $items);
+        }
+
+        if ( count( WEPN_Helper::city_lists() ) ) {
+            $submenu = '<ul class="sub-menu">';
+            foreach( WEPN_Helper::city_lists() as $key => $val ) {
+
+                $submenu .= '<li class="menu-item menu-item-type-custom menu-item-object-custom">';
+
+                $submenu .= '<a href="'. home_url('/?s=&city='. $key .'&post_type=vendor') .'">'. $val .'</a></li>';
+            }
+            $submenu .= '</ul>';
+
+            $items = str_replace('Event Suppliers</a>', 'Event Suppliers</a>'. $submenu, $items);
+
+
+            $submenu = '<ul class="sub-menu">';
+            foreach( WEPN_Helper::city_lists() as $key => $val ) {
+
+                $submenu .= '<li class="menu-item menu-item-type-custom menu-item-object-custom">';
+
+                $submenu .= '<a href="'. home_url('/?s=&city='. $key .'&post_type=venue') .'">'. $val .'</a></li>';
+            }
+            $submenu .= '</ul>';
+
+            $items = str_replace('Venue Partners</a>', 'Venue Partners</a>'. $submenu, $items);
+
+
+        }
+
+    }
+    return $items;
+}

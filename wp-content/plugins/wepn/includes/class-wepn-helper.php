@@ -180,6 +180,23 @@ if ( ! class_exists('WEPN_Helper') ) {
         }
 
 
+        public static function get_regions() {
+            $arr = array();
+
+            if ( have_rows( 'groups', 'option' ) ) {
+                while ( have_rows( 'groups', 'option' ) ) {
+                    the_row();
+                    $name = sanitize_title(get_sub_field('group_name'));
+                    $label = esc_html(get_sub_field('group_label'));
+
+                    $arr[$name] = $label;
+                }
+            }
+
+            return $arr;
+        }
+
+
         public static function city_lists() {
             $arr = array();
 
