@@ -46,10 +46,14 @@ get_header(); ?>
 	<div id="scroll-target" class="section section-l4">
 		<div class="container">	
 			<div class="col-sm-6 col-sm-push-6">
-				<div class="well-img-bordered mb-30">
+				<div class="well-img-bordered mb-20">
 					<?php $intro_img = wp_get_attachment_image_src(get_field('intro_image'),'img-lscape'); ?>
 					<img src="<?php echo $intro_img[0];?>"/>
 				</div>
+                <?php if (of_get_option('video_diff', '')) {?>
+                    <a href="#main_vid" role="button" data-toggle="modal" class="btn btn-primary btn-lg btn-block mb-20"><span class="fa fa-play-circle icon-l"></span> Watch our Video</a>
+                <?php } ?>
+
 			</div>
 			<div class="col-sm-6 col-sm-pull-6">
 				<div class="t-title t-lg text-right t-reset">
@@ -219,8 +223,26 @@ get_header(); ?>
 			<?php the_content(); ?>
 			<?php endwhile; ?>
 		</div>
+
 	</div>
 </div>
+
+<?php if (of_get_option('video_diff', '')) {?>
+    <div id="main_vid" class="modal modal-md fade in " tabindex="-1" role="dialog" aria-labelledby="<?php echo of_get_option('video_diff_text', ''); ?>">
+      <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+              <div class="modal-header t-normal">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h3 class="t-title text-center"><?php echo of_get_option('video_diff_text', ''); ?></h3>
+                  </div>
+              <div class="modal-body">
+                  <?php echo of_get_option('video_diff', ''); ?>
+              </div>
+       </div>
+      </div>
+    </div>
+<?php } ?>
+
 
 
 

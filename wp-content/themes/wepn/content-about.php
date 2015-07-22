@@ -33,6 +33,34 @@
 				    </div>
 				  </div>
 			  	<?php } ?>
+			  	<?php if (of_get_option('video_venue', '')) {?>
+				  <div class="panel panel-group">
+				    <div class="panel-heading">
+				      <a class="panel-toggle link" data-toggle="collapse" data-parent="#panel-about" href="#collaplse-venue">
+				        <span class="icon icon-l-sm fa fa-play-circle"></span> Watch <?php echo of_get_option('video_venue_text', ''); ?>
+				      </a>
+				    </div>
+				    <div id="collaplse-venue" class="panel-body collapse">
+				      <div class="panel-inner">
+				        <?php echo of_get_option('video_venue', ''); ?>
+				      </div>
+				    </div>
+				  </div>
+			  	<?php } ?>
+			  	<?php if (of_get_option('video_diff', '')) {?>
+				  <div class="panel panel-group">
+				    <div class="panel-heading">
+				      <a class="panel-toggle link" data-toggle="collapse" data-parent="#panel-about" href="#collaplse-diff">
+				        <span class="icon icon-l-sm fa fa-play-circle"></span> Watch <?php echo of_get_option('video_diff_text', ''); ?>
+				      </a>
+				    </div>
+				    <div id="collaplse-diff" class="panel-body collapse">
+				      <div class="panel-inner">
+				        <?php echo of_get_option('video_diff', ''); ?>
+				      </div>
+				    </div>
+				  </div>
+			  	<?php } ?>
 			  	<?php if (of_get_option('video_blooper', '')) {?>
 				  <div class="panel panel-group">
 				    <div class="panel-heading">
