@@ -18,6 +18,20 @@
 		<?php } ?>
 		<div class="post-core">
 		<div class="post-content copy mb-30">
+			<div class="row">
+				<div class="col-md-6">
+					<?php if (of_get_option('video_about', '')) {?>
+						<?php echo of_get_option('video_about', ''); ?>
+						<h3 class="t-title mt-10 text-center"><?php echo of_get_option('video_about_text', ''); ?></h3>
+					<?php } ?>
+				</div>
+				<div class="col-md-6">
+					<?php if (of_get_option('video_blooper', '')) {?>
+						<?php echo of_get_option('video_blooper', ''); ?>
+						<h3 class="t-title mt-10 text-center"><?php echo of_get_option('video_blooper_text', ''); ?></h3>
+					<?php } ?>
+				</div>
+			</div>
 			<p><?php the_content(); ?></p>
 		</div>
 		<div class="post post-block">
