@@ -58,7 +58,7 @@ get_header(); ?>
 
 							 <?php 
 							    $paged = get_query_var('paged');
-							    $args = array( 'post_type' => 'portfolio', 'posts_per_page' => 30,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
+							    $args = array( 'post_type' => 'portfolio', 'posts_per_page' => 2,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
 							    $loop = new WP_Query( $args );
 
 								    while ( $loop->have_posts() ) : $loop->the_post();
