@@ -146,7 +146,6 @@ get_header(); ?>
                 /**
                  * Get latest Supplier
                  */
-//                print_r(WEPN_Helper::get_user_ids_by_role('vendor'));
 
                 $wp_venue_query = new WP_Query( array(
                     'post_type' => 'vendor',
