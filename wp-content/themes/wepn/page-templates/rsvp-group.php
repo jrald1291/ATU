@@ -9,20 +9,8 @@
 
 get_header(); ?>
 
-<?php 
-	$bg = of_get_option('banner', '');
-	$page_bg = wp_get_attachment_image_src(get_field('page_background'),'large');
-	$page_bg = $page_bg[0];
-	if (!$page_bg) {
-		$page_bg = $bg;
-	}
-	if ($page_bg== "" and $bg == "") {
-		$page_bg = get_template_directory_uri()."/assets/images/banner.jpg";
-	}
 
-?>
-
-<div class="l-content-bg" style="background: url('<?php echo $page_bg; ?>') no-repeat"> 
+<div class="l-content-bg" style="background: url('<?php WEPN_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>') no-repeat">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9">
@@ -48,25 +36,7 @@ get_header(); ?>
 				        </form>
 					</div>
 					<div class="page-content">
-						<!-- <div class="form-labeled">
-							<div class="form-group">
-								<label for="" class="label-drop">RSVP Meeting Groups - <span class="req">Sort by City</span></label>
-								<select class="filters-select form-control">
-								  <option value="*">Show all latest Groups</option>
-								  <?php
-									$tax = 'meetup_groups-category';
-									$terms = get_terms( $tax, $args = array(
-									  'hide_empty' => false, 
-									));
-								  foreach( $terms as $term ) {
-								    $term_link = get_term_link( $term );
 
-								    if( $term->count > 0 )?>
-										<option value=".<?php echo $term->slug ?>"><?php echo $term->name ?></option>
-								<?php } ?>
-								</select>
-							</div>
-						</div> -->
 						<div class="grid grid-isotope grid-isotope-md">
 
 							 <?php 
@@ -94,8 +64,10 @@ get_header(); ?>
 															the_post_thumbnail('venue-medium'); 
 														?>
 													</a>
-													<?php 
-														$date = new DateTime(get_field('date'));
+													<?php
+
+
+														$date = new DateTime( get_field('date') );
 														if ($today>$date) {
 															$addClass = 'done';
 														}else{

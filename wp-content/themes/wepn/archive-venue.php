@@ -76,7 +76,11 @@ get_header();?>
                                 ?>
                             </div>
                         </div>
-                        <?php  do_action( 'wepn_pagination' ); ?>
+                        <?php
+
+                        global $wp_query;
+
+                        WEPN_Helper::wepn_pagination($wp_query->max_num_pages); ?>
                     </div>
                 </div>
             </div>

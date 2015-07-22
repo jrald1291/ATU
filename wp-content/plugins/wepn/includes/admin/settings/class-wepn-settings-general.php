@@ -31,9 +31,9 @@ if ( ! class_exists('WEPN_Settings_General') ) {
                 ),
 
                 array(
-                    'title'     => __( 'Vendors Page page', WEPN_TEXT_DOMAIN ),
+                    'title'     => __( 'Posts Per Page', WEPN_TEXT_DOMAIN ),
                     'desc'      => __( '', WEPN_TEXT_DOMAIN ),
-                    'id'        => 'show_vendors_per_page',
+                    'id'        => 'posts_per_page',
                     'type'      => 'number',
                     'attributes' => array(
                         'class' => 'small-text',

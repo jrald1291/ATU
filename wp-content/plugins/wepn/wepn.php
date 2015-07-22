@@ -150,9 +150,6 @@ class WEPN {
 
 
 
-
-        add_action( 'wepn_pagination', array( $this, 'wepn_do_pagination' ) );
-
         add_action( 'wepn_venue_search_form', array( $this, 'wepn_venue_search_form' ) );
         add_action( 'wepn_vendor_search_form', array( $this, 'wepn_vendor_search_form' ) );
 
@@ -223,6 +220,7 @@ class WEPN {
                 $query->set('meta_key', 'vendor' );
                 $query->set('orderby', 'meta_value_num');
                 $query->set('order', 'DESC');
+
             }
 
             if (!$query->is_search) return $query;
@@ -234,12 +232,10 @@ class WEPN {
 
 
                     $query->set('tax_query', array(
-//                    'relation' => 'OR',
                         array(
                             'taxonomy' => 'venue-category',
                             'field' => 'id',
                             'terms' => array(intval($_REQUEST['venue-category'])),
-//                        'operator' => 'IN'
                         )
                     ));
 
@@ -279,14 +275,6 @@ class WEPN {
         global $wpdb;
 
         if ( ! is_search() && is_admin() ) return $join;
-
-
-//        if( ( isset( $_REQUEST['post_code'] ) && ! empty( $_REQUEST['post_code'] ) )
-//            || ( isset( $_REQUEST['capacity'] ) && ! empty( $_REQUEST['capacity'] ) )
-//            || ( isset( $_REQUEST['city'] ) && ! empty( $_REQUEST['city'] ) )
-//            || ( isset( $_REQUEST['region'] ) && ! empty( $_REQUEST['region'] ) ) ) {
-//            $join .= " LEFT JOIN $wpdb->postmeta AS m ON ($wpdb->posts.ID = m.post_id) ";
-//        }
 
 
         if( isset( $_REQUEST['post_code'] ) && ! empty( $_REQUEST['post_code'] ) ) {
@@ -474,48 +462,7 @@ class WEPN {
     }
 
 
-    public function wepn_do_pagination() {
-        global $wp_query, $wp;
-        $current_url = add_query_arg( $wp->query_string, '', home_url( $wp->request ) );
 
-        // Get post type archive link
-        //$post_type_archive_link = get_post_type_archive_link( 'venue' );
-        // Get maximum number of page
-        $total_row = $wp_query->max_num_pages;
-        // Set row per page
-        $per_page = 12;
-        // Get total page
-        $total_page = ceil( $total_row / $per_page );
-        // Get current page
-        $current_page = get_query_var('paged') ? get_query_var('paged') : 1;
-        // Get next page
-        $next_page = $total_page <= $current_page ? $current_page : $current_page + 1;
-
-        echo '<div class="pagination">';
-        echo '<label for="">' . __( 'Pagination', 'atu') . ' :</label>';
-        echo '<div class="wp-pagenavi">';
-        echo '<span class="pages">Page '. $current_page .' of '. $total_page .'</span>';
-
-        for( $i = 1; $i <= $total_page; $i++ ):
-
-            if ( $i == $current_page ):
-
-                echo '<span class="current">'. $i .'</span>';
-
-            else:
-
-                echo '<a class="page larger" href="'. $current_url  .'page/'. $i .'">'. $i .'</a>';
-
-            endif;
-
-        endfor;
-        if ($total_page!=1 and $page!=$total_page) {
-            echo '<a class="nextpostslink" rel="next" href="'. $current_url  .'page/'. $next_page .'">»</a>';
-        }        
-
-        echo '</div>';
-        echo '</div>';
-    }
 
 
 

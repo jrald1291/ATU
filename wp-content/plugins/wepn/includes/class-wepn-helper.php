@@ -346,6 +346,56 @@ if ( ! class_exists('WEPN_Helper') ) {
         }
 
 
+        public static function wepn_pagination($total_page) {
+            global $paged;
+
+            if(empty($paged)) $paged = 1;
+
+            if($total_page == '')
+            {
+                global $wp_query;
+                // Get post type archive link
+                //$post_type_archive_link = get_post_type_archive_link( 'venue' );
+                // Get maximum number of page
+                $total_page = $wp_query->max_num_pages;
+
+                if(!$total_page)
+                {
+                    $total_page = 1;
+                }
+            }
+
+
+            echo '<div class="pagination">';
+            echo '<label for="">' . __( 'Pagination', 'atu') . ' :</label>';
+            echo '<div class="wp-pagenavi">';
+            echo '<span class="pages">Page '. $paged .' of '. $total_page .'</span>';
+
+            for( $i = 1; $i <= $total_page; $i++ ):
+
+                if ( $i == $paged ):
+
+                    echo '<span class="current">'. $i .'</span>';
+
+                else:
+
+                    echo '<a class="page larger" href="'. get_pagenum_link($i)  .'">'. $i .'</a>';
+
+                endif;
+
+            endfor;
+            if ($total_page!=1 && $paged!=$total_page) {
+                echo '<a class="nextpostslink" rel="next" href="'. get_pagenum_link($paged + 1) .'">»</a>';
+            }
+
+            echo '</div>';
+            echo '</div>';
+        }
+
+
+
+
+
     }
 
 
