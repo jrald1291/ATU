@@ -89,11 +89,13 @@ get_header(); ?>
 											} ?>">
 											<div class="grid-wrap">
 												<div class="grid-img">
+													<a href="<?php the_field('group_url'); ?>">
+														<?php 
+															the_post_thumbnail('venue-medium'); 
+														?>
+													</a>
 													<?php 
-														the_post_thumbnail('venue-medium'); 
 														$date = new DateTime(get_field('date'));
-													?>
-													<?php 
 														if ($today>$date) {
 															$addClass = 'done';
 														}else{
@@ -104,7 +106,7 @@ get_header(); ?>
 														<div class="grid-date <?php echo $addClass; ?>">
 															<?php the_field('date'); ?>
 														</div>
-														<?php the_title(); ?>
+														<a href="<?php the_field('group_url'); ?>" class="link"><?php the_title(); ?></a>
 													</div>
 												</div>	
 											</div>
