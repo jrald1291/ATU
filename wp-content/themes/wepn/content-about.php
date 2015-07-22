@@ -18,19 +18,35 @@
 		<?php } ?>
 		<div class="post-core">
 		<div class="post-content copy mb-30">
-			<div class="row">
-				<div class="col-md-6">
-					<?php if (of_get_option('video_about', '')) {?>
-						<?php echo of_get_option('video_about', ''); ?>
-						<h3 class="t-title mt-10 text-center"><?php echo of_get_option('video_about_text', ''); ?></h3>
-					<?php } ?>
-				</div>
-				<div class="col-md-6">
-					<?php if (of_get_option('video_blooper', '')) {?>
-						<?php echo of_get_option('video_blooper', ''); ?>
-						<h3 class="t-title mt-10 text-center"><?php echo of_get_option('video_blooper_text', ''); ?></h3>
-					<?php } ?>
-				</div>
+			<div class="panel-parent" id="panel-about">			
+				<?php if (of_get_option('video_about', '')) {?>
+				  <div class="panel panel-group">
+				    <div class="panel-heading">
+				      <a class="panel-toggle link" data-toggle="collapse" data-parent="#panel-about" href="#collaplse-about">
+				        <span class="icon icon-l-sm fa fa-play-circle"></span> Watch <?php echo of_get_option('video_about_text', ''); ?>
+				      </a>
+				    </div>
+				    <div id="collaplse-about" class="panel-body collapse in">
+				      <div class="panel-inner">
+				        <?php echo of_get_option('video_about', ''); ?>
+				      </div>
+				    </div>
+				  </div>
+			  	<?php } ?>
+			  	<?php if (of_get_option('video_blooper', '')) {?>
+				  <div class="panel panel-group">
+				    <div class="panel-heading">
+				      <a class="panel-toggle link" data-toggle="collapse" data-parent="#panel-about" href="#collaplse-blooper">
+				        <span class="icon icon-l-sm fa fa-play-circle"></span> Watch <?php echo of_get_option('video_blooper_text', ''); ?>
+				      </a>
+				    </div>
+				    <div id="collaplse-blooper" class="panel-body collapse">
+				      <div class="panel-inner">
+				        <?php echo of_get_option('video_blooper', ''); ?>
+				      </div>
+				    </div>
+				  </div>
+			  	<?php } ?>
 			</div>
 			<p><?php the_content(); ?></p>
 		</div>

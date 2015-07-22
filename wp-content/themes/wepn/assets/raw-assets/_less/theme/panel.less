@@ -1,0 +1,18 @@
+.panel-parent{
+	border: 1px solid @base_border_color;
+
+	.panel{
+		margin-bottom: 0;
+
+		& ~ .panel{
+			border-top: 1px solid @base_border_color;
+		}
+	}
+	.panel-heading{
+		font-size: 18px;
+		.t-title;
+	}
+	.panel-body{
+		border-top: 1px solid @base_border_color;
+	}
+}

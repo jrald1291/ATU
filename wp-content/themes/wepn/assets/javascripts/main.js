@@ -58,6 +58,11 @@ var util = {
               $('.toggle-menuwrapper').fadeOut('fast');
             }
           });
+
+          $('.panel').panel({
+            toggle: true,
+            parent: true,
+          })
           
       },
 
