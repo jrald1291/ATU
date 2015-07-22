@@ -66,6 +66,7 @@ var util = {
         var winwidth = $(window).outerWidth();
         var grid = $('.grid-isotope-sm');
         var grid2 = $('.grid-isotope-md');
+        
         grid.isotope({
           itemSelector: '.grid-item',
           layoutMode: 'masonry',
@@ -76,13 +77,13 @@ var util = {
           itemSelector: '.grid-item',
           layoutMode: 'fitRows',
           resizable: true, 
-          masonry: { columnWidth: grid.width() / 2 }
+          masonry: { columnWidth: grid2.width() / 2 }
         });
         // filter items on button click
-        $('.grid-filter').on( 'click', 'button', function() {
-          var filterValue = $(this).attr('data-filter');
-          grid.isotope({ filter: filterValue });
-        });       
+        // $('.grid-filter').on( 'click', 'button', function() {
+        //   var filterValue = $(this).attr('data-filter');
+        //   grid.isotope({ filter: filterValue });
+        // });       
 
         $( window ).resize(function() {
           $winwidth = $(window).outerWidth();
@@ -98,26 +99,26 @@ var util = {
           }          
         });
         // filter functions
-        var filterFns = {
-          // show if number is greater than 50
-          numberGreaterThan50: function() {
-            var number = $(this).find('.number').text();
-            return parseInt( number, 10 ) > 50;
-          },
-          // show if name ends with -ium
-          ium: function() {
-            var name = $(this).find('.name').text();
-            return name.match( /ium$/ );
-          }
-        };
-        // bind filter on select change
-        $('.filters-select').on( 'change', function() {
-          // get filter value from option value
-          var filterValue = this.value;
-          // use filterFn if matches value
-          filterValue = filterFns[ filterValue ] || filterValue;
-          grid2.isotope({ filter: filterValue });
-        });
+        // var filterFns = {
+        //   // show if number is greater than 50
+        //   numberGreaterThan50: function() {
+        //     var number = $(this).find('.number').text();
+        //     return parseInt( number, 10 ) > 50;
+        //   },
+        //   // show if name ends with -ium
+        //   ium: function() {
+        //     var name = $(this).find('.name').text();
+        //     return name.match( /ium$/ );
+        //   }
+        // };
+        // // bind filter on select change
+        // $('.filters-select').on( 'change', function() {
+        //   // get filter value from option value
+        //   var filterValue = this.value;
+        //   // use filterFn if matches value
+        //   filterValue = filterFns[ filterValue ] || filterValue;
+        //   grid2.isotope({ filter: filterValue });
+        // });
       },
       Forms: function(){
       

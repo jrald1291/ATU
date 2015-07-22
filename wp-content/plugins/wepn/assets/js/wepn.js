@@ -21,7 +21,7 @@
 
 
 
-        B.on('change keyup', 'form#vendorSearchForm :input, form#venueSearchForm :input', function(e) {
+        B.on('change keyup', 'form#vendorSearchForm :input, form#venueSearchForm :input,form#sort_post :input', function(e) {
             e.preventDefault();
 
 
@@ -36,8 +36,6 @@
 
             $.get(url, params,function(data){
                 if(data.length>0){
-
-
                     $(".page-content").html( $(data).find('.page-content').html() );
                 }
             });

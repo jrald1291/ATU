@@ -28,17 +28,27 @@ get_header(); ?>
 			<div class="col-md-9">
 				<div class="l-content-container">
 					<div class="page-header">
-						<div class="row">
-							<div class="col-md-6">
-								<a href="<?php echo get_home_url().'/venue/';?>" class="btn btn-secondary btn-block">Find Venue</a>
-							</div>
-							<div class="col-md-6">
-								<a href="<?php echo get_home_url().'/suppliers/';?>" class="btn btn-secondary btn-block">Find Supplier</a>
-							</div>
-						</div>	
+						 <form id="sort_post" action="<?php echo home_url( '/' ); ?>" method="post" class="form">
+		                    <div class="form-group">
+								<select class="form-control">
+								  <option value="" selected="selected">Show all Category</option>
+								  <?php
+									$tax = 'portfolio-category';
+									$terms = get_terms( $tax, $args = array(
+									  'hide_empty' => false, 
+									));
+								  foreach( $terms as $term ) {
+								    $term_link = get_term_link( $term );
+
+								    if( $term->count > 0 )?>
+										<option value=".<?php echo $term->slug ?>"><?php echo $term->name ?></option>
+								<?php } ?>
+								</select>
+				            </div>
+				        </form>
 					</div>
 					<div class="page-content">
-						<div class="grid-filter">
+						<!-- <div class="grid-filter">
 						    <button class="button btn" data-filter="*">show all</button>
 						    
 						    <?php
@@ -53,12 +63,12 @@ get_header(); ?>
 							    if( $term->count > 0 )?>
 									<button class="button btn" data-filter=".<?php echo $term->slug ?>"><?php echo $term->name ?></button>
 							<?php } ?>
-						</div>
+						</div> -->
 						<div class="grid grid-isotope grid-isotope-sm">
 
 							 <?php 
 							    $paged = get_query_var('paged');
-							    $args = array( 'post_type' => 'portfolio', 'posts_per_page' => 2,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
+							    $args = array( 'post_type' => 'portfolio', 'posts_per_page' => 30,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
 							    $loop = new WP_Query( $args );
 
 								    while ( $loop->have_posts() ) : $loop->the_post();
@@ -92,6 +102,16 @@ get_header(); ?>
 							<label for="">Pagination :</label>
 							<?php wp_pagenavi( array( 'query' => $loop ) ); ?>
 						</div>
+						<script>
+					        var grid = $('.grid-isotope-sm');
+					        
+					        grid.isotope({
+					          itemSelector: '.grid-item',
+					          layoutMode: 'masonry',
+					          resizable: true, 
+					          masonry: { columnWidth: grid.width() / 3 }
+					        });
+						</script>
 
 					</div>
 				</div>
