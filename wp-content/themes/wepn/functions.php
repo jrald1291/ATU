@@ -461,7 +461,7 @@ function your_custom_menu_item ( $items, $args ) {
         }
 
         if ( count( WEPN_Helper::city_lists() ) ) {
-            $submenu = '<ul class="sub-menu">';
+            $submenu = '<ul class="sub-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="'. home_url('/suppliers/') .'">All Cities</a></li>';
             foreach( WEPN_Helper::city_lists() as $key => $val ) {
 
                 $submenu .= '<li class="menu-item menu-item-type-custom menu-item-object-custom">';
@@ -473,7 +473,7 @@ function your_custom_menu_item ( $items, $args ) {
             $items = str_replace('Event Suppliers</a>', 'Event Suppliers</a>'. $submenu, $items);
 
 
-            $submenu = '<ul class="sub-menu">';
+            $submenu = '<ul class="sub-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="'. home_url('/venue/') .'">All Cities</a></li>';
             foreach( WEPN_Helper::city_lists() as $key => $val ) {
 
                 $submenu .= '<li class="menu-item menu-item-type-custom menu-item-object-custom">';

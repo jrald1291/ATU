@@ -175,7 +175,7 @@ function optionsframework_options() {
 		'std' => '',
 		'type' => 'text');
 
-	//Footer
+	//RSVP
 
 	$options[] = array(
 		'name' => __('RSVP', 'options_framework_theme'),
@@ -193,6 +193,60 @@ function optionsframework_options() {
 		'id' => 'rsvp_link',
 		'std' => '',
 		'type' => 'text');
+
+	//Videos
+
+	$options[] = array(
+		'name' => __('WEPN Videos', 'options_framework_theme'),
+		'type' => 'heading' );
+	$options[] = array(
+		'name' => __('About Us Text', 'options_framework_theme'),
+		'desc' => __('Enter Title', 'options_framework_theme'),
+		'id' => 'video_about_text',
+		'std' => '',
+		'type' => 'text');
+	$options[] = array(
+		'name' => __('About Us Video', 'options_framework_theme'),
+		'desc' => __('use iframe', 'options_framework_theme'),
+		'id' => 'video_about',
+		'std' => '',
+		'type' => 'editor');
+	$options[] = array(
+		'name' => __('Benefits to Venues Text', 'options_framework_theme'),
+		'desc' => __('Enter Title', 'options_framework_theme'),
+		'id' => 'video_venue_text',
+		'std' => '',
+		'type' => 'text');
+	$options[] = array(
+		'name' => __('Benefits to Venues Video', 'options_framework_theme'),
+		'desc' => __('use iframe', 'options_framework_theme'),
+		'id' => 'video_venue',
+		'std' => '',
+		'type' => 'editor');
+	$options[] = array(
+		'name' => __('WEPN is Different Text', 'options_framework_theme'),
+		'desc' => __('Enter Title', 'options_framework_theme'),
+		'id' => 'video_diff_text',
+		'std' => '',
+		'type' => 'text');
+	$options[] = array(
+		'name' => __('WEPN is Different Video', 'options_framework_theme'),
+		'desc' => __('use iframe', 'options_framework_theme'),
+		'id' => 'video_diff',
+		'std' => '',
+		'type' => 'editor');
+	$options[] = array(
+		'name' => __('Blooper Text', 'options_framework_theme'),
+		'desc' => __('Enter Title', 'options_framework_theme'),
+		'id' => 'video_blooper_text',
+		'std' => '',
+		'type' => 'text');
+	$options[] = array(
+		'name' => __('Blooper Video', 'options_framework_theme'),
+		'desc' => __('use iframe', 'options_framework_theme'),
+		'id' => 'video_blooper',
+		'std' => '',
+		'type' => 'editor');
 
 
 
