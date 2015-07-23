@@ -48,22 +48,6 @@ get_header(); ?>
 				        </form>
 					</div>
 					<div class="page-content">
-						<!-- <div class="grid-filter">
-						    <button class="button btn" data-filter="*">show all</button>
-						    
-						    <?php
-							$tax = 'portfolio-category';
-							$terms = get_terms( $tax, $args = array(
-							  'hide_empty' => false, 
-							));
-
-							foreach( $terms as $term ) {
-							    $term_link = get_term_link( $term );
-
-							    if( $term->count > 0 )?>
-									<button class="button btn" data-filter=".<?php echo $term->slug ?>"><?php echo $term->name ?></button>
-							<?php } ?>
-						</div> -->
 						<div class="grid grid-isotope grid-isotope-sm">
 
 							 <?php 
@@ -103,13 +87,15 @@ get_header(); ?>
 							<?php wp_pagenavi( array( 'query' => $loop ) ); ?>
 						</div>
 						<script>
-					        var grid = $('.grid-isotope-sm');
-					        
-					        grid.isotope({
-					          itemSelector: '.grid-item',
-					          layoutMode: 'masonry',
-					          resizable: true, 
-					          masonry: { columnWidth: grid.width() / 3 }
+							jQuery( function() {
+						        var grid = jQuery('.grid-isotope-sm');
+						        
+						        grid.isotope({
+						          itemSelector: '.grid-item',
+						          layoutMode: 'masonry',
+						          resizable: true, 
+						          masonry: { columnWidth: grid.width() / 3 }
+						        });
 					        });
 						</script>
 

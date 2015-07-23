@@ -93,13 +93,15 @@ get_header(); ?>
 							<?php wp_pagenavi( array( 'query' => $loop ) ); ?>
 						</div>
 						<script>
-							var grid = $('.grid-isotope-md');
+							jQuery( function() {
+								var grid = jQuery('.grid-isotope-md');
 
-							grid.isotope({
-					          itemSelector: '.grid-item',
-					          layoutMode: 'fitRows',
-					          resizable: true, 
-					          masonry: { columnWidth: grid.width() / 2 }
+								grid.isotope({
+						          itemSelector: '.grid-item',
+						          layoutMode: 'fitRows',
+						          resizable: true, 
+						          masonry: { columnWidth: grid.width() / 2 }
+						        });
 					        });
 						</script>
 

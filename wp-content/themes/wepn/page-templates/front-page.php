@@ -104,36 +104,34 @@ get_header(); ?>
                  */
                  wp_list_authors();
                 $wp_venue_query = new WP_Query( array( 'post_type' => 'venue', 'orderby' => 'date', 'order' => 'desc', 'post_status' => 'publish', 'posts_per_page' => -1 ) );
-
-
                 ?>
                 <?php if ( $wp_venue_query->have_posts(  ) ): ?>
-				<div class="slider slider-l1 mb-20">
-					<div class="slider-venue slider-capt flexslider mb-0">
+    				<div class="slider slider-l1 mb-20">
+    					<div class="slider-venue slider-capt flexslider mb-0">
 
-                            <ul class="slides">
-                            <?php while( $wp_venue_query->have_posts() ): $wp_venue_query->the_post();?>
-                                <li>
-                                    <?php do_action('aut_post_thumnail', 'venue-medium'); ?>
-                                    <div class="slider-caption">
-                                        <a href="#" class="link"><div class="slide-title"><?php the_title(); ?></div></a>
-                                        <div class="slide-desc"><?php echo wp_trim_words(  get_the_content(), $num_words = 10, $more = ' <a href="'. get_permalink() .'">read more</a>' ); ?></div>
-                                    </div>
-                                </li>
-                            <?php endwhile; ?>
-                            </ul>
+                                <ul class="slides">
+                                <?php while( $wp_venue_query->have_posts() ): $wp_venue_query->the_post();?>
+                                    <li>
+                                        <?php do_action('aut_post_thumnail', 'venue-medium'); ?>
+                                        <div class="slider-caption">
+                                            <a href="#" class="link"><div class="slide-title"><?php the_title(); ?></div></a>
+                                            <div class="slide-desc"><?php echo wp_trim_words(  get_the_content(), $num_words = 10, $more = ' <a href="'. get_permalink() .'">read more</a>' ); ?></div>
+                                        </div>
+                                    </li>
+                                <?php endwhile; ?>
+                                </ul>
 
 
-					</div>
-					<div id="carousel-venue" class="flexslider mb-0">
-					 <ul class="slides">
-                         <?php while( $wp_venue_query->have_posts() ): $wp_venue_query->the_post();?>
-                             <li><?php do_action('aut_post_thumnail', 'venue-small-thumb'); ?> </li>
-                         <?php endwhile; ?>
-					 </ul>
+    					</div>
+    					<div id="carousel-venue" class="flexslider mb-0">
+    					 <ul class="slides">
+                             <?php while( $wp_venue_query->have_posts() ): $wp_venue_query->the_post();?>
+                                 <li><?php do_action('aut_post_thumnail', 'venue-small-thumb'); ?> </li>
+                             <?php endwhile; ?>
+    					 </ul>
 
-					</div>
-				</div>
+    					</div>
+    				</div>
 				<a href="<?php echo get_post_type_archive_link( 'venue' ); ?>" class="btn btn-opposite btn-block btn-md"><?php _e( 'See all venues', 'atu' ); ?></a>
                 <?php else: ?>
                     <h3><?php _e( 'No Venue found.', 'atu' ); ?></h3>
