@@ -214,12 +214,20 @@ span.nav-next:before  {
 span.nav-close{
 	bottom: 0;
 	right: 0;
-	padding: 0.5em 1em;
+	display: block;
+	width: 100%;
+	padding: 20px 0px!important;
+	text-align: center;
+	font-size: 19px!important;
+	letter-spacing: 1px;
 	color: #fff;
+	background: fade(@base_color,40%);
 
 	&:before {
-		content: "\f00d";
+		content: "CLOSE SLIDE";
+		.typo-base;
 		color: #fff;
+		text-shadow: 0px 2px 0px #000;
 	}
 }
 
