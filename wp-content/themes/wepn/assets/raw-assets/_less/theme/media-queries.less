@@ -132,6 +132,14 @@
 			width: 49%;
 		}
 	}
+	.grid-gallery .grid li{
+		width: 33%;
+	}
+	.slideshow .nav-close{
+		&:before{
+			color: #59656c;
+		}
+	}
 }
 
 @media (max-width: 670px){
@@ -207,7 +215,7 @@
 			border-bottom: 1px solid @base_border_color;
 			text-align: center;
 		}
-		.wp-pagenavi{
+		.wp-pagenavi, & ul{
 			float: none;
 			display: block;
 		}
@@ -230,6 +238,9 @@
 		.grid-item{
 			width: 100%!important;
 		}
+	}
+	.grid-gallery .grid li{
+		width: 50%;
 	}
 }
 

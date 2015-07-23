@@ -115,11 +115,13 @@ $user_info = get_userdata( $user->ID );
 
                                                     <li>
                                                         <figure>
-                                                            <figcaption>
-                                                                <h3><?php echo the_sub_field( 'gallery_title' ); ?></h3>
-                                                                <p><?php echo the_sub_field( 'gallery_description' ); ?></p>
-                                                            </figcaption>
-                                                            <?php echo wp_get_attachment_image( get_sub_field( 'gallery_image' ), 'img-lscape', array( 'alt' => 'image' ) ); ?>
+                                                            <?php if (get_sub_field( 'gallery_title' ) && get_sub_field( 'gallery_description' ) ) {?>
+                                                                 <figcaption>
+                                                                    <h3><?php the_sub_field( 'gallery_title' ); ?></h3>
+                                                                    <p><?php the_sub_field( 'gallery_description' ); ?></p>
+                                                                </figcaption>
+                                                            <?php } ?>
+                                                            <?php echo wp_get_attachment_image( get_sub_field( 'gallery_image' ), 'large', array( 'alt' => 'image' ) ); ?>
                                                         </figure>
                                                     </li>
 

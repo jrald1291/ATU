@@ -104,15 +104,18 @@ get_header(); ?>
                                                 <?php while( have_rows( 'gallery' ) ): the_row();?>
                                                     <li>
                                                         <figure>
-                                                            <figcaption>
-                                                                <h3><?php the_sub_field( 'gallery_title' ); ?></h3>
-                                                                <p><?php the_sub_field( 'gallery_description' ); ?></p>
-                                                            </figcaption>
+                                                            <?php if (get_sub_field( 'gallery_title' ) && get_sub_field( 'gallery_description' ) ) {?>
+                                                                 <figcaption>
+                                                                    <h3><?php the_sub_field( 'gallery_title' ); ?></h3>
+                                                                    <p><?php the_sub_field( 'gallery_description' ); ?></p>
+                                                                </figcaption>
+                                                            <?php } ?>
+                                                           
                                                             <?php
                                                             /**
                                                              * Get gallery image
                                                              */
-                                                            echo wp_get_attachment_image( get_sub_field( 'gallery_image' ), 'post-thumbnail', array( 'alt' => 'image' ) );
+                                                            echo wp_get_attachment_image( get_sub_field( 'gallery_image' ), 'large', array( 'alt' => 'image' ) );
                                                             ?>
                                                         </figure>
                                                     </li>
