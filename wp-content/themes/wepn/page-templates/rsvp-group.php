@@ -9,8 +9,20 @@
 
 get_header(); ?>
 
+<?php 
+	$bg = of_get_option('banner', '');
+	$page_bg = wp_get_attachment_image_src(get_field('page_background'),'large');
+	$page_bg = $page_bg[0];
+	if (!$page_bg) {
+		$page_bg = $bg;
+	}
+	if ($page_bg== "" and $bg == "") {
+		$page_bg = get_template_directory_uri()."/assets/images/banner.jpg";
+	}
 
-<div class="l-content-bg" style="background: url('<?php WEPN_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>') no-repeat">
+?>
+
+<div class="l-content-bg" style="background: url('<?php echo $page_bg; ?>') no-repeat"> 
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9">
