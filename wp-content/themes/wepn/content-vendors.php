@@ -8,7 +8,7 @@
 
 
 <div class="post post-block">
-    <div class="row">
+    <div class="row">lorem
 
         <?php if ( have_posts() ) : ?>
 
