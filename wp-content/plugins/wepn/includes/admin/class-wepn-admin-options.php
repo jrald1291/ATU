@@ -25,23 +25,6 @@ if ( ! class_exists( 'acf_options_page_plugin' ) ) {
             );
 
 
-            // create remote update
-//		if( is_admin() )
-//		{
-//			$update_settings = array(
-//				'version' => '1.0.1',
-//				'remote' => 'http://download.advancedcustomfields.com/OPN8-FA4J-Y2LW-81LS/info/',
-//				'basename' => plugin_basename(__FILE__),
-//			);
-//
-//			if( !class_exists('acf_remote_update') )
-//			{
-//				include_once('acf-remote-update.php');
-//			}
-//
-//			new acf_remote_update( $update_settings );
-//		}
-
 
             // actions
             add_action('init', array($this, 'init'), 1);
@@ -141,8 +124,6 @@ if ( ! class_exists( 'acf_options_page_plugin' ) ) {
 
 
             $parent_page = add_submenu_page( 'wepn-settings', $parent_title, $parent_menu, $this->settings['capability'], $parent_slug, array($this, 'html'));
-            // Parent
-//            $parent_page = add_menu_page($parent_title, $parent_menu, $this->settings['capability'], $parent_slug, array($this, 'html'));
 
 
             // actions

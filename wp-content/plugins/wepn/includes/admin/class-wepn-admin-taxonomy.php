@@ -41,7 +41,7 @@ if ( ! class_exists('WEPN_Admin_Taxonomy') ) {
                         'show_ui'           => true,
                         'show_admin_column' => true,
                         'query_var'         => true,
-                        'rewrite'           => array( 'slug' => 'venue-category' ),
+                        'rewrite'           => array( 'slug' => 'venue-cat' ),
                     )
                 )
             );

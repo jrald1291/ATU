@@ -14,7 +14,7 @@ get_header(); ?>
 	if ( have_posts() ) : 
 	while ( have_posts() ) : the_post();
 		$bg = of_get_option('banner', '');
-		$page_bg = wp_get_attachment_image_src(get_field('page_background'),'large');
+		$page_bg = wp_get_attachment_image_src(get_field('page_background',get_the_ID()),'large');
 		$page_bg = $page_bg[0];
 		if (!$page_bg) {
 			$page_bg = $bg;

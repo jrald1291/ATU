@@ -205,9 +205,28 @@ class WEPN {
 
 
 
-        if ( !is_admin() && $query->is_main_query() ) {
+        if ( !is_admin() && $query->is_main_query() && $query->is_search ) {
 
-            if ( is_post_type_archive( 'vendor' ) ) {
+
+            $city = isset($_REQUEST['city']) && !empty($_REQUEST['city']) ? esc_attr($_REQUEST['city']) : 'sydney';
+            $region = isset($_REQUEST['region']) && !empty($_REQUEST['region']) ? esc_attr($_REQUEST['region']) : '';
+
+            $_SESSION['wepn']['url_segment'] = array(
+                'city'      => $city,
+                'region'    => $region,
+            );
+
+
+
+            if (isset($_REQUEST['post_type']) && !empty($_REQUEST['post_type'])) {
+                $query->set('post_type', array($_REQUEST['post_type']));
+            }
+
+            if (is_post_type_archive('venue')) {
+                $tax = 'venue-category';
+            }  elseif (is_post_type_archive('vendor')) {
+                $tax = $city;
+
                 $query->set('meta_query', array(
                     array(
                         'key' => 'vendor', // name of custom field
@@ -221,45 +240,19 @@ class WEPN {
                 $query->set('orderby', 'meta_value_num');
                 $query->set('order', 'DESC');
 
+
             }
 
-            if (!$query->is_search) return $query;
 
-            if (isset($_REQUEST['post_type']) && $_REQUEST['post_type'] == 'venue' && is_post_type_archive('venue')) {
-
-                $query->set('post_type', array('venue'));
-                if (isset($_REQUEST['venue-category']) && $_REQUEST['venue-category'] != -1) {
-
-
-                    $query->set('tax_query', array(
-                        array(
-                            'taxonomy' => 'venue-category',
-                            'field' => 'id',
-                            'terms' => array(intval($_REQUEST['venue-category'])),
-                        )
-                    ));
-
-
-                }
-
-            } elseif (isset($_REQUEST['post_type']) && $_REQUEST['post_type'] == 'vendor' && is_post_type_archive('vendor')) {
-                $query->set('post_type', array('vendor'));
-
-
-                if (isset($_REQUEST['category']) && !empty($_REQUEST['category']) ) {
-                    $query->set('tax_query', array(
-                       // 'relation' => 'OR',
-                        array(
-                            'taxonomy' => isset($_REQUEST['city']) && !empty($_REQUEST['city']) ? esc_attr($_REQUEST['city']) : 'sydney',
-                            'field' => 'slug',
-                            'terms' => array(esc_attr($_REQUEST['category'])),
-                            'operator' => 'IN'
-                        )
-                    ));
-                }
-
-
-
+            if (isset($_REQUEST['category']) && !empty($_REQUEST['category']) ) {
+                $query->set('tax_query', array(
+                    array(
+                        'taxonomy' => $tax,
+                        'field' => 'slug',
+                        'terms' => array(esc_attr($_REQUEST['category'])),
+                        'operator' => 'IN'
+                    )
+                ));
             }
 
 
@@ -296,6 +289,10 @@ class WEPN {
         }
 
 
+//        if( isset( $_REQUEST['category'] ) && ! empty( $_REQUEST['category'] )) {
+//            $join .= " LEFT JOIN $wpdb->postmeta AS m4 ON $wpdb->posts.ID = m4.post_id  AND m4.meta_key='category'";
+//        }
+
 
         return $join;
     }
@@ -328,6 +325,10 @@ class WEPN {
         if ( isset( $_REQUEST['region'] ) && ! empty( $_REQUEST['region'] ) ) {
             $where .= " AND ( m3.meta_value='". esc_attr( $_REQUEST['region'] ) ."' ) ";
         }
+
+//        if( isset( $_REQUEST['category'] ) && ! empty( $_REQUEST['category'] )) {
+//            $where .= " AND ( m4.meta_value='". esc_attr( $_REQUEST['category'] ) ."' ) ";
+//        }
 
 
 
@@ -441,8 +442,8 @@ class WEPN {
                     <div class="form-group">
                         <?php wp_dropdown_categories( array(
                             'taxonomy'  => 'venue-category',
-                            'name'               => 'venue-category',
-                            'selected'              => isset( $_REQUEST['venue-category'] ) ? $_REQUEST['venue-category'] : '-1',
+                            'name'               => 'category',
+                            'selected'              => isset( $_REQUEST['category'] ) ? $_REQUEST['category'] : '-1',
                             'hide_empty'         => 0,
                             'class'              => 'form-control',
                             'show_option_none'   => '-- Select Category --',

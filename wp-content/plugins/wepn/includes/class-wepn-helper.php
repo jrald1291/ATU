@@ -253,19 +253,19 @@ if ( ! class_exists('WEPN_Helper') ) {
         }
 
 
-        public static function list_vendor_category( $args = array() ) {
-            $options = wp_parse_args( $args, array(
-                'taxonomy' => 'sydney',
-                'echo' => true,
-            ) );
+        public static function list_vendor_category( $echo = true ) {
 
-            extract( $options );
+            $taxonomy = isset($_SESSION['wepn']['url_segment']['city']) && !empty($_SESSION['wepn']['url_segment']['city']) ? $_SESSION['wepn']['url_segment']['city'] : 'sydney';
 
             $selected = isset( $_REQUEST['category'] ) ? $_REQUEST['category'] : '';
+
             $return_string = '';
             if ( have_rows( 'vendors_categories', 'option' ) ) {
+
                 $return_string .= '<ul class="list">';
+
                 while ( have_rows( 'vendors_categories', 'option' ) ) {
+
                     the_row();
                     $label = esc_html(get_sub_field('category_name'));
 

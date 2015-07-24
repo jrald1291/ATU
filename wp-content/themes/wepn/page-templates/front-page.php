@@ -17,12 +17,12 @@ get_header(); ?>
 					<?php echo of_get_option('intro', ''); ?>
 				<?php endif ?>
 			</h1>
-            <form method="post">
+            <form method="post" id="mainSearch" action="<?php echo home_url('/suppliers'); ?>">
                 <?php WEPN_Helper::dropwdown_cities('Select City'); ?>
                 <div class="actions">
                     <input type="hidden" name="s" value="" />
-                    <button type="submit" name="post_type" value="vendor" class="btn btn-wooden btn-lg">Search for Supplier</button>
-                    <button type="submit" name="post_type" value="venue"  class="btn btn-wooden btn-lg">Search for Venue</button>
+                    <button type="submit" name="post_type" value="vendor" onclick='this.form.action="<?php echo home_url('/suppliers'); ?>";' class="btn btn-wooden btn-lg">Search for Supplier</button>
+                    <button type="submit" name="post_type" value="venue" onclick='this.form.action="<?php echo home_url('/venue'); ?>";'  class="btn btn-wooden btn-lg">Search for Venue</button>
                 </div>
             </form>
 		</div>

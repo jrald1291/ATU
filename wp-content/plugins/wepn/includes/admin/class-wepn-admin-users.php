@@ -66,34 +66,19 @@ if ( !class_exists('WEPN_Admin_Users') ) {
         public function wepn_save_user_city_group_category( $user_id ) {
             if ( ! WEPN_Helper::check_user_role( 'vendor', $user_id ) ) return;
             $city = $_POST['city'];
-            $group = explode( '::', $_POST['group'] );
+            $group = $_POST['group'];
             $category = $_POST['category'];
             $company_name = $_POST['company_name'];
 
-            $group_title = $group[1];
+
             $group_slug = sanitize_title( $group[0] );
 
             $category_slug = sanitize_title( $category );
 
+            $other_categories = (array) (!empty($_POST['categories']) ? $_POST['categories'] : array());
 
 
 
-            /* Sets the terms (we're just using a single term) for the user. */
-
-            if ( ! $parent = term_exists( $group_title, $city ) ) {
-                $parent = wp_insert_term( $group_title, $city, array(
-                    'slug' => $group_slug,
-                ));
-            }
-
-            if ( ! term_exists( $category, $city ) ) {
-
-                wp_insert_term($category, $city, array(
-                    'slug' => $category_slug,
-                    'parent' => $parent['term_id']
-                ));
-
-            }
 
             global $wpdb;
             $company_id = $wpdb->get_var("SELECT ID FROM wp_posts WHERE post_title = '" . $company_name . "'");
@@ -109,29 +94,46 @@ if ( !class_exists('WEPN_Admin_Users') ) {
                 update_user_meta( $user_id, 'company', $company_id );
 
             }
+            // Remove existing post and term relatinships
+            $old_tax = get_post_meta( $company_id, 'city', true );
+            wp_delete_object_term_relationships( $company_id, $old_tax );
+
+            if (!in_array($category, $other_categories)) {
+                $other_categories = array_merge($other_categories, array($category));
+            }
+
+            if (count($other_categories) > 0) {
+                $terms = array();
+                foreach ($other_categories as $term_title) {
+                    if(empty($term_title)) continue;
+
+                    $term_slug = sanitize_title($term_title);
+                    if (!$term = term_exists($term_title, $city)) {
+
+                        $term = wp_insert_term($term_title, $city, array( 'slug' => $term_slug));
+
+                    }
+                    $terms[] = $term['term_id'];
+                }
+
+                wp_set_post_terms($company_id, $terms, $city, false);
+            }
 
 
 
-            wp_delete_object_term_relationships( $company_id, $city );
-
-
-            wp_set_object_terms($company_id, $category_slug, $city, false);
+            // Update custom permalink
+            update_post_meta( $company_id, 'custom_permalink', $city.'/'.$group_slug.'/'. $category_slug .'/'. sanitize_title($company_name) );
+            // Update Post Meta
             update_post_meta( $company_id, 'vendor', $user_id );
             update_post_meta( $company_id, 'region', $group_slug );
             update_post_meta( $company_id, 'city', $city );
             update_post_meta( $company_id, 'category', $category_slug );
-
-            // Update custom permalink
-            update_post_meta( $company_id, 'custom_permalink', $city.'/'.$group_slug.'/'. $category_slug .'/'. sanitize_title($company_name) );
-
-
+            // Update user meta
             update_user_meta( $user_id, 'city', $city );
             update_user_meta( $user_id, 'group', $group_slug );
             update_user_meta( $user_id, 'category', $category_slug );
 
 
-
-            clean_object_term_cache( $user_id, $city );
         }
 
 
@@ -143,6 +145,9 @@ if ( !class_exists('WEPN_Admin_Users') ) {
          * @param object $user The user object currently being edited.
          */
         public function my_edit_region_group_category_section( $user ) {
+
+
+
             if ( ! WEPN_Helper::check_user_role( 'vendor', $user->ID ) ) return;
 
             $city = get_user_meta( $user->ID, 'city', true );
@@ -154,6 +159,7 @@ if ( !class_exists('WEPN_Admin_Users') ) {
 
             $company_name = $company_id ? get_the_title( $company_id ) : get_user_meta( $user->ID, 'company_name', true );
 
+            $terms = wp_get_post_terms( $company_id, $city,  array("fields" => "names"));
 
             ?>
 
@@ -187,14 +193,14 @@ if ( !class_exists('WEPN_Admin_Users') ) {
                                 $name = sanitize_title(get_sub_field('group_name'));
                                 $label = esc_html(get_sub_field('group_label'));
 
-                                echo '<option value="'. $name.'::'.$label .'" '. selected( $name, $group, false ) .'>'. $label .'</option>';
+                                echo '<option value="'. $name .'" '. selected( $name, $group, false ) .'>'. $label .'</option>';
                             }
                             echo '<select>';
                         }?>
                     </td>
                 </tr>
                 <tr>
-                    <th><label for="">Select Category</label></th>
+                    <th><label for="">Select Main Category</label></th>
                     <td>
                         <?php if ( have_rows( 'vendors_categories', 'option' ) ) {
                             echo '<select name="category">';
@@ -203,6 +209,25 @@ if ( !class_exists('WEPN_Admin_Users') ) {
                                 $label = esc_html(get_sub_field('category_name'));
 
                                 echo '<option value="'. $label .'" '. selected( sanitize_title( $label ), sanitize_title( $category ), false ) .'>'. $label .'</option>';
+                            }
+                            echo '<select>';
+                        }?>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th><label for="">Select Other Categories</label></th>
+                    <td>
+                        <?php if ( have_rows( 'vendors_categories', 'option' ) ) {
+                            echo '<select name="categories[]" multiple>';
+                            while ( have_rows( 'vendors_categories', 'option' ) ) {
+                                the_row();
+                                $label = esc_html(get_sub_field('category_name'));
+
+                                $selected = in_array($label, $terms) ? 'selected' : '';
+
+                                echo '<option value="'. $label .'" '. $selected .'>'. $label .'</option>';
                             }
                             echo '<select>';
                         }?>
