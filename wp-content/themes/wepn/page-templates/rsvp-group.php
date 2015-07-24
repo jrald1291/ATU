@@ -9,28 +9,16 @@
 
 get_header(); ?>
 
-<?php 
-	$bg = of_get_option('banner', '');
-	$page_bg = wp_get_attachment_image_src(get_field('page_background'),'large');
-	$page_bg = $page_bg[0];
-	if (!$page_bg) {
-		$page_bg = $bg;
-	}
-	if ($page_bg== "" and $bg == "") {
-		$page_bg = get_template_directory_uri()."/assets/images/banner.jpg";
-	}
 
-?>
-
-<div class="l-content-bg" style="background: url('<?php echo $page_bg; ?>') no-repeat"> 
+<div class="l-content-bg" style="<?php WEPN_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9">
 				<div class="l-content-container">
 					<div class="page-header">
-						 <form id="sort_post" action="<?php echo home_url( '/' ); ?>" method="post" class="form">
+						 <form id="sort_post" action="<?php echo get_permalink(get_the_ID()); ?>" method="post" class="form">
 		                    <div class="form-group">
-								<select class="form-control">
+								<select name="category" class="form-control">
 								  <option value="" selected="selected">Show all Group</option>
 								  <?php
 									$tax = 'meetup_groups-category';
@@ -51,9 +39,25 @@ get_header(); ?>
 
 						<div class="grid grid-isotope grid-isotope-md">
 
-							 <?php 
-							    $paged = get_query_var('paged');
-							    $args = array( 'post_type' => 'meetup_groups', 'posts_per_page' => 8,'paged' => $paged, 'order' => 'DESC','post_status'  => 'publish' );
+							 <?php
+                            $args = array(
+                                'post_type' => 'meetup_groups',
+                                'posts_per_page' => 8,
+                                'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
+                                'order' => 'DESC',
+                                'post_status'  => 'publish'
+                            );
+
+                             if (isset($_REQUEST['category']) && !empty($_REQUEST['category'])) {
+                                 $args['tax_query'] = array(
+                                     array(
+                                         'taxonomy' => 'meetup_groups-category',
+                                         'field'    => 'slug',
+                                         'terms'    => $_REQUEST['category'],
+                                     ),
+                                 );
+                             }
+
 							    $loop = new WP_Query( $args );
 							    $today = date('F j, Y');
 							    $today = new DateTime($today);

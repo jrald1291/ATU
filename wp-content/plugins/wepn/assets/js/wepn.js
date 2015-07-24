@@ -30,7 +30,7 @@
             $(".page-content").append( '<div id="loader-overlay"><span class="loading"></span></div>' );
 
 
-            var url = $(this).attr('action');
+            var url = $(this).closest('form').attr('action');
 
             var params = $(this).closest('form').serialize();
 
