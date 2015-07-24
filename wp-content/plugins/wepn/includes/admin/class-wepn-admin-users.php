@@ -71,7 +71,7 @@ if ( !class_exists('WEPN_Admin_Users') ) {
             $company_name = $_POST['company_name'];
 
 
-            $group_slug = sanitize_title( $group[0] );
+            $group_slug = sanitize_title( $group );
 
             $category_slug = sanitize_title( $category );
 
