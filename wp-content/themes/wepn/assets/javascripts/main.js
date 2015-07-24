@@ -33,6 +33,7 @@ var util = {
           conth.css('min-height',toth);
           banner.css('height',(winsize-headh-adminbar-rsvp));
           $('.toggle-menuwrapper').css('top',adminbar+10);
+          $('.toggle-menuwrapper .toggle-menu').css('max-height',winsize-((adminbar+65)));
 
           $( window ).resize(function() {
 
@@ -47,6 +48,8 @@ var util = {
               toth =  winsize - (headh + footh + adminbar);
               conth.css('min-height',toth);
               banner.css('height',(winsize-headh-adminbar-rsvp));
+              $('.toggle-menuwrapper').css('top',adminbar+10);
+              $('.toggle-menuwrapper .toggle-menu').css('max-height',(winsize-(adminbar+65)));
 
           });
           $( window ).scroll(function() {
