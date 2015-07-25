@@ -14,12 +14,20 @@
 
 get_header();
 
+
+
+while(have_posts()): the_post();
 $user_id = get_post_meta( get_the_ID(), 'vendor', true );
 
-
-
-
 $user_info = get_userdata( $user_id );
+
+$cat_name = get_the_title();
+
+$taxonomy = get_user_meta($user_id, 'city', true);
+$cat = get_term_by( 'slug', get_post_meta( get_the_ID(), 'category', true ), $taxonomy );
+
+if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
+
 
 ?>
 
@@ -33,7 +41,7 @@ $user_info = get_userdata( $user_id );
                     </div>
                     <div class="page-content">
                         <div class="page-title ">
-                            <h2 class="t-lg"><?php echo $user_info->company_name; ?></h2>
+                            <h2 class="t-lg"><?php the_title(); ?></h2>
                         </div>
                         <div class="slider mb-20">
                             <div class="slider-single slider-capt flexslider mb-0">
@@ -191,7 +199,7 @@ $user_info = get_userdata( $user_id );
                         <div class="widget-list_logo">
                             <?php echo wp_get_attachment_image( $user_info->company_logo,  'medium' ); ?>
                         </div>
-                        <div class="widget-header">Florist and Stylist</div>
+                        <div class="widget-header"><?php echo $cat_name; ?></div>
                         <ul class="list">
                             <li><a href="tel:<?php echo $user_info->mobile; ?>">Mobile: <?php echo $user_info->mobile; ?></a></li>
                             <li><a href="tel:<?php echo $user_info->phone; ?>">Phone: <?php echo $user_info->phone; ?></a></li>
@@ -268,4 +276,6 @@ $user_info = get_userdata( $user_id );
         </ul>
     </div>
 </div>
-<?php get_footer(); ?>
+<?php
+endwhile;
+get_footer(); ?>
