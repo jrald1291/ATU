@@ -18,7 +18,7 @@
 
 get_header(); ?>
 
-<div class="l-content-bg" style="<?php WEPN_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>">
+<div class="l-content-bg" style="background: url('<?php WEPN_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>') no-repeat">
 
 	<div class="container">
 

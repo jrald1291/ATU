@@ -37,7 +37,7 @@
 
             $cat = get_term_by( 'id', get_field('main_category', get_the_ID()), 'venue-category' );
 
-            echo  (!empty($cat) && !is_wp_error($cat)) ? $cat_name = $cat->name : get_the_title(); ?>
+            echo  (!empty($cat) && !is_wp_error($cat)) ? $cat->name : get_the_title(); ?>
         </div>
 		<ul class="list">
 			<li><a href="tel:<?php the_field( 'mobile' ); ?>">Mobile: <?php the_field( 'mobile' ); ?></a></li>
@@ -48,7 +48,7 @@
 
 	</div>
 	<div class="widget widget-aside">
-		<a href="<?php echo get_permalink( get_page_by_title( 'Contact' )).'/?post_id='?><?php echo get_the_ID(); ?> " class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Supplier</a>
+		<a href="<?php echo get_permalink( get_page_by_title( 'Contact' )).'/?post_id='. get_the_ID() .'&category=' . $cat->slug; ?> " class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Supplier</a>
 	</div>
 	<div class="widget widget-aside">
 		<a href="<?php the_field( 'website' ); ?>" target="_blank" class="btn btn-sm btn-block btn-secondary"><span class="fa icon-l-sm fa-globe"></span>Visit website</a>

@@ -167,14 +167,13 @@ get_header(); ?>
 
                         <?php while( $wp_venue_query->have_posts() ): $wp_venue_query->the_post();
 
-                            $cat_name = get_the_title();
-
                             $user_id = get_post_meta( get_the_ID(), 'vendor', true );
 
-                            $taxonomy = get_user_meta( $user_id, 'region', true );
-                            $cats = get_the_terms( get_the_ID(), $taxonomy );
+                            $main_cat = get_post_meta( get_the_ID(), 'category', true );
+                            $taxonomy = get_user_meta($user_id, 'city', true);
+                            $cat = get_term_by( 'slug', $main_cat, $taxonomy );
 
-                            if ( ! empty( $cats ) )$cat_name = $cats[0]->name;
+                            $cat_name = (!empty($cats) && !is_wp_error($cats)) ? $cat->name : get_the_title() ;
 
                             $vendor_info = get_userdata($vendor->ID);
 

@@ -22,9 +22,9 @@ $user_id = get_post_meta( get_the_ID(), 'vendor', true );
 $user_info = get_userdata( $user_id );
 
 $cat_name = get_the_title();
-
+$main_cat = get_post_meta( get_the_ID(), 'category', true );
 $taxonomy = get_user_meta($user_id, 'city', true);
-$cat = get_term_by( 'slug', get_post_meta( get_the_ID(), 'category', true ), $taxonomy );
+$cat = get_term_by( 'slug', $main_cat, $taxonomy );
 
 if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
 
@@ -209,7 +209,7 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
 
                     </div>
                     <div class="widget widget-aside">
-                        <a href="<?php echo get_permalink( get_page_by_title( 'Contact' ))."?contact_id=".$user_id;?>" class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Supplier</a>
+                        <a href="<?php echo get_permalink( get_page_by_title( 'Contact' ))."?contact_id=".$user_id. "&category=" .  $main_cat;?>" class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Supplier</a>
                     </div>
                     <div class="widget widget-aside">
                         <a href="<?php echo $user_info->user_url; ?>" target="_blank" class="btn btn-sm btn-block btn-secondary"><span class="fa icon-l-sm fa-globe"></span>Visit website</a>

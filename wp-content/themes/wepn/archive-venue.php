@@ -44,11 +44,9 @@ get_header();?>
                                     // Start the Loop.
                                     while ( have_posts() ) : the_post();
 
-                                        $cat_name = get_the_title();
+                                        $cat = get_term_by( 'id', get_field('main_category', get_the_ID()), 'venue-category' );
 
-                                        $cats = get_the_terms( get_the_ID(), 'venue-category' );
-                                        if ( ! empty( $cats ) )$cat_name = $cats[0]->name;
-                                        ?>
+                                        $cat_name =  (!empty($cat) && !is_wp_error($cat)) ? $cat->name : get_the_title(); ?>
 
                                         <div class="col-md-4 col-sm-6">
                                             <div class="post-item well-block" style="border-bottom: 3px solid <?php echo hex2rgba(get_field( 'color')); ?>">

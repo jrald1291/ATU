@@ -23,9 +23,10 @@ get_header(); ?>
 	}
 
 	$user_info =  get_userdata($user_id);
+
 ?>
 
-<div class="l-content-bg" style="<?php WEPN_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>">
+<div class="l-content-bg" style="background: url('<?php WEPN_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>') no-repeat">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9">
@@ -110,5 +111,12 @@ get_header(); ?>
 		document.getElementById("user_email").value = "<?php echo $user_info->user_email; ?>";
   		document.getElementById("company_name").value = "<?php echo $user_info->company_name ?>";
 	<?php } ?>
+
+    (function($){
+        $(document).ready(function() {
+            $('select option[value=<?php echo isset($_REQUEST['category']) ? esc_attr($_REQUEST['category']) : '' ?>]').attr('selected', true);
+        });
+
+    })(jQuery)
 </script>
 <?php get_footer(); ?>

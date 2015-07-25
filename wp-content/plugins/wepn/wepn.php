@@ -179,7 +179,76 @@ class WEPN {
         });
 
 
+        add_filter( 'wpcf7_form_tag', array($this, 'dynamic_vendor_category_list'), 10, 2);
+
+        add_filter( 'wpcf7_form_tag', array($this, 'dynamic_select_list'), 10, 2);
+
     }
+
+
+
+    /** Dynamic List for Contact Form 7 **/
+    /** Usage: [select name vendor:vendors_categories] **/
+    function dynamic_vendor_category_list($tag, $unused){
+        $options = (array)$tag['options'];
+
+        foreach ($options as $option)
+            if (preg_match('%^vendor:([-0-9a-zA-Z_]+)$%', $option, $matches))
+                $term = $matches[1];
+
+        //check if post_type is set
+        if(!isset($term))
+            return $tag;
+
+        if ( have_rows( 'vendors_categories', 'option' ) ) {
+
+            while ( have_rows( 'vendors_categories', 'option' ) ) {
+                the_row();
+                $label = esc_html(get_sub_field('category_name'));
+
+                $tag['raw_values'][] = $label;
+                $tag['values'][] = sanitize_title($label);
+                $tag['labels'][] =$label;
+
+            }
+        }
+
+
+
+        return $tag;
+    }
+
+
+
+
+    /** Dynamic List for Contact Form 7 **/
+    /** Usage: [select name term:taxonomy_name] **/
+    function dynamic_select_list($tag, $unused){
+        $options = (array)$tag['options'];
+
+        foreach ($options as $option)
+            if (preg_match('%^term:([-0-9a-zA-Z_]+)$%', $option, $matches))
+                $term = $matches[1];
+
+        //check if post_type is set
+        if(!isset($term))
+            return $tag;
+
+        $taxonomy = get_terms($term, array('hide_empty' => 0));
+
+        if (!$taxonomy)
+            return $tag;
+
+        foreach ($taxonomy as $cat) {
+            $tag['raw_values'][] = $cat->slug;
+            $tag['values'][] = $cat->slug;
+            $tag['labels'][] = $cat->name;
+        }
+
+
+        return $tag;
+    }
+
 
 
 

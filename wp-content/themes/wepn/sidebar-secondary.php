@@ -18,14 +18,11 @@
 
                 <?php while( $wp_venue_query->have_posts() ): $wp_venue_query->the_post();
 
-                    $cat_name = get_the_title();
+                    $main_cat = get_post_meta( get_the_ID(), 'category', true );
+                    $taxonomy = get_user_meta($user_id, 'city', true);
+                    $cat = get_term_by( 'slug', $main_cat, $taxonomy );
 
-                    $user_id = get_post_meta( get_the_ID(), 'vendor', true );
-
-                    $taxonomy = get_user_meta( $user_id, 'region', true );
-                    $cats = get_the_terms( get_the_ID(), $taxonomy );
-
-                    if ( ! empty( $cats ) )$cat_name = $cats[0]->name;
+                    $cat_name = (!empty($cats) && !is_wp_error($cats)) ? $cat->name : get_the_title() ;
 
 
                     $image_id = get_user_meta( $user_id, 'profile_image', true );
@@ -67,11 +64,9 @@
 
             <?php while( $wp_venue_query->have_posts() ): $wp_venue_query->the_post();
 
-                $cat_name = get_the_title();
-                $cats = get_the_terms( get_the_ID(), 'venue-category' );
-                if ( ! empty( $cats ) ) {
-                    $cat_name = $cats[0]->name;
-                }
+                $cat = get_term_by( 'id', get_field('main_category', get_the_ID()), 'venue-category' );
+
+                $cat_name = (!empty($cat) && !is_wp_error($cat)) ? $cat->name : get_the_title();
 
                 ?>
 			<li class="post-item">

@@ -21,15 +21,13 @@
 
                 $user_id = get_post_meta( get_the_ID(), 'vendor', true );
 
-               // if ( WEPN_Helper::check_user_role( 'vendor', $user_id ) ) {
-
-                    $cat_name = get_the_title();
 
 
+                    $main_cat = get_post_meta( get_the_ID(), 'category', true );
                     $taxonomy = get_user_meta($user_id, 'city', true);
-                    $cats = get_the_terms(get_the_ID(), $taxonomy);
+                    $cat = get_term_by( 'slug', $main_cat, $taxonomy );
 
-                    if (!empty($cats) && !is_wp_error($cats)) $cat_name = $cats[0]->name;
+                    $cat_name = (!empty($cats) && !is_wp_error($cats)) ? $cat->name : get_the_title() ;
 
 
                     $image_id = get_user_meta($user_id, 'profile_image', true);
