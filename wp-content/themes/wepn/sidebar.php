@@ -30,7 +30,15 @@
 		<div class="widget-list_logo">
             <?php echo wp_get_attachment_image( get_field( 'company_logo' ),  'medium' ); ?>
 		</div>
-		<div class="widget-header">Florist and Stylist</div>
+
+
+		<div class="widget-header x">
+            <?php
+
+            $cat = get_term_by( 'id', get_field('main_category', get_the_ID()), 'venue-category' );
+
+            echo  (!empty($cat) && !is_wp_error($cat)) ? $cat_name = $cat->name : get_the_title(); ?>
+        </div>
 		<ul class="list">
 			<li><a href="tel:<?php the_field( 'mobile' ); ?>">Mobile: <?php the_field( 'mobile' ); ?></a></li>
 			<li><a href="tel:<?php the_field( 'phone' ); ?>">Phone: <?php the_field( 'phone' ); ?></a></li>
