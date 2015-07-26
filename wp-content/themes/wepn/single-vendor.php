@@ -57,7 +57,7 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
                                                 /**
                                                  * Get gallery image
                                                  */
-                                                echo wp_get_attachment_image( get_sub_field( 'gallery_image' ), 'img-wide', array( 'alt' => 'image' ) );
+                                                echo wp_get_attachment_image( get_sub_field( 'gallery_image' ), 'slide-wide', array( 'alt' => 'image' ) );
                                                 ?>
                                             </li>
 
