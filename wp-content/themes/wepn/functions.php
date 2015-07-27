@@ -448,7 +448,7 @@ function your_custom_menu_item ( $items, $args ) {
     if ($args->theme_location == 'primary') {
 
         if( count( WEPN_Helper::get_regions() ) ) {
-            $submenu = '<ul class="sub-menu">';
+            $submenu = '<ul class="sub-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="'.get_permalink( get_page_by_title( 'Become a Member' )).'">Become a Member</a></li>';
             foreach( WEPN_Helper::get_regions() as $key => $val ) {
 
                 $submenu .= '<li class="menu-item menu-item-type-custom menu-item-object-custom">';
