@@ -173,7 +173,7 @@ get_header(); ?>
                             $taxonomy = get_user_meta($user_id, 'city', true);
                             $cat = get_term_by( 'slug', $main_cat, $taxonomy );
 
-                            $cat_name = (!empty($cats) && !is_wp_error($cats)) ? $cat->name : get_the_title() ;
+                            $cat_name = !is_wp_error($cat) ? $cat->name : '';
 
                             $vendor_info = get_userdata($vendor->ID);
 
@@ -188,7 +188,7 @@ get_header(); ?>
                                 </div>
                                 <div class="post-core">
                                     <a href="<?php the_permalink() ?>" class="link">
-                                        <div class="post-title t-normal"><?php echo $company_name; ?>
+                                        <div class="post-title t-normal"><?php the_title() ?>
                                             <span class="post-cat t-highlight"><?php echo $cat_name; ?></span>
                                         </div>
                                     </a>
