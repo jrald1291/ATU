@@ -27,7 +27,7 @@
                     $taxonomy = get_user_meta($user_id, 'city', true);
                     $cat = get_term_by( 'slug', $main_cat, $taxonomy );
 
-                    $cat_name = (!empty($cats) && !is_wp_error($cats)) ? $cat->name : get_the_title() ;
+                    $cat_name =  $cat->name;
 
 
                     $image_id = get_user_meta($user_id, 'profile_image', true);
