@@ -44,6 +44,11 @@ get_header();?>
             </div>
             <div class="col-md-3">
                 <aside class="l-sidebar">
+                    <?php if (!is_user_logged_in() ) { ?> 
+                      <div class="widget">
+                          <a href="<?php echo wp_login_url();?>" class="btn btn-primary btn-block mb-20">Member Login</a>
+                      </div>
+                    <?php } ?>
                     <?php if (of_get_option('video_diff', '')) {?>
                         <div class="widget">
                             <a href="#main_vid" role="button" data-toggle="modal" class="btn btn-primary btn-block mb-20"><span class="fa fa-play-circle icon-l-sm"></span> Why we are Different</a>
@@ -53,12 +58,14 @@ get_header();?>
                         <div class="widget-header">Supplier Types</div>
                         <?php WEPN_Helper::list_vendor_category(); ?>
                     </div>
-                    <div class="widget widget-aside well-widget">
-                        <div class="form form-labeled">
-                            <div class="well-header">Subscribe to our Newsletter</div>
-                            <?php echo do_shortcode('[mc4wp_form]'); ?>
+                   <div class="widget widget-aside">
+                        <div class="widget-header">Signup for Newsletter</div>
+                        <div class="widget-body">
+                    		<div class="form form-labeled">
+                    			<?php echo do_shortcode('[mc4wp_form]'); ?>
+                            </div>
                         </div>
-                    </div>
+                	</div>
                 </aside>
             </div>
         </div>

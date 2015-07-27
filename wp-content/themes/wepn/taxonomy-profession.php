@@ -41,12 +41,14 @@ get_header(); ?>
                         <div class="widget-header">Supplier Types</div>
                         <?php WEPN_Helper::list_vendor_category(); ?>
                     </div>
-                    <div class="widget widget-aside well-widget">
-                        <div class="form form-labeled">
-                            <div class="well-header">Subscribe to our Newsletter</div>
-                            <?php echo do_shortcode('[mc4wp_form]'); ?>
+                   <div class="widget widget-aside">
+                        <div class="widget-header">Signup for Newsletter</div>
+                        <div class="widget-body">
+                    		<div class="form form-labeled">
+                    			<?php echo do_shortcode('[mc4wp_form]'); ?>
+                            </div>
                         </div>
-                    </div>
+                	</div>
                 </aside>
             </div>
         </div>

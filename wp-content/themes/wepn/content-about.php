@@ -86,10 +86,22 @@
 
 							<div class="col-md-4 col-sm-6">
 								<div class="post-item">
-									<div class="post-header"><?php the_sub_field('member_name'); ?></div>
+									<div class="post-header">
+									
+										<?php if (get_sub_field('member_profile_link')) {?>
+											<a href="<?php echo get_sub_field('member_profile_link'); ?>" class="link"><?php the_sub_field('member_name'); ?></a>
+										<?php }else{ ?>
+											<?php the_sub_field('member_name'); ?>
+										<?php } ?>
+									</div>
 									<div class="post-img">
 										<?php $member_img = wp_get_attachment_image_src(get_sub_field('member_image'),'img-avatar'); ?>
-										<img src="<?php echo $member_img[0];?>"/>
+										<?php if (get_sub_field('member_profile_link')) {?>
+											<a href="<?php echo get_sub_field('member_profile_link'); ?>"><img src="<?php echo $member_img[0];?>"/></a>
+										<?php }else{ ?>
+											<img src="<?php echo $member_img[0];?>"/>
+										<?php } ?>
+										
 									</div>
 									<div class="post-content t-sm">
 										<?php the_sub_field('member_title'); ?>
