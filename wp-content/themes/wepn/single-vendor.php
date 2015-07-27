@@ -190,7 +190,8 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
                 <aside class="l-sidebar">
                     <?php if (!is_user_logged_in() ) { ?> 
                       <div class="widget">
-                          <a href="<?php echo wp_login_url();?>" class="btn btn-primary btn-block mb-20">Member Login</a>
+                          <a href="<?php echo wp_login_url();?>" class="btn btn-primary btn-block">Member Login</a>
+                          <a href="<?php echo get_permalink( get_page_by_title( 'Become a Member' ));?>" class="btn btn-primary btn-block mb-20">Become a Member</a>
                       </div>
                     <?php } ?>
                     <div class="widget widget-aside">
