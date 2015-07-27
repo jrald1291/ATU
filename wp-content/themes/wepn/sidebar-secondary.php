@@ -1,4 +1,9 @@
 <aside class="l-sidebar">
+    <?php if (!is_user_logged_in() ) { ?> 
+      <div class="widget">
+          <a href="<?php echo wp_login_url();?>" class="btn btn-primary btn-block mb-20">Member Login</a>
+      </div>
+    <?php } ?>
 	<div class="widget widget-aside widget-post">
         <div class="widget-header"><?php _e( 'Latest Suppliers', 'atu'); ?></div>
 
@@ -90,9 +95,12 @@
 
         <?php endif; ?>
 	</div>
-	<div class="widget widget-aside well-widget">
-		<div class="form form-labeled">
-			<?php echo do_shortcode('[mc4wp_form]'); ?>
+	<div class="widget widget-aside">
+        <div class="widget-header">Signup for Newsletter</div>
+        <div class="widget-body">
+    		<div class="form form-labeled">
+    			<?php echo do_shortcode('[mc4wp_form]'); ?>
+            </div>
         </div>
 	</div>
 </aside>

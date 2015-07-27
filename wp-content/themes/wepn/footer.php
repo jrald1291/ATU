@@ -82,10 +82,10 @@
 										</li>
 									<?php } ?>
 								</ul>
-                                <form class="">
-                                    
-                                </form>
-                                <?php echo do_shortcode('[contact-form-7 id="198" title="Become a Member" html_class="form form-labeled atu-membership-form"]'); ?>
+							   <?php if (!is_user_logged_in() ) { ?> 
+                               		<a href="<?php echo wp_login_url();?>" class="btn btn-primary btn-block mb-10">Member Login</a>
+                               <?php } ?>
+                               <a href="<?php echo get_permalink( get_page_by_title( 'Become a Member' ));?>" class="btn btn-primary btn-block">Become a Member</a>
 							</div>
 
 						</div>
@@ -104,12 +104,12 @@
 	</footer>
 </div>
 
-<div class="modal fade in form-subscribe" id="EventSubscribe" tabindex="-1" role="dialog" aria-labelledby="EventSubscribe">
-  <div class="modal-dialog modal-lg">
+<div class="modal fade in form-subscribe " id="EventSubscribe" tabindex="-1" role="dialog" aria-labelledby="EventSubscribe">
+  <div class="modal-dialog modal-lg absolute-center-bot">
 	  <div class="modal-content">
 	  		  <div class="modal-header t-normal">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        		<h3 class="modal-title t-title text-center">Subscribe to our Newsletter</h3>
+        		<h3 class="modal-title t-title text-center">We invite you to Join our WEPN e-newsletter!</h3>
 	  		  </div>
 			  <div class="modal-body">
 		      	<div class="form form-labeled">

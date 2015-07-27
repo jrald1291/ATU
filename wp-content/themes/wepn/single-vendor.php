@@ -188,6 +188,11 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
             </div>
             <div class="col-md-3">
                 <aside class="l-sidebar">
+                    <?php if (!is_user_logged_in() ) { ?> 
+                      <div class="widget">
+                          <a href="<?php echo wp_login_url();?>" class="btn btn-primary btn-block mb-20">Member Login</a>
+                      </div>
+                    <?php } ?>
                     <div class="widget widget-aside">
                         <div class="ven-avatar" style="border: 2px solid <?php echo hex2rgba($user_info->color); ?>">
 
