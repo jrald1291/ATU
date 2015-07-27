@@ -30,8 +30,12 @@ get_header(); ?>
 
 	$post_id =''; 
 
-
-
+	if ($user_id == 1) {
+		$thanks = of_get_option('message_primary', '');
+	}else{
+		$thanks = of_get_option('message_secondary', '');
+	}
+	
 	if(isset($_GET["contact_id"])){
 
 		$user_id = $_GET["contact_id"];

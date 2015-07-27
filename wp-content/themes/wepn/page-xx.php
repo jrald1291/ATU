@@ -255,3 +255,4 @@ $page_bg = get_template_directory_uri()."/assets/images/banner.jpg";
 <script>
     new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
 </script>
+
