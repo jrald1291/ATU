@@ -114,7 +114,10 @@ get_header(); ?>
 
     (function($){
         $(document).ready(function() {
-            $('select option[value=<?php echo isset($_REQUEST['category']) ? esc_attr($_REQUEST['category']) : '' ?>]').attr('selected', true);
+
+            <?php if (isset($_REQUEST['category']) ): ?>
+            $('select option[value="<?php echo esc_attr($_REQUEST['category']); ?>"]').attr('selected', true);
+            <?php endif; ?>
         });
 
     })(jQuery)

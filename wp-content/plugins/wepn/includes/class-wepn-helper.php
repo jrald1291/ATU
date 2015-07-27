@@ -108,7 +108,7 @@ if ( ! class_exists('WEPN_Helper') ) {
 
             $default_image = $default_image == null ? WEPN_ASSSETS_DIR . 'images/banner.jpg' : $default_image;
 
-            $page_background = wp_get_attachment_image_src( $attachment_id, 'full' );
+            $page_background = wp_get_attachment_image_src( $attachment_id, 'bg-large' );
 
             $page_background = isset( $page_background[0] ) ?  $page_background[0] : '';
 

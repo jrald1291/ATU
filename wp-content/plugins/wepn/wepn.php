@@ -27,6 +27,7 @@ class WEPN {
 
 
     function wepn_theme_setup() {
+        add_image_size( 'bg-large', 1500, 1000, true ); // (cropped)
         add_image_size( 'gallery-thumb', 186, 186, true ); // (cropped)
         add_image_size( 'venue-medium', 553, 372, true ); // (cropped)
         add_image_size( 'venue-small-thumb', 110, 75, true ); // (cropped)
@@ -207,7 +208,7 @@ class WEPN {
                 $label = esc_html(get_sub_field('category_name'));
 
                 $tag['raw_values'][] = $label;
-                $tag['values'][] = sanitize_title($label);
+                $tag['values'][] = $label;
                 $tag['labels'][] =$label;
 
             }
@@ -241,7 +242,7 @@ class WEPN {
 
         foreach ($taxonomy as $cat) {
             $tag['raw_values'][] = $cat->slug;
-            $tag['values'][] = $cat->slug;
+            $tag['values'][] = $cat->name;
             $tag['labels'][] = $cat->name;
         }
 

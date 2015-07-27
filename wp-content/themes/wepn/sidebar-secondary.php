@@ -14,15 +14,18 @@
 
         if ( $wp_venue_query->have_posts(  ) ): ?>
 
-            <ul class="post-inline-sm">
+            <ul class="post-inline-sm xx">
 
                 <?php while( $wp_venue_query->have_posts() ): $wp_venue_query->the_post();
 
-                    $main_cat = get_post_meta( get_the_ID(), 'category', true );
-                    $taxonomy = get_user_meta($user_id, 'city', true);
+                    $main_cat = get_post_meta(get_the_ID(), 'category', true );
+                    $taxonomy = get_post_meta(get_the_ID(), 'city', true);
                     $cat = get_term_by( 'slug', $main_cat, $taxonomy );
 
-                    $cat_name = (!empty($cats) && !is_wp_error($cats)) ? $cat->name : get_the_title() ;
+
+                    $user_id = get_post_meta(get_the_ID(), 'vendor', true);
+
+                    $cat_name = !is_wp_error($cats) ? $cat->name : '';
 
 
                     $image_id = get_user_meta( $user_id, 'profile_image', true );
