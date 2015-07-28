@@ -236,7 +236,9 @@ get_header(); ?>
 
   		document.getElementById("company_name").value = "<?php echo $user_info->company_name; ?>";
 
-	<?php } ?>
+	<?php }
+	 $thanks_msg = addcslashes($thanks_msg,"\\\'\"\n\r");
+	 ?>
 
 	document.getElementById("thanks_msg").value = "<?php echo $thanks_msg; ?>";
 
