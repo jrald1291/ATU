@@ -30,7 +30,8 @@ get_header(); ?>
 
 	$post_id =''; 
 
-	$thanks_msg = "";
+	$thanks_msg = '';
+	$newline = '"<br>"';
 
 	
 	if(isset($_GET["contact_id"])){
@@ -46,9 +47,9 @@ get_header(); ?>
 	}
 
 	if ($user_id == 1 && $post_id =='') {
-		$thanks_msg =  <<<HTML strval(of_get_option('message_primary', '')) HTML;
+		$thanks_msg =  strval(of_get_option('message_primary', ''));
 	}else{
-		$thanks_msg =  <<<HTML strval(of_get_option('message_secondary', '')) HTML;
+		$thanks_msg =  strval(of_get_option('message_secondary', ''));
 
 	}
 	
@@ -96,7 +97,7 @@ get_header(); ?>
 						<?php if ($user_id == 1 && $post_id == '') { ?>
 						<div class="page-title ">
 
-							<h2 class="t-lg"><?php the_title(); ?></h2>
+							<h2 class="t-md"><?php the_title(); ?></h2>
 
 						</div>
 						<?php } ?>
@@ -237,7 +238,7 @@ get_header(); ?>
 
 	<?php } ?>
 
-	document.getElementById("thanks_msg").value = "<?php echo $thanks_msg; ?>";
+	document.getElementById("thanks_msg").value = "<?php echo str_replace(array("\r","\n"),"$newline",$thanks_msg); ?>";
 
     (function($){
 
