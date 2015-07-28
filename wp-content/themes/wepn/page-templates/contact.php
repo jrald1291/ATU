@@ -238,7 +238,7 @@ get_header(); ?>
 
 	<?php } ?>
 
-	document.getElementById("thanks_msg").value = "<?php echo str_replace(array("\r","\n"),"$newline",$thanks_msg); ?>";
+	document.getElementById("thanks_msg").value = "<?php echo $thanks_msg; ?>";
 
     (function($){
 
