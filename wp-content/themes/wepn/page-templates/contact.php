@@ -30,11 +30,8 @@ get_header(); ?>
 
 	$post_id =''; 
 
-	if ($user_id == 1) {
-		$thanks = of_get_option('message_primary', '');
-	}else{
-		$thanks = of_get_option('message_secondary', '');
-	}
+	$thanks_msg = "";
+
 	
 	if(isset($_GET["contact_id"])){
 
@@ -48,6 +45,13 @@ get_header(); ?>
 
 	}
 
+	if ($user_id == 1 && $post_id =='') {
+		$thanks_msg =  <<<HTML strval(of_get_option('message_primary', '')) HTML;
+	}else{
+		$thanks_msg =  <<<HTML strval(of_get_option('message_secondary', '')) HTML;
+
+	}
+	
 
 
 	$user_info =  get_userdata($user_id);
@@ -221,19 +225,19 @@ get_header(); ?>
 
 	<?php if ($post_id) {?>
 
-		document.getElementById("user_email").value = "<?php echo get_field('email',$post_id) ?>";
+		document.getElementById("user_email").value = "<?php echo get_field('email',$post_id); ?>";
 
-  		document.getElementById("company_name").value = "<?php echo get_field('company_name',$post_id) ?>";
+  		document.getElementById("company_name").value = "<?php echo get_field('company_name',$post_id) ;?>";
 
 	<?php }else{ ?>
 
 		document.getElementById("user_email").value = "<?php echo $user_info->user_email; ?>";
 
-  		document.getElementById("company_name").value = "<?php echo $user_info->company_name ?>";
+  		document.getElementById("company_name").value = "<?php echo $user_info->company_name; ?>";
 
 	<?php } ?>
 
-
+	document.getElementById("thanks_msg").value = "<?php echo $thanks_msg; ?>";
 
     (function($){
 

@@ -260,7 +260,7 @@ function optionsframework_options() {
 		'type' => 'editor');
 	$options[] = array(
 		'name' => __('Secondary Message', 'options_framework_theme'),
-		'desc' => __('This will be sent mostly from Venue, Supplier, Become a Member Form', 'options_framework_theme'),
+		'desc' => __('This will be sent mostly from Venue, Supplier Form', 'options_framework_theme'),
 		'id' => 'message_secondary',
 		'std' => '',
 		'type' => 'editor');
