@@ -89,12 +89,13 @@ get_header(); ?>
 					</div>
 
 					<div class="page-content">
-
+						<?php if ($user_id == 1 && $post_id == '') { ?>
 						<div class="page-title ">
 
-							<h2 class="t-lg">Contact Details</h2>
+							<h2 class="t-lg"><?php the_title(); ?></h2>
 
 						</div>
+						<?php } ?>
 
 						<div class="section section-contact">
 

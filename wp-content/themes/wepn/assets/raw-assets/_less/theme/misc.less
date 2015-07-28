@@ -128,3 +128,31 @@ iframe{
 .modal-backdrop.in{
 	.opacity(0.05); 
 }
+
+#youtube{
+	margin-right: -10px;
+    margin-left: -10px;
+	iframe{
+		width: 50%!important;
+		float: left;
+    	padding: 0 10px 20px;
+
+    	&:only-child{
+    		width: 100%!important;
+    		float: none;
+    	}
+	}
+}
+
+.modal-pretty{
+	.modal-header{
+		background-color: #39273e;
+		color: #fff!important;
+	} 
+	.modal-body{
+		background: url("@{image-url}/patternbg.jpg") top repeat;
+	}
+	.close{
+		color: #fff!important;
+	}
+}

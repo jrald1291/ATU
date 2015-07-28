@@ -153,6 +153,7 @@
 	.grid-gallery .grid li{
 		width: 33%;
 	}
+
 }
 
 @media (max-width: 670px){
@@ -259,6 +260,20 @@
 	}
 	.grid-gallery .grid li{
 		width: 50%;
+	}
+	#youtube{
+		margin-right: 0px;
+    	margin-left: 0px;
+		iframe{
+			width: 100%!important;
+			float: none;
+			clear: both;
+	    	padding: 0 0px 0px;
+
+	    	& ~ iframe{
+	    		margin-top: 20px;
+	    	}
+		}
 	}
 }
 

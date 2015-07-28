@@ -80,8 +80,9 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
                             <ul class="nav nav-tabs" role="tablist">
                                 <li role="presentation" class="active"><a href="#description" aria-controls="home" role="tab" data-toggle="tab">Description</a></li>
                                 <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Gallery</a></li>
-                                <li role="presentation"><a href="#youtube" aria-controls="youtube" role="tab" data-toggle="tab">Youtube Video</a></li>
+                                <li role="presentation"><a href="#youtube" aria-controls="youtube" role="tab" data-toggle="tab">Videos</a></li>
                                 <li role="presentation"><a href="#offers" aria-controls="offers" role="tab" data-toggle="tab">Special Offer</a></li>
+                                <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><?php _e( 'Why we are different?', 'atu'); ?></a></li>
                             </ul>
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active copy" id="description">
@@ -169,6 +170,11 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
 
                                     <?php endif; ?>
                                 </div>
+                                <div role="tabpanel" class="tab-pane" id="video">
+                                    <?php if (condition) {?>
+                                       <?php echo of_get_option('video_diff', ''); ?>
+                                    <?php } ?>  
+                                </div>
                             </div>
                         </div>
                         <div class="social-links list-labeled-inline bt-0">
@@ -215,7 +221,7 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
 
                     </div>
                     <div class="widget widget-aside">
-                        <a href="<?php echo get_permalink( get_page_by_title( 'Contact' ))."?contact_id=".$user_id. "&category=" .  $cat_name;?>" class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Supplier</a>
+                        <a href="<?php echo get_permalink(32)."?contact_id=".$user_id. "&category=" .  $cat_name;?>" class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Supplier</a>
                     </div>
                     <div class="widget widget-aside">
                         <a href="<?php echo $user_info->user_url; ?>" target="_blank" class="btn btn-sm btn-block btn-secondary"><span class="fa icon-l-sm fa-globe"></span>Visit website</a>

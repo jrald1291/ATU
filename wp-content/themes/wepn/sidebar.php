@@ -104,7 +104,7 @@
 
 	<div class="widget widget-aside">
 
-		<a href="<?php echo get_permalink( get_page_by_title( 'Contact' )).'/?post_id='. get_the_ID() .'&category=' . $cat->name; ?> " class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Venue</a>
+		<a href="<?php echo get_permalink(32).'/?post_id='. get_the_ID() .'&category=' . $cat->name; ?> " class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Venue</a>
 
 	</div>
 

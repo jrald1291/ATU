@@ -84,7 +84,7 @@ get_header(); ?>
                             </div>
                             <div class="post-core">
                                 <div class="post-title t-normal"><a href="<?php the_permalink(); ?>" class="link"><?php the_title(); ?></a></div>
-                                <div class="post-meta"><div class="meta date"><?php the_date(); ?></div> <div class="meta author t-upper"><?php the_author(); ?></div></div>
+                                <div class="post-meta"><div class="meta date"><?php the_date(); ?></div> <div class="meta author t-upper"><a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author(); ?></a></div></div>
                                 <div class="post-content">
                                     <p><?php echo content(strip_shortcodes(wp_trim_words(get_the_content())),40) ?> <a href="<?php the_permalink(); ?>">read more</a></p>
                                 </div>
@@ -102,7 +102,6 @@ get_header(); ?>
                 /**
                  * Get latest venue
                  */
-                 wp_list_authors();
                 $wp_venue_query = new WP_Query( array( 'post_type' => 'venue', 'orderby' => 'date', 'order' => 'desc', 'post_status' => 'publish', 'posts_per_page' => -1 ) );
                 ?>
                 <?php if ( $wp_venue_query->have_posts(  ) ): ?>
@@ -114,7 +113,7 @@ get_header(); ?>
                                     <li>
                                         <?php do_action('aut_post_thumnail', 'venue-medium'); ?>
                                         <div class="slider-caption">
-                                            <a href="#" class="link"><div class="slide-title"><?php the_title(); ?></div></a>
+                                            <a href="<?php echo get_permalink(); ?>" class="link"><div class="slide-title"><?php the_title(); ?></div></a>
                                             <div class="slide-desc"><?php echo wp_trim_words(  get_the_content(), $num_words = 10, $more = ' <a href="'. get_permalink() .'">read more</a>' ); ?></div>
                                         </div>
                                     </li>

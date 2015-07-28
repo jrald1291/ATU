@@ -90,7 +90,7 @@ get_header();
                     <?php } ?>
                     <?php if (of_get_option('video_venue', '')) {?>
                         <div class="widget">
-                            <a href="#main_vid" role="button" data-toggle="modal" class="btn btn-primary btn-block mb-20"><span class="fa fa-play-circle icon-l-sm"></span>WEPN Venue Video</a>
+                            <a href="#main_vid" role="button" data-toggle="modal" class="btn btn-primary btn-block mb-20"><span class="fa fa-play-circle icon-l-sm"></span>WEPN VENUE BENEFITS</a>
                         </div>
                     <?php } ?>
                     <div class="widget widget-aside widget-list">

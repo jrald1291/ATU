@@ -224,13 +224,13 @@ function optionsframework_options() {
 		'std' => '',
 		'type' => 'editor');
 	$options[] = array(
-		'name' => __('WEPN is Different Text', 'options_framework_theme'),
+		'name' => __('Benefits to Supplier Video Text', 'options_framework_theme'),
 		'desc' => __('Enter Title', 'options_framework_theme'),
 		'id' => 'video_diff_text',
 		'std' => '',
 		'type' => 'text');
 	$options[] = array(
-		'name' => __('WEPN is Different Video', 'options_framework_theme'),
+		'name' => __('Benefits to Supplier Video', 'options_framework_theme'),
 		'desc' => __('use iframe', 'options_framework_theme'),
 		'id' => 'video_diff',
 		'std' => '',

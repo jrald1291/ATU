@@ -106,7 +106,7 @@
 </div>
 
 <div class="modal fade in form-subscribe " id="EventSubscribe" tabindex="-1" role="dialog" aria-labelledby="EventSubscribe">
-  <div class="modal-dialog modal-lg absolute-center-bot">
+  <div class="modal-dialog modal-lg modal-pretty absolute-center-bot">
 	  <div class="modal-content">
 	  		  <div class="modal-header t-normal">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

@@ -52,9 +52,10 @@ get_header(); ?>
                             <ul class="nav nav-tabs" role="tablist">
                                 <li role="presentation" class="active"><a href="#description" aria-controls="home" role="tab" data-toggle="tab"><?php _e( 'Description', 'atu'); ?></a></li>
                                 <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab"><?php _e( 'Gallery', 'atu'); ?></a></li>
-                                <li role="presentation"><a href="#youtube" aria-controls="youtube" role="tab" data-toggle="tab"><?php _e( 'Youtube Video', 'atu'); ?></a></li>
+                                <li role="presentation"><a href="#youtube" aria-controls="youtube" role="tab" data-toggle="tab"><?php _e( 'Videos', 'atu'); ?></a></li>
                                 <li role="presentation"><a href="#offers" aria-controls="offers" role="tab" data-toggle="tab"><?php _e( 'Special Offer', 'atu'); ?></a></li>
                                 <li role="presentation"><a href="#map" aria-controls="map" role="tab" data-toggle="tab"><?php _e( 'Map', 'atu'); ?></a></li>
+                                <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><?php _e( 'WEPN Venue Benefits', 'atu'); ?></a></li>
                             </ul>
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active copy" id="description">
@@ -170,8 +171,11 @@ get_header(); ?>
                                         <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>"></div>
                                     </div>
                                     <?php endif; ?>
-
-
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="video">
+                                    <?php if (condition) {?>
+                                       <?php echo of_get_option('video_venue', ''); ?>
+                                    <?php } ?>  
                                 </div>
                             </div>
                         </div>
