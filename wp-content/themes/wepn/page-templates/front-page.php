@@ -84,7 +84,7 @@ get_header(); ?>
                             </div>
                             <div class="post-core">
                                 <div class="post-title t-normal"><a href="<?php the_permalink(); ?>" class="link"><?php the_title(); ?></a></div>
-                                <div class="post-meta"><div class="meta date"><?php the_date(); ?></div> <div class="meta author t-upper"><a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" class="link"><?php the_author(); ?></a></div></div>
+                                <div class="post-meta"><div class="meta date"><?php the_date(); ?></div> <div class="meta author t-upper"><a href="<?php echo get_post_permalink(get_user_meta(get_the_author_meta( 'ID' ), 'company', true)); ?>" class="link"><?php the_author(); ?></a></div></div>
                                 <div class="post-content">
                                     <p><?php echo content(strip_shortcodes(wp_trim_words(get_the_content())),40) ?> <a href="<?php the_permalink(); ?>">read more</a></p>
                                 </div>

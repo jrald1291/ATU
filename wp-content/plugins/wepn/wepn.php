@@ -25,6 +25,18 @@ class WEPN {
 
     }
 
+    function wpse28782_remove_menu_items() {
+        if( !current_user_can( 'administrator' ) ):
+            remove_menu_page( 'edit.php?post_type=meetup_groups' );
+            remove_menu_page( 'edit.php?post_type=portfolio' );
+            remove_menu_page( 'tools.php' );
+            remove_menu_page('edit-comments.php');
+            remove_menu_page('upload.php'); // Media
+            remove_menu_page('wpcf7');
+
+        endif;
+    }
+
 
     function wepn_theme_setup() {
         add_image_size( 'bg-large', 1500, 1000, true ); // (cropped)
@@ -50,12 +62,12 @@ class WEPN {
 
     function add_role() {
 
-        //remove_role( 'vendor' );
+//        remove_role( 'vendor' );
         add_role(
             'vendor',
             __( 'Vendor' ),
             array(
-                'moderate_comments' => 1,
+                'moderate_comments' => 0,
                 'manage_categories' => 0,
                 'manage_links' => 0,
                 'upload_files' => 1,
@@ -184,6 +196,8 @@ class WEPN {
 
         add_filter( 'wpcf7_form_tag', array($this, 'dynamic_select_list'), 10, 2);
 
+
+        add_action( 'admin_menu', array($this, 'wpse28782_remove_menu_items' ));
     }
 
 

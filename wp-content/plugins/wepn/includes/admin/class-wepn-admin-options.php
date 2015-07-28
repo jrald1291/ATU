@@ -20,7 +20,7 @@ if ( ! class_exists( 'acf_options_page_plugin' ) ) {
             // vars
             $this->settings = array(
                 'title' => __('WEPN Options', 'acf'), // title / menu name ('Site Options')
-                'capability' => 'edit_posts', // capability to view options page
+                'capability' => 'administrator', // capability to view options page
                 'pages' => array(), // an array of sub pages ('Header, Footer, Home, etc')
             );
 
