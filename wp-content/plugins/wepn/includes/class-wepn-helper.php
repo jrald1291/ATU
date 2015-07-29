@@ -172,7 +172,7 @@ if ( ! class_exists('WEPN_Helper') ) {
                     $name = sanitize_title(get_sub_field('group_name'));
                     $label = esc_html(get_sub_field('group_label'));
 
-                    $arr[$name.'::'.$label] = $label;
+                    $arr[$name] = $label;
                 }
             }
 

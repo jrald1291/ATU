@@ -308,8 +308,10 @@ class WEPN {
 
             if (is_post_type_archive('venue')) {
                 $tax = 'venue-category';
+                $field = 'id';
             }  elseif (is_post_type_archive('vendor')) {
                 $tax = $city;
+                $field = 'slug';
 
                 $query->set('meta_query', array(
                     array(
@@ -332,7 +334,7 @@ class WEPN {
                 $query->set('tax_query', array(
                     array(
                         'taxonomy' => $tax,
-                        'field' => 'slug',
+                        'field' => $field,
                         'terms' => array(esc_attr($_REQUEST['category'])),
                         'operator' => 'IN'
                     )

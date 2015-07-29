@@ -81,7 +81,7 @@ if ( !class_exists('WEPN_Registration') ) {
             if ( ! is_wp_error( $new_user_id ) ) {
 
 
-                global $wpdb;
+
 
                 add_user_meta( $new_user_id, 'company_name', $post['company_name'] )
                 or update_user_meta( $new_user_id, 'company_name', $post['company_name']  );
@@ -94,43 +94,28 @@ if ( !class_exists('WEPN_Registration') ) {
 
 
 
-                $city = $post['city'];
-                $group = explode( '::', $post['group'] );
-                $category = $post['category'];
-                $company_name = esc_attr( $post['company_name'] );
+                $city = $_POST['city'];
+                $group = $_POST['group'];
+                $category = $_POST['category'];
+                $company_name = $_POST['company_name'];
 
-                $group_title = $group[1];
-                $group_slug = sanitize_title( $group[0] );
+
+                $group_slug = sanitize_title( $group );
 
                 $category_slug = sanitize_title( $category );
 
+                $other_categories = (array) (!empty($_POST['categories']) ? $_POST['categories'] : array());
 
 
 
-                /* Sets the terms (we're just using a single term) for the user. */
 
-                if ( ! $parent = term_exists( $group_title, $city ) ) {
-                    $parent = wp_insert_term( $group_title, $city, array(
-                        'slug' => $group_slug,
-                    ));
-                }
-
-
-                if ( ! term_exists( $category, $city ) ) {
-
-                    wp_insert_term($category, $city, array(
-                        'slug' => $category_slug,
-                        'parent' => $parent['term_id']
-                    ));
-
-                }
-
-
+                global $wpdb;
                 $company_id = $wpdb->get_var("SELECT ID FROM wp_posts WHERE post_title = '" . $company_name . "'");
 
                 if ( ! empty( $company_name ) && ! $company_id ) {
                     $company_id = wp_insert_post( array(
                         'post_title' => $company_name,
+                        'post_author' => $new_user_id,
                         'post_type' => 'vendor',
                         'post_status' => 'publish'
                     ));
@@ -138,28 +123,44 @@ if ( !class_exists('WEPN_Registration') ) {
                     update_user_meta( $new_user_id, 'company', $company_id );
 
                 }
+                // Remove existing post and term relatinships
+                $old_tax = get_post_meta( $company_id, 'city', true );
+                wp_delete_object_term_relationships( $company_id, $old_tax );
+
+                if (!in_array($category, $other_categories)) {
+                    $other_categories = array_merge($other_categories, array($category));
+                }
+
+                if (count($other_categories) > 0) {
+                    $terms = array();
+                    foreach ($other_categories as $term_title) {
+                        if(empty($term_title)) continue;
+
+                        $term_slug = sanitize_title($term_title);
+                        if (!$term = term_exists($term_title, $city)) {
+
+                            $term = wp_insert_term($term_title, $city, array( 'slug' => $term_slug));
+
+                        }
+                        $terms[] = $term['term_id'];
+                    }
+
+                    wp_set_post_terms($company_id, $terms, $city, false);
+                }
 
 
-
-                wp_delete_object_term_relationships( $company_id, $city );
-
-
-                wp_set_object_terms($company_id, $category_slug, $city, false);
-                update_post_meta( $company_id, 'vendor', $new_user_id );
-                update_post_meta( $company_id, 'region', $group_slug );
-                update_post_meta( $company_id, 'city', $city );
 
                 // Update custom permalink
                 update_post_meta( $company_id, 'custom_permalink', $city.'/'.$group_slug.'/'. $category_slug .'/'. sanitize_title($company_name) );
-
-
+                // Update Post Meta
+                update_post_meta( $company_id, 'vendor', $new_user_id );
+                update_post_meta( $company_id, 'region', $group_slug );
+                update_post_meta( $company_id, 'city', $city );
+                update_post_meta( $company_id, 'category', $category_slug );
+                // Update user meta
                 update_user_meta( $new_user_id, 'city', $city );
                 update_user_meta( $new_user_id, 'group', $group_slug );
                 update_user_meta( $new_user_id, 'category', $category_slug );
-
-
-
-                clean_object_term_cache( $new_user_id, $city );
 
 
 
