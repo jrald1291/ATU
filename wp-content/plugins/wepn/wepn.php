@@ -402,10 +402,12 @@ class WEPN {
 
             $where .= " AND ( m2.meta_value = '". esc_attr( $_REQUEST['city'] ) ."' ) ";
         }
-
+//SUBSTRING_INDEX('6-100', '-', -1)
         if( isset( $_REQUEST['capacity'] ) && ! empty( $_REQUEST['capacity'] ) ) {
 
-            $where .= " AND ( m1.meta_value='". esc_attr( $_REQUEST['capacity'] ) ."' ) ";
+            $where .= " AND (  CAST(TRIM(SUBSTRING_INDEX(m1.meta_value, '-', 1)) AS SIGNED) >= CAST(TRIM(SUBSTRING_INDEX('". esc_attr( $_REQUEST['capacity'] ) ."', '-', 1)) AS SIGNED) ".
+//                    " OR SUBSTRING_INDEX(m1.meta_value, '-', -1) >= SUBSTRING_INDEX('". esc_attr( $_REQUEST['capacity'] ) ."', '-', -1) ".
+                    ") ";
         }
 
         if ( isset( $_REQUEST['region'] ) && ! empty( $_REQUEST['region'] ) ) {

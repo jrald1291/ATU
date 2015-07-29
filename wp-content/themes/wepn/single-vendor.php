@@ -180,13 +180,27 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
                         <div class="social-links list-labeled-inline bt-0">
                             <label for="">Follow us in social :</label>
                             <ul>
-                                <li><a href="<?php echo $user_info->instagram ?>"><span class="fa fa-instagram"></span></a></li>
-                                <li><a href="<?php echo $user_info->youtube ?>"><span class="fa fa-youtube"></span></a></li>
-                                <li><a href="<?php echo $user_info->google_plus; ?>"><span class="fa fa-google-plus"></span></a></li>
-                                <li><a href="<?php echo $user_info->pinterest; ?>"><span class="fa fa-pinterest"></span></a></li>
-                                <li><a href="<?php echo $user_info->twitter ?>"><span class="fa fa-twitter"></span></a></li>
-                                <li><a href="<?php echo $user_info->linkedin ?>"><span class="fa fa-linkedin"></span></a></li>
-                                <li><a href="<?php echo $user_info->facebook ?>"><span class="fa fa-facebook"></span></a></li>
+                                <?php if(!empty($user_info->instagram)): ?>
+                                <li><a href="<?php echo WEPN_Helper::addhttp($user_info->instagram); ?>"><span class="fa fa-instagram"></span></a></li>
+                                <?php endif;
+                                if(!empty($user_info->youtube)): ?>
+                                <li><a href="<?php echo WEPN_Helper::addhttp($user_info->youtube); ?>"><span class="fa fa-youtube"></span></a></li>
+                                <?php endif;
+                                if(!empty($user_info->google_plus)): ?>
+                                <li><a href="<?php echo WEPN_Helper::addhttp($user_info->google_plus); ?>"><span class="fa fa-google-plus"></span></a></li>
+                                <?php endif;
+                                if(!empty($user_info->pinterest)): ?>
+                                <li><a href="<?php echo WEPN_Helper::addhttp($user_info->pinterest); ?>"><span class="fa fa-pinterest"></span></a></li>
+                                <?php endif;
+                                if(!empty($user_info->twitter)): ?>
+                                <li><a href="<?php echo WEPN_Helper::addhttp($user_info->twitter); ?>"><span class="fa fa-twitter"></span></a></li>
+                                <?php endif;
+                                if(!empty($user_info->linkedin)): ?>
+                                <li><a href="<?php echo WEPN_Helper::addhttp($user_info->linkedin); ?>"><span class="fa fa-linkedin"></span></a></li>
+                                <?php endif;
+                                if(!empty($user_info->facebook)): ?>
+                                <li><a href="<?php echo WEPN_Helper::addhttp($user_info->facebook); ?>"><span class="fa fa-facebook"></span></a></li>
+                                <?php endif;?>
                             </ul>
                         </div>
                     </div>

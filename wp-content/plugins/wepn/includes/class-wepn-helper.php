@@ -163,6 +163,15 @@ if ( ! class_exists('WEPN_Helper') ) {
 
 
         }
+
+        public static function addhttp($url) {
+            if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
+                $url = "http://" . $url;
+            }
+            return $url;
+        }
+
+
         public static function region_lists() {
             $arr = array();
 
