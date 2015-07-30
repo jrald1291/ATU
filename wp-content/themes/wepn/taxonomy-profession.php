@@ -35,7 +35,7 @@ get_header(); ?>
                     <?php if (!is_user_logged_in() ) { ?> 
                       <div class="widget">
                           <a href="<?php echo wp_login_url();?>" class="btn btn-primary btn-block">Member Login</a>
-                          <a href="<?php echo get_permalink( get_page_by_title( 'Become a Member' ));?>" class="btn btn-primary btn-block mb-20">Become a Member</a>
+                          <a href="<?php echo get_permalink(492);?>" class="btn btn-primary btn-block mb-20">Become a Member</a>
                       </div>
                     <?php } ?>
                     <?php if (of_get_option('video_diff', '')) {?>

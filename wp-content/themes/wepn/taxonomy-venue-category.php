@@ -19,7 +19,7 @@
 get_header();
 
 ?>
-<div class="l-content-bg" >
+<div class="l-content-bg" style="background: url('<?php WEPN_Helper::background_image( get_field('page_background', get_the_ID()) ); ?>') no-repeat">
     <div class="container">
         <div class="row">
             <div class="col-md-9">
@@ -54,7 +54,7 @@ get_header();
                                             <div class="post-item well-block" style="border-bottom: 3px solid <?php the_field( 'color' ); ?>">
                                                 <div class="well-header"><div class="marquee"><span><?php echo $cat_name; ?></span></div></div>
                                                 <div class="post-img">
-                                                    <a href="<?php the_permalink(); ?>"><?php do_action('aut_post_thumnail', 'venue-listing'); ?></a>
+                                                    <a href="<?php the_permalink(); ?>"><?php do_action('aut_post_thumnail', 'img-avatar'); ?></a>
                                                 </div>
                                                 <div class="post-content t-sm">
                                                     <a href="<?php the_permalink(); ?>" class="post-name"><?php the_title(); ?></a>
@@ -85,7 +85,7 @@ get_header();
                     <?php if (!is_user_logged_in() ) { ?> 
                       <div class="widget">
                           <a href="<?php echo wp_login_url();?>" class="btn btn-primary btn-block">Member Login</a>
-                          <a href="<?php echo get_permalink( get_page_by_title( 'Become a Member' ));?>" class="btn btn-primary btn-block mb-20">Become a Member</a>
+                          <a href="<?php echo get_permalink(492);?>" class="btn btn-primary btn-block mb-20">Become a Member</a>
                       </div>
                     <?php } ?>
                     <?php if (of_get_option('video_venue', '')) {?>

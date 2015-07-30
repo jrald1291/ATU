@@ -1,100 +1,100 @@
-/*
-Theme Name: Wedding & Event Professionals Network
-Author: WebFixers
-Author URI: http://webfixers.com.au/
-Description: Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen's simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer.
-Version: 1.0
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: black, blue, gray, pink, purple, white, yellow, dark, light, two-columns, left-sidebar, fixed-layout, responsive-layout, accessibility-ready, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
-Text Domain: webfixers.com.au
-
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned with others.
-*/
-
-/**
- * 8.0 Alignments
- */
-
-.alignleft {
-	display: inline;
-	float: left;
-}
-
-.alignright {
-	display: inline;
-	float: right;
-}
-
-.aligncenter {
-	display: block;
-	margin-right: auto;
-	margin-left: auto;
-}
-
-blockquote.alignleft,
-.wp-caption.alignleft,
-img.alignleft {
-	margin: 0.4em 1.6em 1.6em 0;
-}
-
-blockquote.alignright,
-.wp-caption.alignright,
-img.alignright {
-	margin: 0.4em 0 1.6em 1.6em;
-}
-
-blockquote.aligncenter,
-.wp-caption.aligncenter,
-img.aligncenter {
-	clear: both;
-	margin-top: 0.4em;
-	margin-bottom: 1.6em;
-}
-
-.wp-caption.alignleft,
-.wp-caption.alignright,
-.wp-caption.aligncenter {
-	margin-bottom: 1.2em;
-}
-
-
-/**
- * 9.0 Clearings
- */
-
-.clear:before,
-.clear:after,
-.site:before,
-.site:after,
-.entry-content:before,
-.entry-content:after,
-.comment-content:before,
-.comment-content:after,
-.site-content:before,
-.site-content:after,
-.nav-links:before,
-.nav-links:after,
-.comment-navigation:before,
-.comment-navigation:after,
-.social-navigation ul:before,
-.social-navigation ul:after,
-.textwidget:before,
-.textwidget:after {
-	content: "";
-	display: table;
-}
-
-.clear:after,
-.site:after,
-.entry-content:after,
-.comment-content:after,
-.site-content:after,
-.nav-links:after,
-.comment-navigation:after,
-.social-navigation ul:after,
-.textwidget:after {
-	clear: both;
-}
-
+/*
+Theme Name: Wedding & Event Professionals Network
+Author: WebFixers
+Author URI: http://webfixers.com.au/
+Description: Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen's simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: black, blue, gray, pink, purple, white, yellow, dark, light, two-columns, left-sidebar, fixed-layout, responsive-layout, accessibility-ready, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
+Text Domain: webfixers.com.au
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+/**
+ * 8.0 Alignments
+ */
+
+.alignleft {
+	display: inline;
+	float: left;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+}
+
+.aligncenter {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+blockquote.alignleft,
+.wp-caption.alignleft,
+img.alignleft {
+	margin: 0.4em 1.6em 1.6em 0;
+}
+
+blockquote.alignright,
+.wp-caption.alignright,
+img.alignright {
+	margin: 0.4em 0 1.6em 1.6em;
+}
+
+blockquote.aligncenter,
+.wp-caption.aligncenter,
+img.aligncenter {
+	clear: both;
+	margin-top: 0.4em;
+	margin-bottom: 1.6em;
+}
+
+.wp-caption.alignleft,
+.wp-caption.alignright,
+.wp-caption.aligncenter {
+	margin-bottom: 1.2em;
+}
+
+
+/**
+ * 9.0 Clearings
+ */
+
+.clear:before,
+.clear:after,
+.site:before,
+.site:after,
+.entry-content:before,
+.entry-content:after,
+.comment-content:before,
+.comment-content:after,
+.site-content:before,
+.site-content:after,
+.nav-links:before,
+.nav-links:after,
+.comment-navigation:before,
+.comment-navigation:after,
+.social-navigation ul:before,
+.social-navigation ul:after,
+.textwidget:before,
+.textwidget:after {
+	content: "";
+	display: table;
+}
+
+.clear:after,
+.site:after,
+.entry-content:after,
+.comment-content:after,
+.site-content:after,
+.nav-links:after,
+.comment-navigation:after,
+.social-navigation ul:after,
+.textwidget:after {
+	clear: both;
+}
+

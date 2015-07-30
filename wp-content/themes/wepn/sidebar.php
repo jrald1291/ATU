@@ -32,7 +32,7 @@
 	<?php if (!is_user_logged_in() ) { ?> 
       <div class="widget">
           <a href="<?php echo wp_login_url();?>" class="btn btn-primary btn-block">Member Login</a>
-          <a href="<?php echo get_permalink( get_page_by_title( 'Become a Member' ));?>" class="btn btn-primary btn-block mb-20">Become a Member</a>
+          <a href="<?php echo get_permalink(492);?>" class="btn btn-primary btn-block mb-20">Become a Member</a>
       </div>
     <?php } ?>
 
@@ -87,15 +87,18 @@
         </div>
 
 		<ul class="list">
-
-			<li><a href="tel:<?php the_field( 'mobile' ); ?>">Mobile: <?php the_field( 'mobile' ); ?></a></li>
-
-			<li><a href="tel:<?php the_field( 'phone' ); ?>">Phone: <?php the_field( 'phone' ); ?></a></li>
-
-			<li><a href="mailto:<?php the_field( 'email' ); ?>"><?php the_field( 'email' ); ?></a></li>
-
-			<li><a href="<?php the_field( 'website' ); ?>" target="_blank"><?php the_field( 'website' ); ?></a></li>
-
+			<?php if (get_field( 'mobile' )) {?>
+				<li><a href="tel:<?php the_field( 'mobile' ); ?>">Mobile: <?php the_field( 'mobile' ); ?></a></li>
+			<?php } ?>
+			<?php if (get_field( 'phone' )) {?>
+				<li><a href="tel:<?php the_field( 'phone' ); ?>">Phone: <?php the_field( 'phone' ); ?></a></li>
+			<?php } ?>
+			<?php if (get_field( 'email' )) {?>
+				<li><a href="mailto:<?php the_field( 'email' ); ?>"><?php the_field( 'email' ); ?></a></li>
+			<?php } ?>
+			<?php if (get_field( 'website' )) {?>
+				<li><a href="<?php the_field( 'website' ); ?>" target="_blank"><?php the_field( 'website' ); ?></a></li>
+			<?php } ?>
 		</ul>
 
 
@@ -123,8 +126,14 @@
 			<p>Any questions?</p>
 
 			<p>Call US Now</p>
-
-			<p><a href="">0405 421 387</a></p>
+			
+			<p>
+				<?php if (get_field( 'phone' )) {?>
+					<a href="tel:<?php the_field( 'phone' ); ?>"><?php the_field( 'phone' ); ?></a>
+				<?php }else{ ?>
+					<a href="tel:<?php the_field( 'mobile' ); ?>"><?php the_field( 'mobile' ); ?></a>
+				<?php } ?>
+			</p>
 
 		</div>
 

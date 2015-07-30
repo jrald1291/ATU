@@ -14,7 +14,13 @@
 	<article id="post-<?php the_ID(); ?>" <?php post_class("post-single"); ?>>
 		<div class="page-title ">
 			<h1 class="t-lg"><?php the_title(); ?></h1>
-			<div class="post-meta"><div class="meta date"><?php the_date(); ?></div> <div class="meta author t-upper"><?php the_author(); ?></div></div>
+			<div class="post-meta"><div class="meta date"><?php the_date(); ?></div> <div class="meta author t-upper">
+			<?php if (get_the_author_meta( 'ID' )==1) {?>
+               <a href="<?php echo get_post_permalink(get_user_meta(7, 'company', true)); ?>" class="link"><?php the_author(); ?></a>
+            <?php }else{ ?>
+                <a href="<?php echo get_post_permalink(get_user_meta(get_the_author_meta( 'ID' ), 'company', true)); ?>" class="link"><?php the_author(); ?></a>
+            <?php } ?>
+			</div></div>
 		</div>
 		<?php if ( has_post_thumbnail() ) { ?>
 			<div class="post-img well-img mb-20">
@@ -63,7 +69,13 @@
 		</div>
 		<div class="post-core">
 			<div class="post-title t-normal"><a href="<?php the_permalink(); ?>" class="link"><?php the_title(); ?></a></div>
-			<div class="post-meta"><div class="meta date"><?php the_date(); ?></div> <div class="meta author t-upper"><?php the_author(); ?></div></div>
+			<div class="post-meta"><div class="meta date"><?php echo get_the_date(); ?></div> <div class="meta author t-upper">
+			<?php if (get_the_author_meta( 'ID' )==1) {?>
+               <a href="<?php echo get_post_permalink(get_user_meta(7, 'company', true)); ?>" class="link"><?php the_author(); ?></a>
+            <?php }else{ ?>
+                <a href="<?php echo get_post_permalink(get_user_meta(get_the_author_meta( 'ID' ), 'company', true)); ?>" class="link"><?php the_author(); ?></a>
+            <?php } ?>
+			</div></div>
 			<div class="post-content">
 				<p><?php echo content(strip_shortcodes(wp_trim_words(get_the_content())),25) ?> <a href="<?php the_permalink(); ?>">read more</a></p>
 			</div>

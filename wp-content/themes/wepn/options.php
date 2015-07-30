@@ -264,6 +264,12 @@ function optionsframework_options() {
 		'id' => 'message_secondary',
 		'std' => '',
 		'type' => 'editor');
+	$options[] = array(
+		'name' => __('Membership Message', 'options_framework_theme'),
+		'desc' => __('This will be sent to those who request to become a member', 'options_framework_theme'),
+		'id' => 'message_member',
+		'std' => '',
+		'type' => 'editor');
 
 	return $options;
 }

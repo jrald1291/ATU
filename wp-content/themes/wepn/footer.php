@@ -84,7 +84,7 @@
 								</ul>
 							   <?php if (!is_user_logged_in() ) { ?> 
                                		<a href="<?php echo wp_login_url();?>" class="btn btn-primary btn-block mb-10">Member Login</a>
-                               		<a href="<?php echo get_permalink( get_page_by_title( 'Become a Member' ));?>" class="btn btn-primary btn-block">Become a Member</a>
+                               		<a href="<?php echo get_permalink(492);?>" class="btn btn-primary btn-block">Become a Member</a>
                                <?php } ?>
                                
 							</div>
