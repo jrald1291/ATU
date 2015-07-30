@@ -204,12 +204,16 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
 
                                 <li role="presentation"><a href="#offers" aria-controls="offers" role="tab" data-toggle="tab">Special Offer</a></li>
 
+                                <li role="presentation"><a href="#ratings" aria-controls="ratings" role="tab" data-toggle="tab">Rating</a></li>
+
                                 <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><?php _e( 'WEPN Difference', 'atu'); ?></a></li>
 
                             </ul>
 
                             <div class="tab-content">
-
+                                <div role="tabpanel" id="ratings" class="tab-pane">
+                                    <?php echo do_shortcode('[usrlist Pizza:3 "Ice Cream:3.5" Dirt]'); ?>
+                                </div>
                                 <div role="tabpanel" class="tab-pane active copy" id="description">
 
                                     <?php echo wpautop($user_info->description); ?>
@@ -217,7 +221,6 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
                                 </div>
 
                                 <div role="tabpanel" class="tab-pane" id="gallery">
-
                                     <div id="grid-gallery" class="grid-gallery">
 
                                         <section class="grid-wrap">

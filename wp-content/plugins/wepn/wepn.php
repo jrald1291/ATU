@@ -196,12 +196,56 @@ class WEPN {
 
         add_filter( 'wpcf7_form_tag', array($this, 'dynamic_select_list'), 10, 2);
 
+        add_filter( 'wpcf7_form_tag', array($this, 'post_code_list'), 10, 2);
+
 
         add_action( 'admin_menu', array($this, 'wpse28782_remove_menu_items' ));
     }
 
 
+    function post_code_list($tag, $unused) {
 
+
+        $options = (array)$tag['options'];
+
+        foreach ($options as $option)
+            if (preg_match('%^postcode:([-0-9a-zA-Z_]+)$%', $option, $matches))
+                $term = $matches[1];
+
+        //check if post_type is set
+        if(!isset($term))
+            return $tag;
+
+        $post_codes = get_field( 'post_codes', 'option' );
+
+        $post_codes_array = explode( "\r\n", $post_codes );
+
+
+
+        if ( count( $post_codes_array ) != 0 ) {
+            foreach ($post_codes_array as $post_code) {
+                $label = wp_strip_all_tags($post_code);
+
+                $tag['raw_values'][] = $label;
+                $tag['values'][] = $label;
+                $tag['labels'][] =$label;
+
+
+            }
+        }
+
+
+
+        return $tag;
+
+
+
+
+
+
+
+
+    }
     /** Dynamic List for Contact Form 7 **/
     /** Usage: [select name vendor:vendors_categories] **/
     function dynamic_vendor_category_list($tag, $unused){
