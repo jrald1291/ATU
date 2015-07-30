@@ -96,7 +96,7 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
                                 <?php } ?>
                             </li>
                             <li class="back">
-                                <a href="<?php echo get_post_type_archive_link( 'vendors' );  ?>"><span class="label">back to Suppliers Listing</span></a>
+                                <a href="<?php echo home_url( '/suppliers/' );  ?>"><span class="label">back to Suppliers Listing</span></a>
                             </li>
                             <li class="prev">
                                 <?php $prepo = get_previous_post();
@@ -112,7 +112,7 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
                                 <?php }else{?>
 
                                     <div class="disabled">
-                                        <span class="label">Now Next Supplier<i class="fa fa-angle-right icon-r"></i></span>
+                                        <span class="label">No Next Supplier<i class="fa fa-angle-right icon-r"></i></span>
                                     </div>
                                 <?php } ?>
                             </li>
@@ -602,7 +602,7 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
 
             <li class="back">
 
-                <a href="<?php echo get_post_type_archive_link( 'vendors' );  ?>">back to Suppliers Listing</a>
+                <a href="<?php echo home_url( '/suppliers/' );  ?>">back to Suppliers Listing</a>
 
             </li>
 

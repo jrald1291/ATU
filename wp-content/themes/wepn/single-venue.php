@@ -29,11 +29,42 @@ get_header(); ?>
                         <?php do_action( 'wepn_venue_search_form' ); ?>
 
 
-
                     </div>
-
-
-
+                    <div class="pagination-single pagination-single-sm">
+                        <ul>
+                            <li class="next">
+                                <?php $nepo=get_next_post(); 
+                                if ($nepo) {
+                                        $nepoid=$nepo->ID;
+                                        $ne_post_url = get_permalink($nepoid);?>
+                                        <a href="<?php echo $ne_post_url; ?>">
+                                            <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous Venue</span>
+                                        </a>
+                                <?php }else{?>
+                                    <div class="disabled">
+                                            <span class="label"><i class="fa fa-angle-left icon-l"></i>No previous Venue</span>
+                                    </div>
+                                <?php } ?>
+                            </li>
+                            <li class="back">
+                                <a href="<?php echo home_url( '/venue/' ) ?>"><span class="label">back to Venue Listing</span></a>
+                            </li>
+                            <li class="prev">
+                                <?php $prepo=get_previous_post(); 
+                                if ($prepo) {
+                                        $prepoid=$prepo->ID;
+                                        $pre_post_url = get_permalink($prepoid);?>
+                                        <a href="<?php echo $pre_post_url; ?>">
+                                            <span class="label">Next Venue<i class="fa fa-angle-right icon-r"></i></span>
+                                        </a>
+                                <?php }else{?>
+                                    <div class="disabled">
+                                            <span class="label">No Next Venue<i class="fa fa-angle-right icon-r"></i></span>
+                                    </div>
+                                <?php } ?>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="page-content">
 
                         <div class="page-title ">
@@ -485,7 +516,7 @@ get_header(); ?>
 
             <li class="back">
 
-                <a href="<?php echo get_permalink( get_page_by_title( 'Venue' ))?>">back to Venue Listing</a>
+                <a href="<?php echo home_url( '/venue/' ) ?>">back to Venue Listing</a>
 
             </li>
 
