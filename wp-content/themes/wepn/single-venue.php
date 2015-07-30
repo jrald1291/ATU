@@ -373,7 +373,7 @@ get_header(); ?>
 
                                 <?php if(get_field( 'instagram' ) != ''): ?>
 
-                                <li><a href="<?php the_field( 'instagram' ); ?>"><span class="fa fa-instagram"></span></a></li>
+                                <li><a href="<?php the_field( 'instagram' ); ?>" target="_blank"><span class="fa fa-instagram"></span></a></li>
 
                                 <?php
 
@@ -381,7 +381,7 @@ get_header(); ?>
 
                                 if(get_field( 'youtube' ) != ''): ?>
 
-                                <li><a href="<?php the_field( 'youtube' ); ?>"><span class="fa fa-youtube"></span></a></li>
+                                <li><a href="<?php the_field( 'youtube' ); ?>" target="_blank"><span class="fa fa-youtube"></span></a></li>
 
                                 <?php
 
@@ -389,7 +389,7 @@ get_header(); ?>
 
                                 if(get_field( 'google_+' ) != ''): ?>
 
-                                <li><a href="<?php the_field( 'google_+' ); ?>"><span class="fa fa-google-plus"></span></a></li>
+                                <li><a href="<?php the_field( 'google_+' ); ?>" target="_blank"><span class="fa fa-google-plus"></span></a></li>
 
                                 <?php
 
@@ -397,7 +397,7 @@ get_header(); ?>
 
                                 if(get_field( 'pinterest' ) != ''): ?>
 
-                                <li><a href="<?php the_field( 'pinterest' ); ?>"><span class="fa fa-pinterest"></span></a></li>
+                                <li><a href="<?php the_field( 'pinterest' ); ?>" target="_blank"><span class="fa fa-pinterest"></span></a></li>
 
                                 <?php
 
@@ -405,7 +405,7 @@ get_header(); ?>
 
                                 if(get_field( 'twitter' ) != ''): ?>
 
-                                <li><a href="<?php the_field( 'twitter' ); ?>"><span class="fa fa-twitter"></span></a></li>
+                                <li><a href="<?php the_field( 'twitter' ); ?>" target="_blank"><span class="fa fa-twitter"></span></a></li>
 
                                 <?php
 
@@ -413,7 +413,7 @@ get_header(); ?>
 
                                 if(get_field( 'linkedin' ) != ''): ?>
 
-                                <li><a href="<?php the_field( 'linkedin' ); ?>"><span class="fa fa-linkedin"></span></a></li>
+                                <li><a href="<?php the_field( 'linkedin' ); ?>" target="_blank"><span class="fa fa-linkedin"></span></a></li>
 
                                 <?php
 
@@ -421,7 +421,7 @@ get_header(); ?>
 
                                 if(get_field( 'facebook' ) != ''): ?>
 
-                                <li><a href="<?php the_field( 'facebook' ); ?>"><span class="fa fa-facebook"></span></a></li>
+                                <li><a href="<?php the_field( 'facebook' ); ?>" target="_blank"><span class="fa fa-facebook"></span></a></li>
 
                                 <?php
 

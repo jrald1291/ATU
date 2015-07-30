@@ -110,4 +110,36 @@
 		}
 
 	}
+
+	&.pagination-single-sm{
+		background: @fade;
+		li{
+			border: none;
+		}
+		.back,.prev,.next{
+			padding: 5px;
+			a,.disabled{
+				border: 1px solid @base_border_color;
+				text-transform: normal;
+				padding: 10px 4px!important;
+				font-size: 14px;
+				text-decoration: none;
+
+				&:active, &:hover, &:focus{
+					background-color: @base_color;
+					color: #fff!important;
+				}
+			}
+			a{
+				background: #fff;
+			}
+			
+		}
+		.back{
+			span{
+				text-transform: uppercase!important;
+			}
+			
+		}
+	}
 }

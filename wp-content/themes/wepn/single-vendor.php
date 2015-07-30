@@ -79,7 +79,45 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
                         <?php do_action( 'wepn_vendor_search_form' ); ?>
 
                     </div>
+                    <div class="pagination-single pagination-single-sm">
+                        <ul>
+                            <li class="next">
+                                <?php $nepo = get_next_post();
+                                if ($nepo) {
+                                    $nepoid = $nepo->ID;
+                                    $next_user_id = get_post_meta( $nepoid, 'vendor', true );?>
+                                    <a href="<?php echo get_permalink( $nepoid ); ?>">
+                                        <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous Supplier</span>
+                                    </a>
+                                <?php } else {?>
+                                    <div class="disabled">
+                                        <span class="label"><i class="fa fa-angle-left icon-l"></i>No Previous Supplier</span>
+                                    </div>
+                                <?php } ?>
+                            </li>
+                            <li class="back">
+                                <a href="<?php echo get_post_type_archive_link( 'vendors' );  ?>"><span class="label">back to Suppliers Listing</span></a>
+                            </li>
+                            <li class="prev">
+                                <?php $prepo = get_previous_post();
 
+                                if ( $prepo ) {
+                                    $prepoid = $prepo->ID;
+                                    $prev_user_id = get_post_meta( $prepoid, 'vendor', true );
+                                    ?>
+                                    <a href="<?php echo get_permalink( $prepoid ); ?>">
+                                        <span class="label">Next Supplier<i class="fa fa-angle-right icon-r"></i></span>
+                                    </a>
+
+                                <?php }else{?>
+
+                                    <div class="disabled">
+                                        <span class="label">Now Next Supplier<i class="fa fa-angle-right icon-r"></i></span>
+                                    </div>
+                                <?php } ?>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="page-content">
 
                         <div class="page-title ">
@@ -166,7 +204,7 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
 
                                 <li role="presentation"><a href="#offers" aria-controls="offers" role="tab" data-toggle="tab">Special Offer</a></li>
 
-                                <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><?php _e( 'Why we are different?', 'atu'); ?></a></li>
+                                <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><?php _e( 'WEPN Difference', 'atu'); ?></a></li>
 
                             </ul>
 
@@ -364,43 +402,43 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
 
                                 <?php if(!empty($user_info->instagram)){ ?>
 
-                                <li><a href="<?php echo $user_info->instagram; ?>"><span class="fa fa-instagram"></span></a></li>
+                                <li><a href="<?php echo $user_info->instagram; ?>" target="_blank"><span class="fa fa-instagram"></span></a></li>
 
                                 <?php } ?> 
 
                                 <?php if(!empty($user_info->youtube)){ ?>
 
-                                <li><a href="<?php echo $user_info->youtube; ?>"><span class="fa fa-youtube"></span></a></li>
+                                <li><a href="<?php echo $user_info->youtube; ?>" target="_blank"><span class="fa fa-youtube"></span></a></li>
 
                                 <?php } ?>
 
                                 <?php if(!empty($user_info->google_plus)){ ?>
 
-                                <li><a href="<?php echo $user_info->google_plus; ?>"><span class="fa fa-google-plus"></span></a></li>
+                                <li><a href="<?php echo $user_info->google_plus; ?>" target="_blank"><span class="fa fa-google-plus"></span></a></li>
 
                                 <?php } ?>
 
                                 <?php if(!empty($user_info->pinterest)){ ?>
 
-                                <li><a href="<?php echo $user_info->pinterest; ?>"><span class="fa fa-pinterest"></span></a></li>
+                                <li><a href="<?php echo $user_info->pinterest; ?>" target="_blank"><span class="fa fa-pinterest"></span></a></li>
 
                                 <?php } ?>
 
                                 <?php if(!empty($user_info->twitter)){ ?>
 
-                                <li><a href="<?php echo $user_info->twitter; ?>"><span class="fa fa-twitter"></span></a></li>
+                                <li><a href="<?php echo $user_info->twitter; ?>" target="_blank"><span class="fa fa-twitter"></span></a></li>
 
                                 <?php } ?>
 
                                 <?php if(!empty($user_info->linkedin)){ ?>
 
-                                <li><a href="<?php echo $user_info->linkedin; ?>"><span class="fa fa-linkedin"></span></a></li>
+                                <li><a href="<?php echo $user_info->linkedin; ?>" target="_blank"><span class="fa fa-linkedin"></span></a></li>
 
                                 <?php } ?>
 
                                 <?php if(!empty($user_info->facebook)){ ?>
 
-                                <li><a href="<?php echo $user_info->facebook; ?>"><span class="fa fa-facebook"></span></a></li>
+                                <li><a href="<?php echo $user_info->facebook; ?>" target="_blank"><span class="fa fa-facebook"></span></a></li>
 
                                 <?php }?>
 
