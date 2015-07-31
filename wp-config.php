@@ -72,6 +72,7 @@ $table_prefix  = 'wp_';
  * in their development environments.
  */
 define('WP_DEBUG', false);
+define ('WPCF7_AUTOP', false );
 
 /* That's all, stop editing! Happy blogging. */
 
