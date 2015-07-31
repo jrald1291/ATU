@@ -524,3 +524,66 @@ get_header(); ?>
 
 
 
+<div class="modal fade in form-subscribe " id="EventSubscribe" tabindex="-1" role="dialog" aria-labelledby="EventSubscribe">
+  <div class="modal-dialog modal-lg modal-pretty absolute-center-bot">
+	  <div class="modal-content">
+	  		  <div class="modal-header t-normal">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        		<h3 class="modal-title t-title text-center">We invite you to Join our WEPN e-newsletter!</h3>
+	  		  </div>
+			  <div class="modal-body">
+
+			  </div>
+	   </div>
+  </div>
+</div>
+
+<!-- <div class="row">
+<div class="col-md-6">
+<div class="form-group field-wrap">
+<label for="">Name<span class="req">*</span></label>
+[text* name class:form-control]
+</div>
+<div class="form-group field-wrap">
+<label for="">Email<span class="req">*</span></label>
+[email* email_user class:form-control]
+</div>
+<div class="form-group">
+<label for="" class="label-drop">Event Type<span class="req">*</span></label>
+[select event id:event_type  class:form-control "Ceremonies" "Wedding" "Debut" "Birthday" "Corporate Event" "Other Event"]
+</div>
+<div class="form-group form-multiple">
+<label for="" class="label-drop">Who do you need? <span class="def">use ctrl+click</span></label>
+[checkbox vendor id:vendor_category class:form-control vendor:vendors_categories]
+</div>
+<div class="form-group form-multiple">
+<label for="" class="label-drop">Venue type for event <span class="def">use ctrl+click</span></label>
+[checkbox venue id:venue_category class:form-control  term:venue-category]
+</div>
+<div class="form-group">
+<label for="" class="label-drop">Post Code</label>
+[select postcode id:postcode class:form-control postcode:list]
+</div>
+<div class="form-group">
+<label for="" class="label-drop">Date of Event<span class="req">*</span></label>[date* date id:date_event class:form-control placeholder "mm/dd/yy"]
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-group field-wrap">
+<label for="">Phone<span class="req">*</span></label>
+[tel* phone class:form-control]
+</div>
+<div class="form-group field-wrap">
+<label for="">Address<span class="req">*</span></label>
+[text* address class:form-control]
+</div>
+<div class="form-group field-wrap">
+<label for="">Message<span class="req">*</span></label>
+[textarea message x17 class:form-control]
+</div>
+</div>
+</div>
+[hidden user_email id:user_email]
+[hidden company_name id:company_name]
+[hidden thanks_msg id:thanks_msg]
+[submit class:btn class:btn-primary class:btn-block class:btn-lg "Send Message"] -->
