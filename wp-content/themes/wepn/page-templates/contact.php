@@ -587,6 +587,5 @@ get_header(); ?>
 [hidden company_name id:company_name]
 [hidden thanks_msg id:thanks_msg]
 [submit class:btn class:btn-primary class:btn-block class:btn-lg "Send Message"] -->
-asdasda
-sadasd
-asd
+
+human
