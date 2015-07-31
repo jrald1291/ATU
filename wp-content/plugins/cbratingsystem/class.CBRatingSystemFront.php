@@ -224,7 +224,7 @@ class CBRatingSystemFront {
 		                $nothome = 1;
 	                }
 
-                $display = '<div class="cbrp_front_content">';
+                $display = '<div class="cbrp_front_content y">';
                     $display .= '<!--RatingForm Content-->
                         <h3 id="cbratingfrom_title" class="cbratingfrom_title" data-home="' . $nothome . '">' . __( 'Ratings', 'cbratingsystem' ) . ' </h3>
                         <div id="cbrp_container_' . $post_id . '" class="cbrp_container_' . $theme_key . '_theme cbrp-content-container cbrp-content-container-form-' . $ratingFormArray['id'] . '-post-' . $post_id . '" data-form-id="' . $ratingFormArray['id'] . '" data-post-id="' . $post_id . '">
@@ -604,7 +604,7 @@ class CBRatingSystemFront {
 
 
 					
-					$display     = '<div class="cbrp_front_content">';
+					$display     = '<div class="cbrp_front_content a">';
 					$display    .= '<!--RatingForm Content-->
                     <h3 id="cbratingfrom_title" class="cbratingfrom_title"> ' . __( 'Ratings', 'cbratingsystem' ) . '</h3>
                     <div id="cbrp_container_' . $post_id . '" class="cbrp_container_' . $theme_key . '_theme cbrp-content-container cbrp-content-container-form-' . $ratingFormArray['id'] . '-post-' . $post_id . '" data-form-id="' . $ratingFormArray['id'] . '" data-post-id="' . $post_id . '"  data-count= "' . $count . '" style="display:bock;">
@@ -859,7 +859,7 @@ class CBRatingSystemFront {
 					$jsSettings = self::front_end_js_settings( $ratingFormArray, $cCriteria, $post_id );
 
 					$display .= '<script type="text/javascript">' . $jsSettings . '</script>';
-				$display.='</div>';//end of cbrp_front_content
+				$display.='</div><!--test-->';//end of cbrp_front_content
 				$content = $display;				
 
 				self::viewPerCriteriaRatingResult( $ratingFormArray, $post_id, $user_id );
@@ -948,7 +948,7 @@ class CBRatingSystemFront {
 				if ( ! is_home() ) {
 					$nothome = 1;
 				}
-				$display = '<div class="cbrp_front_content">';
+				$display = '<div class="cbrp_front_content x">';
 				$display .= '<!--RatingForm Content-->
                     <h3 id="cbratingfrom_title" class="cbratingfrom_title" data-home="' . $nothome . '">' . __( 'Rating', 'cbratingsystem' ) . ' </h3>
                     <div id="cbrp_container_' . $post_id . '" class="cbrp_container_' . $theme_key . '_theme cbrp-content-container cbrp-content-container-form-' . $ratingFormArray['id'] . '-post-' . $post_id . '" data-form-id="' . $ratingFormArray['id'] . '" data-post-id="' . $post_id . '">
@@ -1116,6 +1116,7 @@ class CBRatingSystemFront {
 				$display .= '</div>';
 				$display .= '</div>';
 				$display .= '</div>';
+                $display .= '</div>';
 				$content = $display;
                 //var_dump('i am here agaon man');
 
