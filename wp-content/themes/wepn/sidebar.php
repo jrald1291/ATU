@@ -110,12 +110,11 @@
 		<a href="<?php echo get_permalink(32).'/?post_id='. get_the_ID() .'&category=' . $cat->name; ?> " class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Venue</a>
 
 	</div>
-
+	<?php if (trim(get_field( 'website' ),' ')!="") {?>
 	<div class="widget widget-aside">
-
 		<a href="<?php the_field( 'website' ); ?>" target="_blank" class="btn btn-sm btn-block btn-secondary"><span class="fa icon-l-sm fa-globe"></span>Visit website</a>
-
 	</div>
+	<?php } ?>
 
 	<div class="widget widget-aside">
 

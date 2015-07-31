@@ -524,13 +524,11 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
                         <a href="<?php echo get_permalink(32)."?contact_id=".$user_id. "&category=" .  $cat_name;?>" class="btn btn-block btn-md btn-primary"><span class="fa icon-l fa-envelope"></span>Contact Supplier</a>
 
                     </div>
-
-                    <div class="widget widget-aside">
-
-                        <a href="<?php echo $user_info->user_url; ?>" target="_blank" class="btn btn-sm btn-block btn-secondary"><span class="fa icon-l-sm fa-globe"></span>Visit website</a>
-
-                    </div>
-
+                    <?php if (trim(($user_info->user_url),' ')!="") {?>
+                        <div class="widget widget-aside">
+                            <a href="<?php echo $user_info->user_url; ?>" target="_blank" class="btn btn-sm btn-block btn-secondary"><span class="fa icon-l-sm fa-globe"></span>Visit website</a>
+                        </div>
+                    <?php } ?>
                     <div class="widget widget-aside">
 
                         <div class="call-to-action" style="background-color:<?php echo hex2rgba($user_info->color); ?>">
