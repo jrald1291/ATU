@@ -200,6 +200,24 @@ class WEPN {
 
 
         add_action( 'admin_menu', array($this, 'wpse28782_remove_menu_items' ));
+
+
+
+        add_filter('cbratingsystem_post_types', function() {
+            return array(
+                'builtin' => array(
+                    'options' => array(
+                        'public'   => true,
+//                '_builtin' => false,
+                        'show_ui'  => true,
+                    ),
+                    'label'   => __( 'Built in post types', 'cbratingsystem' ),
+                )
+
+            );
+
+
+        }, 10);
     }
 
 

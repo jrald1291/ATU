@@ -212,7 +212,7 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
 
                             <div class="tab-content">
                                 <div role="tabpanel" id="ratings" class="tab-pane">
-                                    <?php echo do_shortcode('[usrlist Pizza:3 "Ice Cream:3.5" Dirt]'); ?>
+                                    <?php echo do_shortcode('[cbratingsystem form_id="1"]'); ?>
                                 </div>
                                 <div role="tabpanel" class="tab-pane active copy" id="description">
 

@@ -870,7 +870,35 @@ class CBRatingSystem {
 						'4' => array('enabled' => 1,'title' => __('Best','cbratingsystem'))
 					)
 
-				)
+				),
+                '3' => array
+                (
+                    'enabled'   => 1,
+                    'label'     => __('Criteria 4', 'cbratingsystem'),
+                    'stars' => array
+                    (
+                        '0' => array('enabled' => 1,'title' => __('Worst','cbratingsystem')),
+                        '1' => array('enabled' => 1,'title' => __('Bad','cbratingsystem')),
+                        '2' => array('enabled' => 1,'title' => __('Not Bad','cbratingsystem')),
+                        '3' => array('enabled' => 1,'title' => __('Good','cbratingsystem')),
+                        '4' => array('enabled' => 1,'title' => __('Best','cbratingsystem'))
+                    )
+
+                ),
+                '4' => array
+                (
+                    'enabled'   => 1,
+                    'label'     => __('Criteria 5', 'cbratingsystem'),
+                    'stars' => array
+                    (
+                        '0' => array('enabled' => 1,'title' => __('Worst','cbratingsystem')),
+                        '1' => array('enabled' => 1,'title' => __('Bad','cbratingsystem')),
+                        '2' => array('enabled' => 1,'title' => __('Not Bad','cbratingsystem')),
+                        '3' => array('enabled' => 1,'title' => __('Good','cbratingsystem')),
+                        '4' => array('enabled' => 1,'title' => __('Best','cbratingsystem'))
+                    )
+
+                )
 
 
 			)

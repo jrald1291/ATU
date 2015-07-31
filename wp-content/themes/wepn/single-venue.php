@@ -148,12 +148,16 @@ get_header(); ?>
 
                                 <li role="presentation"><a href="#map" aria-controls="map" role="tab" data-toggle="tab"><?php _e( 'Map', 'atu'); ?></a></li>
 
+                                <li role="presentation"><a href="#ratings" aria-controls="ratings" role="tab" data-toggle="tab">Rating</a></li>
+
                                 <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><?php _e( 'WEPN Venue Benefits', 'atu'); ?></a></li>
 
                             </ul>
 
                             <div class="tab-content">
-
+                                <div role="tabpanel" id="ratings" class="tab-pane">
+                                    <?php echo do_shortcode('[cbratingsystem form_id="1"]'); ?>
+                                </div>
                                 <div role="tabpanel" class="tab-pane active copy" id="description">
 
                                     <?php the_content() ?>
