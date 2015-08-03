@@ -181,15 +181,15 @@ class WEPN {
         /**
          * remove the register link from the wp-login.php script
          */
-        add_filter('option_users_can_register', function($value) {
-            $script = basename(parse_url($_SERVER['SCRIPT_NAME'], PHP_URL_PATH));
-
-            if ($script == 'wp-login.php') {
-                $value = false;
-            }
-
-            return $value;
-        });
+//        add_filter('option_users_can_register', function($value) {
+//            $script = basename(parse_url($_SERVER['SCRIPT_NAME'], PHP_URL_PATH));
+//
+//            if ($script == 'wp-login.php') {
+//                $value = false;
+//            }
+//
+//            return $value;
+//        });
 
 
         add_filter( 'wpcf7_form_tag', array($this, 'dynamic_vendor_category_list'), 10, 2);
@@ -218,6 +218,8 @@ class WEPN {
 
 
         }, 10);
+
+
     }
 
 
@@ -437,10 +439,6 @@ class WEPN {
         }
 
 
-//        if( isset( $_REQUEST['category'] ) && ! empty( $_REQUEST['category'] )) {
-//            $join .= " LEFT JOIN $wpdb->postmeta AS m4 ON $wpdb->posts.ID = m4.post_id  AND m4.meta_key='category'";
-//        }
-
 
         return $join;
     }
@@ -464,21 +462,15 @@ class WEPN {
 
             $where .= " AND ( m2.meta_value = '". esc_attr( $_REQUEST['city'] ) ."' ) ";
         }
-//SUBSTRING_INDEX('6-100', '-', -1)
+
         if( isset( $_REQUEST['capacity'] ) && ! empty( $_REQUEST['capacity'] ) ) {
 
-            $where .= " AND (  CAST(TRIM(SUBSTRING_INDEX(m1.meta_value, '-', 1)) AS SIGNED) >= CAST(TRIM(SUBSTRING_INDEX('". esc_attr( $_REQUEST['capacity'] ) ."', '-', 1)) AS SIGNED) ".
-//                    " OR SUBSTRING_INDEX(m1.meta_value, '-', -1) >= SUBSTRING_INDEX('". esc_attr( $_REQUEST['capacity'] ) ."', '-', -1) ".
-                    ") ";
+            $where .= " AND (  CAST(TRIM(SUBSTRING_INDEX(m1.meta_value, '-', 1)) AS SIGNED) >= CAST(TRIM(SUBSTRING_INDEX('". esc_attr( $_REQUEST['capacity'] ) ."', '-', 1)) AS SIGNED) ) ";
         }
 
         if ( isset( $_REQUEST['region'] ) && ! empty( $_REQUEST['region'] ) ) {
             $where .= " AND ( m3.meta_value='". esc_attr( $_REQUEST['region'] ) ."' ) ";
         }
-
-//        if( isset( $_REQUEST['category'] ) && ! empty( $_REQUEST['category'] )) {
-//            $where .= " AND ( m4.meta_value='". esc_attr( $_REQUEST['category'] ) ."' ) ";
-//        }
 
 
 

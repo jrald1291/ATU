@@ -323,13 +323,16 @@ class CBRatingSystemFrontReview extends CBRatingSystemFront {
                                     }
                                     //finally check the settings
                                     if($ratingFormArray ['show_user_avatar_in_review']  == '1'){
-                                        $gravatar = get_avatar( $review->user_id, 36 );
+//                                        $gravatar = get_avatar( $review->user_id, 36 );
+                                        $gravatar = wp_get_attachment_image( get_user_meta( $review->user_id, 'profile_image', true ), 'vendor-small-thumb' );
                                     }
                                     else{
                                         $gravatar = '';
                                     }
                                     $name        = apply_filters('cbrating_edit_review_user_link' , $name ,  $review->user_id);
                                     $gravatar    = apply_filters('cbrating_edit_review_user_avatar' , $gravatar ,   $review->user_id);
+
+
 
 
 
@@ -347,7 +350,8 @@ class CBRatingSystemFrontReview extends CBRatingSystemFront {
                                     $user_url  = '';
                                     $name      = ( ! empty( $review->user_name  ) ? $review->user_name : __('Anonymous','cbratingsystem') );
                                     if($ratingFormArray ['show_user_avatar_in_review']  == '1'){
-                                        $gravatar  = get_avatar( 0, 36, 'gravatar_default' );
+//                                        $gravatar  = get_avatar( 0, 36, 'gravatar_default' );
+                                        $gravatar = wp_get_attachment_image( get_user_meta( $review->user_id, 'profile_image', true ), 'vendor-small-thumb' );
                                     }
                                     else{
                                         $gravatar = '';
