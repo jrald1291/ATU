@@ -83,7 +83,7 @@ get_header(); ?>
 
 
 
-                                        <?php while( have_rows( 'gallery' ) ): the_row(); ?>
+                                        <?php  $i = 0; while( have_rows( 'gallery' ) ): the_row(); ?>
 
 
 
@@ -489,6 +489,7 @@ get_header(); ?>
             <li class="next">
 
                 <?php $nepo=get_next_post(); 
+           
 
                 if ($nepo) {
 
@@ -500,7 +501,7 @@ get_header(); ?>
 
                             <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
 
-                            <span><?php echo get_field('company_name',$nepoid)?></span>
+                            <span><?php the_title(); ?></span>
 
                         </a>
 
@@ -538,7 +539,7 @@ get_header(); ?>
 
                             <span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
 
-                            <span><?php echo get_field('company_name',$prepoid)?></span>
+                            <span><?php the_title(); ?></span>
 
                         </a>
 

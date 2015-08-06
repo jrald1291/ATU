@@ -20,11 +20,15 @@ if ( !class_exists('WEPN_Registration') ) {
 
 
         public function validate() {
+
+
             if ( ! isset( $_POST['wepn_registration_nonce_field'] )
                 || ! wp_verify_nonce( $_POST['wepn_registration_nonce_field'], 'wepn_registration' )
                 || is_admin() ) {
                 return false;
             }
+
+
 
             global $wpdb;
 
@@ -167,7 +171,7 @@ if ( !class_exists('WEPN_Registration') ) {
                 // Update registration code to inactive
                 WEPN_Admin_Settings::set_used_reg_code( $post['registration_code'] );
 
-//                $page_id = get_option( 'wepn_registration_success_page' );
+
 
 
                 wp_set_current_user($new_user_id, $post['username']);

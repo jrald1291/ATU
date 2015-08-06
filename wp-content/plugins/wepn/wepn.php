@@ -175,21 +175,12 @@ class WEPN {
 
         add_action( 'wepn_venue_region_list', array( $this, 'wepn_region_list' ) );
 
-        add_filter('template_include', array( $this, 'template_chooser' ) );
+        if (isset($_REQUEST['post_type']) && !empty($_REQUEST['post_type'])) {
+            add_filter('template_include', array($this, 'template_chooser'));
+        }
 
 
-        /**
-         * remove the register link from the wp-login.php script
-         */
-//        add_filter('option_users_can_register', function($value) {
-//            $script = basename(parse_url($_SERVER['SCRIPT_NAME'], PHP_URL_PATH));
-//
-//            if ($script == 'wp-login.php') {
-//                $value = false;
-//            }
-//
-//            return $value;
-//        });
+
 
 
         add_filter( 'wpcf7_form_tag', array($this, 'dynamic_vendor_category_list'), 10, 2);
@@ -344,14 +335,15 @@ class WEPN {
     public function template_chooser($template)
     {
         global $wp_query;
+
         $post_type = $_REQUEST['post_type'];
-        if( $wp_query->is_search && $post_type == 'venue' )
-        {
+        if ($wp_query->is_search && $post_type == 'venue') {
             return locate_template('archive-venue.php');
-        } elseif( $wp_query->is_search && $post_type == 'vendor' )
-        {
+        } elseif ($wp_query->is_search && $post_type == 'vendor') {
             return locate_template('archive-vendor.php');
         }
+
+
         return $template;
     }
 
@@ -427,27 +419,28 @@ class WEPN {
     public function websmart_search_join( $join ) {
         global $wpdb;
 
-        if ( ! is_search() && is_admin() ) return $join;
+//        if ( ! is_search() && is_admin() ) return $join;
+
+        if (is_search()) {
+
+            if (isset($_REQUEST['post_code']) && !empty($_REQUEST['post_code'])) {
+                $join .= " LEFT JOIN $wpdb->postmeta AS m ON $wpdb->posts.ID = m.post_id AND m.meta_key='post_code'";
+            }
+
+            if (isset($_REQUEST['capacity']) && !empty($_REQUEST['capacity'])) {
+                $join .= " LEFT JOIN $wpdb->postmeta AS m1 ON $wpdb->posts.ID = m1.post_id AND m1.meta_key='capacity'";
+            }
 
 
-        if( isset( $_REQUEST['post_code'] ) && ! empty( $_REQUEST['post_code'] ) ) {
-            $join .= " LEFT JOIN $wpdb->postmeta AS m ON $wpdb->posts.ID = m.post_id AND m.meta_key='post_code'";
+            if (isset($_REQUEST['city']) && !empty($_REQUEST['city'])) {
+                $join .= " LEFT JOIN $wpdb->postmeta AS m2 ON $wpdb->posts.ID = m2.post_id  AND m2.meta_key='city'";
+            }
+
+
+            if (isset($_REQUEST['region']) && !empty($_REQUEST['region'])) {
+                $join .= " LEFT JOIN $wpdb->postmeta AS m3 ON $wpdb->posts.ID = m3.post_id  AND m3.meta_key='region'";
+            }
         }
-
-        if( isset( $_REQUEST['capacity'] ) && ! empty( $_REQUEST['capacity'] ) ) {
-            $join .= " LEFT JOIN $wpdb->postmeta AS m1 ON $wpdb->posts.ID = m1.post_id AND m1.meta_key='capacity'";
-        }
-
-
-        if( isset( $_REQUEST['city'] ) && ! empty( $_REQUEST['city'] )) {
-            $join .= " LEFT JOIN $wpdb->postmeta AS m2 ON $wpdb->posts.ID = m2.post_id  AND m2.meta_key='city'";
-        }
-
-
-        if( isset( $_REQUEST['region'] ) && ! empty( $_REQUEST['region'] )) {
-            $join .= " LEFT JOIN $wpdb->postmeta AS m3 ON $wpdb->posts.ID = m3.post_id  AND m3.meta_key='region'";
-        }
-
 
 
         return $join;
@@ -457,32 +450,34 @@ class WEPN {
 
     public function websmart_search_where( $where ) {
 
-        if ( ! is_search() && is_admin() ) return $where;
+        //if ( ! is_search() && is_admin() ) return $where;
 
-        if (isset($_REQUEST['post_type']) && $_REQUEST['post_type'] == 'venue' && is_post_type_archive('venue')) {
-            $where = str_replace('0 = 1', '1 = 1', $where);
+        if ( is_search() ) {
+
+            if (isset($_REQUEST['post_type']) && $_REQUEST['post_type'] == 'venue' && is_post_type_archive('venue')) {
+                $where = str_replace('0 = 1', '1 = 1', $where);
+            }
+
+            if (isset($_REQUEST['post_code']) && !empty($_REQUEST['post_code'])) {
+
+                $where .= " AND ( m.meta_key = 'post_code' AND m.meta_value='" . esc_attr($_REQUEST['post_code']) . "' ) ";
+            }
+
+            if (isset($_REQUEST['city']) && !empty($_REQUEST['city'])) {
+
+                $where .= " AND ( m2.meta_value = '" . esc_attr($_REQUEST['city']) . "' ) ";
+            }
+
+            if (isset($_REQUEST['capacity']) && !empty($_REQUEST['capacity'])) {
+
+                $where .= " AND (  CAST(TRIM(SUBSTRING_INDEX(m1.meta_value, '-', 1)) AS SIGNED) >= CAST(TRIM(SUBSTRING_INDEX('" . esc_attr($_REQUEST['capacity']) . "', '-', 1)) AS SIGNED) ) ";
+            }
+
+            if (isset($_REQUEST['region']) && !empty($_REQUEST['region'])) {
+                $where .= " AND ( m3.meta_value='" . esc_attr($_REQUEST['region']) . "' ) ";
+            }
+
         }
-
-        if( isset( $_REQUEST['post_code'] ) && ! empty( $_REQUEST['post_code'] ) ) {
-
-            $where .= " AND ( m.meta_key = 'post_code' AND m.meta_value='". esc_attr( $_REQUEST['post_code'] ) ."' ) ";
-        }
-
-        if( isset( $_REQUEST['city'] ) && ! empty( $_REQUEST['city'] ) ) {
-
-            $where .= " AND ( m2.meta_value = '". esc_attr( $_REQUEST['city'] ) ."' ) ";
-        }
-
-        if( isset( $_REQUEST['capacity'] ) && ! empty( $_REQUEST['capacity'] ) ) {
-
-            $where .= " AND (  CAST(TRIM(SUBSTRING_INDEX(m1.meta_value, '-', 1)) AS SIGNED) >= CAST(TRIM(SUBSTRING_INDEX('". esc_attr( $_REQUEST['capacity'] ) ."', '-', 1)) AS SIGNED) ) ";
-        }
-
-        if ( isset( $_REQUEST['region'] ) && ! empty( $_REQUEST['region'] ) ) {
-            $where .= " AND ( m3.meta_value='". esc_attr( $_REQUEST['region'] ) ."' ) ";
-        }
-
-
 
         return $where;
     }

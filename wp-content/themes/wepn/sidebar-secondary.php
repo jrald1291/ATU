@@ -31,7 +31,7 @@
 
                     $user_id = get_post_meta(get_the_ID(), 'vendor', true);
 
-                    $cat_name = !is_wp_error($cats) ? $cat->name : '';
+                    $cat_name = !is_wp_error($cat) ? $cat->name : '';
 
 
                     $image_id = get_user_meta( $user_id, 'profile_image', true );

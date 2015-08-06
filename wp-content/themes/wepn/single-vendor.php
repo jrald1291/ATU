@@ -33,7 +33,6 @@ get_header();
 
 
 
-
 while(have_posts()): the_post();
 
 $user_id = get_post_meta( get_the_ID(), 'vendor', true );
@@ -564,35 +563,31 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
 
             <li class="next">
 
-                <?php $nepo = get_next_post();
+                <?php
+
+                $nepo=get_next_post();
 
                 if ($nepo) {
 
-                    $nepoid = $nepo->ID;
+                    $nepoid=$nepo->ID;
 
+                    $ne_post_url = get_permalink($nepoid);?>
 
-
-                    $next_user_id = get_post_meta( $nepoid, 'vendor', true );?>
-
-
-
-                    <a href="<?php echo get_permalink( $nepoid ); ?>">
+                    <a href="<?php echo $ne_post_url; ?>">
 
                         <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
 
-                        <span><?php echo get_user_meta( $next_user_id, 'company_name', true)?></span>
+                        <span><?php the_title(); ?></span>
 
                     </a>
 
-
-
-                <?php } else {?>
+                <?php }else{?>
 
                     <div class="disabled">
 
                         <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
 
-                        <span>No previous Supplier</span>
+                        <span>No previous Venue</span>
 
                     </div>
 
@@ -602,7 +597,7 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
 
             <li class="back">
 
-                <a href="<?php echo home_url( '/suppliers/' );  ?>">back to Suppliers Listing</a>
+                <a href="<?php echo home_url( '/venue/' ) ?>">back to Venue Listing</a>
 
             </li>
 
@@ -611,40 +606,29 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
                 <?php $prepo = get_previous_post();
 
 
+                if ($prepo) {
 
-                if ( $prepo ) {
+                    $prepoid=$prepo->ID;
 
+                    $pre_post_url = get_permalink($prepoid);?>
 
-
-                    $prepoid = $prepo->ID;
-
-                    $prev_user_id = get_post_meta( $prepoid, 'vendor', true );
-
-                    ?>
-
-                    <a href="<?php echo get_permalink( $prepoid ); ?>">
+                    <a href="<?php echo $pre_post_url; ?>">
 
                         <span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
 
-                        <span><?php echo get_user_meta( $prev_user_id, 'company_name', true)?></span>
+                        <span><?php the_title(); ?></span>
 
                     </a>
 
-
-
                 <?php }else{?>
-
-
 
                     <div class="disabled">
 
                         <span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
 
-                        <span>No Next Supplier</span>
+                        <span>No Next Venue</span>
 
                     </div>
-
-
 
                 <?php } ?>
 
