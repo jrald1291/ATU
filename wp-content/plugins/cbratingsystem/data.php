@@ -642,6 +642,10 @@ class CBRatingSystemData {
                 INNER JOIN $table_name3 p ON p.ID = ur.post_id
                 WHERE  rs.id = ur.form_id $active_clause $sortingOrder $limitAction";
 
+        if(!current_user_can('manage_posts')) {
+            $sql .= " AND (p.post_author = " . get_current_user_id() . ")";
+        }
+
 
 
         if ( ! $is_object ) {
