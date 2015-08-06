@@ -92,7 +92,7 @@ class CBRatingSystemFront {
         $comment_status_of_user = in_array($userRoles[0],$ratingFormArray['comment_moderation_users']);
         $cb_comment_status      = '';
 
-		$cb_comment_filtered_status = apply_filters('cbratingsystem_comment_status',array('email_verify_guest' => (isset($ratingFormArray['email_verify_guest'])? $ratingFormArray['email_verify_guest'] : 0), 'comment_status_of_user' => $comment_status_of_user,'cb_comment_status' =>'approved'));
+		$cb_comment_filtered_status = apply_filters('cbratingsystem_comment_status',array('email_verify_guest' => (isset($ratingFormArray['email_verify_guest'])? $ratingFormArray['email_verify_guest'] : 0), 'comment_status_of_user' => $comment_status_of_user,'cb_comment_status' =>'unapproved'));
 
 		$cb_comment_status = $cb_comment_filtered_status['cb_comment_status'];
 
@@ -1585,7 +1585,8 @@ class CBRatingSystemFront {
 								if ( $review->user_id != 0 ) {
 
                                     $user_url = get_author_posts_url( $review->user_id );
-                                    $name     = get_the_author_meta( 'display_name', $review->user_id );
+                                    //$name     = get_the_author_meta( 'display_name', $review->user_id );
+                                    $name     = get_user_meta($review->user_id, 'company_name', true );
                                     if(!empty($user_url) && $ratingFormArray ['show_user_link_in_review']  == '1' ){
                                         $name = '<a target="_blank" href="' . $user_url . '">'.$name .'</a>';
                                     }
@@ -1594,7 +1595,7 @@ class CBRatingSystemFront {
                                     //finally check the settings
                                     if($ratingFormArray ['show_user_avatar_in_review']  == '1'){
 //                                        $gravatar = get_avatar( $review->user_id, 36 );
-                                        $gravatar = wp_get_attachment_image( get_user_meta( $review->user_id, 'profile_image', true ), 'vendor-small-thumb' );
+                                        $gravatar = '<img src="'. WEPN_Helper::supplier_avatar($review->user_id, 'vendor-small-thumb') .'" />';
                                     }
                                     else{
                                         $gravatar = '';

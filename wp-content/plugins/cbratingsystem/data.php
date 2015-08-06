@@ -661,9 +661,9 @@ class CBRatingSystemData {
 	    $sql = "SELECT ur.*, p.post_title, p.post_type, rs.name, rs.custom_criteria, rs.custom_question FROM $table_name1 rs
                 INNER JOIN $table_name2 ur
                 INNER JOIN $table_name3 p ON p.ID = ur.post_id
-                WHERE rs.id = ur.form_id $active_clause $sortingOrder $limitAction";
+                WHERE ur.comment_status = 'approved' AND rs.id = ur.form_id $active_clause $sortingOrder $limitAction";
 
-	   //var_dump($sql);
+//	   var_dump($sql);
 
         if ( ! $is_object ) {
             $results = $wpdb->get_results( $sql, ARRAY_A );

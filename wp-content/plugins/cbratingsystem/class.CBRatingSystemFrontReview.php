@@ -316,7 +316,8 @@ class CBRatingSystemFrontReview extends CBRatingSystemFront {
                                 if ( $review->user_id != 0 ) {
 
                                     $user_url = get_author_posts_url( $review->user_id );
-                                    $name     = get_the_author_meta( 'display_name', $review->user_id );
+                                    //$name     = get_the_author_meta( 'display_name', $review->user_id );
+                                    $name     = get_user_meta($review->user_id, 'company_name', true );
 
                                     if(!empty($user_url) && $ratingFormArray ['show_user_link_in_review']  == '1' ){
                                         $name = '<a target="_blank" href="' . $user_url . '">'.$name .'</a>';
@@ -324,7 +325,8 @@ class CBRatingSystemFrontReview extends CBRatingSystemFront {
                                     //finally check the settings
                                     if($ratingFormArray ['show_user_avatar_in_review']  == '1'){
 //                                        $gravatar = get_avatar( $review->user_id, 36 );
-                                        $gravatar = wp_get_attachment_image( get_user_meta( $review->user_id, 'profile_image', true ), 'vendor-small-thumb' );
+                                        $gravatar = '<img src="'. WEPN_Helper::supplier_avatar($review->user_id, 'vendor-small-thumb') .'" />';//wp_get_attachment_image( get_user_meta( $review->user_id, 'profile_image', true ), 'vendor-small-thumb' );
+
                                     }
                                     else{
                                         $gravatar = '';
@@ -351,7 +353,8 @@ class CBRatingSystemFrontReview extends CBRatingSystemFront {
                                     $name      = ( ! empty( $review->user_name  ) ? $review->user_name : __('Anonymous','cbratingsystem') );
                                     if($ratingFormArray ['show_user_avatar_in_review']  == '1'){
 //                                        $gravatar  = get_avatar( 0, 36, 'gravatar_default' );
-                                        $gravatar = wp_get_attachment_image( get_user_meta( $review->user_id, 'profile_image', true ), 'vendor-small-thumb' );
+                                        //$gravatar = wp_get_attachment_image( get_user_meta( $review->user_id, 'profile_image', true ), 'vendor-small-thumb' );
+                                        $gravatar = '<img src="'. WEPN_Helper::supplier_avatar($review->user_id, 'vendor-small-thumb') .'" />';
                                     }
                                     else{
                                         $gravatar = '';
