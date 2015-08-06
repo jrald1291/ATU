@@ -388,11 +388,12 @@ get_header(); ?>
 
                                 <div role="tabpanel" class="tab-pane" id="video">
 
+
                                     <?php if (of_get_option('video_venue', '')) {?>
 
                                        <?php echo of_get_option('video_venue', ''); ?>
 
-                                    <?php } ?>  
+                                    <?php } ?>
 
                                 </div>
 

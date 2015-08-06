@@ -215,6 +215,7 @@ class WEPN {
     }
 
 
+
     function custom_remove_user( $user_id ) {
 
         $company_id = get_user_meta( $user_id, 'company', true );

@@ -386,10 +386,10 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
                                 <div role="tabpanel" class="tab-pane" id="video">
 
                                     <?php if (of_get_option('video_diff', '')) {?>
-
                                        <?php echo of_get_option('video_diff', ''); ?>
+                                    <?php } ?>
 
-                                    <?php } ?>  
+
 
                                 </div>
 
