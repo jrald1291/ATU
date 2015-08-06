@@ -39,7 +39,9 @@
                     ?>
                     <li class="post-item">
                         <div class="post-img">
-                            <a href="<?php the_permalink(); ?>"><?php echo wp_get_attachment_image( $image_id, 'venue-xs-small-thumb' ); ?></a>
+                            <a href="<?php the_permalink(); ?>">
+                                <img src="<?php echo WEPN_Helper::supplier_avatar($image_id, 'venue-xs-small-thumb'); ?>" />
+                            </a>
                         </div>
                         <div class="post-core">
                             <div class="post-title"><a href="<?php the_permalink(); ?>" class="link"><?php echo content(get_the_title(),4); ?></a></div>
@@ -80,7 +82,9 @@
                 ?>
 			<li class="post-item">
 				<div class="post-img">
-					<a href="<?php the_permalink(); ?>"><?php do_action( 'aut_post_thumnail', 'venue-xs-small-thumb' ); ?></a>
+					<a href="<?php the_permalink(); ?>">
+                        <img src="<?php echo WEPN_Helper::venue_avatar(get_post_thumbnail_id(), 'venue-xs-small-thumb'); ?>" />
+                    </a>
 				</div>
 				<div class="post-core">
 					<div class="post-title"><a href="<?php the_permalink(); ?>" class="link"><?php echo content(get_the_title(),4); ?></a></div>

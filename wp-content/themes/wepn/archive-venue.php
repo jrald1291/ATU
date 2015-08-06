@@ -52,7 +52,9 @@ get_header();?>
                                             <div class="post-item well-block" style="border-bottom: 3px solid <?php echo hex2rgba(get_field( 'color')); ?>">
                                                 <div class="well-header"><div class="marquee"><span><?php echo $cat_name; ?></span></div></div>
                                                 <div class="post-img">
-                                                    <a href="<?php the_permalink(); ?>"><?php do_action('aut_post_thumnail', 'img-avatar'); ?></a>
+                                                    <a href="<?php the_permalink(); ?>">
+                                                        <img src="<?php echo WEPN_Helper::venue_avatar(get_post_thumbnail_id(), 'img-avatar'); ?>" />
+                                                    </a>
                                                 </div>
                                                 <div class="post-content t-sm marquee">
                                                     <a href="<?php the_permalink(); ?>" class="post-name"><?php the_title(); ?></a>

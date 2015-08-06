@@ -158,6 +158,7 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
 
                                                 ?>
 
+
                                             </li>
 
 
@@ -478,9 +479,7 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
 
                         <div class="ven-avatar" style="border: 2px solid <?php echo hex2rgba($user_info->color); ?>">
 
-
-
-                            <?php echo wp_get_attachment_image( $user_info->profile_image, 'img-avatar' ); ?>
+                            <img src="<?php echo WEPN_Helper::supplier_avatar($user_info->profile_image, 'img-avatar'); ?>" />
 
                             <div class="ven-name"style="background-color:<?php echo hex2rgba(($user_info->color),0.5); ?>"><?php echo $user_info->first_name; ?></div>
 

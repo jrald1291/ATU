@@ -136,7 +136,7 @@
 
 <?php wp_footer(); ?>
 <?php 
-	session_start(); 
+//	session_start();
 	if (!isset($_SESSION['visisted'])) {
 	  $_SESSION['visisted'] = 0;
 	}else{
