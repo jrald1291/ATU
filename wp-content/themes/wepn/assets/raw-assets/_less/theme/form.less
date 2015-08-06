@@ -12,6 +12,10 @@
 		.box-shadow(none);
 	}
 }
+.form-control-lg{
+	height: 400px;
+	overflow: scroll; 
+}
 .form-multiple{
 	.form-control{
 		min-height: 70px;
@@ -45,6 +49,23 @@ textarea{
 	resize: none;
 }
 
+
 .input-bordered{
 	border: 1px solid @base_border_color;
+}
+.wpcf7-list-item{
+	margin-bottom: 10px!important;
+}
+.wpcf7-checkbox{
+	.clearfix;
+	display: block;
+	.wpcf7-list-item{
+		width: 45%;
+		float: left;
+		position: relative;
+		.clearfix;
+	}
+}
+.wpcf7-form-control-wrap,.wpcf7-form-control{
+	.clearfix;
 }
