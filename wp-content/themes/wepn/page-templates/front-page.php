@@ -229,8 +229,7 @@ get_header(); ?>
                                 <?php while( $wp_venue_query->have_posts() ): $wp_venue_query->the_post();?>
 
                                     <li>
-
-                                        <?php do_action('aut_post_thumnail', 'venue-medium'); ?>
+                                        <img src="<?php echo WEPN_Helper::venue_avatar(get_post_thumbnail_id(), 'venue-medium'); ?>" />
 
                                         <div class="slider-caption">
 
@@ -258,7 +257,9 @@ get_header(); ?>
 
                              <?php while( $wp_venue_query->have_posts() ): $wp_venue_query->the_post();?>
 
-                                 <li><?php do_action('aut_post_thumnail', 'venue-small-thumb'); ?> </li>
+                                 <li>
+                                     <img src="<?php echo WEPN_Helper::venue_avatar(get_post_thumbnail_id(), 'venue-small-thumb'); ?>" />
+                                 </li>
 
                              <?php endwhile; ?>
 
@@ -374,7 +375,9 @@ get_header(); ?>
 
                                 <div class="post-img well-img">
 
-                                    <a href="<?php the_permalink(); ?>"><?php echo wp_get_attachment_image( $image_id, 'vendor-small-thumb' ); ?></a>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <img src="<?php echo WEPN_Helper::supplier_avatar($image_id, 'vendor-small-thumb'); ?>" />
+                                    </a>
 
                                 </div>
 

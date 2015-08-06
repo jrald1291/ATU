@@ -402,6 +402,36 @@ if ( ! class_exists('WEPN_Helper') ) {
         }
 
 
+        public static function venue_avatar($image_id, $size = 'thumbnail') {
+            $src = wp_get_attachment_image_src($image_id, $size);
+
+            if (!is_array($src) || !self::exists($src[0])) {
+                $src = wp_get_attachment_image_src(get_field( 'venue_default_image', 'option' ), $size);
+            }
+
+            return $src[0];
+        }
+
+
+        public static function supplier_avatar($image_id, $size = 'thumbnail') {
+            $src = wp_get_attachment_image_src($image_id, $size);
+
+            if (!is_array($src) || !self::exists($src[0])) {
+                $src = wp_get_attachment_image_src(get_field('supplier_default_image', 'option' ), $size);
+            }
+
+
+            return $src[0];
+        }
+
+        public static function exists($uri)
+        {
+
+           if (file_exists(str_replace(WP_CONTENT_URL, WP_CONTENT_DIR, $uri))) {
+               return true;
+           }
+            return false;
+        }
 
 
 

@@ -41,18 +41,8 @@
 		<div class="ven-avatar" style="border: 2px solid <?php echo hex2rgba(get_field( 'color')); ?>">
 
 
+            <img src="<?php echo WEPN_Helper::venue_avatar(get_post_thumbnail_id(), 'img-avatar'); ?>" />
 
-			<?php
-
-            // Get featured image
-
-            if ( has_post_thumbnail() ) {
-
-                the_post_thumbnail( 'img-avatar' );
-
-            }
-
-             ?>
 
 			<div class="ven-name" style="background-color: <?php echo hex2rgba(get_field( 'color'),0.5); ?>"><?php the_title(); ?></div>
 
