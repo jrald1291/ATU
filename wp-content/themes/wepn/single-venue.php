@@ -489,7 +489,7 @@ get_header(); ?>
             <li class="next">
 
                 <?php $nepo=get_next_post(); 
-           
+
 
                 if ($nepo) {
 
