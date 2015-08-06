@@ -167,12 +167,14 @@ if ( !class_exists('WEPN_Registration') ) {
                 // Update registration code to inactive
                 WEPN_Admin_Settings::set_used_reg_code( $post['registration_code'] );
 
-                $page_id = get_option( 'wepn_registration_success_page' );
+//                $page_id = get_option( 'wepn_registration_success_page' );
 
 
+                wp_set_current_user($new_user_id, $post['username']);
+                wp_set_auth_cookie($new_user_id);
+                do_action('wp_login', $post['username']);
 
-
-                exit( wp_redirect( get_page_link( $page_id ) ) );
+                exit( wp_redirect( home_url('/wp-admin/profile.php') ) );
 
 
             } else {
@@ -180,6 +182,9 @@ if ( !class_exists('WEPN_Registration') ) {
                 WEPN_Notify::add( $new_user_id->errors, 'error' );
             }
         }
+
+
+
 
         private static function add_current_code( $code ) {
 
