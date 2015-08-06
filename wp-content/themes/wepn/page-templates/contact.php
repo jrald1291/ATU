@@ -535,7 +535,7 @@ get_header(); ?>
 	   </div>
   </div>
 </div>
-
+<a href="#" class="btn btn-simple">Need to book Wedding or Event Supplier</a>
 <!-- <div class="row">
 <div class="col-md-6">
 <div class="form-group field-wrap">

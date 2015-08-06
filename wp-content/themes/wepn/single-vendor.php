@@ -450,7 +450,7 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
 
                         </div>
                         <div class="section section-reviews">
-                            <?php echo do_shortcode('[wp-review]')?>
+                            
                         </div>
 
                     </div>
