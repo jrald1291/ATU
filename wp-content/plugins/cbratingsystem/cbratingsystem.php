@@ -1,11 +1,11 @@
 <?php
 /*
-  Plugin Name: CBX Multi Criteria Rating System
-  Plugin URI: http://wpboxr.com/product/multi-criteria-flexible-rating-system-for-wordpress
-  Description: Rating system for Posts and Pages from WPBoxr.
+  Plugin Name: WEPN Extend CBX
+  Plugin URI: http://www.domain.com
+  Description: WEPN Rating system for Posts and Pages from WPBoxr.
   Version: 3.3.7
-  Author: WPBoxr Team
-  Author URI: mailto:info@wpboxr.com
+  Author: WEPN WPBoxr Team
+  Author URI: mailto:email@domain.com
  */
 defined( 'ABSPATH' ) OR exit;
 

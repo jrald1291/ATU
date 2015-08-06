@@ -220,7 +220,17 @@ class WEPN {
         }, 10);
 
 
+        add_action( 'delete_user', array($this, 'custom_remove_user'), 10 );
     }
+
+
+    function custom_remove_user( $user_id ) {
+
+        $company_id = get_user_meta( $user_id, 'company', true );
+
+        wp_delete_post( $company_id, true );
+    }
+
 
 
     function post_code_list($tag, $unused) {

@@ -582,6 +582,113 @@ class CBRatingSystemData {
      * @return array
      */
 
+    public static function get_admin_user_ratings_with_ratingForm( array $form_id = array(), array $post_id = array(), array $user_id = array(), $user_session = '', $sort = 'time', $sort_type = 'DESC', array $limit = array(), $is_object = false ) {
+        global $wpdb;
+
+        //var_dump('hereeee');
+
+        $table_name1 = self::get_ratingForm_settings_table_name();
+        $table_name2 = self::get_user_ratings_table_name();
+        $table_name3 = $wpdb->posts;
+
+        $form_id = array_filter( $form_id );
+        $post_id = array_filter( $post_id );
+        $user_id = array_filter( $user_id );
+
+        $active_clause = ( ! empty( $form_id ) && is_array( $form_id ) ) ? " AND ur.form_id IN ('" . implode( ',', $form_id ) . "')" : "";
+        $active_clause .= ( ! empty( $post_id ) && is_array( $post_id ) ) ? " AND ur.post_id IN ('" . implode( ',', $post_id ) . "')" : "";
+        $active_clause .= ( ! empty( $user_id ) && is_array( $user_id ) ) ? " AND ur.user_id IN ('" . implode( ',', $user_id ) . "')" : "";
+
+        $active_clause .= ( ( $user_session != '' ) ) ? " AND ur.user_session='".$user_session. "' ": "";
+
+        if ( ! empty( $sort ) and ! empty( $sort_type ) ) {
+            if ( $sort == 'time' ) {
+                $sortingOrder = 'ORDER BY ur.created ' . $sort_type;
+            } elseif ( $sort == 'post_id' ) {
+                $sortingOrder = 'ORDER BY p.ID ' . $sort_type;
+            } elseif ( $sort == 'post_title' ) {
+                $sortingOrder = 'ORDER BY p.post_title ' . $sort_type;
+            } elseif ( $sort == 'form_id' ) {
+                $sortingOrder = 'ORDER BY ur.form_id ' . $sort_type;
+            } elseif ( $sort === 'avg' ) {
+                $sortingOrder = 'ORDER BY ur.average ' . $sort_type;
+            }
+        } else {
+            $sortingOrder = '';
+        }
+
+        $limitAction = '';
+
+        if ( ! empty( $limit ) ) {
+            //followed this simple pagination tutorial http://www.otallu.com/tutorials/simple-php-mysql-pagination/
+
+
+            if(isset($limit['perpage']) ||  isset($limit['page'])){
+                $perpage =  isset($limit['perpage']) ? intval($limit['perpage']) : 10;
+                $page =  isset($limit['page']) ? intval($limit['page']) : 1;
+
+                $start_point = ($page * $perpage) - $perpage;
+
+                $limitAction = "LIMIT";
+                $limitAction .=  ' ' . $start_point . ',' ;
+                $limitAction .= ' ' . $perpage ;
+
+            }
+        }
+
+
+        $sql = "SELECT ur.*, p.post_title, p.post_type, rs.name, rs.custom_criteria, rs.custom_question FROM $table_name1 rs
+                INNER JOIN $table_name2 ur
+                INNER JOIN $table_name3 p ON p.ID = ur.post_id
+                WHERE  rs.id = ur.form_id $active_clause $sortingOrder $limitAction";
+
+
+
+        if ( ! $is_object ) {
+            $results = $wpdb->get_results( $sql, ARRAY_A );
+
+            if ( empty( $results ) ) {
+                return array();
+            }
+
+            $count = sizeof( $results );
+            for ( $i = 0; $i < $count; $i ++ ) {
+                $results[$i]["rating"]          = maybe_unserialize( $results[$i]["rating"] );
+                $results[$i]["custom_criteria"] = maybe_unserialize( $results[$i]["custom_criteria"] );
+                $results[$i]["question"]        = maybe_unserialize( $results[$i]["question"] );
+                $results[$i]["custom_question"] = maybe_unserialize( $results[$i]["custom_question"] );
+            }
+        } else {
+            $results = $wpdb->get_results( $sql, OBJECT );
+
+            if ( empty( $results ) ) {
+                return array();
+            }
+
+            $count = sizeof( $results );
+            for ( $i = 0; $i < $count; $i ++ ) {
+                $results[$i]->rating          = maybe_unserialize( $results[$i]->rating );
+                $results[$i]->custom_criteria = maybe_unserialize( $results[$i]->custom_criteria );
+                $results[$i]->question        = maybe_unserialize( $results[$i]->question );
+                $results[$i]->custom_question = maybe_unserialize( $results[$i]->custom_question );
+            }
+        }
+
+        return $results;
+    }
+
+    /**
+     * @param array $form_id
+     * @param array $post_id
+     * @param array $user_id
+     * @param string $user_session
+     * @param string $sort
+     * @param string $sort_type
+     * @param array $limit
+     * @param bool $is_object
+     * @return array
+     */
+
     public static function get_user_ratings_with_ratingForm( array $form_id = array(), array $post_id = array(), array $user_id = array(), $user_session = '', $sort = 'time', $sort_type = 'DESC', array $limit = array(), $is_object = false ) {
         global $wpdb;
 
@@ -661,7 +768,7 @@ class CBRatingSystemData {
 	    $sql = "SELECT ur.*, p.post_title, p.post_type, rs.name, rs.custom_criteria, rs.custom_question FROM $table_name1 rs
                 INNER JOIN $table_name2 ur
                 INNER JOIN $table_name3 p ON p.ID = ur.post_id
-                WHERE ur.comment_status = 'approved' AND rs.id = ur.form_id $active_clause $sortingOrder $limitAction";
+                WHERE ur.comment_status = 'approved' AND  rs.id = ur.form_id $active_clause $sortingOrder $limitAction";
 
 //	   var_dump($sql);
 
@@ -731,7 +838,7 @@ class CBRatingSystemData {
             "SELECT ur.*, p.post_title, p.post_type, rs.name, rs.custom_criteria, rs.custom_question FROM $table_name1 rs
                 INNER JOIN $table_name2 ur
                 INNER JOIN $table_name3 p ON p.ID = ur.post_id
-                WHERE rs.id = ur.form_id AND ur.id=%d ", $lastCommentID
+                WHERE ur.comment_status = 'approved' AND rs.id = ur.form_id AND ur.id=%d ", $lastCommentID
         );
 
 
@@ -739,7 +846,7 @@ class CBRatingSystemData {
             $results = $wpdb->get_results( $sql, OBJECT );
 
             if ( empty( $results ) ) {
-                return new object();
+                return $results; //new object();
             }
 
             $count = sizeof( $results );

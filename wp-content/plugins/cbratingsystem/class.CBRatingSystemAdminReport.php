@@ -87,11 +87,15 @@ class CBRatingSystemAdminReport extends CBRatingSystemAdmin {
 		$formID = ( ( ! empty( $_GET['form'] ) and ( is_numeric( $_GET['form'] ) ) ) ? (integer) ( $_GET['form'] ) : '' );
 		$userID = ( ( ! empty( $_GET['user'] ) and ( is_numeric( $_GET['user'] ) ) ) ? (integer) ( $_GET['user'] ) : '' );
 
-		$data = CBRatingSystemData::get_user_ratings_with_ratingForm( array( $formID ), array( $postID ), array( $userID ), '', $sortby, $sort, array(), true );
+		$data = CBRatingSystemData::get_admin_user_ratings_with_ratingForm( array( $formID ), array( $postID ), array( $userID ), '', $sortby, $sort, array(), true );
 
 		?>
 
-
+        <style>
+            .approve {
+                display:block;
+            }
+        </style>
 		<div class="wrap columns-2">
 		<div class="icon32 icon32_cbrp_admin icon32-cbrp-user-ratings" id="icon32-cbrp-user-ratings"><br></div>
 		<h2><?php _e( 'Codeboxr Rating System User Rating Logs', 'cbratingsystem' ) ?></h2>
@@ -302,12 +306,20 @@ class Cbratinguserlog extends WP_List_Table{
             case 'criteriarating':
             case 'qa':
             case 'comment':
+            case 'commentstatus':
 
             return $item[$column_name];
 
             default:
             return print_r($item,true); //Show the whole array for troubleshooting purposes
         }
+    }
+
+
+
+
+    public function column_commentstatus($item) {
+        return ucwords($item['commentstatus']);
     }
 
     /**
@@ -330,43 +342,19 @@ class Cbratinguserlog extends WP_List_Table{
     public function column_id($item){
 
         $actions = array(
-            'edit'      => sprintf('<a href="?">'.__('Edit','cbratingsystem').'</a>',$_REQUEST['page'],'edit',$item['ID']),
-            'delete'    => sprintf('<a href="?">'.__('Delete','cbratingsystem').'</a>',$_REQUEST['page'],'delete',$item['ID']),
+            'approve'   => sprintf('<a href="admin.php?page=%1$s&action=%2$s&wdcheckbox=%3$s">'.__('Approve','cbratingsystem').'</a>',$_REQUEST['page'],'approve',$item['ID']),
+            'unapprove'   => sprintf('<a href="admin.php?page=%1$s&action=%2$s&wdcheckbox=%3$s">'.__('Unapprove','cbratingsystem').'</a>',$_REQUEST['page'],'unapprove',$item['ID']),
+            'delete'    => sprintf('<a href="admin.php?page=%1$s&action=%2$s&wdcheckbox=%3$s">'.__('Delete','cbratingsystem').'</a>',$_REQUEST['page'],'delete',$item['ID']),
         );
 
-        return sprintf('<span class = "user-rating-log-%1$s" style="">%1$s </span>',
+
+        return sprintf('<span class = "user-rating-log-%1$s" style="">%1$s </span> %3$s',
             /*$1%s*/ $item['id'],
             /*$2%s*/ $item['ID'],
             /*$3%s*/ $this->row_actions($actions)
         );
     }
 
-    /**
-     * @param $item
-     * @return string
-     */
-	/*
-    public function column_commentstatus($item){
-	    //this function is not used any more.
-	   // var_dump('useful');
-
-        $log_comment_status     = '';
-        $comment_status_list    = array('delete','unapproved','approved','spam');
-        $comment_status         = $item['commentstatus'];
-        $log_id                 = $item['id'];
-        $log_form_id            = $item['formid'];
-        $log_post_id            = $item['post'];
-        $log_comment_label      = '<span class = "cb-comment-label cb-'.$comment_status.'">' .ucfirst($comment_status) .'</span><br>';
-        $log_comment_status     .= '<a href="#" class="comment_status '.$comment_status_list[0].'" data-id="'.$log_id.'" data-form-id ="'.$log_form_id.'" data-post-id = "'.$log_post_id.'" data-comment-status ="'.$comment_status_list[0].'" > |Delete|</a>';
-        $log_comment_status     .= '<a href="#" class="comment_status '.$comment_status_list[1].'" data-id="'.$log_id.'" data-form-id ="'.$log_form_id.'" data-post-id = "'.$log_post_id.'" data-comment-status ="'.$comment_status_list[1].'"  >|Unapprove|</a>';
-        $log_comment_status     .= '<a href="#" class="comment_status '.$comment_status_list[2].'" data-id="'.$log_id.'" data-form-id ="'.$log_form_id.'" data-post-id = "'.$log_post_id.'" data-comment-status ="'.$comment_status_list[2].'"> |Approve|</a>';
-        $log_comment_status     .= '<a href="#" class="comment_status '.$comment_status_list[3].'" data-id="'.$log_id.'" data-form-id ="'.$log_form_id.'" data-post-id = "'.$log_post_id.'" data-comment-status ="'.$comment_status_list[3].'">|Spam|</a>';
-        $log_comment_status_wrapper  = '';
-        $log_comment_status_wrapper .= '<p  data-status = "'.$comment_status.'" class="comment_status_column  column-'.$item['commentstatus'].'">'.$log_comment_label.$log_comment_status.'</p>';
-
-        return $log_comment_status_wrapper;
-    }//unused function, please check in addon
-	*/
     /**
      * @param $item
      * @return string
@@ -476,6 +464,7 @@ class Cbratinguserlog extends WP_List_Table{
             'criteriarating'         => __('Criteria Rating: ','cbratingsystem'),
             'qa'                     => __('Q/A: ','cbratingsystem'),
             'comment'                => __('Comment: ','cbratingsystem'),
+            'commentstatus'                => __('Comment Status: ','cbratingsystem'),
 
 
 
@@ -490,7 +479,9 @@ class Cbratinguserlog extends WP_List_Table{
 
         $bulk_actions = apply_filters('cbratingsystem_comment_status_bulk_action',array(
 
-            'delete'            => __( 'Delete', 'cbratingsystem' )
+            'delete'            => __( 'Delete', 'cbratingsystem' ),
+            'approve'            => __( 'Approve', 'cbratingsystem' ),
+            'unapprove'            => __( 'UnApprove', 'cbratingsystem' ),
 
         ));
         return $bulk_actions;
@@ -512,7 +503,7 @@ class Cbratinguserlog extends WP_List_Table{
                     if(!empty($_GET['wdcheckbox']))
                     {
                         global $wpdb;
-                        $avgid      = $_GET['wdcheckbox'];
+                        $avgid      = (array)$_GET['wdcheckbox'];
                         $formIds    = array();
                         $postIds    = array();
                         $table_name1 = CBRatingSystemData::get_user_ratings_table_name();
@@ -531,7 +522,7 @@ class Cbratinguserlog extends WP_List_Table{
                         $table_name  = CBRatingSystemData::get_user_ratings_summury_table_name();
                         $table_name  = CBRatingSystemData::get_user_ratings_table_name();
                         //$sql = $wpdb->prepare( "DELETE FROM $table_name WHERE id IN (" . implode( ',', $avgid ) . ")", null );
-                        $sql = "DELETE FROM $table_name WHERE id IN (" . implode( ',', $avgid ) . ")";
+                        $sql = "DELETE FROM $table_name WHERE id IN (" . implode( ',', (array)$avgid ) . ")";
                         $wpdb->query( $sql );
 
                        foreach($postIds as $index=>$id){
@@ -592,53 +583,41 @@ class Cbratinguserlog extends WP_List_Table{
 
             case 'approve':
 
-                if(class_exists('cbratingsystemaddonfunctions')){
+                if(!empty($_GET['wdcheckbox']))
+                {
+                    $avgid = $_GET['wdcheckbox'];
+                    $cbsommentstatus = 'approved';
+                    $this->change_comment_status($avgid, $cbsommentstatus);
+                    //cbratingsystemaddonfunctions ::cbratingsystem_comment_statuschange($avgid,$cbsommentstatus);
 
-
-                    if(!empty($_GET['wdcheckbox']))
-                    {
-                        $avgid = $_GET['wdcheckbox'];
-                        $cbsommentstatus = 'approved';
-                        cbratingsystemaddonfunctions ::cbratingsystem_comment_statuschange($avgid,$cbsommentstatus);
-
-                    }// end of if get
-
-                }// end of if class exists
-
+                }// end of if get
+                echo '<script>window.location.href="admin.php?page=rating_reports"</script>';
                 break;
             case 'spam':
 
-                if(class_exists('cbratingsystemaddonfunctions')){
+                if(!empty($_GET['wdcheckbox']))
+                {
+                    $avgid = $_GET['wdcheckbox'];
+                    $cbsommentstatus = 'spam';
+                    $this->change_comment_status($avgid, $cbsommentstatus);
+                    //cbratingsystemaddonfunctions ::cbratingsystem_comment_statuschange($avgid,$cbsommentstatus);
 
-
-                    if(!empty($_GET['wdcheckbox']))
-                    {
-                        $avgid = $_GET['wdcheckbox'];
-                        $cbsommentstatus = 'spam';
-                        cbratingsystemaddonfunctions ::cbratingsystem_comment_statuschange($avgid,$cbsommentstatus);
-
-                    }// end of if get
-
-                }// end of if class exists
+                }// end of if get
 
 
                 break;
             case 'unapprove':
 
-                if(class_exists('cbratingsystemaddonfunctions')){
+                if(!empty($_GET['wdcheckbox']))
+                {
+                    $avgid = $_GET['wdcheckbox'];
+                    $cbsommentstatus = 'unapproved';
+                    $this->change_comment_status($avgid, $cbsommentstatus);
+                    //cbratingsystemaddonfunctions ::cbratingsystem_comment_statuschange($avgid,$cbsommentstatus);
 
+                }// end of if get
 
-                    if(!empty($_GET['wdcheckbox']))
-                    {
-                        $avgid = $_GET['wdcheckbox'];
-                        $cbsommentstatus = 'unapproved';
-                        cbratingsystemaddonfunctions ::cbratingsystem_comment_statuschange($avgid,$cbsommentstatus);
-
-                    }// end of if get
-
-                }// end of if class exists
-
-
+                echo '<script>window.location.href="admin.php?page=rating_reports"</script>';
                 break;
 
             default:
@@ -647,7 +626,18 @@ class Cbratinguserlog extends WP_List_Table{
                 break;
         }
 
+
+
         return;
+    }
+
+
+    private function change_comment_status($avgid, $status) {
+        global $wpdb;
+
+        $sql = $wpdb->prepare("UPDATE ". $wpdb->prefix ."cbratingsystem_user_ratings SET comment_status = '$status' WHERE id IN (%s)", implode(',', (array) $avgid));
+
+        $wpdb->query($sql);
     }
 
     /**
@@ -675,9 +665,16 @@ class Cbratinguserlog extends WP_List_Table{
         $hidden = array();
         $sortable = $this->get_sortable_columns();
         $this->process_bulk_action();
+
+
+
+
         $this->_column_headers = array($columns, $hidden, $sortable);
 
+
+
         $data = CBRatingSystemAdminReport::$cb_user_comment_log_data ;
+
 
         function usort_reorder($a,$b){
 

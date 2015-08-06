@@ -447,13 +447,13 @@ jQuery(document).ready(function ($) {
 									$('.cbrp-content-wprapper-form-' + ratingFormID + '-post-' + postID + ' .ratingFormStatus').addClass('error_message');
 								}
 							} catch (e) {
-								failure_msg = window['ratingForm_post_' + postID + '_form_' + ratingFormID].failure_msg;
-
-								$('.cbrp-content-wprapper-form-' + ratingFormID + '-post-' + postID + ' .ratingFormStatus').html(failure_msg);
-								$('.cbrp-content-wprapper-form-' + ratingFormID + '-post-' + postID + ' .ratingFormStatus').addClass('error_message');
-
-								$('.cbrp_load_more_waiting_icon_form-' + ratingFormID + '_post-' + postID).hide();
-								$('.cbrp-content-wprapper-form-' + ratingFormID + '-post-' + postID + ' .cbrp-button-form-' + ratingFormID).removeAttr('disabled').removeClass('disabled_cbrp_button');
+								//failure_msg = window['ratingForm_post_' + postID + '_form_' + ratingFormID].failure_msg;
+                                //
+								//$('.cbrp-content-wprapper-form-' + ratingFormID + '-post-' + postID + ' .ratingFormStatus').html(failure_msg);
+								//$('.cbrp-content-wprapper-form-' + ratingFormID + '-post-' + postID + ' .ratingFormStatus').addClass('error_message');
+                                //
+								//$('.cbrp_load_more_waiting_icon_form-' + ratingFormID + '_post-' + postID).hide();
+								//$('.cbrp-content-wprapper-form-' + ratingFormID + '-post-' + postID + ' .cbrp-button-form-' + ratingFormID).removeAttr('disabled').removeClass('disabled_cbrp_button');
 							}
 
 						} else {
