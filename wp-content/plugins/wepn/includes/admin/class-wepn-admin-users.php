@@ -81,18 +81,30 @@ if ( !class_exists('WEPN_Admin_Users') ) {
 
 
             global $wpdb;
-            $company_id = $wpdb->get_var("SELECT ID FROM wp_posts WHERE post_title = '" . $company_name . "'");
 
-            if ( ! empty( $company_name ) && ! $company_id ) {
-                $company_id = wp_insert_post( array(
+            $company_id = get_user_meta( $user_id, 'company', true );
+            if ($company_id && is_numeric($company_id))  {
+                wp_update_post(array(
+                    'ID' => $company_id,
                     'post_title' => $company_name,
                     'post_author' => $user_id,
                     'post_type' => 'vendor',
                     'post_status' => 'publish'
                 ));
+            } else {
+                $company_id = $wpdb->get_var("SELECT ID FROM wp_posts WHERE post_title = '" . $company_name . "'");
 
-                update_user_meta( $user_id, 'company', $company_id );
+                if (!empty($company_name) && !$company_id) {
+                    $company_id = wp_insert_post(array(
+                        'post_title' => $company_name,
+                        'post_author' => $user_id,
+                        'post_type' => 'vendor',
+                        'post_status' => 'publish'
+                    ));
 
+                    update_user_meta($user_id, 'company', $company_id);
+
+                }
             }
             // Remove existing post and term relatinships
             $old_tax = get_post_meta( $company_id, 'city', true );
