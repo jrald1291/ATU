@@ -508,7 +508,12 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
                                 <li><a href="mailto:<?php echo $user_info->user_email;?>"><?php echo $user_info->user_email; ?></a></li>
                             <?php } ?>
                             <?php if (trim(($user_info->user_url),' ')!="") {?>
-                                <li><a href="<?php echo $user_info->user_url; ?>" target="_blank"><?php echo $user_info->user_url; ?></a></li>
+                                <li><a href="<?php echo $user_info->user_url; ?>" target="_blank">
+                                <?php
+                                    $str_url = $user_info->user_url;
+                                    echo str_replace(array('http://','https://'), '', $str_url);
+                                ?>
+                                </a></li>
                             <?php } ?>
 
                         </ul>

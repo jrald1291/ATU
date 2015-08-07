@@ -87,7 +87,12 @@
 				<li><a href="mailto:<?php the_field( 'email' ); ?>"><?php the_field( 'email' ); ?></a></li>
 			<?php } ?>
 			<?php if (trim(get_field( 'website' ),' ')!="") {?>
-				<li><a href="<?php the_field( 'website' ); ?>" target="_blank"><?php the_field( 'website' ); ?></a></li>
+				<li><a href="<?php the_field( 'website' ); ?>" target="_blank">
+				<?php 
+					$str_url = get_field( 'website' );
+	                echo str_replace(array('http://','https://'), '', $str_url);
+                ?>
+				</a></li>
 			<?php } ?>
 		</ul>
 
