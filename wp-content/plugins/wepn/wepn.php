@@ -187,6 +187,7 @@ class WEPN {
 
         add_filter( 'wpcf7_form_tag', array($this, 'dynamic_select_list'), 10, 2);
 
+        add_filter( 'wpcf7_form_tag', array($this, 'capacity_list'), 10, 2);
         add_filter( 'wpcf7_form_tag', array($this, 'post_code_list'), 10, 2);
 
 
@@ -223,7 +224,43 @@ class WEPN {
         wp_delete_post( $company_id, true );
     }
 
+    function capacity_list($tag, $unused) {
 
+
+        $options = (array)$tag['options'];
+
+        foreach ($options as $option)
+            if (preg_match('%^capacity:([-0-9a-zA-Z_]+)$%', $option, $matches))
+                $term = $matches[1];
+
+        //check if post_type is set
+        if(!isset($term))
+            return $tag;
+
+        $capacity = get_field( 'capacity', 'option' );
+
+        $capacity_array = explode( "\r\n", $capacity );
+
+
+
+        if ( count( $capacity_array ) != 0 ) {
+            foreach ($capacity_array as $capacity) {
+                $label = wp_strip_all_tags($capacity);
+
+                $tag['raw_values'][] = $label;
+                $tag['values'][] = $label;
+                $tag['labels'][] =$label;
+
+
+            }
+        }
+
+
+
+        return $tag;
+
+
+    }
 
     function post_code_list($tag, $unused) {
 
@@ -259,12 +296,6 @@ class WEPN {
 
 
         return $tag;
-
-
-
-
-
-
 
 
     }

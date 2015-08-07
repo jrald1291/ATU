@@ -357,7 +357,7 @@ get_header(); ?>
 
 
 
-                            $vendor_info = get_userdata($vendor->ID);
+                            $vendor_info = $user_id;
 
 
 
