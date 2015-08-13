@@ -502,7 +502,7 @@ get_header(); ?>
 
                             <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
 
-                            <span><?php the_title(); ?></span>
+                            <span><?php echo get_the_title($nepoid); ?></span>
 
                         </a>
 
@@ -540,7 +540,7 @@ get_header(); ?>
 
                             <span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
 
-                            <span><?php the_title(); ?></span>
+                            <span><?php echo get_the_title($prepoid); ?></span>
 
                         </a>
 

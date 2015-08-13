@@ -517,9 +517,6 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
                             <?php } ?>
 
                         </ul>
-
-
-
                     </div>
 
                     <div class="widget widget-aside">
@@ -582,7 +579,7 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
 
                         <span class="label"><i class="fa fa-angle-left icon-l"></i>Previous</span>
 
-                        <span><?php the_title(); ?></span>
+                        <span><?php echo get_the_title( $nepoid); ?></span>
 
                     </a>
 
@@ -621,7 +618,7 @@ if (!empty($cat) && !is_wp_error($cat)) $cat_name = $cat->name;
 
                         <span class="label">Next<i class="fa fa-angle-right icon-r"></i></span>
 
-                        <span><?php the_title(); ?></span>
+                        <span><?php echo get_the_title($prepoid); ?></span>
 
                     </a>
 

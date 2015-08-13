@@ -476,16 +476,58 @@ get_header(); ?>
 
 
         $(document).ready(function() {
+        	$supplier_def = "Which suppliers do you need?";
+        	$supplier_text = "Want to add Supplier Types?";
+        	$venue_def = "Do you want to book a Venue?";
+        	$venue_text = "Want to add Venue Types?";
+        	$ignore_text = "No, I am not Interested";
+
+
+        	<?php if ($user_id != 1 && $post_id == '') { ?>
+            	$('#btn-supplier').text('Want to add Supplier Types?');
+           <?php } ?>
+            <?php if ($post_id != '') { ?>
+            	$('#btn-venue').text('Want to add Venue Types?');
+            <?php } ?>
+            <?php if ($post_id == '') { ?>
+            <?php } ?>
+
+        	$('.supplier-types').hide();
+    		$('.venue-types').hide();
+    		$('.venue-element').hide();
+
+    		$("#btn-supplier").click(function() {
+        		$('.supplier-types').slideToggle( 500, function() {
+				 });
+        		
+        		$(this).text(function(i, text){
+        			<?php if ($user_id != 1 && $post_id == '') { ?>
+			          return text === $ignore_text ? $supplier_text : $ignore_text;
+			        <?php }else{?>
+			        	return text === $ignore_text ? $supplier_def: $ignore_text;
+			       	<?php } ?>
+			    })
+        		return false;
+        	});
+        	$("#btn-venue").click(function() {
+        		$('.venue-types').slideToggle( 500, function() {});
+        		<?php if ($post_id == '') { ?>
+        			$('.venue-element').slideToggle( 500, function() {});
+        		<?php } ?>
+        		$(this).text(function(i, text){
+        			<?php if ($post_id != '') { ?>
+			          return text === $ignore_text ? $venue_text : $ignore_text;
+			        <?php }else{?>
+			        	return text === $ignore_text ? $venue_def: $ignore_text;
+			       	<?php } ?>
+			    })
+    			return false;
+    		});
+
             <?php if (isset($_REQUEST['category']) ){ ?>
             	$('input:checkbox[value="<?php echo esc_attr($_REQUEST['category']); ?>"]').prop('checked', true);
             <?php } ?>
         });
-
-
-
-
-
-
 
     })(jQuery)
 
