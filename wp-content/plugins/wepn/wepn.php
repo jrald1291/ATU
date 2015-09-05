@@ -15,6 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 //error_reporting(0);
 
 
+
+
+
 class WEPN {
     var $wepn_db_version = '1.0';
 
@@ -47,11 +50,14 @@ class WEPN {
         add_image_size( 'vendor-small-thumb', 110, 105, true ); // (cropped)
     }
 
+
     function enqueue_scripts() {
         wp_enqueue_style( 'wepn-css', WEPN_ASSETS_URL . 'css/wepn.css' );
         wp_enqueue_script( 'wepn-js', WEPN_ASSETS_URL . 'js/wepn.js', array('jquery'), false, true );
         wp_localize_script( 'wepn-js', 'ATU', array(
             'ajaxurl' => admin_url('admin-ajax.php'),
+            'venue_terms' => WEPN_Helper::venu_category_list(),
+            'vendor_terms' => WEPN_Helper::category_list(),
         ) );
 
         if ( is_single() ) {
@@ -60,12 +66,50 @@ class WEPN {
         }
     }
 
+
+
+
     function add_role() {
 
-//        remove_role( 'vendor' );
+        remove_role( 'vendor' );
         add_role(
             'vendor',
             __( 'Vendor' ),
+            array(
+                'moderate_comments' => 0,
+                'manage_categories' => 0,
+                'manage_links' => 0,
+                'upload_files' => 1,
+                'unfiltered_html' => 1,
+                'edit_posts' => 0,
+                'edit_others_posts' => 0,
+                'edit_published_posts' => 0,
+                'publish_posts' => 0,
+                'edit_pages' => 0,
+                'read' => 1,
+                'edit_others_pages' => 0,
+                'edit_published_pages' => 0,
+                'publish_pages' => 0,
+                'delete_pages' => 0,
+                'delete_others_pages' => 0,
+                'delete_published_pages' => 0,
+                'delete_posts' => 0,
+                'delete_others_posts' => 0,
+                'delete_published_posts' => 0,
+                'delete_private_posts' => 0,
+                'edit_private_posts' => 0,
+                'read_private_posts' => 0,
+                'delete_private_pages' => 0,
+                'edit_private_pages' => 0,
+                'read_private_pages' => 0,
+
+            )
+        );
+
+
+        add_role(
+            'venue',
+            __( 'Venue' ),
             array(
                 'moderate_comments' => 0,
                 'manage_categories' => 0,
@@ -96,6 +140,7 @@ class WEPN {
 
             )
         );
+
     }
 
 
@@ -157,22 +202,13 @@ class WEPN {
         // Update database check
         add_action( 'plugins_loaded', array( $this, 'wepn_update_db_check' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-
         add_action( 'after_setup_theme', array( $this, 'wepn_theme_setup' ) );
         add_action( 'aut_post_thumnail', array( $this, 'wepn_post_thumbnail' ), 1, 2 );
-
-
-
         add_action( 'wepn_venue_search_form', array( $this, 'wepn_venue_search_form' ) );
         add_action( 'wepn_vendor_search_form', array( $this, 'wepn_vendor_search_form' ) );
-
-
-
         add_filter('posts_where', array( $this, 'websmart_search_where' ) );
         add_filter('posts_join', array( $this, 'websmart_search_join' ) );
         add_action( 'pre_get_posts', array( $this, 'wepn_advance_search' ) );
-
-
         add_action( 'wepn_venue_region_list', array( $this, 'wepn_region_list' ) );
 
         if (isset($_REQUEST['post_type']) && !empty($_REQUEST['post_type'])) {
@@ -184,17 +220,10 @@ class WEPN {
 
 
         add_filter( 'wpcf7_form_tag', array($this, 'dynamic_vendor_category_list'), 10, 2);
-
         add_filter( 'wpcf7_form_tag', array($this, 'dynamic_select_list'), 10, 2);
-
         add_filter( 'wpcf7_form_tag', array($this, 'capacity_list'), 10, 2);
         add_filter( 'wpcf7_form_tag', array($this, 'post_code_list'), 10, 2);
-
-
         add_action( 'admin_menu', array($this, 'wpse28782_remove_menu_items' ));
-
-
-
         add_filter('cbratingsystem_post_types', function() {
             return array(
                 'builtin' => array(

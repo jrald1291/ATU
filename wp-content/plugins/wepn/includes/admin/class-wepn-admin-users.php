@@ -65,24 +65,12 @@ if ( !class_exists('WEPN_Admin_Users') ) {
          */
         public function wepn_save_user_city_group_category( $user_id ) {
             if ( ! WEPN_Helper::check_user_role( 'vendor', $user_id ) ) return;
-            $city = $_POST['city'];
-            $group = $_POST['group'];
-            $category = $_POST['category'];
-            $company_name = $_POST['company_name'];
-
-
-            $group_slug = sanitize_title( $group );
-
-            $category_slug = sanitize_title( $category );
-
-            $other_categories = (array) (!empty($_POST['categories']) ? $_POST['categories'] : array());
-
-
-
 
             global $wpdb;
 
+            $company_name = esc_attr($_POST['company_name']);
             $company_id = get_user_meta( $user_id, 'company', true );
+
             if ($company_id && is_numeric($company_id))  {
                 wp_update_post(array(
                     'ID' => $company_id,
@@ -106,44 +94,61 @@ if ( !class_exists('WEPN_Admin_Users') ) {
 
                 }
             }
-            // Remove existing post and term relatinships
-            $old_tax = get_post_meta( $company_id, 'city', true );
-            wp_delete_object_term_relationships( $company_id, $old_tax );
 
-            if (!in_array($category, $other_categories)) {
-                $other_categories = array_merge($other_categories, array($category));
-            }
-
-            if (count($other_categories) > 0) {
-                $terms = array();
-                foreach ($other_categories as $term_title) {
-                    if(empty($term_title)) continue;
-
-                    $term_slug = sanitize_title($term_title);
-                    if (!$term = term_exists($term_title, $city)) {
-
-                        $term = wp_insert_term($term_title, $city, array( 'slug' => $term_slug));
-
-                    }
-                    $terms[] = $term['term_id'];
-                }
-
-                wp_set_post_terms($company_id, $terms, $city, false);
-            }
-
-
-
-            // Update custom permalink
-            update_post_meta( $company_id, 'custom_permalink', $city.'/'.$group_slug.'/'. $category_slug .'/'. sanitize_title($company_name) );
             // Update Post Meta
             update_post_meta( $company_id, 'vendor', $user_id );
-            update_post_meta( $company_id, 'region', $group_slug );
-            update_post_meta( $company_id, 'city', $city );
-            update_post_meta( $company_id, 'category', $category_slug );
-            // Update user meta
-            update_user_meta( $user_id, 'city', $city );
-            update_user_meta( $user_id, 'group', $group_slug );
-            update_user_meta( $user_id, 'category', $category_slug );
+
+            //Only administrator can change this section
+            if ( current_user_can( 'manage_options' ) ) {
+
+
+                $city = $_POST['city'];
+                $group = $_POST['group'];
+                $category = $_POST['category'];
+
+
+                $group_slug = sanitize_title( $group );
+                $category_slug = sanitize_title( $category );
+                $other_categories = (array) (!empty($_POST['categories']) ? $_POST['categories'] : array());
+
+
+                // Remove existing post and term relatinships
+                $old_tax = get_post_meta( $company_id, 'city', true );
+                wp_delete_object_term_relationships( $company_id, $old_tax );
+
+                if (!in_array($category, $other_categories)) {
+                    $other_categories = array_merge($other_categories, array($category));
+                }
+
+                if (count($other_categories) > 0) {
+                    $terms = array();
+                    foreach ($other_categories as $term_title) {
+                        if(empty($term_title)) continue;
+
+                        $term_slug = sanitize_title($term_title);
+                        if (!$term = term_exists($term_title, $city)) {
+
+                            $term = wp_insert_term($term_title, $city, array( 'slug' => $term_slug));
+
+                        }
+                        $terms[] = $term['term_id'];
+                    }
+
+                    wp_set_post_terms($company_id, $terms, $city, false);
+                }
+
+
+
+                // Update custom permalink
+                update_post_meta( $company_id, 'custom_permalink', $city.'/'.$group_slug.'/'. $category_slug .'/'. sanitize_title($company_name) );
+                update_post_meta($company_id, 'region', $group_slug);
+                update_post_meta($company_id, 'city', $city);
+                update_post_meta($company_id, 'category', $category_slug);
+                // Update user meta
+                update_user_meta($user_id, 'city', $city);
+                update_user_meta($user_id, 'group', $group_slug);
+                update_user_meta($user_id, 'category', $category_slug);
+            }
 
 
         }
@@ -181,7 +186,7 @@ if ( !class_exists('WEPN_Admin_Users') ) {
                     <th><label for="">Select City</label></th>
                     <td>
                         <?php if ( have_rows( 'cities', 'option' ) ) {
-                            echo '<select name="city">';
+                            echo '<select name="city" '.( ! current_user_can( 'manage_options' ) ? 'disabled' : '' ).'>';
                             while ( have_rows( 'cities', 'option' ) ) {
                                 the_row();
                                 $name = sanitize_title(get_sub_field('city_name'));
@@ -199,7 +204,7 @@ if ( !class_exists('WEPN_Admin_Users') ) {
                     <th><label for="">Select Region/Group</label></th>
                     <td>
                         <?php if ( have_rows( 'groups', 'option' ) ) {
-                            echo '<select name="group">';
+                            echo '<select name="group" '.( ! current_user_can( 'manage_options' ) ? 'disabled' : '' ).'>';
                             while ( have_rows( 'groups', 'option' ) ) {
                                 the_row();
                                 $name = sanitize_title(get_sub_field('group_name'));
@@ -215,7 +220,7 @@ if ( !class_exists('WEPN_Admin_Users') ) {
                     <th><label for="">Select Main Category</label></th>
                     <td>
                         <?php if ( have_rows( 'vendors_categories', 'option' ) ) {
-                            echo '<select name="category">';
+                            echo '<select name="category" '.( ! current_user_can( 'manage_options' ) ? 'disabled' : '' ).'>';
                             while ( have_rows( 'vendors_categories', 'option' ) ) {
                                 the_row();
                                 $label = esc_html(get_sub_field('category_name'));
@@ -232,7 +237,7 @@ if ( !class_exists('WEPN_Admin_Users') ) {
                     <th><label for="">Select Other Categories</label></th>
                     <td>
                         <?php if ( have_rows( 'vendors_categories', 'option' ) ) {
-                            echo '<select name="categories[]" multiple>';
+                            echo '<select name="categories[]" multiple '.( ! current_user_can( 'manage_options' ) ? 'disabled' : '' ).'>';
                             while ( have_rows( 'vendors_categories', 'option' ) ) {
                                 the_row();
                                 $label = esc_html(get_sub_field('category_name'));

@@ -145,6 +145,14 @@ if ( ! class_exists('WEPN_Helper') ) {
                 echo '<select>';
             }
         }
+        public static function venu_category_list() {
+            $terms = get_terms( 'venue-category', array('hide_empty' => false) );
+            $arr = array();
+            foreach ($terms as $term) {
+                $arr[$term->term_id] = $term->name;
+            }
+            return $arr;
+        }
 
         public static function category_list() {
             $arr = array();

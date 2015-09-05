@@ -14,10 +14,34 @@ if ( ! class_exists('WEPN_Admin_Post') ) {
 
             add_action( 'add_meta_boxes', array( $this, 'wepn_custom_add_meta_box' ) );
             add_action( 'save_post', array( $this, 'wepn_save_meta_box_data' ) );
+
+            add_action( 'admin_footer-post.php', array($this, 'js_disable_field_if_not_admin' ));
+            add_action( 'admin_footer-post-new.php', array($this, 'js_disable_field_if_not_admin' ));
         }
 
 
+        public function js_disable_field_if_not_admin() {
+            global $post_type;
+
+            if ( 'venue' != $post_type || current_user_can( 'manage_options' ))
+                return;
+            ?>
+            <script>
+                jQuery('#acf-field-main_category').attr('disabled', true);
+                jQuery(".categorychecklist >li>label input").each(function(){
+                    jQuery(this).remove();
+                });
+            </script>
+        <?php
+        }
+
+
+
         public function wepn_save_meta_box_data( $post_id ) {
+            //Only administrator can change the city of the venue
+            if ( ! current_user_can( 'manage_options' ) ) {
+                return;
+            }
             /*
              * We need to verify this came from our screen and with proper authorization,
              * because the save_post action can be triggered at other times.
@@ -68,7 +92,10 @@ if ( ! class_exists('WEPN_Admin_Post') ) {
 
 
         public function wepn_custom_add_meta_box() {
-            $screens = array( 'venue' ); //'vendor',
+//            if ( ! current_user_can( 'manage_options' ) ) {
+//                return;
+//            }
+            $screens = array( 'venue' );
 
             foreach ( $screens as $screen ) {
 
@@ -95,7 +122,7 @@ if ( ! class_exists('WEPN_Admin_Post') ) {
                     <th><label for="">Select City</label></th>
                     <td>
                         <?php if ( have_rows( 'cities', 'option' ) ) {
-                            echo '<select name="city">';
+                            echo '<select name="city" '.( ! current_user_can( 'manage_options' ) ? 'disabled' : '' ).'>';
                             while ( have_rows( 'cities', 'option' ) ) {
                                 the_row();
                                 $name = sanitize_title(get_sub_field('city_name'));
@@ -119,7 +146,7 @@ if ( ! class_exists('WEPN_Admin_Post') ) {
 
 
                             if ( count( $post_codes_array ) != 0 ) {
-                            echo '<select name="post_code">';
+                            echo '<select name="post_code" '.( ! current_user_can( 'manage_options' ) ? 'disabled' : '' ).'>';
                             foreach ( $post_codes_array as $post_code ) {
                                 $post_code = wp_strip_all_tags( $post_code );
                                 echo '<option value="'. $post_code .'" '. selected( $post_code, $selected_post_code, false ) .'>'. $post_code .'</option>';

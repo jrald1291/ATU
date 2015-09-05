@@ -42,6 +42,7 @@ if ( !class_exists('WEPN_Registration') ) {
                 'website' => 'url',
                 'first_name' => 'required',
                 'last_name' => 'required',
+                'role' => 'required'
 
             );
 
@@ -68,6 +69,8 @@ if ( !class_exists('WEPN_Registration') ) {
 
         private function add_new_user($post) {
 
+
+
             $new_user_id = wp_insert_user(array(
                     'user_login'		=> $post['username'],
                     'user_pass'	 		=> $post['password'],
@@ -77,14 +80,14 @@ if ( !class_exists('WEPN_Registration') ) {
                     'user_url'          => $post['website'],
                     'description'       => $post['description'],
                     'user_registered'	=> date('Y-m-d H:i:s'),
-                    'role'				=> get_option('wepn_default_user_role', get_option('default_role'))
+                    'role'				=> $post['role']//get_option('wepn_default_user_role', get_option('default_role'))
                 )
             );
 
 
             if ( ! is_wp_error( $new_user_id ) ) {
 
-
+                global $wpdb;
 
 
                 add_user_meta( $new_user_id, 'company_name', $post['company_name'] )
@@ -96,75 +99,77 @@ if ( !class_exists('WEPN_Registration') ) {
                 add_user_meta( $new_user_id, 'phone', $post['phone'] )
                 or update_user_meta( $new_user_id, 'phone', $post['phone']  );
 
+                $city           = $_POST['city'];
+                $group          = $_POST['group'];
+                $category       = $_POST['category'];
+                $company_name   = $_POST['company_name'];
+                $group_slug     = sanitize_title($group);
+                $category_slug  = sanitize_title($category);
 
 
-                $city = $_POST['city'];
-                $group = $_POST['group'];
-                $category = $_POST['category'];
-                $company_name = $_POST['company_name'];
-
-
-                $group_slug = sanitize_title( $group );
-
-                $category_slug = sanitize_title( $category );
-
-                $other_categories = (array) (!empty($_POST['categories']) ? $_POST['categories'] : array());
-
-
-
-
-                global $wpdb;
+                $other_categories = (array)(!empty($_POST['categories']) ? $_POST['categories'] : array());
                 $company_id = $wpdb->get_var("SELECT ID FROM wp_posts WHERE post_title = '" . $company_name . "'");
 
-                if ( ! empty( $company_name ) && ! $company_id ) {
-                    $company_id = wp_insert_post( array(
+                if (!empty($company_name) && !$company_id) {
+                    $company_id = wp_insert_post(array(
                         'post_title' => $company_name,
                         'post_author' => $new_user_id,
-                        'post_type' => 'vendor',
+                        'post_type' => sanitize_title($post['role']),
                         'post_status' => 'publish'
                     ));
 
-                    update_user_meta( $new_user_id, 'company', $company_id );
+                    update_user_meta($new_user_id, 'company', $company_id);
 
                 }
-                // Remove existing post and term relatinships
-                $old_tax = get_post_meta( $company_id, 'city', true );
-                wp_delete_object_term_relationships( $company_id, $old_tax );
+
+                $tax = $post['role'] == 'vendor' ? 'city' : 'venue-category';
+
+                    // Remove existing post and term relationships
+                $old_tax = get_post_meta($company_id, $tax, true);
+                wp_delete_object_term_relationships($company_id, $old_tax);
 
                 if (!in_array($category, $other_categories)) {
                     $other_categories = array_merge($other_categories, array($category));
                 }
 
+
                 if (count($other_categories) > 0) {
                     $terms = array();
                     foreach ($other_categories as $term_title) {
-                        if(empty($term_title)) continue;
+                        if (empty($term_title)) continue;
 
                         $term_slug = sanitize_title($term_title);
-                        if (!$term = term_exists($term_title, $city)) {
+                        if (!$term = term_exists($term_title, $tax)) {
 
-                            $term = wp_insert_term($term_title, $city, array( 'slug' => $term_slug));
+                            $term = wp_insert_term($term_title, $tax, array('slug' => $term_slug));
 
                         }
                         $terms[] = $term['term_id'];
                     }
 
-                    wp_set_post_terms($company_id, $terms, $city, false);
+                    wp_set_post_terms($company_id, $terms, $tax, false);
+                }
+
+
+                // Update custom permalink
+                update_post_meta($company_id, 'custom_permalink', $city . '/' . $group_slug . '/' . $category_slug . '/' . sanitize_title($company_name));
+                // Update Post Meta
+                update_post_meta($company_id, 'vendor', $new_user_id);
+                update_post_meta($company_id, 'region', $group_slug);
+                update_post_meta($company_id, 'city', $city);
+
+                if ($post['role'] =='vendor') {
+                    update_post_meta($company_id, 'category', $category_slug);
+                } else {
+                    update_post_meta($company_id, 'main_category', $category_slug);
                 }
 
 
 
-                // Update custom permalink
-                update_post_meta( $company_id, 'custom_permalink', $city.'/'.$group_slug.'/'. $category_slug .'/'. sanitize_title($company_name) );
-                // Update Post Meta
-                update_post_meta( $company_id, 'vendor', $new_user_id );
-                update_post_meta( $company_id, 'region', $group_slug );
-                update_post_meta( $company_id, 'city', $city );
-                update_post_meta( $company_id, 'category', $category_slug );
                 // Update user meta
-                update_user_meta( $new_user_id, 'city', $city );
-                update_user_meta( $new_user_id, 'group', $group_slug );
-                update_user_meta( $new_user_id, 'category', $category_slug );
+                update_user_meta($new_user_id, 'city', $city);
+                update_user_meta($new_user_id, 'group', $group_slug);
+                update_user_meta($new_user_id, 'category', $category_slug);
 
 
 
@@ -172,8 +177,7 @@ if ( !class_exists('WEPN_Registration') ) {
                 WEPN_Admin_Settings::set_used_reg_code( $post['registration_code'] );
 
 
-
-
+                // Logged In user once registered
                 wp_set_current_user($new_user_id, $post['username']);
                 wp_set_auth_cookie($new_user_id);
                 do_action('wp_login', $post['username']);
@@ -221,7 +225,18 @@ if ( !class_exists('WEPN_Registration') ) {
                     ),
                     'id'        => 'registrationForm'
                 ),
-
+                array(
+                    'title'     => __( 'User Type', 'atu' ),
+                    'type'      => 'select',
+                    'id'        => 'role',
+                    'attributes'    => array(
+                        'class' => 'form-control'
+                    ),
+                    'required'  => true,
+                    'value'     => '',
+                    'default'   => '0',
+                    'options'   => array('vendor' => 'Vendor', 'venue' => 'Venue'),
+                ),
                 array(
                     'title'     => __( 'Username', 'atu' ),
                     'type'      => 'text',
@@ -406,6 +421,23 @@ if ( !class_exists('WEPN_Registration') ) {
                     'default'   => '0',
                     'options'   => WEPN_Helper::category_list()
                 ),
+
+                array(
+                    'title'     => __( 'Other Categories', 'atu' ),
+                    'type'      => 'select',
+                    'id'        => 'categories[]',
+                    'attributes'    => array(
+                        'class' => 'form-control',
+                        'multiple' => true,
+                    ),
+                    'required'  => true,
+                    'value'     => '',
+                    'default'   => '0',
+                    'options'   => WEPN_Helper::category_list(),
+                ),
+
+
+
 
 
 

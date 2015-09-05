@@ -18,10 +18,6 @@ if ( ! class_exists('WEPN_Admin') ) {
             include_once('class-wepn-admin-taxonomy.php');
             include_once('class-wepn-admin-post.php');
             include_once('class-wepn-admin-users.php');
-
-//            if ( ! is_admin() ) return;
-
-
             include_once('class-wepn-admin-settings.php');
             include_once( 'class-wepn-admin-options.php' );
             include_once('class-wepn-admin-menu.php');

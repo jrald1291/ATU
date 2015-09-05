@@ -45,6 +45,35 @@
 
 
 
+        B.on('change', '#registrationForm #role', function(e) {
+            var role = $(this).val(),
+                terms = [],
+                $cat = $('#registrationForm #category'),
+                $otherCat = $('#registrationForm #categories');
+
+
+            $cat.html('');
+            $otherCat.html('');
+
+            if (role == 'venue') {
+                terms = ATU.venue_terms
+            } else {
+                terms = ATU.vendor_terms;
+            }
+
+            for(var term in terms) {
+                var $option = $('<option />').val(term).text(terms[term]);
+                var $option2 = $('<option />').val(term).text(terms[term]);
+                $otherCat.append($option2);
+                $cat.append($option);
+
+            }
+
+
+
+        });
+
+
 
 
 
