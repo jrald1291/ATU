@@ -480,7 +480,7 @@ get_header(); ?>
         	$supplier_text = "Want to add Supplier Types?";
         	$venue_def = "Do you want to book a Venue?";
         	$venue_text = "Want to add Venue Types?";
-        	$ignore_text = "No, I am not Interested";
+        	$ignore_text = "Back to contact form";
 
 
         	<?php if ($user_id != 1 && $post_id == '') { ?>
