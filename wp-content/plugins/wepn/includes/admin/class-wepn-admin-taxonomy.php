@@ -38,6 +38,7 @@ if ( ! class_exists('WEPN_Admin_Taxonomy') ) {
                             'new_item_name'     => __( 'New Category Name' ),
                             'menu_name'         => __( 'Categories' ),
                         ),
+                        'show_in_quick_edit' => false,
                         'show_ui'           => true,
                         'show_admin_column' => true,
                         'query_var'         => true,
