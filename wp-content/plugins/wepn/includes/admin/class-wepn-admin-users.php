@@ -131,7 +131,9 @@ if ( !class_exists('WEPN_Admin_Users') ) {
                             $term = wp_insert_term($term_title, $city, array( 'slug' => $term_slug));
 
                         }
-                        $terms[] = $term['term_id'];
+                        if (!is_wp_error($term)) {
+                            $terms[] = $term['term_id'];
+                        }
                     }
 
                     wp_set_post_terms($company_id, $terms, $city, false);
@@ -165,7 +167,7 @@ if ( !class_exists('WEPN_Admin_Users') ) {
 
 
 
-            if ( ! WEPN_Helper::check_user_role( 'vendor', $user->ID ) ) return;
+//            if ( ! WEPN_Helper::check_user_role( 'vendor', $user->ID ) ) return;
 
             $city = get_user_meta( $user->ID, 'city', true );
             $group  = get_user_meta( $user->ID, 'group', true );

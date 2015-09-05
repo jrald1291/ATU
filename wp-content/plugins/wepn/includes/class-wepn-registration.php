@@ -139,9 +139,12 @@ if ( !class_exists('WEPN_Registration') ) {
                             $term = wp_insert_term($term_title, $tax, array('slug' => $term_slug));
 
                         }
-                        if (!is_wp_error($term))
+                        if (!is_wp_error($term)) {
                             $terms[] = $term['term_id'];
+                        }
                     }
+
+
 
                     wp_set_post_terms($company_id, $terms, $tax, false);
                 }
