@@ -123,33 +123,7 @@ if ( !class_exists('WEPN_Registration') ) {
                 }
 
                 $tax = $post['role'] == 'vendor' ? 'city' : 'venue-category';
-
-                    // Remove existing post and term relationships
-                $old_tax = get_post_meta($company_id, $tax, true);
-                wp_delete_object_term_relationships($company_id, $old_tax);
-
-                if (!in_array($category, $other_categories)) {
-                    $other_categories = array_merge($other_categories, array($category));
-                }
-
-
-                if (count($other_categories) > 0) {
-                    $terms = array();
-                    foreach ($other_categories as $term_title) {
-                        if (empty($term_title)) continue;
-
-                        $term_slug = sanitize_title($term_title);
-                        if (!$term = term_exists($term_title, $tax)) {
-
-                            $term = wp_insert_term($term_title, $tax, array('slug' => $term_slug));
-
-                        }
-                        $terms[] = $term['term_id'];
-                    }
-
-                    wp_set_post_terms($company_id, $terms, $tax, false);
-                }
-
+                wp_set_post_terms($company_id, $other_categories, $tax, false);
 
                 // Update custom permalink
                 update_post_meta($company_id, 'custom_permalink', $city . '/' . $group_slug . '/' . $category_slug . '/' . sanitize_title($company_name));
