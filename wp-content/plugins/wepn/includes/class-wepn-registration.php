@@ -122,7 +122,7 @@ if ( !class_exists('WEPN_Registration') ) {
 
                 }
 
-                $tax = $post['role'] == 'vendor' ? 'city' : 'venue-category';
+                $tax = $post['role'] == 'vendor' ? $city : 'venue-category';
 
                     // Remove existing post and term relationships
                 $old_tax = get_post_meta($company_id, $tax, true);
@@ -139,7 +139,8 @@ if ( !class_exists('WEPN_Registration') ) {
                             $term = wp_insert_term($term_title, $tax, array('slug' => $term_slug));
 
                         }
-                        $terms[] = $term['term_id'];
+                        if (!is_wp_error($term))
+                            $terms[] = $term['term_id'];
                     }
 
                     wp_set_post_terms($company_id, $terms, $tax, false);
