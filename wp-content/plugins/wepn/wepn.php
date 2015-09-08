@@ -71,76 +71,52 @@ class WEPN {
 
     function add_role() {
 
-        remove_role( 'vendor' );
-        add_role(
-            'vendor',
-            __( 'Vendor' ),
-            array(
-                'moderate_comments' => 0,
-                'manage_categories' => 0,
-                'manage_links' => 0,
-                'upload_files' => 1,
-                'unfiltered_html' => 1,
-                'edit_posts' => 0,
-                'edit_others_posts' => 0,
-                'edit_published_posts' => 0,
-                'publish_posts' => 0,
-                'edit_pages' => 0,
-                'read' => 1,
-                'edit_others_pages' => 0,
-                'edit_published_pages' => 0,
-                'publish_pages' => 0,
-                'delete_pages' => 0,
-                'delete_others_pages' => 0,
-                'delete_published_pages' => 0,
-                'delete_posts' => 0,
-                'delete_others_posts' => 0,
-                'delete_published_posts' => 0,
-                'delete_private_posts' => 0,
-                'edit_private_posts' => 0,
-                'read_private_posts' => 0,
-                'delete_private_pages' => 0,
-                'edit_private_pages' => 0,
-                'read_private_pages' => 0,
+//        remove_role( 'venue' );
+//        remove_role( 'vendor' );
 
-            )
+        $other_cap = array(
+            'upload_files' => 1,
+            'unfiltered_html' => 1,
+            'read' => 1,
+            'publish_posts' => 0,
+            'edit_posts' => 1,
         );
+        // get the the role object
+        $administrator = get_role( 'administrator' );
+        if ($administrator) {
+            $administrator->add_cap( "edit_venue" );
+            $administrator->add_cap( "delete_venue" );
+            $administrator->add_cap( "edit_vendor" );
+            $administrator->add_cap( "delete_vendor" );
+        }
 
 
-        add_role(
-            'venue',
-            __( 'Venue' ),
-            array(
-                'moderate_comments' => 0,
-                'manage_categories' => 0,
-                'manage_links' => 0,
-                'upload_files' => 1,
-                'unfiltered_html' => 1,
-                'edit_posts' => 1,
-                'edit_others_posts' => 0,
-                'edit_published_posts' => 1,
-                'publish_posts' => 1,
-                'edit_pages' => 0,
-                'read' => 1,
-                'edit_others_pages' => 0,
-                'edit_published_pages' => 0,
-                'publish_pages' => 0,
-                'delete_pages' => 0,
-                'delete_others_pages' => 0,
-                'delete_published_pages' => 0,
-                'delete_posts' => 1,
-                'delete_others_posts' => 0,
-                'delete_published_posts' => 1,
-                'delete_private_posts' => 1,
-                'edit_private_posts' => 1,
-                'read_private_posts' => 1,
-                'delete_private_pages' => 0,
-                'edit_private_pages' => 0,
-                'read_private_pages' => 0,
+        if (!$vendor = get_role( 'vendor' )) {
+            $vendor = add_role( 'vendor', 'Vendor', $other_cap );
+            $vendor->add_cap( "edit_vendor" );
+        }
+        if (!$venue = get_role( 'venue' )) {
 
-            )
-        );
+            $venue = add_role( 'venue', 'Venue', $other_cap );
+            $venue->add_cap( "edit_venue" );
+        }
 
+
+
+        foreach ( array('publish','delete','delete_others','delete_private','delete_published','edit','edit_others','edit_private','edit_published','read_private') as $cap ) {
+            if ($administrator) {
+                $administrator->add_cap("{$cap}_venues");
+                $administrator->add_cap("{$cap}_vendors");
+            }
+
+            if ($venue) {
+                $venue->add_cap("{$cap}_venues");
+            }
+
+            if ($vendor) {
+                $vendor->add_cap("{$cap}_vendors");
+            }
+        }
     }
 
 

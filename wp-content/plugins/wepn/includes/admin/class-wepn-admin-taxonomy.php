@@ -53,52 +53,55 @@ if ( ! class_exists('WEPN_Admin_Taxonomy') ) {
             }
 
 
+            if (function_exists('have_rows')) {
 
-            if ( have_rows( 'cities', 'option' ) ) {
-                while ( have_rows( 'cities', 'option' ) ) { the_row();
-                    $name =  sanitize_title( get_sub_field( 'city_name' ) );
-                    $label = esc_html( get_sub_field( 'city_label' ) );
-                    $slug = $name; //get_sub_field( 'region_slug' ) ? sanitize_title( get_sub_field( 'region_slug' ) ) : $name;
 
-                    register_taxonomy(
-                        $name,
-                        array('vendor'),
-                        array(
-                            'public' => true,
-                            'labels' => array(
-                                'name' => __( $label. ' Categories' ),
-                                'singular_name' => __( $label . ' Category' ),
-                                'menu_name' => $label,
-                                'search_items' => __( 'Search '. $label .' Categories' ),
-                                'popular_items' => __( 'Popular '. $label .' Categories' ),
-                                'all_items' => __( 'All '. $label .' Categories' ),
-                                'edit_item' => __( 'Edit '. $label .' Category' ),
-                                'update_item' => __( 'Update '. $label .' Category' ),
-                                'add_new_item' => __( 'Add New '. $label .' Category' ),
-                                'new_item_name' => __( 'New Group '. $label .' Name' ),
-                                'separate_items_with_commas' => __( 'Separate '. $label .' categories with commas' ),
-                                'add_or_remove_items' => __( 'Add or remove '. $label .' category' ),
-                                'choose_from_most_used' => __( 'Choose from the most popular '. $label .' categories' ),
-                            ),
-                            'hierarchical'          => true,
-                            'show_ui'               => false,
-                            'show_admin_column'     => true,
-                            'query_var'             => true,
-                            'show_in_nav_menus'     => false,
-                            'rewrite' => array(
-                                //'with_front' => true,
+                if (have_rows('cities', 'option')) {
+                    while (have_rows('cities', 'option')) {
+                        the_row();
+                        $name = sanitize_title(get_sub_field('city_name'));
+                        $label = esc_html(get_sub_field('city_label'));
+                        $slug = $name; //get_sub_field( 'region_slug' ) ? sanitize_title( get_sub_field( 'region_slug' ) ) : $name;
+
+                        register_taxonomy(
+                            $name,
+                            array('vendor'),
+                            array(
+                                'public' => true,
+                                'labels' => array(
+                                    'name' => __($label . ' Categories'),
+                                    'singular_name' => __($label . ' Category'),
+                                    'menu_name' => $label,
+                                    'search_items' => __('Search ' . $label . ' Categories'),
+                                    'popular_items' => __('Popular ' . $label . ' Categories'),
+                                    'all_items' => __('All ' . $label . ' Categories'),
+                                    'edit_item' => __('Edit ' . $label . ' Category'),
+                                    'update_item' => __('Update ' . $label . ' Category'),
+                                    'add_new_item' => __('Add New ' . $label . ' Category'),
+                                    'new_item_name' => __('New Group ' . $label . ' Name'),
+                                    'separate_items_with_commas' => __('Separate ' . $label . ' categories with commas'),
+                                    'add_or_remove_items' => __('Add or remove ' . $label . ' category'),
+                                    'choose_from_most_used' => __('Choose from the most popular ' . $label . ' categories'),
+                                ),
                                 'hierarchical' => true,
-                               // 'slug' => $slug
-                            ),
-                            //'update_count_callback' => array( $this, 'my_update_profession_count' ) // Use a custom function to update the count.
-                        )
-                    );
+                                'show_ui' => false,
+                                'show_admin_column' => true,
+                                'query_var' => true,
+                                'show_in_nav_menus' => false,
+                                'rewrite' => array(
+                                    //'with_front' => true,
+                                    'hierarchical' => true,
+                                    // 'slug' => $slug
+                                ),
+                                //'update_count_callback' => array( $this, 'my_update_profession_count' ) // Use a custom function to update the count.
+                            )
+                        );
 
 
-
+                    }
                 }
-            }
 
+            }
 
 
         }

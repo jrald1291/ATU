@@ -211,7 +211,16 @@ if ( ! class_exists('WEPN_Admin_Post') ) {
                     'show_in_menu'       => true,
                     'query_var'          => true,
                     'rewrite'            => array( 'slug' => 'venue', 'with_front' => false ),
-                    'capability_type'    => 'post',
+                    'capability_type'    => 'venue',
+                    'capabilities'       => array(
+                        'edit_post'         => 'edit_venue',
+                        'edit_posts'        => 'edit_venues',
+                        'edit_others_posts' => 'edit_other_venues',
+                        'publish_posts'     => 'publish_venues',
+                        'read_post'         => 'read_venue',
+                        'read_private_posts' => 'read_private_venues',
+                        'delete_post'       => 'delete_venue'
+                    ),
                     'has_archive'        => true,
                     'hierarchical'       => false,
                     'menu_position'      => null,
@@ -240,7 +249,16 @@ if ( ! class_exists('WEPN_Admin_Post') ) {
                     'show_in_menu'       => false,
                     'query_var'          => true,
                     'rewrite'            => array( 'slug' => 'suppliers', 'hierarchical' => true, 'with_front' => false ),///%group%
-                    'capability_type'    => 'post',
+                    'capability_type'    => 'vendor',
+                    'capabilities'       => array(
+                        'edit_post'         => 'edit_vendor',
+                        'edit_posts'        => 'edit_vendors',
+                        'edit_others_posts' => 'edit_other_vendors',
+                        'publish_posts'     => 'publish_vendors',
+                        'read_post'         => 'read_vendor',
+                        'read_private_posts' => 'read_private_vendors',
+                        'delete_post'       => 'delete_vendor'
+                    ),
                     'has_archive'        => true,
                     'hierarchical'       => false,
                     'menu_position'      => null,
