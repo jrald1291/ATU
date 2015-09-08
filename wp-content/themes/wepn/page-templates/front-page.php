@@ -44,9 +44,9 @@ get_header(); ?>
 
                     <input type="hidden" name="s" value="" />
 
-                    <button type="submit" name="post_type" value="vendor" onclick='this.form.action="<?php echo home_url('/suppliers'); ?>";' class="btn btn-wooden btn-lg">Search for Supplier</button>
+                    <button type="submit" name="post_type" value="vendor" onclick='this.form.action="<?php echo home_url('/suppliers'); ?>";' class="btn btn-wooden btn-lg">Find a Supplier</button>
 
-                    <button type="submit" name="post_type" value="venue" onclick='this.form.action="<?php echo home_url('/venue'); ?>";'  class="btn btn-wooden btn-lg">Search for Venue</button>
+                    <button type="submit" name="post_type" value="venue" onclick='this.form.action="<?php echo home_url('/venue'); ?>";'  class="btn btn-wooden btn-lg">Find a Venue</button>
 
                 </div>
 
@@ -173,6 +173,8 @@ get_header(); ?>
                                 <div class="post-meta"><div class="meta date"><?php echo get_the_date(); ?></div> <div class="meta author t-upper">
                                     <?php if (get_the_author_meta( 'ID' )==1) {?>
                                         <a href="<?php echo get_post_permalink(get_user_meta(7, 'company', true)); ?>" class="link"><?php the_author(); ?></a>
+                                     <?php }else if(get_field('venue_profile')){ ?>
+                                        <a href="<?php echo get_field('venue_profile'); ?>" class="link"><?php the_author(); ?></a>
                                     <?php }else{ ?>
                                         <a href="<?php echo get_post_permalink(get_user_meta(get_the_author_meta( 'ID' ), 'company', true)); ?>" class="link"><?php the_author(); ?></a>
                                     <?php } ?>

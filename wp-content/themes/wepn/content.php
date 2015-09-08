@@ -17,6 +17,8 @@
 			<div class="post-meta"><div class="meta date"><?php the_date(); ?></div> <div class="meta author t-upper">
 			<?php if (get_the_author_meta( 'ID' )==1) {?>
                <a href="<?php echo get_post_permalink(get_user_meta(7, 'company', true)); ?>" class="link"><?php the_author(); ?></a>
+             <?php }else if(get_field('venue_profile')){ ?>
+                <a href="<?php echo get_field('venue_profile'); ?>" class="link"><?php the_author(); ?></a>
             <?php }else{ ?>
                 <a href="<?php echo get_post_permalink(get_user_meta(get_the_author_meta( 'ID' ), 'company', true)); ?>" class="link"><?php the_author(); ?></a>
             <?php } ?>
@@ -72,6 +74,8 @@
 			<div class="post-meta"><div class="meta date"><?php echo get_the_date(); ?></div> <div class="meta author t-upper">
 			<?php if (get_the_author_meta( 'ID' )==1) {?>
                <a href="<?php echo get_post_permalink(get_user_meta(7, 'company', true)); ?>" class="link"><?php the_author(); ?></a>
+             <?php }else if(get_field('venue_profile')){ ?>
+                <a href="<?php echo get_field('venue_profile'); ?>" class="link"><?php the_author(); ?></a>
             <?php }else{ ?>
                 <a href="<?php echo get_post_permalink(get_user_meta(get_the_author_meta( 'ID' ), 'company', true)); ?>" class="link"><?php the_author(); ?></a>
             <?php } ?>
