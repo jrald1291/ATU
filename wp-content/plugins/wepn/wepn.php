@@ -26,6 +26,7 @@ class WEPN {
         $this->init_hooks();
         $this->includes();
 
+
     }
 
     function wpse28782_remove_menu_items() {
@@ -36,7 +37,10 @@ class WEPN {
             remove_menu_page('edit-comments.php');
             remove_menu_page('upload.php'); // Media
             remove_menu_page('wpcf7');
+        endif;
 
+        if( current_user_can( 'vendor' ) ):
+            remove_menu_page('edit.php?post_type=venue');
         endif;
     }
 
@@ -71,52 +75,65 @@ class WEPN {
 
     function add_role() {
 
-//        remove_role( 'venue' );
-//        remove_role( 'vendor' );
+        remove_role( 'venue' );
+        remove_role( 'vendor' );
 
-        $other_cap = array(
-            'upload_files' => 1,
-            'unfiltered_html' => 1,
-            'read' => 1,
-            'publish_posts' => 0,
-            'edit_posts' => 1,
-        );
-        // get the the role object
-        $administrator = get_role( 'administrator' );
-        if ($administrator) {
-            $administrator->add_cap( "edit_venue" );
-            $administrator->add_cap( "delete_venue" );
-            $administrator->add_cap( "edit_vendor" );
-            $administrator->add_cap( "delete_vendor" );
+        $administrator = get_role('administrator');
+
+        $caps = array('edit_others', 'delete_others', 'delete_private', 'edit_private', 'read_private', 'edit_published',
+            'publish', 'delete_published', 'edit', 'delete');
+
+        foreach ($caps as $cap) {
+            $administrator->add_cap("{$cap}_vendors");
+            $administrator->add_cap("{$cap}_venues");
         }
 
-
         if (!$vendor = get_role( 'vendor' )) {
-            $vendor = add_role( 'vendor', 'Vendor', $other_cap );
-            $vendor->add_cap( "edit_vendor" );
+
+            add_role( 'vendor', 'Vendor',
+                array(
+                    'edit_posts' => 1,
+                    'edit_published_posts' => 1,
+                    'edit_others_vendors' => 0,
+                    'delete_others_vendors' => 0,
+                    'delete_private_vendors' => 0,
+                    'edit_private_vendors' => 0,
+                    'read_private_vendors' => 0,
+                    'edit_published_vendors' => 1,
+                    'publish_vendors' => 1,
+                    'delete_published_vendors' => 1,
+                    'edit_vendors'  => 1 ,
+                    'delete_vendors' => 1,
+                    'edit_vendor' => 1,
+                    'read_vendor' => 1,
+                    'read' => 1,
+                    'delete_vendor' => 1,
+                ));
         }
         if (!$venue = get_role( 'venue' )) {
 
-            $venue = add_role( 'venue', 'Venue', $other_cap );
-            $venue->add_cap( "edit_venue" );
+            add_role( 'venue', 'Venue', array(
+                'edit_posts' => 1,
+                'edit_published_posts' => 1,
+                'edit_others_venues' => 0,
+                'delete_others_venues' => 0,
+                'delete_private_venues' => 0,
+                'edit_private_venues' => 0,
+                'read_private_venues' => 0,
+                'edit_published_venues' => 1,
+                'publish_venues' => 1,
+                'delete_published_venues' => 1,
+                'edit_venues'  => 1 ,
+                'delete_venues' => 1,
+                'edit_venue' => 1,
+                'read_venue' => 1,
+                'read' => 1,
+                'delete_venue' => 1,
+            ));
+
         }
 
 
-
-        foreach ( array('publish','delete','delete_others','delete_private','delete_published','edit','edit_others','edit_private','edit_published','read_private') as $cap ) {
-            if ($administrator) {
-                $administrator->add_cap("{$cap}_venues");
-                $administrator->add_cap("{$cap}_vendors");
-            }
-
-            if ($venue) {
-                $venue->add_cap("{$cap}_venues");
-            }
-
-            if ($vendor) {
-                $vendor->add_cap("{$cap}_vendors");
-            }
-        }
     }
 
 

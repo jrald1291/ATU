@@ -170,15 +170,11 @@ get_header(); ?>
 
                                 <div class="post-title t-normal"><a href="<?php the_permalink(); ?>" class="link"><?php the_title(); ?></a></div>
 
-                                <div class="post-meta"><div class="meta date"><?php echo get_the_date(); ?></div> <div class="meta author t-upper">
-                                    <?php if (get_the_author_meta( 'ID' )==1) {?>
-                                        <a href="<?php echo get_post_permalink(get_user_meta(7, 'company', true)); ?>" class="link"><?php the_author(); ?></a>
-                                     <?php }else if(get_field('venue_profile')){ ?>
-                                        <a href="<?php echo get_field('venue_profile'); ?>" class="link"><?php the_author(); ?></a>
-                                    <?php }else{ ?>
-                                        <a href="<?php echo get_post_permalink(get_user_meta(get_the_author_meta( 'ID' ), 'company', true)); ?>" class="link"><?php the_author(); ?></a>
-                                    <?php } ?>
-                                </div></div>
+                                    <div class="post-meta"><div class="meta date"><?php echo get_the_date(); ?></div>
+                                        <div class="meta author t-upper">
+                                            <a href="<?php echo WEPN_Helper::get_user_permalink(get_the_author_meta('ID')); ?>" class="link"><?php the_author(); ?></a>
+                                        </div>
+                                    </div>
 
                                 <div class="post-content">
 

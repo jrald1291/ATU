@@ -443,6 +443,37 @@ if ( ! class_exists('WEPN_Helper') ) {
 
 
 
+        public static function get_first_posts_link_by_author($auth_id, $post_type = 'venue', $limit = 1) {
+            $args = array (
+                'post_type'         => $post_type,
+                'author'            =>  $auth_id,
+                'posts_per_page'    => 1
+            );
+            $post = get_posts($args);
+            return $post ? get_permalink($post[0]->ID) : 0;
+        }
+
+        public static function get_role($user_id) {
+            $user_info = get_userdata($user_id);
+
+            return $user_info->roles[0];
+        }
+
+
+        public static function get_user_permalink($user_id) {
+
+            $role = self::get_role($user_id);
+            if ($role == 'vendor') {
+                $link  = get_permalink(get_user_meta($user_id, 'company', true));
+            } elseif($role == 'venue') {
+                $link  = self::get_first_posts_link_by_author($user_id);
+            } else {
+                return '';
+            }
+
+            return $link;
+        }
+
     }
 
 
