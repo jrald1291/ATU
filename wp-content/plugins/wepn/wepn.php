@@ -75,8 +75,8 @@ class WEPN {
 
     function add_role() {
 
-        remove_role( 'venue' );
-        remove_role( 'vendor' );
+//        remove_role( 'venue' );
+//        remove_role( 'vendor' );
 
         $administrator = get_role('administrator');
 
@@ -92,6 +92,9 @@ class WEPN {
 
             add_role( 'vendor', 'Vendor',
                 array(
+                    'delete_posts' => 1,
+                    'delete_post' => 1,
+                    'delete_published_posts' => 1,
                     'edit_posts' => 1,
                     'edit_published_posts' => 1,
                     'edit_others_vendors' => 0,
@@ -113,6 +116,9 @@ class WEPN {
         if (!$venue = get_role( 'venue' )) {
 
             add_role( 'venue', 'Venue', array(
+                'delete_posts' => 1,
+                'delete_post' => 1,
+                'delete_published_posts' => 1,
                 'edit_posts' => 1,
                 'edit_published_posts' => 1,
                 'edit_others_venues' => 0,
