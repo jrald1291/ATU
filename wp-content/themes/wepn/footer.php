@@ -84,8 +84,9 @@
 								</ul>
 							   <?php if (!is_user_logged_in() ) { ?> 
                                		<a href="<?php echo wp_login_url();?>" class="btn btn-primary btn-block mb-10">Member Login</a>
-                               		<a href="<?php echo get_permalink(492);?>" class="btn btn-primary btn-block">Become a Member</a>
+                               		<a href="<?php echo get_permalink(492);?>" class="btn btn-primary btn-block mb-10">Become a Member</a>
                                <?php } ?>
+                               		<a href="#EventSubscribe" class="btn btn-primary btn-block" role="button" data-toggle="modal">Subscribe Newsletter</a>
                                
 							</div>
 
@@ -105,7 +106,7 @@
 	</footer>
 </div>
 
-<div class="modal fade in form-subscribe " id="EventSubscribe" tabindex="-1" role="dialog" aria-labelledby="EventSubscribe">
+<div id="EventSubscribe" class="modal fade in form-subscribe " tabindex="-1" role="dialog" aria-labelledby="EventSubscribe">
   <div class="modal-dialog modal-lg modal-pretty absolute-center-bot">
 	  <div class="modal-content">
 	  		  <div class="modal-header t-normal">
@@ -132,21 +133,6 @@
   ga('create', 'UA-64995349-1', 'auto');
   ga('send', 'pageview');
 
-</script>
-
-<?php wp_footer(); ?>
-<?php 
-//	session_start();
-	if (!isset($_SESSION['visisted'])) {
-	  $_SESSION['visisted'] = 0;
-	}else{
-		$_SESSION['visisted']++;
-	}
-?>
-<script type="text/javascript">
-	<?php if ($_SESSION['visisted'] == 0) { ?>
-		$('#EventSubscribe').modal('show');
-	<?php } ?>
 </script>
 </body>
 
